@@ -14,24 +14,53 @@ html, body, form, span, h1 {
 
 .container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-areas: 'landingPage login';
   width: 100%;
   height: 100%;
   background-color: #f5f9f8; }
   .container .landing-page-image {
-    display: flex;
+    height: 100%;
+    grid-area: landingPage;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
     justify-content: center;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
     background-color: #989690;
     font-family: Bodoni, serif;
     background: url("../images/office.png");
     background-size: 100%;
     background-repeat: no-repeat; }
-    .container .landing-page-image h1 {
-      font-size: 4em; }
+    .container .landing-page-image #companyName {
+      font-size: 4em;
+      transition: transform 0.3s ease; }
+  .container .landing-page-logo {
+    display: flex;
+    justify-content: flex-start;
+    align-self: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-items: flex-start;
+    width: 240px;
+    height: 240px;
+    background-color: #3c393d;
+    background: url("../images/justlogo.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease; }
+  .container .landing-page-logo:hover {
+    transform: scale(1.5); }
+
+#companyName:hover {
+  transform: scale(1.5); }
 
 #companyName a {
   text-decoration: none;
-  color: inherit; }
+  color: #3c393d; }
 
 /*MATERIAL DESIGN FORM*/
 .login-form button {
