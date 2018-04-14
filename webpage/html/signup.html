@@ -1,4 +1,4 @@
-<form class="form-card">
+<form class="form-card" id="signupform">
     <fieldset class="form-fieldset">
         <legend class="form-legend">Registrate</legend>
         <div class="form-element form-input">
@@ -35,7 +35,7 @@
             </label>
         </div>
     </fieldset>
-    <div class="form-actions">
-        <button type="submit">Registrarse y acceder</button>
-    </div>
 </form>
+<div class="form-actions" onclick="submitSignUp()">
+    <button type="submit" form="signupform">Registrarse y entrar</button>
+</div>

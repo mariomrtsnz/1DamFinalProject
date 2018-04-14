@@ -5,6 +5,10 @@ window.onload = function init() {
     var logIn = document.getElementById("logIn");
     logIn.addEventListener("click", loadLogIn);
 
+    var logo = document.getElementsByClassName("landing-page-logo")[0];
+    logo.addEventListener("mouseenter", scaleBackground);
+    logo.addEventListener("mouseleave", scaleBackgroundOut);
+
     function loadSignUp() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -29,7 +33,18 @@ window.onload = function init() {
         xhttp.send();
     }
 
+    function scaleBackground() {
+        var background = document.getElementsByClassName('landing-page-image')[0];
+        background.style.backgroundSize = '100%';
+    }
+
+    function scaleBackgroundOut() {
+        var background = document.getElementsByClassName('landing-page-image')[0];
+        var initialValue = window.getComputedStyle(background).getPropertyValue('backgroundSize');
+        background.style.backgroundSize = initialValue;
+    }
+
     function validateSignUp() {
-        
+
     }
 }

@@ -32,8 +32,14 @@ html, body, form, span, h1 {
     background-color: #989690;
     font-family: Bodoni, serif;
     background: url("../images/office.png");
-    background-size: 100%;
-    background-repeat: no-repeat; }
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-size 0.3s ease;
+    -moz-transition: background-size 0.3s ease;
+    -ms-transition: background-size 0.3s ease;
+    -o-transition: background-size 0.3s ease;
+    -webkit-transition: background-size 0.3s ease; }
     .container .landing-page-image #companyName {
       font-size: 4em;
       transition: transform 0.3s ease; }
@@ -53,53 +59,72 @@ html, body, form, span, h1 {
     background-position: center;
     transition: transform 0.3s ease; }
   .container .landing-page-logo:hover {
-    transform: scale(1.5); }
+    transform: scale(1.2); }
 
 #companyName:hover {
-  transform: scale(1.5); }
+  transform: scale(1.2); }
 
 #companyName a {
   text-decoration: none;
   color: #3c393d; }
 
 /*MATERIAL DESIGN FORM*/
-.login-form button {
-  font-family: 'roboto', sans-serif;
-  transition: transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), box-shadow 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-  border: none;
-  background: #2cbfd3;
-  cursor: pointer;
-  border-radius: 3px;
-  padding: 6px;
-  color: white;
-  margin: 30px 0 0 25px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); }
-  .login-form button:hover {
-    transform: translateY(-2px);
+.login-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .login-form button {
+    font-family: 'roboto', sans-serif;
+    transition: transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), box-shadow 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    border: none;
+    background: #2cbfd3;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); }
+    .login-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
+  .login-form #logIn, .login-form #signUp {
+    width: 200px; }
+  .login-form #logIn {
+    margin-bottom: 2em; }
+  .login-form #form {
+    background: url("../images/overlay.png");
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .login-form form {
+    width: 100%;
+    height: 100%; }
+  .login-form a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50px;
+    background: #2cbfd3;
+    display: inline-block;
+    margin: 50px calc(50% - 21px);
+    white-space: nowrap;
+    padding: 13px;
+    box-sizing: border-box;
+    color: white;
+    transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
     box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
-.login-form a {
-  width: 42px;
-  height: 42px;
-  border-radius: 50px;
-  background: #2cbfd3;
-  display: inline-block;
-  margin: 50px calc(50% - 21px);
-  white-space: nowrap;
-  padding: 13px;
-  box-sizing: border-box;
-  color: white;
-  transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-  font-family: Roboto, sans-serif;
-  text-decoration: none;
-  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
-  .login-form a i {
-    margin-right: 20px;
-    transition: margin-right 0.2s cubic-bezier(0.64, 0.09, 0.08, 1); }
-  .login-form a:hover {
-    width: 134px;
-    transform: translateX(-50px); }
-    .login-form a:hover i {
-      margin-right: 10px; }
+    .login-form a i {
+      margin-right: 20px;
+      transition: margin-right 0.2s cubic-bezier(0.64, 0.09, 0.08, 1); }
+    .login-form a:hover {
+      width: 134px;
+      transform: translateX(-50px); }
+      .login-form a:hover i {
+        margin-right: 10px; }
 
 .form-btn,
 .form-btn-cancel,
@@ -344,15 +369,20 @@ html, body, form, span, h1 {
 .form-card {
   border-radius: 2px;
   transition: all 0.56s cubic-bezier(0.25, 0.8, 0.25, 1);
-  max-width: 500px;
-  padding: 0;
-  margin: 50px auto; }
+  padding: 0; }
 
 .form-actions {
-  position: relative;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2.25rem; }
+  cursor: pointer;
+  font-size: 2em;
+  font-weight: bolder;
+  color: #f5f9f8;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 50px;
+  right: 50px; }
+  .form-actions button {
+    all: inherit;
+    padding: 10px; }
 
 .form-actions .form-btn-cancel {
   -ms-flex-order: -1;
@@ -537,7 +567,14 @@ select.form-element-field {
 /*BREAKPOINTS*/
 @media (max-width: 576px) {
   .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr; } }
+    display: grid;
+    grid-template-areas: 'landingPage' 'login';
+    background-color: #f5f9f8; }
+    .container .landing-page-image {
+      height: 100%;
+      grid-area: landingPage;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 2fr; } }
 
 /*# sourceMappingURL=style.css.map */
