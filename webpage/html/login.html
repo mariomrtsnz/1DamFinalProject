@@ -1,8 +1,25 @@
-<form>
-    <h1>Inicio de Sesión</h1>
-    <input placeholder="Email address" type="email" onblur="this.setAttribute('value', this.value);" value="" required>
-    <span class="validation-text">Please enter a valid email address.</span>
-    <input type="password" placeholder="Password" onblur="this.setAttribute('value', this.value);" value="">
-    <input type="checkbox" name="Recordar contraseña" id="rememberPassword">Recordar contraseña
-    <button>Send</button>
+<form class="form-card">
+    <fieldset class="form-fieldset">
+        <legend class="form-legend">Inicia sesión</legend>
+        <div class="form-element form-input">
+            <input id="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz" class="form-element-field" placeholder=" " type="email" required/>
+            <div class="form-element-bar"></div>
+            <label class="form-element-label" for="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz">Email</label>
+        </div>
+        <div class="form-element form-input">
+            <input id="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz" class="form-element-field" placeholder=" " type="password" required/>
+            <div class="form-element-bar"></div>
+            <label class="form-element-label" for="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz">Contraseña</label>
+        </div>
+        <div class="form-checkbox form-checkbox-inline">
+            <label class="form-checkbox-label">
+                <input name=rap class="form-checkbox-field" type="checkbox" />
+                <i class="form-checkbox-button"></i>
+                <span>Recordar contraseña</span>
+            </label>
+        </div>
+    </fieldset>
+    <div class="form-actions">
+        <button type="submit">Iniciar Sesión</button>
+    </div>
 </form>

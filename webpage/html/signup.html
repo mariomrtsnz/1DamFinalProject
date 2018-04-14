@@ -1,11 +1,41 @@
-<form>
-    <h1>Registro</h1>
-    <input placeholder="Name" type="text" value="" required>
-    <input placeholder="Email address" type="email" onblur="this.setAttribute('value', this.value);" value="" required>
-    <span class="validation-text">Please enter a valid email address.</span>
-    <input placeholder="Location" type="text" value="" required>
-    <div class="flex">
-        <textarea placeholder="Message" rows="1" required></textarea>
+<form class="form-card">
+    <fieldset class="form-fieldset">
+        <legend class="form-legend">Registrate</legend>
+        <div class="form-element form-input">
+            <input id="field-omv6eo-metm0n-5j55wv-w3wbws-6nm2b9" class="form-element-field" placeholder="Introduzca su nombre completo"
+                type="input" required/>
+            <div class="form-element-bar"></div>
+            <label class="form-element-label" for="field-omv6eo-metm0n-5j55wv-w3wbws-6nm2b9">Nombre Completo</label>
+        </div>
+        <div class="form-element form-input">
+            <input id="field-x98ezh-s6s2g8-vfrkgb-ngrhef-atfkop" class="form-element-field" placeholder=" " type="number" required />
+            <div class="form-element-bar"></div>
+            <label class="form-element-label" for="field-x98ezh-s6s2g8-vfrkgb-ngrhef-atfkop">Número de teléfono</label>
+        </div>
+        <div class="form-element form-input">
+            <input id="field-x98ezh-s6s2g8-vfrkgb-ngrhef-atfkop" class="form-element-field" placeholder=" " type="input" required />
+            <div class="form-element-bar"></div>
+            <label class="form-element-label" for="field-x98ezh-s6s2g8-vfrkgb-ngrhef-atfkop">DNI</label>
+        </div>
+        <div class="form-element form-input">
+            <input id="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz" class="form-element-field" placeholder=" " type="email" required/>
+            <div class="form-element-bar"></div>
+            <label class="form-element-label" for="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz">Email</label>
+        </div>
+        <div class="form-element form-input">
+            <input id="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz" class="form-element-field" placeholder=" " type="password" required/>
+            <div class="form-element-bar"></div>
+            <label class="form-element-label" for="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz">Contraseña</label>
+        </div>
+        <div class="form-checkbox form-checkbox-inline">
+            <label class="form-checkbox-label">
+                <input name=rap class="form-checkbox-field" type="checkbox" />
+                <i class="form-checkbox-button"></i>
+                <span>Recordar contraseña</span>
+            </label>
+        </div>
+    </fieldset>
+    <div class="form-actions">
+        <button type="submit">Registrarse y acceder</button>
     </div>
-    <button>Send</button>
 </form>

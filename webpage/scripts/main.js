@@ -28,4 +28,8 @@ window.onload = function init() {
         xhttp.open("GET", "../html/login.html", true);
         xhttp.send();
     }
+
+    function validateSignUp() {
+        
+    }
 }
