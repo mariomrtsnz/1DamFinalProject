@@ -155,6 +155,57 @@ $cubic: cubic-bezier(.64,.09,.08,1);
           }
         }
       }
+
+      input[type="password"] {
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, $primary-color3 4%);
+        background-position: -400px 0;
+        background-repeat: no-repeat;
+        transition: border-bottom 0.3s ease, background 0.3s ease;
+        &~span.validation-text {
+          position: absolute;
+          visibility: hidden;
+          font-family: 'roboto', sans-serif;
+          font-size: 0.6em;
+          width: $width;
+          margin-left: 25px;
+          margin-top:-5px;
+          color: white;
+          transition: color 0.3s ease-in-out;
+        }
+        &:not([value=""]) {
+          &::-webkit-input-placeholder {
+            font-size: 0.8em;
+            transform: translateY(-20px);
+            visibility: visible !important;
+            opacity: 1;
+          }
+          &:focus::-webkit-input-placeholder {
+            color: $primary-color3;
+          }
+          &:focus:not(:valid)::-webkit-input-placeholder {
+            color: $invalid;
+          }
+        }
+        &:focus {
+          background-position: 0 0;
+          &:not(:valid):not([value=""]) {
+            border-bottom: solid 1px $invalid;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, $invalid 4%);
+          }
+        }
+        &:not(:focus):not(:valid):not([value=""]) {
+          &::-webkit-input-placeholder {
+            color: $invalid;
+          }
+          border-bottom: solid 1px $invalid;
+          background-position: 0 0 ;
+          background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, $invalid 4%);
+          &~span.validation-text {
+            visibility: visible;
+            color: $invalid;
+          }
+        }
+      }
       
       .flex {
         display: flex;
