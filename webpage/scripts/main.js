@@ -47,4 +47,5 @@ window.onload = function init() {
     function validateSignUp() {
 
     }
+
 }

@@ -564,6 +564,121 @@ select.form-element-field {
   -webkit-appearance: none;
   margin: 0; }
 
+/*END OF MATERIAL DESIGN FORM*/
+/*
+*
+*
+*
+*
+*
+*
+*
+*/
+/*DASHBOARD STYLING*/
+.container.dashboard {
+  grid-template-rows: 0.5fr 2fr;
+  grid-template-areas: "top-nav" "dashboard-main"; }
+
+.nav-side {
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 250px;
+  background-color: #c3975f;
+  box-sizing: border-box;
+  padding: 20px;
+  color: #fff;
+  margin-left: -250px;
+  transition: margin 200ms ease-in-out; }
+
+.nav-side.nav-open {
+  margin-left: 0;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); }
+
+.nav-toggle {
+  position: absolute;
+  right: -40px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #c3975f;
+  line-height: 40px;
+  text-decoration: none;
+  text-align: center;
+  border-bottom-right-radius: 3px;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.1); }
+
+.nav-toggle:before {
+  content: "\2192";
+  font-weight: 600;
+  color: #fff; }
+
+.nav-side.nav-open .nav-toggle:before {
+  content: "\2190"; }
+
+.nav {
+  list-style-type: none; }
+
+.nav li a {
+  text-decoration: none;
+  color: #fff; }
+
+.nav li a:hover,
+.nav li a:focus {
+  font-weight: bold; }
+
+.top-nav {
+  grid-area: top-nav;
+  background-color: #2cbfd3;
+  align-items: center; }
+  .top-nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%; }
+    .top-nav ul li {
+      text-transform: uppercase; }
+    .top-nav ul a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-decoration: none;
+      color: #f5f9f8;
+      font-size: 2em;
+      width: 100%;
+      transition: all 0.15s ease; }
+    .top-nav ul a:hover {
+      background-color: #2cbfd3;
+      color: #c3975f; }
+    .top-nav ul a:active {
+      box-shadow: inset 0 0 7px #000000; }
+
+.top-nav > ul:nth-child(1) > a:nth-child(1) {
+  background: url("../images/projectlogo.png");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.dashboard-main {
+  background-color: #f5f9f8; }
+
+/*END OF DASHBOARD INDEX STYLING*/
+/*
+*
+*
+*
+*
+*
+*
+*
+*/
 /*BREAKPOINTS*/
 @media (max-width: 576px) {
   .container {
