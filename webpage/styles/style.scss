@@ -876,7 +876,7 @@ select.form-element-field {
   background: $primary-color5;
   cursor: pointer;
   height: 25%;
-  min-height: 100px;
+  min-height: 180px;
   width: 25%;
   min-width: 200px;
   padding: 1.5em;
@@ -915,7 +915,7 @@ select.form-element-field {
 
 /*BREAKPOINTS*/
 // Small devices (landscape phones, 576px and up)
-@media (max-width: 576px) {
+@media (max-width: 767px) {
   .container {
     display: grid;
     grid-template-areas: 'landingPage'
