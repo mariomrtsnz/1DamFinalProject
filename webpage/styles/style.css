@@ -577,10 +577,11 @@ select.form-element-field {
 /*DASHBOARD STYLING*/
 .container.dashboard {
   grid-template-rows: 0.5fr 2fr;
-  grid-template-areas: "top-nav" "dashboard-main"; }
+  grid-template-areas: "top-nav top-nav" "sidebar dashboard-main";
+  grid-template-columns: 0.4fr 2fr; }
 
 .nav-side {
-  position: fixed;
+  position: relative;
   z-index: 200;
   left: 0;
   top: 0;
@@ -667,7 +668,51 @@ select.form-element-field {
   background-repeat: no-repeat; }
 
 .dashboard-main {
-  background-color: #f5f9f8; }
+  background-color: #f5f9f8;
+  width: 100%;
+  display: grid;
+  grid-template-areas: "services clients" "staff calendar";
+  justify-items: center;
+  align-items: center; }
+
+.dashboard-card {
+  background-color: black;
+  height: 25%;
+  min-height: 100px;
+  width: 25%;
+  min-width: 200px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  text-align: center; }
+
+.icon-services {
+  background: url("../images/icon-chair.svg");
+  background-size: 100%;
+  width: 50px;
+  height: 50px;
+  display: block; }
+
+.icon-clients {
+  background: url("../images/icon-clients.svg");
+  background-size: 100%;
+  width: 50px;
+  height: 50px;
+  display: block; }
+
+.icon-staff {
+  background: url("../images/icon-staff.svg");
+  background-size: 100%;
+  width: 50px;
+  height: 50px;
+  display: block; }
+
+.icon-calendar {
+  background: url("../images/icon-calendar.svg");
+  background-size: 100%;
+  width: 50px;
+  height: 50px;
+  display: block; }
 
 /*END OF DASHBOARD INDEX STYLING*/
 /*
