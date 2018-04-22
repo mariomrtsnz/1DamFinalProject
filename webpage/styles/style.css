@@ -675,17 +675,6 @@ select.form-element-field {
   justify-items: center;
   align-items: center; }
 
-.dashboard-card {
-  background-color: black;
-  height: 25%;
-  min-height: 100px;
-  width: 25%;
-  min-width: 200px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  text-align: center; }
-
 .icon-services {
   background: url("../images/icon-chair.svg");
   background-size: 100%;
@@ -714,6 +703,36 @@ select.form-element-field {
   height: 50px;
   display: block; }
 
+.icon {
+  margin: 0 auto; }
+
+.divider {
+  border-bottom: 1px solid #989690; }
+
+.dashboard-card {
+  background: #c3975f;
+  cursor: pointer;
+  height: 25%;
+  min-height: 100px;
+  width: 25%;
+  min-width: 200px;
+  padding: 1.5em;
+  position: relative;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-align: center; }
+  .dashboard-card:hover {
+    box-shadow: 0 0 2em #999; }
+    .dashboard-card:hover .divider {
+      opacity: 0.5; }
+
+.dashboard-main a {
+  color: #f5f9f8;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase; }
+
 /*END OF DASHBOARD INDEX STYLING*/
 /*
 *
@@ -735,6 +754,14 @@ select.form-element-field {
       grid-area: landingPage;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr 2fr; } }
+      grid-template-rows: 1fr 2fr; }
+
+  .dashboard-main {
+    background-color: #f5f9f8;
+    display: grid;
+    grid-template-areas: "services" "clients" "staff" "calendar";
+    grid-gap: 2em;
+    justify-items: center;
+    align-items: center; } }
 
 /*# sourceMappingURL=style.css.map */
