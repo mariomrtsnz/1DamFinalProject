@@ -655,17 +655,39 @@ select.form-element-field {
       font-size: 2em;
       width: 100%;
       transition: all 0.15s ease; }
-    .top-nav ul a:hover {
-      background-color: #2cbfd3;
-      color: #c3975f; }
-    .top-nav ul a:active {
-      box-shadow: inset 0 0 7px #000000; }
+    .top-nav ul a:last-child:hover {
+      color: #3c393d; }
 
 .top-nav > ul:nth-child(1) > a:nth-child(1) {
   background: url("../images/projectlogo.png");
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat; }
+
+#profileMenu {
+  position: relative;
+  cursor: pointer; }
+  #profileMenu ul {
+    display: none; }
+
+.profileSubMenu-toggle {
+  cursor: pointer;
+  background-color: #c3975f; }
+  .profileSubMenu-toggle ul {
+    display: block;
+    margin-top: 15px;
+    color: #f5f9f8;
+    width: 100%;
+    right: 0;
+    text-align: right;
+    height: 100%;
+    position: absolute; }
+    .profileSubMenu-toggle ul li {
+      display: block;
+      background-color: #b98645; }
+      .profileSubMenu-toggle ul li:hover {
+        background-color: #ae7e41;
+        color: #3c393d; }
 
 .dashboard-main {
   background-color: #f5f9f8;

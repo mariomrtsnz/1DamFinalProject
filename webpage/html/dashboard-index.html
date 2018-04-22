@@ -10,6 +10,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="../images/logo-icon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="../styles/style.css" />
     <script src="../scripts/dashboard.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -36,10 +37,15 @@
 
                     </li>
                 </a>
-                <a href="aboutus.html">
+                <a id="profileMenu">
                     <li>
-                        ADMIN {profile pic}
+                        ADMIN {profile pic} &#x25BC;
                         <!--Replace with username and profile picture-->
+                        <ul id="profileSubMenu">
+                            <li>Perfil</li>
+                            <li>Ir a página</li>
+                            <li>Cerrar Sesión</li>
+                        </ul>
                     </li>
                 </a>
             </ul>
@@ -66,29 +72,25 @@
             <a href="admin-services.html">
                 <div class="dashboard-card">
                     <span class="icon-services icon" role="img"></span>
-                    <hr class="divider">
-                    Servicios
+                    <hr class="divider"> Servicios
                 </div>
             </a>
             <a href="admin-clients.html">
                 <div class="dashboard-card">
                     <span class="icon-clients icon" role="img"></span>
-                    <hr class="divider">
-                    Clientes
+                    <hr class="divider"> Clientes
                 </div>
             </a>
             <a href="admin-staff.html">
                 <div class="dashboard-card">
                     <span class="icon-staff icon" role="img"></span>
-                    <hr class="divider">
-                    Empleados
+                    <hr class="divider"> Empleados
                 </div>
             </a>
             <a href="admin-calendar.html">
                 <div class="dashboard-card">
                     <span class="icon-calendar icon" role="img"></span>
-                    <hr class="divider">
-                    Calendario
+                    <hr class="divider"> Calendario
                 </div>
             </a>
         </div>

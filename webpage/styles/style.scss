@@ -774,12 +774,8 @@ select.form-element-field {
         width: 100%;
         transition: all 0.15s ease;
     }
-    a:hover {
-        background-color: $primary-color3;
-        color: $primary-color5;
-    }
-    a:active {
-        box-shadow: inset 0 0 7px #000000;
+    a:last-child:hover {
+        color: $primary-color1;
     }
   }
 }
@@ -789,6 +785,44 @@ select.form-element-field {
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+#profileMenu {
+  position: relative;
+  cursor: pointer;
+  ul {
+    display: none;
+  }
+}
+.profileSubMenu-toggle {
+  cursor: pointer;
+  background-color: $primary-color5;
+  // secondary ul visibility change
+  ul {
+    display: block;
+    margin-top: 15px;
+
+    color: $primary-color4;
+    
+    width: 100%;
+    right: 0;
+    text-align: right;
+
+    height: 100%;
+    
+    position: absolute;
+    
+    // secondary li
+    li {
+      display: block;
+      background-color: darken($primary-color5, 7%);
+      
+      &:hover {
+        background-color: darken($primary-color5, 10%);
+        color: $primary-color1;
+      }
+    }
+  }
 }
 
 .dashboard-main {
