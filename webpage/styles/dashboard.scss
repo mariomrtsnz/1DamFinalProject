@@ -151,23 +151,23 @@ input[type=search]::-webkit-search-results-decoration {
   }
   .cd-main-header {
     position: fixed;
-    height: 55px
+    height: 55px;
   }
 }
 
 .cd-logo {
   float: left;
   display: block;
-  margin: 1px 0 0 5%
+  margin: 1px 0 0 5%;
 }
 
 .cd-logo img {
-  display: block
+  display: block;
 }
 
 @media only screen and (min-width:768px) {
   .cd-logo {
-    margin: 5px 0 0 36px
+    margin: 5px 0 0 36px;
   }
 }
 
@@ -331,7 +331,11 @@ input[type=search]::-webkit-search-results-decoration {
     border-radius: 0;
     background-color: $primary-color1;
     border-left: 1px solid #51585e;
-    color: #fff
+    color: #fff;
+    width: 100%;
+    &:focus {
+      background-color: #373438;
+    }
   }
   .cd-search input::-webkit-input-placeholder {
     color: #787d82
@@ -586,9 +590,13 @@ input[type=search]::-webkit-search-results-decoration {
     font-size: 1.2rem;
     text-align: center
   }
+  .cd-side-nav>ul>li:hover {
+    background-color: #373438;
+  }
   .cd-side-nav>ul>li>a {
     padding: calc(2.2em + 24px) 0 2.4em
   }
+
   .cd-side-nav>ul>li>a::before {
     left: 50%;
     right: auto;
@@ -910,7 +918,6 @@ body {
   line-height: 40px;
   text-decoration: none;
   text-align: center;
-  border-bottom-right-radius: 3px;
   box-shadow: 1px 0 3px rgba(0, 0, 0, .1);
 }
 
@@ -918,11 +925,13 @@ body {
   content: "\2192";
   font-weight: 600;
   color: #fff;
-  
+  transition: all 0.5s ease;
 }
 
 .nav-side.nav-open .nav-toggle:before {
   content: "\2190";
+  display: inline-block;
+  transform: rotate(180deg);
 }
 
 .nav-side.nav-open {
@@ -932,12 +941,17 @@ body {
 
 @media (max-width: 767px) {
   .dashboard-main {
+    margin-top: 5vh;
     background-color: #f5f9f8;
     display: grid;
     grid-template-areas: "services" "clients" "staff" "calendar";
     grid-gap: 2em;
     justify-items: center;
     align-items: center;
+  }
+
+  a:last-child > div {
+    margin-bottom: 5vh;
   }
   .nav-side {
     display: initial;
