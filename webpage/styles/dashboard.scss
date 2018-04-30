@@ -104,7 +104,7 @@ input[type=search]::-webkit-search-results-decoration {
 
 @media only screen and (min-width:768px) {
   .cd-main-content .content-wrapper {
-    margin-left: 110px;
+    margin-left: 105px;
     padding-top: 55px
   }
   .cd-main-content .content-wrapper h1 {
@@ -118,9 +118,6 @@ input[type=search]::-webkit-search-results-decoration {
 }
 
 @media only screen and (min-width:1170px) {
-  .cd-main-content .content-wrapper {
-    margin-left: 200px
-  }
   .cd-main-content::before {
     content: 'desktop'
   }
@@ -498,7 +495,6 @@ input[type=search]::-webkit-search-results-decoration {
   transform: translateY(-50%);
   height: 16px;
   width: 16px;
-  background: url(../img/cd-nav-icons.svg) no-repeat 0 0
 }
 
 .cd-side-nav>ul>li.overview>a::before {
@@ -807,7 +803,7 @@ input[type=search]::-webkit-search-results-decoration {
 }
 
 .content-wrapper {
-  height: 100vh;
+  height: 95vh;
 }
 
 html,
@@ -900,11 +896,12 @@ body {
 
 /*Side Nav Hide*/
 .nav-side {
-  display: none;
+  margin-left: -250px;
+  transition: margin 200ms ease-in-out;
 }
 
 .nav-side.nav-open {
-  display: initial;
+  margin-left: 0;
 }
 
 .nav-toggle {
@@ -955,6 +952,7 @@ body {
   }
   .nav-side {
     display: initial;
+    margin-left: initial;
   }
   .nav-toggle {
     display: none;
