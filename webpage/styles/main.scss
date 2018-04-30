@@ -4,7 +4,6 @@ $primary-color3: #2cbfd3;
 $primary-color4: #f5f9f8;
 $primary-color5: #c3975f;
 $invalid: #E91E63;
-
 @font-face {
     font-family: Bodoni;
     src: url('../fonts/BodoniFLF-Roman.ttf') format('ttf');
@@ -24,7 +23,8 @@ Primary style
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     padding: 0;
     margin: 0;
 }
@@ -52,7 +52,7 @@ img {
 .cd-container {
     /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
     width: 90%;
-    max-width: 768px;
+    max-width: 90%;
     margin: 5vh auto;
 }
 
@@ -127,7 +127,7 @@ img {
 
 #cd-logo {
     float: left;
-    margin: 13px 0 0 5%;
+    margin: 0 0 0 5%;
 }
 
 #cd-logo img {
@@ -136,7 +136,7 @@ img {
 
 @media only screen and (min-width: 768px) {
     #cd-logo {
-        margin: 23px 0 0 5%;
+        margin: 8px 0 0 5%;
     }
 }
 
@@ -640,5 +640,38 @@ img {
     .cd-section p {
         font-size: 20px;
         font-size: 1.25rem;
+    }
+}
+
+#cd-placeholder-2 {
+    display: grid;
+    grid-template-areas: 'icon1 icon2 icon3 icon4';
+    grid-gap: 2em;
+    div {
+        display: grid;
+        grid-template-areas: 'icon' 'title' 'text';
+        height: 100%;
+        justify-items: center;
+        align-content: flex-start;
+    }
+}
+
+#cd-placeholder-3 {
+    display: grid;
+    grid-template-areas: 'title' 'subtitle' 'statistics';
+    justify-items: center;
+    .container-statistics {
+        display: grid;
+        grid-template-areas: 'icon1 icon2 icon3 icon4';
+        height: 100%;
+        justify-items: center;
+        align-content: flex-start;
+        div {
+            height: 100%;
+            justify-items: center;
+            align-content: flex-start;
+            display: grid;
+            grid-template-areas: 'icon' 'number' 'text';
+        }
     }
 }
