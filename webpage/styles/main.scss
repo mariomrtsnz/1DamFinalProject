@@ -647,6 +647,7 @@ img {
     display: grid;
     grid-template-areas: 'icon1 icon2 icon3 icon4';
     grid-gap: 2em;
+    text-align: center;
     div {
         display: grid;
         grid-template-areas: 'icon' 'title' 'text';
@@ -660,6 +661,7 @@ img {
     display: grid;
     grid-template-areas: 'title' 'subtitle' 'statistics';
     justify-items: center;
+    text-align: center;
     .container-statistics {
         width: 100%;
         display: grid;
@@ -675,6 +677,12 @@ img {
             grid-template-areas: 'icon' 'number' 'text';
         }
     }
+}
+#cd-placeholder-3 > h2 {
+    margin-bottom: 0;
+}
+#cd-placeholder-3 > h3:nth-child(2) {
+    margin-top: 0;
 }
 
 @media only screen and (max-width: 650px) {

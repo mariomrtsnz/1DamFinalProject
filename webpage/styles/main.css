@@ -548,7 +548,8 @@ img {
 #cd-placeholder-2 {
   display: grid;
   grid-template-areas: 'icon1 icon2 icon3 icon4';
-  grid-gap: 2em; }
+  grid-gap: 2em;
+  text-align: center; }
   #cd-placeholder-2 div {
     display: grid;
     grid-template-areas: 'icon' 'title' 'text';
@@ -559,7 +560,8 @@ img {
 #cd-placeholder-3 {
   display: grid;
   grid-template-areas: 'title' 'subtitle' 'statistics';
-  justify-items: center; }
+  justify-items: center;
+  text-align: center; }
   #cd-placeholder-3 .container-statistics {
     width: 100%;
     display: grid;
@@ -573,6 +575,12 @@ img {
       align-content: flex-start;
       display: grid;
       grid-template-areas: 'icon' 'number' 'text'; }
+
+#cd-placeholder-3 > h2 {
+  margin-bottom: 0; }
+
+#cd-placeholder-3 > h3:nth-child(2) {
+  margin-top: 0; }
 
 @media only screen and (max-width: 650px) {
   #cd-placeholder-2 {
