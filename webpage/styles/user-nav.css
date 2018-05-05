@@ -454,54 +454,16 @@ input[type="search"]::-webkit-search-results-decoration {
   top: 50%;
   margin-top: -20px; }
 
-.cd-primary-nav .cd-nav-icons .cd-nav-item {
-  padding-left: 75px; }
-
 .cd-primary-nav .cd-nav-icons .cd-nav-item p {
   color: #2e3233;
   font-size: 1.3rem;
   /* hide description on small devices */
   display: none; }
 
-.cd-primary-nav .cd-nav-icons .cd-nav-item::before {
-  /* item icon */
-  content: '';
-  display: block;
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  margin-top: -20px;
-  width: 40px;
-  height: 40px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 40px 40px; }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-1::before {
-  background-image: url("../img/line-icon-1.svg"); }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-2::before {
-  background-image: url("../img/line-icon-2.svg"); }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-3::before {
-  background-image: url("../img/line-icon-3.svg"); }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-4::before {
-  background-image: url("../img/line-icon-4.svg"); }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-5::before {
-  background-image: url("../img/line-icon-5.svg"); }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-6::before {
-  background-image: url("../img/line-icon-6.svg"); }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-7::before {
-  background-image: url("../img/line-icon-7.svg"); }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item.item-8::before {
-  background-image: url("../img/line-icon-8.svg"); }
-
 @media only screen and (max-width: 1169px) {
+  .cd-nav-item > h3 {
+    margin: 0; }
+
   .cd-primary-nav {
     /* by default .cd-primary-nav is hidden - trick for iOS devices where you can see the navigation if you pull down */
     visibility: hidden;
@@ -600,7 +562,7 @@ input[type="search"]::-webkit-search-results-decoration {
     top: 97px;
     width: 100vw;
     background: #ffffff;
-    padding: 48px 64px 130px;
+    padding: 1px 64px 130px;
     box-shadow: inset 0 1px 0 #e2e3df, 0 3px 6px rgba(0, 0, 0, 0.05);
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
@@ -788,7 +750,6 @@ input[type="search"]::-webkit-search-results-decoration {
     border-bottom: none;
     height: 80px;
     line-height: 1.2;
-    padding: 24px 0 0 85px;
     position: relative; }
 
   .cd-primary-nav .cd-nav-icons .cd-nav-item:hover {
@@ -802,7 +763,11 @@ input[type="search"]::-webkit-search-results-decoration {
     display: block; }
 
   .cd-primary-nav .cd-nav-icons .cd-nav-item::before {
-    left: 25px; } }
+    left: 25px; }
+
+  .cd-nav-item {
+    padding: 0;
+    margin: 0; } }
 .has-children > a,
 .go-back a {
   position: relative; }
@@ -840,6 +805,9 @@ input[type="search"]::-webkit-search-results-decoration {
   transform: rotate(-45deg); }
 
 @media only screen and (min-width: 1170px) {
+  .cd-nav {
+    height: 100%; }
+
   .has-children > a::before,
   .has-children > a::after,
   .go-back a::before,
@@ -1050,7 +1018,16 @@ input[type="search"]::-webkit-search-results-decoration {
     transform: translateX(0); }
 
   #cd-primary-nav {
-    display: initial; } }
+    display: initial; }
+
+  .cd-nav-icons {
+    padding-left: 0; }
+
+  .cd-primary-nav .cd-nav-icons .cd-nav-item {
+    padding-left: 1em; }
+
+  .see-all > a:nth-child(1) {
+    padding-left: 1em; } }
 /* -------------------------------- 
   support for no js 
   -------------------------------- */
@@ -1079,7 +1056,18 @@ input[type="search"]::-webkit-search-results-decoration {
     padding: 0; }
 
   .no-js .nav-is-fixed .cd-primary-nav {
-    position: fixed; } }
+    position: fixed; }
+
+  .cd-primary-nav .cd-nav-icons li {
+    margin: 0; }
+    .cd-primary-nav .cd-nav-icons li a {
+      display: flex;
+      align-items: center;
+      padding: 0; }
+      .cd-primary-nav .cd-nav-icons li a:first-child {
+        justify-content: center; }
+      .cd-primary-nav .cd-nav-icons li a h3 {
+        margin: 0; } }
 .nav_bg_clr {
   border: 0;
   display: block;
@@ -1106,18 +1094,6 @@ input[type="search"]::-webkit-search-results-decoration {
 .cd-primary-nav a,
 .cd-primary-nav ul a {
   padding: 0; }
-
-.cd-nav {
-  height: 100%; }
-
-.cd-nav-icons {
-  padding-left: 0; }
-
-.cd-primary-nav .cd-nav-icons .cd-nav-item {
-  padding-left: 1em; }
-
-.see-all > a:nth-child(1) {
-  padding-left: 1em; }
 
 .cd-header-buttons {
   margin: 0;
