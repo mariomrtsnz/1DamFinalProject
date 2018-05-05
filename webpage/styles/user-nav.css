@@ -24,8 +24,8 @@ html {
 body {
   font-size: 1.6rem;
   font-family: sans-serif;
-  color: #2e3233;
-  background-color: #ffffff; }
+  color: #3c393d;
+  background-color: #f5f9f8; }
 
 @media only screen and (max-width: 1169px) {
   body.nav-on-left.overflow-hidden {
@@ -225,7 +225,7 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-top: -2px;
   left: 50%;
   margin-left: -11px;
-  background: #2e3233;
+  background: #f5f9f8;
   opacity: 0;
   /* Force Hardware Acceleration in WebKit */
   -webkit-transform: translateZ(0);
@@ -1089,7 +1089,7 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-top: 0; }
 
 .cd-primary-nav {
-  margin-top: 0; }
+  margin: 0; }
 
 .cd-primary-nav a,
 .cd-primary-nav ul a {

@@ -1,3 +1,100 @@
+@font-face {
+  font-family: Bodoni;
+  src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal; }
+.cd-main-content {
+  display: grid; }
+  .cd-main-content .sectionName {
+    border-bottom: 4px solid #2cbfd3;
+    width: 60%; }
 
+#sobreNosotros {
+  grid-area: sn; }
+
+#nuestrasInstalaciones {
+  grid-area: ni; }
+
+#nuestroEquipo {
+  grid-area: ne; }
+
+#officesGallery {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; }
+
+h1 {
+  font-family: 'helvetica';
+  font-weight: lighter; }
+
+.display {
+  max-width: 500px;
+  width: 50%; }
+
+.display img {
+  width: 100%;
+  height: auto;
+  padding: 4px; }
+
+.thumbs {
+  text-align: center;
+  padding: 0;
+  list-style: none;
+  width: 50%;
+  max-width: 400px; }
+
+.thumbs li {
+  display: inline-block;
+  padding: 4px 4px 4px 4px; }
+
+.thumbs img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: solid 1px #3c393d;
+  padding: 4px; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+@media only screen and (max-width: 1169px) {
+  .cd-main-content {
+    grid-template-areas: "sn" "ni" "ne" "ne";
+    justify-items: center;
+    text-align: center; }
+    .cd-main-content .sectionName {
+      width: 100%;
+      text-align: center; }
+    .cd-main-content #nuestrasInstalaciones #officesGallery {
+      align-items: center; }
+      .cd-main-content #nuestrasInstalaciones #officesGallery .thumbs {
+        padding: 0; } }
+@media only screen and (min-width: 1170px) {
+  .cd-main-content {
+    grid-template-areas: "sn ni" "ne ne";
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5em;
+    margin: 0 5em; }
+    .cd-main-content #sobreNosotros h3 > span {
+      font-family: Bodoni;
+      font-size: 1.5em;
+      color: #c3975f; }
+    .cd-main-content #nuestrasInstalaciones {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; }
+      .cd-main-content #nuestrasInstalaciones .sectionName {
+        text-align: right; }
+    .cd-main-content #nuestroEquipo {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .cd-main-content #nuestroEquipo .sectionName {
+        text-align: center;
+        width: 30%; } }
 
 /*# sourceMappingURL=user-aboutus.css.map */
