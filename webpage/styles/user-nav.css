@@ -95,13 +95,13 @@ input[type="search"]::-webkit-search-results-decoration {
     -o-transform: translateX(260px);
     transform: translateX(260px); } }
 .cd-main-content {
-  background: #e2e3df;
+  background: #f5f9f8;
   min-height: 90vh;
   z-index: 2; }
 
 .cd-main-header {
   height: 10vh;
-  background: #ffffff;
+  background: #3c393d;
   z-index: 3; }
 
 .nav-is-fixed .cd-main-header {
@@ -190,13 +190,13 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 3px solid #2e3233; }
+  border: 3px solid #f5f9f8; }
 
 .cd-search-trigger::after {
   /* handle */
   height: 3px;
   width: 8px;
-  background: #2e3233;
+  background: #f5f9f8;
   bottom: 14px;
   right: 11px;
   -webkit-transform: rotate(45deg);
@@ -285,7 +285,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: inline-block;
   height: 3px;
   width: 24px;
-  background: #2e3233; }
+  background: #f5f9f8; }
 
 .cd-nav-trigger span {
   /* line in the center */
@@ -334,7 +334,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .cd-nav-trigger.nav-is-visible span::before,
 .cd-nav-trigger.nav-is-visible span::after {
   /* keep visible other 2 lines */
-  background: #2e3233; }
+  background: #f5f9f8; }
 
 .cd-nav-trigger.nav-is-visible span::before {
   -webkit-transform: translateX(4px) translateY(-3px) rotate(45deg);
@@ -361,7 +361,7 @@ input[type="search"]::-webkit-search-results-decoration {
   right: 0;
   height: 100%;
   width: 260px;
-  background: #2e3233;
+  background: #3c393d;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 1;
@@ -429,7 +429,7 @@ input[type="search"]::-webkit-search-results-decoration {
     left: 0; } }
 .cd-primary-nav .see-all a {
   /* different style for the See all button on mobile and tablet */
-  color: #69aa6f; }
+  color: #c3975f; }
 
 .cd-primary-nav .cd-nav-gallery .cd-nav-item,
 .cd-primary-nav .cd-nav-icons .cd-nav-item {
@@ -536,7 +536,7 @@ input[type="search"]::-webkit-search-results-decoration {
     height: 80px;
     line-height: 80px;
     padding: 0 10px;
-    color: #2e3233;
+    color: #f5f9f8;
     overflow: visible;
     border-bottom: none;
     -webkit-transition: color 0.3s, box-shadow 0.3s;
@@ -628,9 +628,9 @@ input[type="search"]::-webkit-search-results-decoration {
   .cd-primary-nav .cd-secondary-nav > .see-all a:hover,
   .cd-primary-nav .cd-nav-gallery > .see-all a:hover,
   .cd-primary-nav .cd-nav-icons > .see-all a:hover {
-    background: #2e3233;
-    border-color: #2e3233;
-    color: #ffffff; }
+    background: #3c393d;
+    border-color: #989690;
+    color: #f5f9f8; }
 
   .cd-primary-nav .cd-secondary-nav > li {
     /* change the height according to your needs - you can even set height: auto */
@@ -732,7 +732,7 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-bottom: .6em; }
 
   .cd-primary-nav .cd-nav-gallery .cd-nav-item h3 {
-    color: #69aa6f;
+    color: #c3975f;
     font-weight: bold;
     padding: 0 .4em; }
 
@@ -756,7 +756,7 @@ input[type="search"]::-webkit-search-results-decoration {
     background: #f6f6f5; }
 
   .cd-primary-nav .cd-nav-icons .cd-nav-item h3 {
-    color: #69aa6f;
+    color: #c3975f;
     font-weight: bold; }
 
   .cd-primary-nav .cd-nav-icons .cd-nav-item p {
@@ -978,7 +978,7 @@ input[type="search"]::-webkit-search-results-decoration {
   top: 0;
   left: 0;
   cursor: pointer;
-  background-color: rgba(105, 170, 111, 0.8);
+  background-color: #c3975f;
   visibility: hidden;
   opacity: 0;
   -webkit-backface-visibility: hidden;

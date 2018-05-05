@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="../images/logo-icon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="../styles/user-nav.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/user-aboutus.css" />
     <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
         crossorigin="anonymous"></script>
     <script src="../scripts/jquery.menu-aim.js"></script>
@@ -15,7 +16,131 @@
 </head>
 
 <body>
+    <header class="cd-main-header">
+        <a class="cd-logo" href="user-index.html">
+            <img src="../images/icons/projectlogo.svg" alt="Logo" width="35px">
+        </a>
 
+        <ul class="cd-header-buttons">
+            <li>
+                <a class="cd-search-trigger" href="#cd-search">Buscar
+                    <span></span>
+                </a>
+            </li>
+            <li>
+                <a class="cd-nav-trigger" href="#cd-primary-nav">Menu
+                    <span></span>
+                </a>
+            </li>
+        </ul>
+        <!-- cd-header-buttons -->
+    </header>
+
+    <main class="cd-main-content">
+        <!-- your content here -->
+        
+        <div class="cd-overlay"></div>
+    </main>
+
+    <nav class="cd-nav">
+        <ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
+            <li>
+                <a href="./user-index.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+            <li class="has-children">
+                <a href="user-services.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Servicios</span>
+                </a>
+                <ul class="cd-nav-icons is-hidden">
+                    <li class="go-back">
+                        <a href="#0">Menu</a>
+                    </li>
+                    <li class="see-all">
+                        <a href="user-services.html">Ver Servicios</a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-1" href="http://codyhouse.co/?p=409">
+                            <h3>Blanqueamiento dental</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="cd-nav-item item-2" href="http://codyhouse.co/?p=409">
+                            <h3>Carillas</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-3" href="http://codyhouse.co/?p=409">
+                            <h3>Coronas y Puentes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-4" href="http://codyhouse.co/?p=409">
+                            <h3>Endodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-5" href="http://codyhouse.co/?p=409">
+                            <h3>Empastes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-6" href="http://codyhouse.co/?p=409">
+                            <h3>Implante</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-7" href="http://codyhouse.co/?p=409">
+                            <h3>Odontopediatría</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-8" href="http://codyhouse.co/?p=409">
+                            <h3>Ortodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-9" href="http://codyhouse.co/?p=409">
+                            <h3>Periodontitis</h3>
+
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="nav_bg_clr current"></span>
+                    <span>Sobre Nosotros</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="./user-contactus.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Contacto</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">{Usuario}</a>
+            </li>
+        </ul>
+        <!-- primary-nav -->
+    </nav>
+    <!-- cd-nav -->
+
+    <div id="cd-search" class="cd-search">
+        <form>
+            <input type="search" placeholder="Buscar...">
+        </form>
+    </div>
+    <!-- Resource jQuery -->
 </body>
 
 </html>
