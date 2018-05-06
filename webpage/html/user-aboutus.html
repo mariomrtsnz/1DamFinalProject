@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../styles/user-aboutus.css" />
     <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
         crossorigin="anonymous"></script>
-    <script src="../scripts/jquery.menu-aim.js"></script>
     <script src="../scripts/user-nav.js"></script>
     <script src="../scripts/user-aboutus.js"></script>
 </head>
@@ -38,6 +37,17 @@
     </header>
 
     <main class="cd-main-content">
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
         <!-- your content here -->
         <div id="sobreNosotros">
             <h1 class="sectionName">
@@ -62,30 +72,30 @@
             </h1>
             <div id="officesGallery">
                 <div class="display">
-                    <img src="../images/officesGallery/office1.jpg" alt="Oficina Principal" />
+                    <img src="../images/officesGallery/office1.jpg" alt="Entrada del edificio" / id="myImg">
                 </div>
                 <ul class="thumbs">
                     <li>
+                        <a href="../images/officesGallery/office1.jpg">
+                            <img src="../images/officesGallery/office1.jpg" alt="Foto oficina 2" />
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="../images/officesGallery/office2.jpg">
-                            <img src="../images/officesGallery/office2.jpg" alt="Foto oficina 2" />
+                            <img src="../images/officesGallery/office2.jpg" alt="Foto oficina 3" />
                         </a>
                     </li>
 
                     <li>
                         <a href="../images/officesGallery/office3.jpg">
-                            <img src="../images/officesGallery/office3.jpg" alt="Foto oficina 3" />
+                            <img src="../images/officesGallery/office3.jpg" alt="Foto oficina 4" />
                         </a>
                     </li>
 
                     <li>
                         <a href="../images/officesGallery/office4.jpg">
-                            <img src="../images/officesGallery/office4.jpg" alt="Foto oficina 4" />
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="http://via.placeholder.com/500x500">
-                            <img src="http://via.placeholder.com/500x500" alt="Foto oficina 5" />
+                            <img src="../images/officesGallery/office4.jpg" alt="Foto oficina 5" />
                         </a>
                     </li>
                 </ul>
@@ -95,6 +105,40 @@
             <h1 class="sectionName">
                 Nuestro Equipo
             </h1>
+            <div class="carousel">
+                <a class="prev-btn" href="#">&lt;</a>
+                <div class="card">
+                    <div class="staffName">
+                        María Mora Muñoz
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+                        Jaime Perez Marin
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+                        Iria Aguilar Cabrera
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+                        Ana Blanco Montero
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+                        Carlos Medina Blanco
+                    </div>
+                </div>
+                <a class="next-btn" href="#">&gt;</a>
+            </div>
         </div>
 
         <div class="cd-overlay"></div>

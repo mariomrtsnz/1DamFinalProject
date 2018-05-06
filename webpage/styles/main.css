@@ -320,7 +320,7 @@ img {
   .cd-secondary-nav {
     z-index: 1;
     height: 100px;
-    background-color: #2cbfd3;
+    background-color: #3c393d;
     -webkit-transition: height 0.3s;
     -moz-transition: height 0.3s;
     transition: height 0.3s; }
@@ -364,7 +364,7 @@ img {
     font-size: 13px;
     font-size: 0.8125rem;
     font-weight: 700;
-    color: #3c393d; }
+    color: #f5f9f8; }
 
   .cd-secondary-nav li a span {
     position: absolute;
@@ -387,7 +387,7 @@ img {
 
   .cd-secondary-nav li a:hover b,
   .cd-secondary-nav li a.active b {
-    color: #f0eee1; }
+    color: #2cbfd3; }
 
   .cd-secondary-nav li:nth-child(1) a span {
     background-position: 0 0; }
