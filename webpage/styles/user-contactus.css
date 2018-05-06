@@ -1,0 +1,30 @@
+@font-face {
+  font-family: Bodoni;
+  src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal; }
+.cd-main-content {
+  display: grid; }
+  .cd-main-content .sectionName {
+    border-bottom: 4px solid #2cbfd3;
+    width: 60%; }
+
+#map {
+  width: 100%; }
+
+@media only screen and (max-width: 1169px) {
+  .cd-main-content {
+    grid-template-areas: "sn" "map";
+    justify-items: center; }
+    .cd-main-content .sectionName {
+      width: 100%;
+      text-align: center; } }
+@media only screen and (min-width: 1170px) {
+  .cd-main-content {
+    grid-template-areas: "sn map";
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5em;
+    margin: 0 5em;
+    margin-top: 3em; } }
+
+/*# sourceMappingURL=user-contactus.css.map */

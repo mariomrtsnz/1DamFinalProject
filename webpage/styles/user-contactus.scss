@@ -1,0 +1,45 @@
+$primary-color1: #3c393d;
+$primary-color2: #989690;
+$primary-color3: #2cbfd3;
+$primary-color4: #f5f9f8;
+$primary-color5: #c3975f;
+$invalid: #E91E63;
+@font-face {
+    font-family: Bodoni;
+    src: url('../fonts/BodoniFLF-Roman.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.cd-main-content {
+    display: grid;
+    .sectionName {
+        border-bottom: 4px solid $primary-color3;
+        width: 60%;
+    }
+}
+
+#map {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1169px) {
+    .cd-main-content {
+        grid-template-areas: "sn" "map";
+        justify-items: center;
+        .sectionName {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+@media only screen and (min-width: 1170px) {
+    .cd-main-content {
+        grid-template-areas: "sn map";
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 5em;
+        margin: 0 5em;
+        margin-top: 3em;
+    }
+}
