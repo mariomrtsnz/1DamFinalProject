@@ -13,6 +13,8 @@ $invalid: #E91E63;
 
 .cd-main-content {
     display: grid;
+    margin-bottom: 4em;
+    min-height: 77vh;
     .sectionName {
         border-bottom: 4px solid $primary-color3;
         width: 60%;
@@ -26,6 +28,7 @@ $invalid: #E91E63;
 @media only screen and (max-width: 1169px) {
     .cd-main-content {
         grid-template-areas: "sn" "map";
+        grid-template-rows: 1fr 2fr;
         justify-items: center;
         .sectionName {
             width: 100%;
@@ -39,7 +42,6 @@ $invalid: #E91E63;
         grid-template-areas: "sn map";
         grid-template-columns: 1fr 1fr;
         grid-gap: 5em;
-        margin: 0 5em;
-        margin-top: 3em;
+        margin: 3em 5em;
     }
 }

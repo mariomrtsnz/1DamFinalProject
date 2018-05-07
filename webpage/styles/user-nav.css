@@ -31,8 +31,11 @@ body {
   body.nav-on-left.overflow-hidden {
     overflow: hidden; } }
 a {
-  color: #69aa6f;
+  color: #989690;
   text-decoration: none; }
+
+a:hover {
+  color: #c3975f; }
 
 img {
   /* make images responsive */
@@ -988,7 +991,7 @@ input[type="search"]::-webkit-search-results-decoration {
   transition: opacity 0.3s 0s, visibility 0s 0.3s, transform 0.3s 0s; }
 
 .cd-overlay.is-visible {
-  opacity: 1;
+  opacity: 0.9;
   visibility: visible;
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0s, -webkit-transform 0.3s 0s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0s, -moz-transform 0.3s 0s;

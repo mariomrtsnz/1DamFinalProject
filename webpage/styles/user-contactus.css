@@ -4,7 +4,9 @@
   font-weight: normal;
   font-style: normal; }
 .cd-main-content {
-  display: grid; }
+  display: grid;
+  margin-bottom: 4em;
+  min-height: 77vh; }
   .cd-main-content .sectionName {
     border-bottom: 4px solid #2cbfd3;
     width: 60%; }
@@ -15,6 +17,7 @@
 @media only screen and (max-width: 1169px) {
   .cd-main-content {
     grid-template-areas: "sn" "map";
+    grid-template-rows: 1fr 2fr;
     justify-items: center; }
     .cd-main-content .sectionName {
       width: 100%;
@@ -24,7 +27,6 @@
     grid-template-areas: "sn map";
     grid-template-columns: 1fr 1fr;
     grid-gap: 5em;
-    margin: 0 5em;
-    margin-top: 3em; } }
+    margin: 3em 5em; } }
 
 /*# sourceMappingURL=user-contactus.css.map */
