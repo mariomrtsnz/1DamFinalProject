@@ -6,6 +6,7 @@ function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: clinicPosition,
         zoom: 16,
+        scrollwheel: false,
         styles: [{
                 "elementType": "geometry",
                 "stylers": [{
@@ -193,8 +194,23 @@ function initMap() {
             }
         ]
     })
+    var contentString = "<div id='map'><h3 style='font-family: Bodoni'>RealWorld Dental</h3></div>";
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+    var customIcon = {
+        url: "../images/icons/map-marker.svg", // url
+        scaledSize: new google.maps.Size(50, 50), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
     var marker = new google.maps.Marker({
         position: clinicPosition,
-        map: map
+        map: map,
+        icon: customIcon,
+        animation: google.maps.Animation.DROP
     });
+    window.onload = function () {
+        infowindow.open(map, marker);
+    };
 }
