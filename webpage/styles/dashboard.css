@@ -702,7 +702,6 @@ body {
 
 .dashboard-main {
   height: 100%;
-  width: 100%;
   display: grid;
   grid-template-areas: "services clients" "staff calendar";
   justify-items: center;
