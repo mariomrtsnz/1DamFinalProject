@@ -194,7 +194,7 @@ function initMap() {
             }
         ]
     })
-    var contentString = "<div id='map'><h3 style='font-family: Bodoni'>RealWorld Dental</h3></div>";
+    var contentString = "<div id='map'><h3 style='font-family: Bodoni';>RealWorld Dental</h3></div>";
     var infowindow = new google.maps.InfoWindow({
         content: contentString
     });

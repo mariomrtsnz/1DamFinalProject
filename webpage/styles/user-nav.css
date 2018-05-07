@@ -975,7 +975,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .cd-overlay {
   /* shadow layer visible when navigation is active */
   position: fixed;
-  z-index: 2;
+  z-index: 2000;
   height: 100%;
   width: 100%;
   top: 0;
