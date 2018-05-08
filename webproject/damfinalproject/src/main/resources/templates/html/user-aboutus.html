@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RWD - Sobre Nosotros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../images/logo-icon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/user-nav.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../styles/user-aboutus.css" />
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+    <script src="../scripts/user-nav.js"></script>
+    <script src="../scripts/user-aboutus.js"></script>
+</head>
+
+<body>
+    <header class="cd-main-header">
+        <a class="cd-logo" href="user-index.html">
+            <img src="../images/icons/projectlogo.svg" alt="Logo" width="35px">
+        </a>
+
+        <ul class="cd-header-buttons">
+            <li>
+                <a class="cd-search-trigger" href="#cd-search">
+                    <span></span>
+                </a>
+            </li>
+            <li>
+                <a class="cd-nav-trigger" href="#cd-primary-nav">
+                    <span></span>
+                </a>
+            </li>
+        </ul>
+        <!-- cd-header-buttons -->
+    </header>
+
+    <main class="cd-main-content">
+        <div id="myModal" class="modal">
+
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+        </div>
+        <!-- your content here -->
+        <div id="sobreNosotros">
+            <h1 class="sectionName">
+                Sobre Nosotros
+            </h1>
+            <h3>
+                Bienvenidos a
+                <span>RealWorld Dental</span>
+            </h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a ipsum placerat, imperdiet enim sed, interdum nibh. Nam interdum
+                efficitur sapien ac hendrerit. Quisque ornare faucibus risus vel congue. Suspendisse tincidunt tempus nibh,
+                at varius lorem porta nec. Duis volutpat convallis ex ac ultricies. Quisque posuere et dui at pulvinar. Sed
+                nec commodo quam. Maecenas eget ante dictum, laoreet nunc in, mattis orci. Morbi at justo lorem. Nullam justo
+                orci, aliquam ut pellentesque sit amet, cursus ac orci. Duis vitae leo vitae diam sollicitudin suscipit.
+                Pellentesque commodo vulputate lacinia. In hac habitasse platea dictumst.
+            </p>
+        </div>
+        <div id="nuestrasInstalaciones">
+            <h1 class="sectionName">
+                Nuestras Instalaciones
+            </h1>
+            <div id="officesGallery">
+                <div class="display">
+                    <img src="../images/officesGallery/office1.jpg" alt="Entrada del edificio" / id="myImg">
+                </div>
+                <ul class="thumbs">
+                    <li>
+                        <a href="../images/officesGallery/office1.jpg">
+                            <img src="../images/officesGallery/office1.jpg" alt="Foto oficina 2" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../images/officesGallery/office2.jpg">
+                            <img src="../images/officesGallery/office2.jpg" alt="Foto oficina 3" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../images/officesGallery/office3.jpg">
+                            <img src="../images/officesGallery/office3.jpg" alt="Foto oficina 4" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../images/officesGallery/office4.jpg">
+                            <img src="../images/officesGallery/office4.jpg" alt="Foto oficina 5" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="nuestroEquipo">
+            <h1 class="sectionName">
+                Nuestro Equipo
+            </h1>
+            <div class="carousel">
+                <a class="prev-btn" href="#">&lt;</a>
+                <div class="card">
+                    <div class="staffName">
+                        María Mora Muñoz
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+                        Jaime Perez Marin
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+                        Iria Aguilar Cabrera
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+                        Ana Blanco Montero
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="staffName">
+                        Carlos Medina Blanco
+                    </div>
+                </div>
+                <a class="next-btn" href="#">&gt;</a>
+            </div>
+        </div>
+
+        <div class="cd-overlay"></div>
+    </main>
+
+    <nav class="cd-nav">
+        <ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
+            <li>
+                <a href="./user-index.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+            <li class="has-children">
+                <a href="user-services.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Servicios</span>
+                </a>
+                <ul class="cd-nav-icons is-hidden">
+                    <li class="go-back">
+                        <a href="#0">Menu</a>
+                    </li>
+                    <li class="see-all">
+                        <a href="user-services.html">Ver Servicios</a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-1" href="http://codyhouse.co/?p=409">
+                            <h3>Blanqueamiento dental</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="cd-nav-item item-2" href="http://codyhouse.co/?p=409">
+                            <h3>Carillas</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-3" href="http://codyhouse.co/?p=409">
+                            <h3>Coronas y Puentes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-4" href="http://codyhouse.co/?p=409">
+                            <h3>Endodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-5" href="http://codyhouse.co/?p=409">
+                            <h3>Empastes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-6" href="http://codyhouse.co/?p=409">
+                            <h3>Implante</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-7" href="http://codyhouse.co/?p=409">
+                            <h3>Odontopediatría</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-8" href="http://codyhouse.co/?p=409">
+                            <h3>Ortodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-9" href="http://codyhouse.co/?p=409">
+                            <h3>Periodontitis</h3>
+
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="nav_bg_clr current"></span>
+                    <span>Sobre Nosotros</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="./user-contactus.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Contacto</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">{Usuario}</a>
+            </li>
+        </ul>
+        <!-- primary-nav -->
+    </nav>
+    <!-- cd-nav -->
+
+    <div id="cd-search" class="cd-search">
+        <form>
+            <input type="search" placeholder="Buscar...">
+        </form>
+    </div>
+    <!-- Resource jQuery -->
+</body>
+
+</html>
