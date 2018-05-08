@@ -1078,7 +1078,7 @@ input[type="search"]::-webkit-search-results-decoration {
   height: 1px;
   padding: 0;
   position: absolute;
-  top: -1px;
+  top: 12px;
   left: 0%;
   opacity: 0; }
 
