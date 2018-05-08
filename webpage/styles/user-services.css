@@ -20,26 +20,6 @@
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 2em; }
-  .services-container .info {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: #f5f9f8;
-    transform: translateY(100%) translateY(-55px) translateZ(0);
-    transition: transform 0.5s ease-out; }
-  .services-container .info:before {
-    z-index: -1;
-    display: block;
-    position: absolute;
-    content: ' ';
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    filter: blur(10px);
-    background-size: cover;
-    opacity: 0.25;
-    transform: translateY(-100%) translateY(88px) translateZ(0);
-    transition: transform 0.5s ease-out; }
   .services-container .service {
     background-color: #3c393d;
     background-repeat: no-repeat;
@@ -48,10 +28,29 @@
     max-width: 100%;
     min-height: 300px;
     box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    background-image: url(https://source.unsplash.com/collection/905011/1000x1000); }
+    overflow: hidden; }
     .services-container .service:hover .info, .services-container .service:hover:hover .info:before {
       transform: translateY(0) translateZ(0); }
+    .services-container .service .info {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: #f5f9f8;
+      transform: translateY(100%) translateY(-55px) translateZ(0);
+      transition: transform 0.5s ease-out; }
+    .services-container .service .info:before {
+      z-index: -1;
+      display: block;
+      position: absolute;
+      content: ' ';
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      filter: blur(5px);
+      background-size: cover;
+      opacity: 0.25;
+      transform: translateY(-100%) translateY(338px) translateZ(0);
+      transition: transform 0.5s ease-out; }
     .services-container .service .title {
       background-color: #c3975f;
       color: #f5f9f8;
@@ -89,6 +88,42 @@
       .services-container .service .service-overlay.hovered {
         max-height: 100%;
         opacity: 1; }
+  .services-container #blanqueamiento {
+    background-image: url("../images/services/teethwhitening.jpg"); }
+    .services-container #blanqueamiento .info:before {
+      background-image: url("../images/services/teethwhitening.jpg"); }
+  .services-container #carillas {
+    background-image: url("../images/services/carillas.png"); }
+    .services-container #carillas .info:before {
+      background-image: url("../images/services/carillas.png"); }
+  .services-container #coronasYPuentes {
+    background-image: url("../images/services/corona.jpg"); }
+    .services-container #coronasYPuentes .info:before {
+      background-image: url("../images/services/corona.jpg"); }
+  .services-container #endodoncia {
+    background-image: url("../images/services/endodoncia.jpg"); }
+    .services-container #endodoncia .info:before {
+      background-image: url("../images/services/endodoncia.jpg"); }
+  .services-container #empastes {
+    background-image: url("../images/services/empaste.png"); }
+    .services-container #empastes .info:before {
+      background-image: url("../images/services/empaste.png"); }
+  .services-container #implante {
+    background-image: url("../images/services/implante.png"); }
+    .services-container #implante .info:before {
+      background-image: url("../images/services/implante.png"); }
+  .services-container #odontopediatria {
+    background-image: url("../images/services/odontopediatria.png"); }
+    .services-container #odontopediatria .info:before {
+      background-image: url("../images/services/odontopediatria.jpg"); }
+  .services-container #ortodoncia {
+    background-image: url("../images/services/ortodoncia.jpg"); }
+    .services-container #ortodoncia .info:before {
+      background-image: url("../images/services/ortodoncia.jpg"); }
+  .services-container #periodontitis {
+    background-image: url("../images/services/periodontitis.jpg"); }
+    .services-container #periodontitis .info:before {
+      background-image: url("../images/services/periodontitis.jpg"); }
 
 @media only screen and (max-width: 1169px) {
   .services-container {
