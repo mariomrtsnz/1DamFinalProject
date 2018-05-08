@@ -33,19 +33,36 @@ $invalid: #E91E63;
     grid-gap: 2em;
     .service {
         background-color: $primary-color1;
+        background-repeat: no-repeat;
+        background-size: cover;
         display: grid;
         grid-template-areas: "title" "description";
         grid-template-rows: 2fr 1fr;
+        .title {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-self: center;
+            color: $primary-color5;
+        }
+        .description {
+            color: $primary-color1;
+            background-color: $primary-color3;
+        }
     }
 }
 
 @media only screen and (max-width: 1169px) {
-    .cd-main-content {
-        margin-left: 2em;
-        margin-right: 2em;
-        .sectionName {
-            width: 100%;
-            text-align: center;
+    .services-container {
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        .cd-main-content {
+            margin-left: 2em;
+            margin-right: 2em;
+            .sectionName {
+                width: 100%;
+                text-align: center;
+            }
         }
     }
 }
