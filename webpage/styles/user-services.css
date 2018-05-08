@@ -1,0 +1,42 @@
+@font-face {
+  font-family: Bodoni;
+  src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal; }
+.cd-main-content {
+  display: grid;
+  grid-template-areas: "title" "services";
+  grid-template-rows: 0.5fr 2fr;
+  margin-bottom: 4em;
+  min-height: 77vh;
+  grid-gap: 2em;
+  margin: 3em 0; }
+  .cd-main-content .sectionName {
+    border-bottom: 4px solid #2cbfd3;
+    width: 60%; }
+
+.services-container {
+  background-color: #989690;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2em; }
+  .services-container .service {
+    background-color: #3c393d;
+    display: grid;
+    grid-template-areas: "title" "description";
+    grid-template-rows: 2fr 1fr; }
+
+@media only screen and (max-width: 1169px) {
+  .cd-main-content {
+    margin-left: 2em;
+    margin-right: 2em; }
+    .cd-main-content .sectionName {
+      width: 100%;
+      text-align: center; } }
+@media only screen and (min-width: 1170px) {
+  .cd-main-content {
+    margin-left: 5em;
+    margin-right: 5em; } }
+
+/*# sourceMappingURL=user-services.css.map */
