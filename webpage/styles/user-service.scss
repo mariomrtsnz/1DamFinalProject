@@ -20,7 +20,8 @@ $invalid: #E91E63;
     min-height: 77vh;
     grid-gap: 2em;
     margin: 3em 0;
-    .sectionName, .detailTitle {
+    .sectionName,
+    .detailTitle {
         border-bottom: 4px solid $primary-color3;
         width: 60%;
     }
@@ -31,18 +32,55 @@ $invalid: #E91E63;
         width: 100%;
     }
     .picture {
-
+        grid-area: picture;
+        justify-self: center;
+        width: 100%;
+        img {
+            width: 100%;
+        }
     }
     .details {
         display: grid;
         grid-template-areas: "serviceDescription" "serviceDetails";
         grid-template-rows: 2fr 1fr;
-        .service-description{
-
-        }
-        .service-details{
-
+        .service-description {}
+        .service-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            border-top: 1px solid $primary-color3;
         }
     }
+    .appointmentRequest {
+        grid-area: cita;
+        display: flex;
+        justify-items: flex-end;
+        justify-content: flex-end;
+        #appointmentRequestButton {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $primary-color5;
+            color: $primary-color4;
+            font-weight: bold;
+            max-height: 50%;
+            min-height: 80px;
+            min-width: 100px;
+            width: 10%;
+        }
+    }
+}
 
+@media only screen and (max-width: 1169px) {
+    .cd-main-content {
+        grid-template-areas: "titles" "title" "picture" "details" "cita" "cita";
+    }
+}
+
+@media only screen and (min-width: 1170px) {
+    .cd-main-content {
+        margin: 0 5em;
+        margin-top: 3em;
+    }
 }
