@@ -1,0 +1,48 @@
+$primary-color1: #3c393d;
+$primary-color2: #989690;
+$primary-color3: #2cbfd3;
+$primary-color4: #f5f9f8;
+$primary-color5: #c3975f;
+$invalid: #E91E63;
+@font-face {
+    font-family: Bodoni;
+    src: url('../fonts/BodoniFLF-Roman.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.cd-main-content {
+    display: grid;
+    grid-template-areas: "titles titles" "picture details" "cita cita";
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-columns: 1.1fr 2fr;
+    margin-bottom: 4em;
+    min-height: 77vh;
+    grid-gap: 2em;
+    margin: 3em 0;
+    .sectionName, .detailTitle {
+        border-bottom: 4px solid $primary-color3;
+        width: 60%;
+    }
+    .detailTitle {
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+        width: 100%;
+    }
+    .picture {
+
+    }
+    .details {
+        display: grid;
+        grid-template-areas: "serviceDescription" "serviceDetails";
+        grid-template-rows: 2fr 1fr;
+        .service-description{
+
+        }
+        .service-details{
+
+        }
+    }
+
+}

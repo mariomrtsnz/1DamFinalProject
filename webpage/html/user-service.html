@@ -37,9 +37,130 @@
     </header>
     <main class="cd-main-content">
         <h1 class="sectionName">
-            Servicios
+            {nombreServicio}
         </h1>
+        <h1 class="detailTitle">
+            Detalles
+        </h1>
+        <div class="picture">
+            <img src="http://via.placeholder.com/500x500" alt="">
+        </div>
+        <div class="details">
+            <div class="service-description">
+                Consequat magna reprehenderit dolore consequat sunt in esse sint est. Nulla nulla pariatur officia magna sint commodo cillum
+                deserunt voluptate. Aliquip commodo irure velit nisi qui eiusmod elit pariatur elit fugiat. Amet laborum
+                consectetur mollit minim ea nostrud. Irure esse laboris ea ea esse. Nulla fugiat deserunt officia velit.
+                Do proident elit eiusmod Lorem id.
+            </div>
+            <div class="service-details">
+                <p>Nº Sesiones: {numSesiones}</p>
+                <p>Precio Total: {x}€</p>
+            </div>
+        </div>
+        <div class="appointmentRequest">
+            <div id="appointmentRequestButton">
+                Pedir cita
+            </div>
+        </div>
     </main>
+    <nav class="cd-nav">
+        <ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
+            <li>
+                <a href="./user-index.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+            <li class="has-children">
+                <a href="#">
+                    <span class="nav_bg_clr current"></span>
+                    <span>Servicios</span>
+                </a>
+                <ul class="cd-nav-icons is-hidden">
+                    <li class="go-back">
+                        <a href="#0">Menu</a>
+                    </li>
+                    <li class="see-all">
+                        <a href="#">Ver Servicios</a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-1" href="http://codyhouse.co/?p=409">
+                            <h3>Blanqueamiento dental</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="cd-nav-item item-2" href="http://codyhouse.co/?p=409">
+                            <h3>Carillas</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-3" href="http://codyhouse.co/?p=409">
+                            <h3>Coronas y Puentes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-4" href="http://codyhouse.co/?p=409">
+                            <h3>Endodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-5" href="http://codyhouse.co/?p=409">
+                            <h3>Empastes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-6" href="http://codyhouse.co/?p=409">
+                            <h3>Implante</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-7" href="http://codyhouse.co/?p=409">
+                            <h3>Odontopediatría</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-8" href="http://codyhouse.co/?p=409">
+                            <h3>Ortodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-9" href="http://codyhouse.co/?p=409">
+                            <h3>Periodontitis</h3>
+
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="./user-aboutus.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Sobre Nosotros</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="./user-contactus.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Contacto</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">{Usuario}</a>
+            </li>
+        </ul>
+        <!-- primary-nav -->
+    </nav>
+    <!-- cd-nav -->
+
+    <div id="cd-search" class="cd-search">
+        <form>
+            <input type="search" placeholder="Buscar...">
+        </form>
+    </div>
 </body>
 
 </html>
