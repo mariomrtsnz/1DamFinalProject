@@ -112,6 +112,10 @@
     background-image: url("../images/services/periodontitis.jpg"); }
     .services-container #periodontitis .info:before {
       background-image: url("../images/services/periodontitis.jpg"); }
+  .services-container #revision {
+    background-image: url("../images/services/revision.jpg"); }
+    .services-container #revision .info:before {
+      background-image: url("../images/services/revision.jpg"); }
 
 @media only screen and (max-width: 1169px) {
   .services-container {

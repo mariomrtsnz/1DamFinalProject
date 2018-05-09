@@ -149,6 +149,12 @@ $invalid: #E91E63;
             background-image: url('../images/services/periodontitis.jpg');
         }
     }
+    #revision {
+        background-image: url('../images/services/revision.jpg');
+        .info:before {
+            background-image: url('../images/services/revision.jpg');
+        }
+    }
 }
 
 @media only screen and (max-width: 1169px) {

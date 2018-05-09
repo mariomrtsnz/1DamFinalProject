@@ -14,7 +14,7 @@ $invalid: #E91E63;
 .cd-main-content {
     display: grid;
     grid-template-areas: "titles titles" "picture details" "cita cita";
-    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-rows: 0fr 4fr 0fr;
     grid-template-columns: 1.1fr 2fr;
     margin-bottom: 4em;
     min-height: 77vh;
@@ -22,6 +22,7 @@ $invalid: #E91E63;
     margin: 3em 0;
     .sectionName,
     .detailTitle {
+        grid-area: titles;
         border-bottom: 4px solid $primary-color3;
         width: 60%;
     }
@@ -40,6 +41,7 @@ $invalid: #E91E63;
         }
     }
     .details {
+        grid-area: details;
         display: grid;
         grid-template-areas: "serviceDescription" "serviceDetails";
         grid-template-rows: 2fr 1fr;
@@ -57,9 +59,6 @@ $invalid: #E91E63;
         justify-items: flex-end;
         justify-content: flex-end;
         #appointmentRequestButton {
-            -webkit-box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
-            -moz-box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
-            box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
             cursor: pointer;
             display: flex;
             justify-content: center;
@@ -71,20 +70,35 @@ $invalid: #E91E63;
             min-height: 80px;
             min-width: 100px;
             width: 10%;
-            &:hover {}
+            &:hover {
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
+                box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
+            }
         }
     }
 }
 
 @media only screen and (max-width: 1169px) {
     .cd-main-content {
-        grid-template-areas: "titles" "title" "picture" "details" "cita" "cita";
+        grid-template-areas: "titles" "detailTitle" "picture" "details" "cita";
+        grid-template-rows: 0fr 0fr 1fr 2fr 0fr;
+        grid-template-columns: 1fr;
+        .detailTitle {
+            grid-area: detailTitle;
+        }
+        .appointmentRequest {
+            justify-items: center;
+            justify-content: center;
+            #appointmentRequestButton{
+
+            }
+        }
     }
 }
 
 @media only screen and (min-width: 1170px) {
     .cd-main-content {
-        margin: 0 5em;
-        margin-top: 3em;
+        margin: 3em 5em;
     }
 }

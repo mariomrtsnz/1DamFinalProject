@@ -6,7 +6,7 @@
 .cd-main-content {
   display: grid;
   grid-template-areas: "titles titles" "picture details" "cita cita";
-  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-rows: 0fr 4fr 0fr;
   grid-template-columns: 1.1fr 2fr;
   margin-bottom: 4em;
   min-height: 77vh;
@@ -14,6 +14,7 @@
   margin: 3em 0; }
   .cd-main-content .sectionName,
   .cd-main-content .detailTitle {
+    grid-area: titles;
     border-bottom: 4px solid #2cbfd3;
     width: 60%; }
   .cd-main-content .detailTitle {
@@ -28,6 +29,7 @@
     .cd-main-content .picture img {
       width: 100%; }
   .cd-main-content .details {
+    grid-area: details;
     display: grid;
     grid-template-areas: "serviceDescription" "serviceDetails";
     grid-template-rows: 2fr 1fr; }
@@ -42,9 +44,6 @@
     justify-items: flex-end;
     justify-content: flex-end; }
     .cd-main-content .appointmentRequest #appointmentRequestButton {
-      -webkit-box-shadow: 0px 0px 5px 0px #3c393d;
-      -moz-box-shadow: 0px 0px 5px 0px #3c393d;
-      box-shadow: 0px 0px 5px 0px #3c393d;
       cursor: pointer;
       display: flex;
       justify-content: center;
@@ -56,13 +55,23 @@
       min-height: 80px;
       min-width: 100px;
       width: 10%; }
+      .cd-main-content .appointmentRequest #appointmentRequestButton:hover {
+        -webkit-box-shadow: 0px 0px 5px 0px #3c393d;
+        -moz-box-shadow: 0px 0px 5px 0px #3c393d;
+        box-shadow: 0px 0px 5px 0px #3c393d; }
 
 @media only screen and (max-width: 1169px) {
   .cd-main-content {
-    grid-template-areas: "titles" "title" "picture" "details" "cita" "cita"; } }
+    grid-template-areas: "titles" "detailTitle" "picture" "details" "cita";
+    grid-template-rows: 0fr 0fr 1fr 2fr 0fr;
+    grid-template-columns: 1fr; }
+    .cd-main-content .detailTitle {
+      grid-area: detailTitle; }
+    .cd-main-content .appointmentRequest {
+      justify-items: center;
+      justify-content: center; } }
 @media only screen and (min-width: 1170px) {
   .cd-main-content {
-    margin: 0 5em;
-    margin-top: 3em; } }
+    margin: 3em 5em; } }
 
 /*# sourceMappingURL=user-service.css.map */
