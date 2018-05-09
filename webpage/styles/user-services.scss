@@ -88,24 +88,10 @@ $invalid: #E91E63;
                 background-size: cover;
                 width: 64px;
                 height: 64px;
-            }
-        }
-        .service-overlay {
-            // max-height: 0;
-            transition: .5s ease;
-            opacity: 0;
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            text-align: center;
-            background-color: yellow;
-            &.hovered {
-                max-height: 100%;
-                opacity: 1;
+                &:hover {
+                    -webkit-filter: brightness(.5);
+                    filter: brightness(.5);
+                }
             }
         }
     }
@@ -148,7 +134,7 @@ $invalid: #E91E63;
     #odontopediatria {
         background-image: url('../images/services/odontopediatria.png');
         .info:before {
-            background-image: url('../images/services/odontopediatria.jpg');
+            background-image: url('../images/services/odontopediatria.png');
         }
     }
     #ortodoncia {

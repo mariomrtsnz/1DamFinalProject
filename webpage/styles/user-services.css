@@ -73,21 +73,9 @@
         background-size: cover;
         width: 64px;
         height: 64px; }
-    .services-container .service .service-overlay {
-      transition: .5s ease;
-      opacity: 0;
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      text-align: center;
-      background-color: yellow; }
-      .services-container .service .service-overlay.hovered {
-        max-height: 100%;
-        opacity: 1; }
+        .services-container .service .description .seeMore:hover {
+          -webkit-filter: brightness(0.5);
+          filter: brightness(0.5); }
   .services-container #blanqueamiento {
     background-image: url("../images/services/teethwhitening.jpg"); }
     .services-container #blanqueamiento .info:before {
@@ -115,7 +103,7 @@
   .services-container #odontopediatria {
     background-image: url("../images/services/odontopediatria.png"); }
     .services-container #odontopediatria .info:before {
-      background-image: url("../images/services/odontopediatria.jpg"); }
+      background-image: url("../images/services/odontopediatria.png"); }
   .services-container #ortodoncia {
     background-image: url("../images/services/ortodoncia.jpg"); }
     .services-container #ortodoncia .info:before {
