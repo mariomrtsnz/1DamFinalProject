@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: Bodoni;
   src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
@@ -87,7 +86,7 @@
     display: grid;
     grid-template-areas: "title exit" "date date" "calendar calendar" "time time" "timePicker timePicker" "continue continue";
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 0fr 0fr 0.2fr 0fr 0.2fr 1fr; }
+    grid-template-rows: 0fr 0fr 0.2fr 0fr 0.2fr 0fr; }
     #appointmentModal form #title {
       grid-area: title;
       border-bottom: 4px solid #2cbfd3;
@@ -117,27 +116,21 @@
       grid-area: time; }
     #appointmentModal form #timePicker {
       grid-area: timePicker; }
-      #appointmentModal form #timePicker input:invalid + span:after {
-        position: absolute;
-        content: 'Ô£û';
-        padding-left: 5px; }
-      #appointmentModal form #timePicker input:valid + span:after {
-        position: absolute;
-        content: 'Ô£ô';
-        padding-left: 5px; }
     #appointmentModal form #continue {
       font-weight: bolder;
       cursor: pointer;
       grid-area: continue;
       display: flex;
       background-color: #c29760;
+      color: #f5f9f8;
+      border: none;
       justify-content: center;
       align-items: center;
-      height: 100%;
+      height: 120%;
       width: 100%; }
       #appointmentModal form #continue:hover {
-        -webkit-box-shadow: 0px 0px 5px 0px #3c393d;
-        -moz-box-shadow: 0px 0px 5px 0px #3c393d;
+        -webkit-box-shadow: inset 0px 0px 5px 0px #3c393d;
+        -moz-box-shadow: inset 0px 0px 5px 0px #3c393d;
         box-shadow: inset 0px 0px 5px 0px #3c393d; }
 
 @media only screen and (max-width: 1169px) {
