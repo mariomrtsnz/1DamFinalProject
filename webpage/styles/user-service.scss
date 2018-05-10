@@ -155,6 +155,37 @@ $invalid: #E91E63;
             #timePicker {
                 grid-area: timePicker;
             }
+            #payNow {
+                grid-area: payNow;
+            }
+            #payPhysically {
+                grid-area: payPhysically;
+            }
+            #payLater {
+                grid-area: payLater;
+            }
+            #payNow,
+            #payPhysically,
+            #payLater {
+                font-weight: bolder;
+                font-size: 1.5em;
+                cursor: pointer;
+                grid-area: continue;
+                display: flex;
+                background-color: $primary-color5;
+                color: $primary-color4;
+                border: none;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                padding: 0;
+                &:hover {
+                    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(60, 57, 61, 1);
+                    -moz-box-shadow: inset 0px 0px 5px 0px rgba(60, 57, 61, 1);
+                    box-shadow: inset 0px 0px 5px 0px rgba(60, 57, 61, 1);
+                }
+            }
             #goBack {
                 grid-area: goBack;
                 display: flex;
