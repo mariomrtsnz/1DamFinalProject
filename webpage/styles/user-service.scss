@@ -85,8 +85,8 @@ $invalid: #E91E63;
 #appointmentModal {
     display: none;
     position: absolute;
-    top: 27%;
-    left: 10%;
+    top: 22%;
+    left: 22%;
     z-index: 0;
     background-color: $primary-color4;
     color: $primary-color1;
@@ -98,15 +98,15 @@ $invalid: #E91E63;
     -moz-box-shadow: 0px 0px 35px 10px rgba(60, 57, 61, 1);
     box-shadow: 0px 0px 35px 10px rgba(60, 57, 61, 1);
     width: 100%;
-    max-width: 80%;
+    max-width: 60%;
     height: 100%;
-    max-height: 80%;
+    max-height: 75%;
     form {
         height: 100%;
         display: grid;
         grid-template-areas: "title exit" "date date" "calendar calendar" "time time" "timePicker timePicker" "continue continue";
         grid-template-columns: 2fr 1fr;
-        grid-template-rows: 0fr 0fr 0.2fr 0fr 0.2fr 0fr;
+        grid-template-rows: 0fr 0.2fr 1fr 0.2fr 1fr 0.4fr;
         #title {
             grid-area: title;
             border-bottom: 4px solid $primary-color3;
@@ -146,6 +146,7 @@ $invalid: #E91E63;
         }
         #continue {
             font-weight: bolder;
+            font-size: 1.5em;
             cursor: pointer;
             grid-area: continue;
             display: flex;
@@ -186,6 +187,11 @@ $invalid: #E91E63;
         left: 0;
         max-height: 100%;
         top: 60%;
+        form {
+            #title {
+                width: 100%;
+            }
+        }
     }
 }
 

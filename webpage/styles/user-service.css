@@ -65,8 +65,8 @@
 #appointmentModal {
   display: none;
   position: absolute;
-  top: 27%;
-  left: 10%;
+  top: 22%;
+  left: 22%;
   z-index: 0;
   background-color: #f5f9f8;
   color: #3c393d;
@@ -78,15 +78,15 @@
   -moz-box-shadow: 0px 0px 35px 10px #3c393d;
   box-shadow: 0px 0px 35px 10px #3c393d;
   width: 100%;
-  max-width: 80%;
+  max-width: 60%;
   height: 100%;
-  max-height: 80%; }
+  max-height: 75%; }
   #appointmentModal form {
     height: 100%;
     display: grid;
     grid-template-areas: "title exit" "date date" "calendar calendar" "time time" "timePicker timePicker" "continue continue";
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 0fr 0fr 0.2fr 0fr 0.2fr 0fr; }
+    grid-template-rows: 0fr 0.2fr 1fr 0.2fr 1fr 0.4fr; }
     #appointmentModal form #title {
       grid-area: title;
       border-bottom: 4px solid #2cbfd3;
@@ -118,6 +118,7 @@
       grid-area: timePicker; }
     #appointmentModal form #continue {
       font-weight: bolder;
+      font-size: 1.5em;
       cursor: pointer;
       grid-area: continue;
       display: flex;
@@ -150,7 +151,9 @@
     max-width: 100%;
     left: 0;
     max-height: 100%;
-    top: 60%; } }
+    top: 60%; }
+    #appointmentModal form #title {
+      width: 100%; } }
 @media only screen and (min-width: 1170px) {
   .cd-main-content {
     margin: 3em 5em; } }
