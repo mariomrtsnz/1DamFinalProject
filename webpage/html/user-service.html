@@ -157,24 +157,28 @@
     </nav>
     <!-- cd-nav -->
     <div id="appointmentModal">
-        <form action="">
-            <div id="title">
-                <h1>Pedir cita</h1>
+        <form action="" id="initialAppointmentWindow">
+            <div class="appointment-header">
+                <div id="title">
+                    <h1>Pedir cita</h1>
+                </div>
+                <div id="exit">
+                    <a href="#" id="exitButton"></a>
+                </div>
             </div>
-            <div id="exit">
-                <a href="#" id="exitButton"></a>
-            </div>
-            <div id="date">
-                <h2>Selecciona fecha</h2>
-            </div>
-            <div id="calendar">
-                <input type="date" required>
-            </div>
-            <div id="time">
-                <h2>Selecciona hora (HH:MM AM/PM)</h2>
-            </div>
-            <div id="timePicker">
-                <input type="time" name="" id="" min="09:00" max="19:00" required>
+            <div class="appointment-content">
+                <div id="date">
+                    <h2>Selecciona fecha</h2>
+                </div>
+                <div id="calendar">
+                    <input type="date" required>
+                </div>
+                <div id="time">
+                    <h2>Selecciona hora (HH:MM AM/PM)</h2>
+                </div>
+                <div id="timePicker">
+                    <input type="time" name="" id="" min="09:00" max="19:00" required>
+                </div>
             </div>
             <button type="submit" id="continue">Continuar</button>
         </form>
