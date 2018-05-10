@@ -138,7 +138,6 @@
         font-weight: bolder;
         font-size: 1.5em;
         cursor: pointer;
-        grid-area: continue;
         display: flex;
         background-color: #c29760;
         color: #f5f9f8;
