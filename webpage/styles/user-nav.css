@@ -99,8 +99,7 @@ input[type="search"]::-webkit-search-results-decoration {
     transform: translateX(260px); } }
 .cd-main-content {
   background: #f5f9f8;
-  min-height: 90vh;
-  z-index: 2; }
+  min-height: 90vh; }
 
 .cd-main-header {
   height: 10vh;

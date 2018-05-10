@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: Bodoni;
   src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
@@ -5,19 +6,21 @@
   font-style: normal; }
 .cd-main-content {
   display: grid;
-  grid-template-areas: "titles titles" "picture details" "cita cita";
+  grid-template-areas: "title detailTitle" "picture details" "cita cita";
   grid-template-rows: 0fr 4fr 0fr;
   grid-template-columns: 1.1fr 2fr;
   margin-bottom: 4em;
   min-height: 77vh;
   grid-gap: 2em;
   margin: 3em 0; }
+  .cd-main-content .sectionName {
+    grid-area: title; }
   .cd-main-content .sectionName,
   .cd-main-content .detailTitle {
-    grid-area: titles;
     border-bottom: 4px solid #2cbfd3;
-    width: 60%; }
+    width: 78%; }
   .cd-main-content .detailTitle {
+    grid-area: detailTitle;
     display: flex;
     justify-content: flex-end;
     text-align: right;
@@ -48,7 +51,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #c3975f;
+      background-color: #c29760;
       color: #f5f9f8;
       font-weight: bold;
       max-height: 50%;
@@ -60,16 +63,98 @@
         -moz-box-shadow: 0px 0px 5px 0px #3c393d;
         box-shadow: 0px 0px 5px 0px #3c393d; }
 
+#appointmentModal {
+  display: grid;
+  grid-template-areas: "title exit" "date date" "calendar calendar" "time time" "timePicker timePicker" "continue continue";
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 0fr 0fr 0.2fr 0fr 0.2fr 1fr;
+  position: absolute;
+  top: 27%;
+  left: 10%;
+  z-index: 0;
+  background-color: #f5f9f8;
+  color: #3c393d;
+  outline: #2cbfd3 solid 1em;
+  -webkit-box-shadow: 0px 0px 5px 0px #3c393d;
+  -moz-box-shadow: 0px 0px 5px 0px #3c393d;
+  box-shadow: 0px 0px 5px 0px #3c393d;
+  -webkit-box-shadow: 0px 0px 35px 10px #3c393d;
+  -moz-box-shadow: 0px 0px 35px 10px #3c393d;
+  box-shadow: 0px 0px 35px 10px #3c393d;
+  width: 100%;
+  max-width: 80%;
+  height: 100%;
+  max-height: 80%; }
+  #appointmentModal #title {
+    grid-area: title;
+    border-bottom: 4px solid #2cbfd3;
+    width: 50%; }
+  #appointmentModal #exit {
+    grid-area: exit;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%; }
+    #appointmentModal #exit a {
+      display: block;
+      background-image: url("../images/icons/exitsign.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 48px;
+      height: 48px; }
+      #appointmentModal #exit a:hover {
+        -webkit-filter: brightness(0.5);
+        filter: brightness(0.5); }
+  #appointmentModal #date {
+    grid-area: date; }
+  #appointmentModal #calendar {
+    grid-area: calendar; }
+  #appointmentModal #time {
+    grid-area: time; }
+  #appointmentModal #timePicker {
+    grid-area: timePicker; }
+    #appointmentModal #timePicker input:invalid + span:after {
+      position: absolute;
+      content: 'Ô£û';
+      padding-left: 5px; }
+    #appointmentModal #timePicker input:valid + span:after {
+      position: absolute;
+      content: 'Ô£ô';
+      padding-left: 5px; }
+  #appointmentModal #continue {
+    font-weight: bolder;
+    cursor: pointer;
+    grid-area: continue;
+    display: flex;
+    background-color: #c29760;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%; }
+    #appointmentModal #continue:hover {
+      -webkit-box-shadow: 0px 0px 5px 0px #3c393d;
+      -moz-box-shadow: 0px 0px 5px 0px #3c393d;
+      box-shadow: inset 0px 0px 5px 0px #3c393d; }
+
 @media only screen and (max-width: 1169px) {
   .cd-main-content {
-    grid-template-areas: "titles" "detailTitle" "picture" "details" "cita";
-    grid-template-rows: 0fr 0fr 1fr 2fr 0fr;
+    grid-template-areas: "title" "picture" "detailTitle" "details" "cita";
+    grid-template-rows: 0fr 1fr 0fr 2fr 0fr;
     grid-template-columns: 1fr; }
-    .cd-main-content .detailTitle {
-      grid-area: detailTitle; }
+    .cd-main-content .sectionName {
+      display: flex;
+      justify-content: center;
+      width: 100%; }
     .cd-main-content .appointmentRequest {
       justify-items: center;
-      justify-content: center; } }
+      justify-content: center; }
+
+  #appointmentModal {
+    max-width: 100%;
+    left: 0;
+    max-height: 100%;
+    top: 60%; } }
 @media only screen and (min-width: 1170px) {
   .cd-main-content {
     margin: 3em 5em; } }

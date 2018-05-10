@@ -2,7 +2,7 @@ $primary-color1: #3c393d;
 $primary-color2: #989690;
 $primary-color3: #2cbfd3;
 $primary-color4: #f5f9f8;
-$primary-color5: #c3975f;
+$primary-color5: #c29760;
 $invalid: #E91E63;
 @font-face {
     font-family: Bodoni;
@@ -13,20 +13,23 @@ $invalid: #E91E63;
 
 .cd-main-content {
     display: grid;
-    grid-template-areas: "titles titles" "picture details" "cita cita";
+    grid-template-areas: "title detailTitle" "picture details" "cita cita";
     grid-template-rows: 0fr 4fr 0fr;
     grid-template-columns: 1.1fr 2fr;
     margin-bottom: 4em;
     min-height: 77vh;
     grid-gap: 2em;
     margin: 3em 0;
+    .sectionName {
+        grid-area: title;
+    }
     .sectionName,
     .detailTitle {
-        grid-area: titles;
         border-bottom: 4px solid $primary-color3;
-        width: 60%;
+        width: 78%;
     }
     .detailTitle {
+        grid-area: detailTitle;
         display: flex;
         justify-content: flex-end;
         text-align: right;
@@ -79,21 +82,114 @@ $invalid: #E91E63;
     }
 }
 
+#appointmentModal {
+    display: grid;
+    grid-template-areas: "title exit" "date date" "calendar calendar" "time time" "timePicker timePicker" "continue continue";
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 0fr 0fr 0.2fr 0fr 0.2fr 1fr;
+    position: absolute;
+    top: 27%;
+    left: 10%;
+    z-index: 0;
+    background-color: $primary-color4;
+    color: $primary-color1;
+    outline: $primary-color3 solid 1em;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
+    box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
+    -webkit-box-shadow: 0px 0px 35px 10px rgba(60, 57, 61, 1);
+    -moz-box-shadow: 0px 0px 35px 10px rgba(60, 57, 61, 1);
+    box-shadow: 0px 0px 35px 10px rgba(60, 57, 61, 1);
+    width: 100%;
+    max-width: 80%;
+    height: 100%;
+    max-height: 80%;
+    #title {
+        grid-area: title;
+        border-bottom: 4px solid $primary-color3;
+        width: 50%;
+    }
+    #exit {
+        grid-area: exit;
+        display: flex;
+        justify-content: flex-end;
+        a {
+            display: block;
+            background-image: url('../images/icons/exitsign.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 48px;
+            height: 48px;
+            &:hover {
+                -webkit-filter: brightness(.5);
+                filter: brightness(.5);
+            }
+        }
+        width: 100%;
+        height: 100%;
+    }
+    #date {
+        grid-area: date;
+    }
+    #calendar {
+        grid-area: calendar;
+    }
+    #time {
+        grid-area: time;
+    }
+    #timePicker {
+        grid-area: timePicker;
+        input:invalid+span:after {
+            position: absolute;
+            content: '✖';
+            padding-left: 5px;
+        }
+        input:valid+span:after {
+            position: absolute;
+            content: '✓';
+            padding-left: 5px;
+        }
+    }
+    #continue {
+        font-weight: bolder;
+        cursor: pointer;
+        grid-area: continue;
+        display: flex;
+        background-color: $primary-color5;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        &:hover {
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(60, 57, 61, 1);
+            box-shadow: inset 0px 0px 5px 0px rgba(60, 57, 61, 1);
+        }
+    }
+}
+
 @media only screen and (max-width: 1169px) {
     .cd-main-content {
-        grid-template-areas: "titles" "detailTitle" "picture" "details" "cita";
-        grid-template-rows: 0fr 0fr 1fr 2fr 0fr;
+        grid-template-areas: "title" "picture" "detailTitle" "details" "cita";
+        grid-template-rows: 0fr 1fr 0fr 2fr 0fr;
         grid-template-columns: 1fr;
-        .detailTitle {
-            grid-area: detailTitle;
+        .sectionName {
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
         .appointmentRequest {
             justify-items: center;
             justify-content: center;
-            #appointmentRequestButton{
-
-            }
+            #appointmentRequestButton {}
         }
+    }
+    #appointmentModal {
+        max-width: 100%;
+        left: 0;
+        max-height: 100%;
+        top: 60%;
     }
 }
 
