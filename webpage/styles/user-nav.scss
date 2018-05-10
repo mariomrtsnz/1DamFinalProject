@@ -652,7 +652,7 @@ input[type="search"]::-webkit-search-results-decoration {
     .cd-primary-nav .cd-nav-icons {
         /* dropdown menu style */
         position: absolute;
-        top: 97px;
+        top: 10vh;
         width: 100vw;
         background: #ffffff;
         padding: 1px 64px 130px;
@@ -1084,7 +1084,7 @@ input[type="search"]::-webkit-search-results-decoration {
 @media only screen and (min-width: 1170px) {
     .cd-search {
         height: 120px;
-        top: 97px;
+        top: 10vh;
     }
     .cd-search input {
         padding: 0 2em;
