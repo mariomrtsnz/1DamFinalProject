@@ -1,21 +1,21 @@
-<form action="" id="initialAppointmentWindow">
-    <div id="title">
-        <h1>Pedir cita</h1>
-    </div>
-    <div id="exit">
-        <a href="#" id="exitButton"></a>
-    </div>
-    <div id="date">
-        <h2>Selecciona fecha</h2>
-    </div>
-    <div id="calendar">
-        <input type="date" required>
-    </div>
-    <div id="time">
-        <h2>Selecciona hora (HH:MM AM/PM)</h2>
-    </div>
-    <div id="timePicker">
-        <input type="time" name="" id="" min="09:00" max="19:00" required>
-    </div>
-    <button type="submit" id="continue">Continuar</button>
-</form>
+<div id="date">
+    <h2>Fecha</h2>
+</div>
+<div id="calendar">
+    {diaElegido/mesElegido/añoElegido}
+</div>
+<div id="time">
+    <h2>Hora</h2>
+</div>
+<div id="timePicker">
+    {horaElegida:horaElegida}
+</div>
+<div id="price" style="grid-area: price">
+    <h2>Precio</h2>
+</div>
+<div id="finalPrice" style="grid-area: finalPrice">
+    {precioFinal}
+</div>
+<button id="payNow" type="submit" style="grid-area: payNow">Pagar Ahora</button>
+<button id="payPhysically" style="grid-area: payPhysically">Pagar en la Clínica</button>
+<button id="payLater" style="grid-area: payLater">Pagar más tarde</button>
