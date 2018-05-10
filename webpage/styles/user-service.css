@@ -101,7 +101,7 @@
         justify-content: flex-end;
         width: 100%;
         height: 100%; }
-        #appointmentModal form .appointment-header #exit a {
+        #appointmentModal form .appointment-header #exit #exitButton {
           display: block;
           background-image: url("../images/icons/exitsign.svg");
           background-position: center;
@@ -109,7 +109,7 @@
           background-size: cover;
           width: 48px;
           height: 48px; }
-          #appointmentModal form .appointment-header #exit a:hover {
+          #appointmentModal form .appointment-header #exit #exitButton:hover {
             -webkit-filter: brightness(0.5);
             filter: brightness(0.5); }
     #appointmentModal form .appointment-content {
@@ -126,6 +126,23 @@
         grid-area: time; }
       #appointmentModal form .appointment-content #timePicker {
         grid-area: timePicker; }
+      #appointmentModal form .appointment-content #goBack {
+        grid-area: goBack;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%; }
+        #appointmentModal form .appointment-content #goBack #backButton {
+          display: block;
+          background-image: url("../images/icons/goback.svg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 48px;
+          height: 48px; }
+          #appointmentModal form .appointment-content #goBack #backButton:hover {
+            -webkit-filter: brightness(0.5);
+            filter: brightness(0.5); }
     #appointmentModal form #continue {
       font-weight: bolder;
       font-size: 1.5em;
@@ -138,7 +155,8 @@
       justify-content: center;
       align-items: center;
       height: 100%;
-      width: 100%; }
+      width: 100%;
+      padding: 0; }
       #appointmentModal form #continue:hover {
         -webkit-box-shadow: inset 0px 0px 5px 0px #3c393d;
         -moz-box-shadow: inset 0px 0px 5px 0px #3c393d;

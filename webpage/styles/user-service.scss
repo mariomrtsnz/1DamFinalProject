@@ -120,7 +120,7 @@ $invalid: #E91E63;
                 grid-area: exit;
                 display: flex;
                 justify-content: flex-end;
-                a {
+                #exitButton {
                     display: block;
                     background-image: url('../images/icons/exitsign.svg');
                     background-position: center;
@@ -155,6 +155,26 @@ $invalid: #E91E63;
             #timePicker {
                 grid-area: timePicker;
             }
+            #goBack {
+                grid-area: goBack;
+                display: flex;
+                justify-content: flex-start;
+                #backButton {
+                    display: block;
+                    background-image: url('../images/icons/goback.svg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 48px;
+                    height: 48px;
+                    &:hover {
+                        -webkit-filter: brightness(.5);
+                        filter: brightness(.5);
+                    }
+                }
+                width: 100%;
+                height: 100%;
+            }
         }
         #continue {
             font-weight: bolder;
@@ -169,6 +189,7 @@ $invalid: #E91E63;
             align-items: center;
             height: 100%;
             width: 100%;
+            padding: 0;
             &:hover {
                 -webkit-box-shadow: inset 0px 0px 5px 0px rgba(60, 57, 61, 1);
                 -moz-box-shadow: inset 0px 0px 5px 0px rgba(60, 57, 61, 1);
