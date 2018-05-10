@@ -64,10 +64,7 @@
         box-shadow: 0px 0px 5px 0px #3c393d; }
 
 #appointmentModal {
-  display: grid;
-  grid-template-areas: "title exit" "date date" "calendar calendar" "time time" "timePicker timePicker" "continue continue";
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 0fr 0fr 0.2fr 0fr 0.2fr 1fr;
+  display: none;
   position: absolute;
   top: 27%;
   left: 10%;
@@ -85,57 +82,63 @@
   max-width: 80%;
   height: 100%;
   max-height: 80%; }
-  #appointmentModal #title {
-    grid-area: title;
-    border-bottom: 4px solid #2cbfd3;
-    width: 50%; }
-  #appointmentModal #exit {
-    grid-area: exit;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 100%; }
-    #appointmentModal #exit a {
-      display: block;
-      background-image: url("../images/icons/exitsign.svg");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      width: 48px;
-      height: 48px; }
-      #appointmentModal #exit a:hover {
-        -webkit-filter: brightness(0.5);
-        filter: brightness(0.5); }
-  #appointmentModal #date {
-    grid-area: date; }
-  #appointmentModal #calendar {
-    grid-area: calendar; }
-  #appointmentModal #time {
-    grid-area: time; }
-  #appointmentModal #timePicker {
-    grid-area: timePicker; }
-    #appointmentModal #timePicker input:invalid + span:after {
-      position: absolute;
-      content: 'Ô£û';
-      padding-left: 5px; }
-    #appointmentModal #timePicker input:valid + span:after {
-      position: absolute;
-      content: 'Ô£ô';
-      padding-left: 5px; }
-  #appointmentModal #continue {
-    font-weight: bolder;
-    cursor: pointer;
-    grid-area: continue;
-    display: flex;
-    background-color: #c29760;
-    justify-content: center;
-    align-items: center;
+  #appointmentModal form {
     height: 100%;
-    width: 100%; }
-    #appointmentModal #continue:hover {
-      -webkit-box-shadow: 0px 0px 5px 0px #3c393d;
-      -moz-box-shadow: 0px 0px 5px 0px #3c393d;
-      box-shadow: inset 0px 0px 5px 0px #3c393d; }
+    display: grid;
+    grid-template-areas: "title exit" "date date" "calendar calendar" "time time" "timePicker timePicker" "continue continue";
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 0fr 0fr 0.2fr 0fr 0.2fr 1fr; }
+    #appointmentModal form #title {
+      grid-area: title;
+      border-bottom: 4px solid #2cbfd3;
+      width: 50%; }
+    #appointmentModal form #exit {
+      grid-area: exit;
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      height: 100%; }
+      #appointmentModal form #exit a {
+        display: block;
+        background-image: url("../images/icons/exitsign.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 48px;
+        height: 48px; }
+        #appointmentModal form #exit a:hover {
+          -webkit-filter: brightness(0.5);
+          filter: brightness(0.5); }
+    #appointmentModal form #date {
+      grid-area: date; }
+    #appointmentModal form #calendar {
+      grid-area: calendar; }
+    #appointmentModal form #time {
+      grid-area: time; }
+    #appointmentModal form #timePicker {
+      grid-area: timePicker; }
+      #appointmentModal form #timePicker input:invalid + span:after {
+        position: absolute;
+        content: 'Ô£û';
+        padding-left: 5px; }
+      #appointmentModal form #timePicker input:valid + span:after {
+        position: absolute;
+        content: 'Ô£ô';
+        padding-left: 5px; }
+    #appointmentModal form #continue {
+      font-weight: bolder;
+      cursor: pointer;
+      grid-area: continue;
+      display: flex;
+      background-color: #c29760;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%; }
+      #appointmentModal form #continue:hover {
+        -webkit-box-shadow: 0px 0px 5px 0px #3c393d;
+        -moz-box-shadow: 0px 0px 5px 0px #3c393d;
+        box-shadow: inset 0px 0px 5px 0px #3c393d; }
 
 @media only screen and (max-width: 1169px) {
   .cd-main-content {
