@@ -68,7 +68,6 @@
   top: 22%;
   left: 22%;
   z-index: 0;
-  background-color: #f5f9f8;
   color: #3c393d;
   outline: #2cbfd3 solid 1em;
   -webkit-box-shadow: 0px 0px 5px 0px #3c393d;
@@ -82,10 +81,11 @@
   height: 100%;
   max-height: 75%; }
   #appointmentModal form {
+    background-color: #f5f9f8;
     height: 100%;
     display: grid;
-    grid-template-areas: "appointment-header" "appointment-content" "continue";
-    grid-template-rows: 0fr 2fr 0.5fr; }
+    grid-template-areas: "appointment-header" "appointment-content";
+    grid-template-rows: 0fr 3fr; }
     #appointmentModal form .appointment-header {
       grid-area: appointment-header;
       display: grid;
@@ -115,8 +115,6 @@
     #appointmentModal form .appointment-content {
       grid-area: appointment-content;
       display: grid;
-      grid-template-areas: "date" "calendar" "time" "timePicker";
-      grid-template-rows: 0.2fr 1fr 0.2fr 1fr;
       height: 100%; }
       #appointmentModal form .appointment-content #date {
         grid-area: date; }
@@ -132,6 +130,14 @@
         grid-area: payPhysically; }
       #appointmentModal form .appointment-content #payLater {
         grid-area: payLater; }
+      #appointmentModal form .appointment-content #price {
+        grid-area: price;
+        display: grid;
+        grid-template-areas: "title" "finalPrice"; }
+        #appointmentModal form .appointment-content #price h2 {
+          grid-area: title; }
+        #appointmentModal form .appointment-content #price #finalPrice {
+          grid-area: finalPrice; }
       #appointmentModal form .appointment-content #payNow,
       #appointmentModal form .appointment-content #payPhysically,
       #appointmentModal form .appointment-content #payLater {
@@ -142,10 +148,13 @@
         background-color: #c29760;
         color: #f5f9f8;
         border: none;
+        justify-items: center;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        width: 100%;
+        align-self: center;
+        height: 65px;
+        width: 60%;
+        margin: 0 auto;
         padding: 0; }
         #appointmentModal form .appointment-content #payNow:hover,
         #appointmentModal form .appointment-content #payPhysically:hover,
@@ -153,41 +162,6 @@
           -webkit-box-shadow: inset 0px 0px 5px 0px #3c393d;
           -moz-box-shadow: inset 0px 0px 5px 0px #3c393d;
           box-shadow: inset 0px 0px 5px 0px #3c393d; }
-      #appointmentModal form .appointment-content #goBack {
-        grid-area: goBack;
-        display: flex;
-        justify-content: flex-start;
-        width: 100%;
-        height: 100%; }
-        #appointmentModal form .appointment-content #goBack #backButton {
-          display: block;
-          background-image: url("../images/icons/goback.svg");
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          width: 48px;
-          height: 48px; }
-          #appointmentModal form .appointment-content #goBack #backButton:hover {
-            -webkit-filter: brightness(0.5);
-            filter: brightness(0.5); }
-    #appointmentModal form #continue {
-      font-weight: bolder;
-      font-size: 1.5em;
-      cursor: pointer;
-      grid-area: continue;
-      display: flex;
-      background-color: #c29760;
-      color: #f5f9f8;
-      border: none;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-      padding: 0; }
-      #appointmentModal form #continue:hover {
-        -webkit-box-shadow: inset 0px 0px 5px 0px #3c393d;
-        -moz-box-shadow: inset 0px 0px 5px 0px #3c393d;
-        box-shadow: inset 0px 0px 5px 0px #3c393d; }
 
 @media only screen and (max-width: 1169px) {
   .cd-main-content {
@@ -205,12 +179,23 @@
   #appointmentModal {
     max-width: 100%;
     left: 0;
-    max-height: 99vh;
+    max-height: 100vh;
     top: 60%; }
     #appointmentModal form .appointment-header #title {
-      width: 100%; } }
+      width: 100%; }
+    #appointmentModal form .appointment-content {
+      grid-template-areas: "date price" "calendar calendar" "time time" "timePicker timepicker" "payNow payNow" "PayLater PayLater" "payPhysically payPhysically";
+      grid-template-columns: 2fr 1fr; }
+      #appointmentModal form .appointment-content #payNow,
+      #appointmentModal form .appointment-content #payPhysically,
+      #appointmentModal form .appointment-content #payLater {
+        width: 100%; } }
 @media only screen and (min-width: 1170px) {
   .cd-main-content {
-    margin: 3em 5em; } }
+    margin: 3em 5em; }
+
+  #appointmentModal form .appointment-content {
+    grid-template-areas: "date price" "calendar payNow" "time payLater" "timePicker payPhysically";
+    grid-template-rows: 0.2fr 1fr 0.2fr 1fr; } }
 
 /*# sourceMappingURL=user-service.css.map */
