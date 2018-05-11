@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>RWD - Servicios</title>
+    <title>RWD - Perfil de Usuario</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="../../images/logo-icon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="../../styles/user-nav.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../../styles/user-service.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../styles/user-profile.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
     <script src="../../scripts/user-nav.js"></script>
-    <script src="../../scripts/user-service.js"></script>
 </head>
 
 <body>
@@ -31,33 +29,9 @@
         </ul>
         <!-- cd-header-buttons -->
     </header>
+
     <main class="cd-main-content">
-        <h1 class="sectionName">
-            {nombreServicio}
-        </h1>
-        <h1 class="detailTitle">
-            Detalles
-        </h1>
-        <div class="picture">
-            <img src="http://via.placeholder.com/450x450" alt="">
-        </div>
-        <div class="details">
-            <div class="service-description">
-                Consequat magna reprehenderit dolore consequat sunt in esse sint est. Nulla nulla pariatur officia magna sint commodo cillum
-                deserunt voluptate. Aliquip commodo irure velit nisi qui eiusmod elit pariatur elit fugiat. Amet laborum
-                consectetur mollit minim ea nostrud. Irure esse laboris ea ea esse. Nulla fugiat deserunt officia velit.
-                Do proident elit eiusmod Lorem id.
-            </div>
-            <div class="service-details">
-                <p>Nº Sesiones: {numSesiones}</p>
-                <p>Precio Total: {x}€</p>
-            </div>
-        </div>
-        <div class="appointmentRequest">
-            <div id="appointmentRequestButton">
-                Pedir cita
-            </div>
-        </div>
+
         <div class="cd-overlay"></div>
     </main>
     <nav class="cd-nav">
@@ -71,7 +45,7 @@
 
             <li class="has-children">
                 <a href="#">
-                    <span class="nav_bg_clr current"></span>
+                    <span class="nav_bg_clr"></span>
                     <span>Servicios</span>
                 </a>
                 <ul class="cd-nav-icons is-hidden">
@@ -79,7 +53,7 @@
                         <a href="#0">Menu</a>
                     </li>
                     <li class="see-all">
-                        <a href="#">Ver Servicios</a>
+                        <a href="../public/user-services.html">Ver Servicios</a>
                     </li>
                     <li>
                         <a class="cd-nav-item item-1" href="http://codyhouse.co/?p=409">
@@ -146,46 +120,17 @@
             </li>
 
             <li>
-                <a href="">{Usuario}</a>
+                <a href="">
+                    <span class="nav_bg_clr current"></span>
+                    <span>
+                        {Usuario}
+                    </span>
+                </a>
             </li>
         </ul>
         <!-- primary-nav -->
     </nav>
     <!-- cd-nav -->
-    <div id="appointmentModal">
-        <form action="" id="initialAppointmentWindow">
-            <div class="appointment-header">
-                <div id="title">
-                    <h1>Pedir cita</h1>
-                </div>
-                <div id="exit">
-                    <a href="#" id="exitButton"></a>
-                </div>
-            </div>
-            <div class="appointment-content">
-                <div id="date">
-                    <h2>Selecciona fecha:</h2>
-                </div>
-                <div id="calendar">
-                    <input type="date" id="datePicker" required>
-                </div>
-                <div id="time">
-                    <h2>Selecciona hora (HH:MM AM/PM):</h2>
-                </div>
-                <div id="timePicker">
-                    <input type="time" name="" id="timeInput" required>
-                </div>
-                <div id="price">
-                    <h2>Precio:</h2>
-                    <div id="finalPrice">
-                        {precioFinal}€
-                    </div>
-                </div>
-                <button id="payNow" type="submit">Pagar Ahora</button>
-                <button id="payPhysically" type="submit">Pagar en la Clínica</button>
-            </div>
-        </form>
-    </div>
 </body>
 
 </html>
