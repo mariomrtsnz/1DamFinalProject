@@ -42,6 +42,7 @@ $transition: all .5s ease;
             .search {
                 grid-area: search;
                 float: right;
+                justify-self: flex-end;
             }
         }
         .table {
@@ -53,7 +54,6 @@ $transition: all .5s ease;
 .search {
     width: 50px;
     height: 50px;
-    background-color: $primary-color1;
     position: relative;
     overflow: hidden;
     transition: $transition;
@@ -68,6 +68,7 @@ $transition: all .5s ease;
     }
     &.open {
         width: 250px;
+        background-color: $primary-color1;
         &:before {
             height: 25px;
             margin: 15px 0 20px 30px;
@@ -104,7 +105,7 @@ $transition: all .5s ease;
     width: 30px;
     height: 30px;
     border-radius: 40px;
-    border: 3px solid $primary-color3;
+    border: 3px solid $primary-color4;
     display: block;
     position: relative;
     transition: $transition;
@@ -116,7 +117,7 @@ $transition: all .5s ease;
         right: -2px;
         top: 22px;
         display: block;
-        background-color: $primary-color3;
+        background-color: $primary-color4;
         transform: rotate(-45deg);
         transition: $transition;
     }
@@ -128,9 +129,12 @@ $transition: all .5s ease;
         right: -12px;
         top: 32px;
         display: block;
-        background-color: $primary-color3;
+        background-color: $primary-color4;
         transform: rotate(-45deg);
         transition: $transition;
+        &:hover {
+            background-color: $primary-color2;
+        }
     }
     .open & {
         margin: 0;
@@ -159,40 +163,35 @@ table {
     table-layout: fixed;
 }
 
+.tbl-content>table:nth-child(1) {
+    height: 6vh;
+}
+
 .tbl-header {
     background-color: $primary-color5;
 }
 
 .tbl-content {
-    height: 300px;
+    min-height: 300px;
     overflow-x: auto;
-    margin-top: 0px;
     border: 1px solid $primary-color5;
 }
 
 th {
-    padding: 20px 15px;
-    text-align: left;
-    font-weight: 500;
-    font-size: 12px;
-    color: #fff;
+    color: $primary-color4;
     text-transform: uppercase;
 }
 
 td {
-    padding: 15px;
-    text-align: left;
-    vertical-align: middle;
+    text-align: center;
+    min-height: 100px;
     font-weight: 300;
     font-size: 12px;
     color: $primary-color1;
     border-bottom: solid 1px $primary-color5;
-}
-
-/* demo styles */
-
-section {
-    margin: 50px;
+    &#payStatus {
+        background-color: yellow;
+    }
 }
 
 /* for custom scrollbar for webkit browser*/

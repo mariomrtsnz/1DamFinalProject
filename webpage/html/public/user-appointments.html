@@ -56,7 +56,7 @@
                                 <th>Fecha Pedido</th>
                                 <th>Fecha Cita</th>
                                 <th>Dentista</th>
-                                <th>Estado Pago</th>
+                                <th>Pagado</th>
                             </tr>
                         </thead>
                     </table>
@@ -65,11 +65,16 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                         <tbody>
                             <tr>
-                                <td>{servicio.nombre}</td>
-                                <td>{DD/MM/YY HH:mm}</td>
-                                <td>{DD/MM/YY HH:mm}</td>
-                                <td>{dentista.nombre}</td>
-                                <td></td>
+                                <td id="serviceName">{servicio.nombre}</td>
+                                <td id="orderDate">{DD/MM/YY HH:mm}</td>
+                                <td id="appointmentDate">{DD/MM/YY HH:mm}</td>
+                                <td id="dentistName">{dentista.nombre}</td>
+                                <td id="payStatus">
+                                    <label class="form-checkbox-label">
+                                        <input name=rap class="form-checkbox-field" type="checkbox" />
+                                        <i class="form-checkbox-button"></i>
+                                    </label>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
