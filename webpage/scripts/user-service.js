@@ -12,7 +12,7 @@ $(document).ready(function () {
 window.onload = function () {
     document.getElementById('exitButton').addEventListener('click', modalToggler);
     document.getElementById('appointmentRequestButton').addEventListener('click', modalToggler);
-    $("#payNow, #payLater, #payPhysically").click(submit);
+    $("#payNow, #payPhysically").click(submit);
 }
 
 function modalToggler() {

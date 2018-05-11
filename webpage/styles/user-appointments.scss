@@ -1,0 +1,214 @@
+$primary-color1: #3c393d;
+$primary-color2: #989690;
+$primary-color3: #2cbfd3;
+$primary-color4: #f5f9f8;
+$primary-color5: #c3975f;
+$invalid: #E91E63;
+@font-face {
+    font-family: Bodoni;
+    src: url('../fonts/BodoniFLF-Roman.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*Search Button Styling*/
+
+$transition: all .5s ease;
+* {
+    box-sizing: border-box;
+}
+
+.cd-main-content {
+    margin-bottom: 4em;
+    min-height: 77vh;
+    margin: 3em 0;
+    .table-container {
+        display: grid;
+        grid-template-areas: "tableHeader" "tableBody";
+        grid-gap: 5em;
+        .table-header {
+            grid-area: tableHeader;
+            display: grid;
+            grid-template-areas:
+        }
+        .table {
+            grid-area: tableBody;
+        }
+    }
+}
+
+.search {
+    width: 100px;
+    height: 100px;
+    margin: 40px auto 0;
+    background-color: $primary-color1;
+    position: relative;
+    overflow: hidden;
+    transition: $transition;
+    &:before {
+        content: '';
+        display: block;
+        width: 3px;
+        height: 100%;
+        position: relative;
+        background-color: $primary-color3;
+        transition: $transition;
+    }
+    &.open {
+        width: 420px;
+        &:before {
+            height: 60px;
+            margin: 20px 0 20px 30px;
+            position: absolute;
+        }
+    }
+}
+
+.search-box {
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    color: $primary-color4;
+    padding: 20px 100px 20px 45px;
+    font-size: 40px;
+    &:focus {
+        outline: none;
+    }
+}
+
+.search-button {
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.search-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border: 3px solid $primary-color3;
+    display: block;
+    position: relative;
+    margin-left: 5px;
+    transition: $transition;
+    &:before {
+        content: '';
+        width: 3px;
+        height: 15px;
+        position: absolute;
+        right: -2px;
+        top: 30px;
+        display: block;
+        background-color: $primary-color3;
+        transform: rotate(-45deg);
+        transition: $transition;
+    }
+    &:after {
+        content: '';
+        width: 3px;
+        height: 15px;
+        position: absolute;
+        right: -12px;
+        top: 40px;
+        display: block;
+        background-color: $primary-color3;
+        transform: rotate(-45deg);
+        transition: $transition;
+    }
+    .open & {
+        margin: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 60px;
+        &:before {
+            transform: rotate(52deg);
+            right: 22px;
+            top: 23px;
+            height: 18px;
+        }
+        &:after {
+            transform: rotate(-230deg);
+            right: 22px;
+            top: 13px;
+            height: 18px;
+        }
+    }
+}
+
+/*Table Styling*/
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tbl-header {
+    background-color: $primary-color5;
+}
+
+.tbl-content {
+    height: 300px;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid $primary-color5;
+}
+
+th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: $primary-color1;
+    border-bottom: solid 1px $primary-color5;
+}
+
+/* demo styles */
+
+section {
+    margin: 50px;
+}
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 1169px) {
+    .cd-main-content {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+}
+
+@media only screen and (min-width: 1170px) {
+    .cd-main-content {
+        margin-left: 5em;
+        margin-right: 5em;
+    }
+}

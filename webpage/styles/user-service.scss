@@ -159,9 +159,6 @@ $invalid: #E91E63;
             #payPhysically {
                 grid-area: payPhysically;
             }
-            #payLater {
-                grid-area: payLater;
-            }
             #price {
                 grid-area: price;
                 display: grid;
@@ -174,8 +171,7 @@ $invalid: #E91E63;
                 }
             }
             #payNow,
-            #payPhysically,
-            #payLater {
+            #payPhysically {
                 font-weight: bolder;
                 font-size: 1.5em;
                 cursor: pointer;
@@ -229,7 +225,7 @@ $invalid: #E91E63;
                 }
             }
             .appointment-content {
-                grid-template-areas: "date price" "calendar calendar" "time time" "timePicker timepicker" "payNow payNow" "PayLater PayLater" "payPhysically payPhysically";
+                grid-template-areas: "date price" "calendar calendar" "time time" "timePicker timepicker" "payNow payNow" "payPhysically payPhysically";
                 grid-template-columns: 2fr 1fr;
                 #payNow,
                 #payPhysically,
@@ -248,7 +244,7 @@ $invalid: #E91E63;
     #appointmentModal {
         form {
             .appointment-content {
-                grid-template-areas: "date price" "calendar payNow" "time payLater" "timePicker payPhysically";
+                grid-template-areas: "date price" "calendar payNow" "time payPhysically" "timePicker timePicker";
                 grid-template-rows: 0.2fr 1fr 0.2fr 1fr;
             }
         }

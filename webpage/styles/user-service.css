@@ -128,8 +128,6 @@
         grid-area: payNow; }
       #appointmentModal form .appointment-content #payPhysically {
         grid-area: payPhysically; }
-      #appointmentModal form .appointment-content #payLater {
-        grid-area: payLater; }
       #appointmentModal form .appointment-content #price {
         grid-area: price;
         display: grid;
@@ -139,8 +137,7 @@
         #appointmentModal form .appointment-content #price #finalPrice {
           grid-area: finalPrice; }
       #appointmentModal form .appointment-content #payNow,
-      #appointmentModal form .appointment-content #payPhysically,
-      #appointmentModal form .appointment-content #payLater {
+      #appointmentModal form .appointment-content #payPhysically {
         font-weight: bolder;
         font-size: 1.5em;
         cursor: pointer;
@@ -157,8 +154,7 @@
         margin: 0 auto;
         padding: 0; }
         #appointmentModal form .appointment-content #payNow:hover,
-        #appointmentModal form .appointment-content #payPhysically:hover,
-        #appointmentModal form .appointment-content #payLater:hover {
+        #appointmentModal form .appointment-content #payPhysically:hover {
           -webkit-box-shadow: inset 0px 0px 5px 0px #3c393d;
           -moz-box-shadow: inset 0px 0px 5px 0px #3c393d;
           box-shadow: inset 0px 0px 5px 0px #3c393d; }
@@ -184,7 +180,7 @@
     #appointmentModal form .appointment-header #title {
       width: 100%; }
     #appointmentModal form .appointment-content {
-      grid-template-areas: "date price" "calendar calendar" "time time" "timePicker timepicker" "payNow payNow" "PayLater PayLater" "payPhysically payPhysically";
+      grid-template-areas: "date price" "calendar calendar" "time time" "timePicker timepicker" "payNow payNow" "payPhysically payPhysically";
       grid-template-columns: 2fr 1fr; }
       #appointmentModal form .appointment-content #payNow,
       #appointmentModal form .appointment-content #payPhysically,
@@ -195,7 +191,7 @@
     margin: 3em 5em; }
 
   #appointmentModal form .appointment-content {
-    grid-template-areas: "date price" "calendar payNow" "time payLater" "timePicker payPhysically";
+    grid-template-areas: "date price" "calendar payNow" "time payPhysically" "timePicker timePicker";
     grid-template-rows: 0.2fr 1fr 0.2fr 1fr; } }
 
 /*# sourceMappingURL=user-service.css.map */
