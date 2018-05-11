@@ -175,6 +175,9 @@ table {
     min-height: 300px;
     overflow-x: auto;
     border: 1px solid $primary-color5;
+    table tbody tr {
+        height: 6vh;
+    }
 }
 
 th {

@@ -139,6 +139,8 @@ table {
   min-height: 300px;
   overflow-x: auto;
   border: 1px solid #c3975f; }
+  .tbl-content table tbody tr {
+    height: 6vh; }
 
 th {
   color: #f5f9f8;
