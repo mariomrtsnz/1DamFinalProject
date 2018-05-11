@@ -6,10 +6,10 @@
     <title>RWD - Admin - Dashboard</title>
     <!--Replace "Admin" with user/admin according to login-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="../images/logo-icon.ico">
-    <link rel="stylesheet" type="text/css" media="screen" href="../styles/calendar.scss" />
-    <script src="../scripts/calendar.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/logo-icon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../styles/calendar.scss" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../scripts/calendar.js"></script>
 </head>
 
 <body>
@@ -21,8 +21,7 @@
                 <div class="day-highlight">
                     You
                     <span class="day-events" id="day-events">had no events for today</span>. &nbsp;
-                    <span tabindex="0" onkeyup="if(event.keyCode != 13) return; this.click();"
-                        class="day-events-link" id="add-event" data-date>Add a new event?</span>
+                    <span tabindex="0" onkeyup="if(event.keyCode != 13) return; this.click();" class="day-events-link" id="add-event" data-date>Add a new event?</span>
                 </div>
                 <div class="day-add-event" id="add-day-event-box" data-active="false">
                     <div class="row">
