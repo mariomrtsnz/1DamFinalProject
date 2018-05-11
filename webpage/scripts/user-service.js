@@ -29,8 +29,8 @@ function submit() {
     } else if (
         timePickerValue < openTime || timePickerValue > closeTime || timePickerValue === ""
     ) {
-        alert('La hora tiene que ser entre las' + openTimeFormatted + ' y ' + closeTimeFormatted);
+        alert('La hora tiene que ser entre las ' + openTime + ' y las ' + closeTime);
     } else {
-        
+
     }
 }
