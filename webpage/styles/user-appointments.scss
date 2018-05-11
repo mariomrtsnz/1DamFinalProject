@@ -190,22 +190,77 @@ td {
     color: $primary-color1;
     border-bottom: solid 1px $primary-color5;
     &#payStatus {
-        background-color: yellow;
+        .form-checkbox-label {
+            position: relative;
+            cursor: pointer;
+            padding-left: 1.5rem;
+            display: block;
+            input {
+                opacity: 0.0001; // position: absolute;
+            }
+            .form-checkbox-field:checked~.form-checkbox-button {
+                color: #337ab7;
+            }
+            .form-checkbox-button {
+                position: absolute;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                left: 14em;
+                top: 0;
+                width: 2rem;
+                height: 2rem;
+                border: 0.125rem solid currentColor;
+                border-radius: 0.0625rem;
+                transition: color 0.28s ease;
+                will-change: color;
+            }
+            .form-checkbox-field:checked~.form-checkbox-button::before {
+                height: 3.2rem;
+                transition-delay: 0.28s;
+            }
+            .form-checkbox-field:checked~.form-checkbox-button::after,
+            .form-checkbox-field:checked~.form-checkbox-button::before {
+                opacity: 1;
+                transition: height 0.28s ease;
+                transition-delay: 0s;
+            }
+            .form-checkbox-button::before {
+                top: 1.65rem;
+                left: 1.08rem;
+                transform: rotate(-135deg);
+                box-shadow: 0 0 0 0.0625rem #fff;
+            }
+            .form-checkbox-button::before,
+            .form-checkbox-button::after {
+                position: absolute;
+                height: 0;
+                width: 0.2rem;
+                background-color: #337ab7;
+                display: block;
+                transform-origin: left top;
+                border-radius: 0.25rem;
+                content: "";
+                transition: opacity 0.28s ease, height 0s linear 0.28s;
+                opacity: 0;
+                will-change: opacity, height;
+            }
+            .form-checkbox-field:checked~.form-checkbox-button::after {
+                height: 1.5rem;
+            }
+            .form-checkbox-field:checked~.form-checkbox-button::after,
+            .form-checkbox-field:checked~.form-checkbox-button::before {
+                opacity: 1;
+                transition: height 0.28s ease;
+            }
+            .form-checkbox-button::after {
+                top: 0.5rem;
+                left: 0;
+                transform: rotate(-45deg);
+            }
+        }
     }
-}
-
-/* for custom scrollbar for webkit browser*/
-
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 @media only screen and (max-width: 1169px) {

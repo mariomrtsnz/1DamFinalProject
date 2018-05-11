@@ -13,7 +13,7 @@ function loadSignUp() {
                 this.responseText;
         }
     };
-    xhttp.open("GET", "../html/signup.html", true);
+    xhttp.open("GET", "../html/public/signup.html", true);
     xhttp.send();
 }
 
@@ -25,7 +25,7 @@ function loadLogIn() {
                 this.responseText;
         }
     };
-    xhttp.open("GET", "../html/login.html", true);
+    xhttp.open("GET", "../html/public/login.html", true);
     xhttp.send();
 }
 

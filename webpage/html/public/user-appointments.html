@@ -64,6 +64,7 @@
                 <div class="tbl-content">
                     <table cellpadding="0" cellspacing="0" border="0">
                         <tbody>
+                            <!--Aquí irá el th:each para cada cita del set de Citas del Usuario logueado.-->
                             <tr>
                                 <td id="serviceName">{servicio.nombre}</td>
                                 <td id="orderDate">{DD/MM/YY HH:mm}</td>
@@ -71,7 +72,7 @@
                                 <td id="dentistName">{dentista.nombre}</td>
                                 <td id="payStatus">
                                     <label class="form-checkbox-label">
-                                        <input name=rap class="form-checkbox-field" type="checkbox" />
+                                        <input name=rap class="form-checkbox-field" type="checkbox"/>
                                         <i class="form-checkbox-button"></i>
                                     </label>
                                 </td>
