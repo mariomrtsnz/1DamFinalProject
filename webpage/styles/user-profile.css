@@ -1,0 +1,30 @@
+@font-face {
+  font-family: Bodoni;
+  src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal; }
+.cd-main-content {
+  margin-top: 3em;
+  display: grid;
+  grid-template-areas: "profileForm profilePicture";
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: flex-start; }
+  .cd-main-content .profileForm-container {
+    justify-self: flex-end;
+    display: grid;
+    grid-template-areas: "idEmpleado" "idEmpleadoInput" "dni" "dniInput" "name" "nameInput" "phone" "phoneInput" "email" "emailInput";
+    width: 80%;
+    height: 80vh;
+    background-color: #989690; }
+  .cd-main-content .profilePicture {
+    justify-self: flex-start;
+    background-color: #c3975f;
+    width: 30%;
+    height: 30vh; }
+
+@media only screen and (max-width: 1169px) {
+  .cd-main-content .profileForm-container {
+    width: 95%; } }
+
+/*# sourceMappingURL=user-profile.css.map */
