@@ -1,28 +1,46 @@
 package com.salesianostriana.mario.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 public class Appointment {
 	// private Date appointmentDate;
+	@ManyToOne
 	private Client client;
+	@ManyToOne
 	private Employee employee;
-	// private Time endTime;
+	private LocalDateTime endTime;
 	@Id
 	@GeneratedValue
 	private Long id;
 	private boolean isPaid;
-	// private Date orderDate;
+	private LocalDate orderDate;
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
 	private Service service;
+	private LocalDateTime startTime;
 
-	// private Time startTime;
+	public Appointment() {
 
-	public Appointment(Client client, Employee employee, boolean isPaid, Service service) {
+	}
+
+	public Appointment(Client client, Employee employee, LocalDateTime endTime, boolean isPaid, LocalDate orderDate,
+			Service service, LocalDateTime startTime) {
 		super();
 		this.client = client;
 		this.employee = employee;
+		this.endTime = endTime;
 		this.isPaid = isPaid;
+		this.orderDate = orderDate;
 		this.service = service;
+		this.startTime = startTime;
 	}
 
 	public Client getClient() {
@@ -41,6 +59,14 @@ public class Appointment {
 		this.employee = employee;
 	}
 
+	public LocalDateTime getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(LocalDateTime endTime) {
+		this.endTime = endTime;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -57,6 +83,14 @@ public class Appointment {
 		this.isPaid = isPaid;
 	}
 
+	public LocalDate getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(LocalDate orderDate) {
+		this.orderDate = orderDate;
+	}
+
 	public Service getService() {
 		return service;
 	}
@@ -65,10 +99,19 @@ public class Appointment {
 		this.service = service;
 	}
 
+	public LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
+	}
+
 	@Override
 	public String toString() {
-		return "Appointment [client=" + client + ", employee=" + employee + ", id=" + id + ", isPaid=" + isPaid
-				+ ", service=" + service + "]";
+		return "Appointment [client=" + client + ", employee=" + employee + ", endTime=" + endTime + ", id=" + id
+				+ ", isPaid=" + isPaid + ", orderDate=" + orderDate + ", service=" + service + ", startTime="
+				+ startTime + "]";
 	}
 
 }

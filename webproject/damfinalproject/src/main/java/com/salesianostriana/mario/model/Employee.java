@@ -1,13 +1,15 @@
 package com.salesianostriana.mario.model;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 public class Employee {
-	private List[] appointments;
+	@OneToMany(mappedBy = ("employee"), fetch = FetchType.LAZY)
+	private Set<Appointment> appointments;
 	private String dni;
 	private String email;
 	private double grossAnualSalary;
@@ -20,7 +22,7 @@ public class Employee {
 	private String position;
 	// private image profilePic;
 
-	public Employee(List[] appointments, String dni, String email, double grossAnualSalary, String name,
+	public Employee(Set<Appointment> appointments, String dni, String email, double grossAnualSalary, String name,
 			String password, String phone, String position) {
 		super();
 		this.appointments = appointments;
@@ -33,11 +35,11 @@ public class Employee {
 		this.position = position;
 	}
 
-	public List[] getAppointments() {
+	public Set<Appointment> getAppointments() {
 		return appointments;
 	}
 
-	public void setAppointments(List[] appointments) {
+	public void setAppointments(Set<Appointment> appointments) {
 		this.appointments = appointments;
 	}
 
@@ -107,9 +109,9 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [appointments=" + Arrays.toString(appointments) + ", dni=" + dni + ", email=" + email
-				+ ", grossAnualSalary=" + grossAnualSalary + ", id=" + id + ", Name=" + Name + ", password=" + password
-				+ ", phone=" + phone + ", position=" + position + "]";
+		return "Employee [appointments=" + appointments + ", dni=" + dni + ", email=" + email + ", grossAnualSalary="
+				+ grossAnualSalary + ", id=" + id + ", Name=" + Name + ", password=" + password + ", phone=" + phone
+				+ ", position=" + position + "]";
 	}
 
 }

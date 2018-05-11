@@ -1,13 +1,14 @@
 package com.salesianostriana.mario.model;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 public class Client {
-	private List[] appointments;
 	private String dni;
 	private String email;
 	private boolean hasAppointment;
@@ -20,9 +21,11 @@ public class Client {
 	private String password;
 	private String phone;
 	// private image profilePic;
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	Set<Appointment> appointments = new HashSet<Appointment>();
 
-	public Client(List[] appointments, String dni, String email, boolean hasAppointment, boolean hasDuePayment,
-			boolean isHistorical, String name, String password, String phone) {
+	public Client(Set<Appointment> appointments, String dni, String email, boolean hasAppointment,
+			boolean hasDuePayment, boolean isHistorical, String name, String password, String phone) {
 		super();
 		this.appointments = appointments;
 		this.dni = dni;
@@ -35,11 +38,11 @@ public class Client {
 		this.phone = phone;
 	}
 
-	public List[] getAppointments() {
+	public Set<Appointment> getAppointments() {
 		return appointments;
 	}
 
-	public void setAppointments(List[] appointments) {
+	public void setAppointments(Set<Appointment> appointments) {
 		this.appointments = appointments;
 	}
 
@@ -117,10 +120,9 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [appointments=" + Arrays.toString(appointments) + ", dni=" + dni + ", email=" + email
-				+ ", hasAppointment=" + hasAppointment + ", hasDuePayment=" + hasDuePayment + ", id=" + id
-				+ ", isHistorical=" + isHistorical + ", name=" + name + ", password=" + password + ", phone=" + phone
-				+ "]";
+		return "Client [dni=" + dni + ", email=" + email + ", hasAppointment=" + hasAppointment + ", hasDuePayment="
+				+ hasDuePayment + ", id=" + id + ", isHistorical=" + isHistorical + ", name=" + name + ", password="
+				+ password + ", phone=" + phone + ", appointments=" + appointments + "]";
 	}
 
 }
