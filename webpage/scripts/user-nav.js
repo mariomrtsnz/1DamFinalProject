@@ -25,13 +25,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    //open search form
-    $('.cd-search-trigger').on('click', function (event) {
-        event.preventDefault();
-        toggleSearch();
-        closeNav();
-    });
-
     //close lateral menu on mobile 
     $('.cd-overlay').on('swiperight', function () {
         if ($('.cd-primary-nav').hasClass('nav-is-visible')) {
@@ -47,7 +40,6 @@ jQuery(document).ready(function ($) {
     });
     $('.cd-overlay').on('click', function () {
         closeNav();
-        toggleSearch('close')
         $('.cd-overlay').removeClass('is-visible');
     });
 
@@ -69,7 +61,6 @@ jQuery(document).ready(function ($) {
             selected.removeClass('selected').next('ul').addClass('is-hidden').end().parent('.has-children').parent('ul').removeClass('moves-out');
             $('.cd-overlay').removeClass('is-visible');
         }
-        toggleSearch('close');
     });
 
     //submenu items - go back link
@@ -87,22 +78,6 @@ jQuery(document).ready(function ($) {
         $('.cd-main-content').removeClass('nav-is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
             $('body').removeClass('overflow-hidden');
         });
-    }
-
-    function toggleSearch(type) {
-        if (type == "close") {
-            //close serach 
-            $('.cd-search').removeClass('is-visible');
-            $('.cd-search-trigger').removeClass('search-is-visible');
-            $('.cd-overlay').removeClass('search-is-visible');
-        } else {
-            //toggle search visibility
-            $('.cd-search').toggleClass('is-visible');
-            $('.cd-search-trigger').toggleClass('search-is-visible');
-            $('.cd-overlay').toggleClass('search-is-visible');
-            if ($(window).width() > MqL && $('.cd-search').hasClass('is-visible')) $('.cd-search').find('input[type="search"]').focus();
-            ($('.cd-search').hasClass('is-visible')) ? $('.cd-overlay').addClass('is-visible'): $('.cd-overlay').removeClass('is-visible');
-        }
     }
 
     function checkWindowWidth() {

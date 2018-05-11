@@ -25,12 +25,14 @@ $transition: all .5s ease;
     .table-container {
         display: grid;
         grid-template-areas: "tableHeader" "tableBody";
-        grid-gap: 5em;
+        grid-gap: 2em;
         .table-header {
             background-color: $primary-color3;
             grid-area: tableHeader;
             display: grid;
             grid-template-areas: "title totalItems search";
+            grid-template-columns: 0.5fr 0.5fr 2fr;
+            align-items: center;
             .table-title {
                 grid-area: title;
             }
@@ -39,6 +41,7 @@ $transition: all .5s ease;
             }
             .search {
                 grid-area: search;
+                float: right;
             }
         }
         .table {
@@ -92,7 +95,7 @@ $transition: all .5s ease;
     display: block;
     position: absolute;
     right: 25px;
-    top: -19px;
+    top: -17px;
     padding: 20px;
     cursor: pointer;
 }
@@ -131,19 +134,19 @@ $transition: all .5s ease;
     }
     .open & {
         margin: 0;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 60px;
         &:before {
             transform: rotate(52deg);
-            right: 15px;
-            top: 20px;
+            right: 14px;
+            top: 15px;
             height: 18px;
         }
         &:after {
             transform: rotate(-230deg);
-            right: 15px;
-            top: 10px;
+            right: 14px;
+            top: 5px;
             height: 18px;
         }
     }

@@ -23,11 +23,6 @@
 
         <ul class="cd-header-buttons">
             <li>
-                <a class="cd-search-trigger" href="#cd-search">
-                    <span></span>
-                </a>
-            </li>
-            <li>
                 <a class="cd-nav-trigger" href="#cd-primary-nav">
                     <span></span>
                 </a>
@@ -46,7 +41,7 @@
                     Total: {numElementosEnLista}
                 </div>
                 <div class="search">
-                    <input type="search" class="search-box" placeholder="Buscar..."/>
+                    <input type="search" class="search-box" placeholder="Buscar..." />
                     <span class="search-button">
                         <span class="search-icon"></span>
                     </span>
@@ -57,11 +52,11 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                             <tr>
-                                <th>Code</th>
-                                <th>Company</th>
-                                <th>Price</th>
-                                <th>Change</th>
-                                <th>Change %</th>
+                                <th>Servicio</th>
+                                <th>Fecha Pedido</th>
+                                <th>Fecha Cita</th>
+                                <th>Dentista</th>
+                                <th>Estado Pago</th>
                             </tr>
                         </thead>
                     </table>
@@ -70,11 +65,11 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                         <tbody>
                             <tr>
-                                <td>AAC</td>
-                                <td>AUSTRALIAN COMPANY </td>
-                                <td>$1.38</td>
-                                <td>+2.01</td>
-                                <td>-0.36%</td>
+                                <td>{servicio.nombre}</td>
+                                <td>{DD/MM/YY HH:mm}</td>
+                                <td>{DD/MM/YY HH:mm}</td>
+                                <td>{dentista.nombre}</td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -181,12 +176,6 @@
         <!-- primary-nav -->
     </nav>
     <!-- cd-nav -->
-
-    <div id="cd-search" class="cd-search">
-        <form>
-            <input type="search" placeholder="Buscar...">
-        </form>
-    </div>
 </body>
 
 </html>
