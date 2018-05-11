@@ -1,4 +1,4 @@
-$(document).ready = function () {
+$(document).ready(function () {
     $('.search-button').click(function () {
         $(this).parent().toggleClass('open');
     });
@@ -8,4 +8,4 @@ $(document).ready = function () {
             'padding-right': scrollWidth
         });
     }).resize();
-}
+});

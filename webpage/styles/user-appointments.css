@@ -1,66 +1,175 @@
-/*
-Error: Invalid CSS after "...template-areas:": expected expression (e.g. 1px, bold), was "}"
-        on line 33 of ./user-appointments.scss
+@font-face {
+  font-family: Bodoni;
+  src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal; }
+/*Search Button Styling*/
+* {
+  box-sizing: border-box; }
 
-28:         grid-gap: 5em;
-29:         .table-header {
-30:             grid-area: tableHeader;
-31:             display: grid;
-32:             grid-template-areas:
-33:         }
-34:         .table {
-35:             grid-area: tableBody;
-36:         }
-37:     }
-38: }
+.cd-main-content {
+  margin-bottom: 4em;
+  min-height: 77vh;
+  margin: 3em 0; }
+  .cd-main-content .table-container {
+    display: grid;
+    grid-template-areas: "tableHeader" "tableBody";
+    grid-gap: 5em; }
+    .cd-main-content .table-container .table-header {
+      background-color: #2cbfd3;
+      grid-area: tableHeader;
+      display: grid;
+      grid-template-areas: "title totalItems search"; }
+      .cd-main-content .table-container .table-header .table-title {
+        grid-area: title; }
+      .cd-main-content .table-container .table-header .table-totalItems {
+        grid-area: totalItems; }
+      .cd-main-content .table-container .table-header .search {
+        grid-area: search; }
+    .cd-main-content .table-container .table {
+      grid-area: tableBody; }
 
-Backtrace:
-./user-appointments.scss:33
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1278:in `expected'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/script/lexer.rb:231:in `expected!'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/script/parser.rb:724:in `assert_expr'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/script/parser.rb:68:in `parse'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1134:in `sass_script'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:988:in `value!'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:796:in `block in try_declaration'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:1254:in `rethrow'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:809:in `try_declaration'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:732:in `declaration_or_ruleset'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:697:in `block_child'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:689:in `block_contents'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:678:in `block'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:747:in `declaration_or_ruleset'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:697:in `block_child'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:689:in `block_contents'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:678:in `block'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:747:in `declaration_or_ruleset'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:697:in `block_child'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:689:in `block_contents'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:678:in `block'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:670:in `ruleset'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:696:in `block_child'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:689:in `block_contents'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:137:in `stylesheet'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/scss/parser.rb:41:in `parse'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/engine.rb:414:in `_to_tree'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/engine.rb:307:in `render_with_sourcemap'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.5.6/lib/sass/plugin/compiler.rb:320:in `block in watch'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"...template-areas:\": expected expression (e.g. 1px, bold), was \"}\"\A         on line 33 of ./user-appointments.scss\A \A 28:         grid-gap: 5em;\A 29:         .table-header {\A 30:             grid-area: tableHeader;\A 31:             display: grid;\A 32:             grid-template-areas:\A 33:         }\A 34:         .table {\A 35:             grid-area: tableBody;\A 36:         }\A 37:     }\A 38: }"; }
+.search {
+  width: 50px;
+  height: 50px;
+  background-color: #3c393d;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease; }
+  .search:before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 100%;
+    position: relative;
+    background-color: #2cbfd3;
+    transition: all 0.5s ease; }
+  .search.open {
+    width: 250px; }
+    .search.open:before {
+      height: 25px;
+      margin: 15px 0 20px 30px;
+      position: absolute; }
+
+.search-box {
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  color: #f5f9f8;
+  padding: 20px 100px 20px 45px; }
+  .search-box:focus {
+    outline: none; }
+
+.search-button {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  right: 25px;
+  top: -19px;
+  padding: 20px;
+  cursor: pointer; }
+
+.search-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 40px;
+  border: 3px solid #2cbfd3;
+  display: block;
+  position: relative;
+  transition: all 0.5s ease; }
+  .search-icon:before {
+    content: '';
+    width: 3px;
+    height: 15px;
+    position: absolute;
+    right: -2px;
+    top: 22px;
+    display: block;
+    background-color: #2cbfd3;
+    transform: rotate(-45deg);
+    transition: all 0.5s ease; }
+  .search-icon:after {
+    content: '';
+    width: 3px;
+    height: 15px;
+    position: absolute;
+    right: -12px;
+    top: 32px;
+    display: block;
+    background-color: #2cbfd3;
+    transform: rotate(-45deg);
+    transition: all 0.5s ease; }
+  .open .search-icon {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 60px; }
+    .open .search-icon:before {
+      transform: rotate(52deg);
+      right: 15px;
+      top: 20px;
+      height: 18px; }
+    .open .search-icon:after {
+      transform: rotate(-230deg);
+      right: 15px;
+      top: 10px;
+      height: 18px; }
+
+/*Table Styling*/
+table {
+  width: 100%;
+  table-layout: fixed; }
+
+.tbl-header {
+  background-color: #c3975f; }
+
+.tbl-content {
+  height: 300px;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid #c3975f; }
+
+th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase; }
+
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #3c393d;
+  border-bottom: solid 1px #c3975f; }
+
+/* demo styles */
+section {
+  margin: 50px; }
+
+/* for custom scrollbar for webkit browser*/
+::-webkit-scrollbar {
+  width: 6px; }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+@media only screen and (max-width: 1169px) {
+  .cd-main-content {
+    margin-left: 2em;
+    margin-right: 2em; } }
+@media only screen and (min-width: 1170px) {
+  .cd-main-content {
+    margin-left: 5em;
+    margin-right: 5em; } }
+
+/*# sourceMappingURL=user-appointments.css.map */
