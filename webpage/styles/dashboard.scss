@@ -864,3 +864,11 @@ body {
     display: none;
   }
 }
+
+@media (max-width: 420px) {
+  .cd-main-content {
+    .table-container {
+      margin: 5em 0;
+    }
+  }
+}

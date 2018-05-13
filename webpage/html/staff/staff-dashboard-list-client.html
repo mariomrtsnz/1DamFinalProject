@@ -116,6 +116,14 @@
                 <div class="table-totalItems">
                     Total: {numElementosEnLista}
                 </div>
+                <div class="table-buttons">
+                    <div class="add-element">
+                        <button>Añadir Cliente</button>
+                    </div>
+                    <div class="table-filter">
+                        <button>Clientes con Pago Pendiente</button>
+                    </div>
+                </div>
                 <div class="search">
                     <input type="search" class="search-box" placeholder="Buscar..." />
                     <span class="search-button">
@@ -128,11 +136,12 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                             <tr>
-                                <th>Servicio</th>
-                                <th>Fecha Pedido</th>
-                                <th>Fecha Cita</th>
-                                <th>Dentista</th>
-                                <th>Pagado</th>
+                                <th>IdCliente</th>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Fecha de Registro</th>
+                                <th>Cita Pendiente</th>
                             </tr>
                         </thead>
                     </table>
@@ -142,10 +151,11 @@
                         <tbody>
                             <!--Aquí irá el th:each para cada cliente del set de Clientes de la clase Empresa.-->
                             <tr>
-                                <td id="serviceName">{servicio.nombre}</td>
-                                <td id="orderDate">{DD/MM/YY HH:mm}</td>
-                                <td id="appointmentDate">{DD/MM/YY HH:mm}</td>
-                                <td id="dentistName">{dentista.nombre}</td>
+                                <td id="serviceName">{cliente.id}</td>
+                                <td id="orderDate">{cliente.name}</td>
+                                <td id="appointmentDate">{cliente.phone}</td>
+                                <td id="dentistName">{cliente.email}</td>
+                                <td>{cliente.registerDate}</td>
                                 <td id="payStatus">
                                     <label class="form-checkbox-label">
                                         <input name=payStatus class="form-checkbox-field" type="checkbox" />
