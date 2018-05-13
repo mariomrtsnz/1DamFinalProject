@@ -31,11 +31,67 @@
     </header>
 
     <main class="cd-main-content">
-        <div class="profileForm-container">
-
-        </div>
+        <form class="profileForm-container" name="profileForm">
+            <div class="inputTitle">
+                DNI
+            </div>
+            <div class="group" id="dniInput">
+                <input type="text" required="required" value="{user.dni}" />
+                <!--Change Value dynamically using User value for that input-->
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>{user.dni}</label>
+            </div>
+            <div class="inputTitle">
+                Nombre
+            </div>
+            <div class="group" id="nameInput">
+                <input type="text" required="required" value="{user.name}" />
+                <!--Change Value dynamically using User value for that input-->
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>{user.name}</label>
+            </div>
+            <div class="inputTitle">
+                Teléfono
+            </div>
+            <div class="group" id="phoneInput">
+                <input type="text" required="required" value="{user.phone}" />
+                <!--Change Value dynamically using User value for that input-->
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>{user.phone}</label>
+                <!--Replace with ActualValue-->
+            </div>
+            <div class="inputTitle">
+                Email
+            </div>
+            <div class="group" id="dniInput">
+                <input type="text" required="required" value="{user.email}" />
+                <!--Change Value dynamically using User value for that input-->
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>{user.email}</label>
+            </div>
+            <div class="inputTitle">
+                Password
+            </div>
+            <div class="group" id="dniInput">
+                <input type="password" required="required" value="Hola" />
+                <!--Change Value dynamically using User value for that input-->
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Password</label>
+            </div>
+            <div class="btn-box" id="submit">
+                <button class="btn btn-submit" type="submit">Guardar Cambios</button>
+            </div>
+        </form>
         <div class="profilePicture">
             <img src="" alt="">
+            <div class="employeePosition">{employee.position}</div>
+            <div class="grossAnualSalaryTitle">Salario Anual Bruto:</div>
+            <div class="grossAnualSalaryValue">{employee.grossAnualSalary}</div>
         </div>
         <div class="cd-overlay"></div>
     </main>

@@ -64,18 +64,6 @@ input {
     font-size: 1.6rem;
 }
 
-input[type="search"]::-ms-clear {
-    /* removes close icon - IE */
-    display: none;
-}
-
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-    display: none;
-}
-
 /* -------------------------------- 
   Main components 
   -------------------------------- */
@@ -207,7 +195,6 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 }
 
-.cd-search-trigger,
 .cd-nav-trigger {
     position: relative;
     display: block;
@@ -218,128 +205,6 @@ input[type="search"]::-webkit-search-results-decoration {
     /* hide text */
     color: transparent;
     z-index: 3;
-}
-
-.cd-search-trigger::before,
-.cd-search-trigger::after {
-    /* search icon */
-    content: '';
-    position: absolute;
-    -webkit-transition: opacity 0.3s;
-    -moz-transition: opacity 0.3s;
-    transition: opacity 0.3s;
-    /* Force Hardware Acceleration in WebKit */
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-.cd-search-trigger::before {
-    /* lens */
-    top: 11px;
-    left: 11px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 3px solid $primary-color4;
-}
-
-.cd-search-trigger::after {
-    /* handle */
-    height: 3px;
-    width: 8px;
-    background: $primary-color4;
-    bottom: 14px;
-    right: 11px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.cd-search-trigger span {
-    /* container for the X icon */
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-
-.cd-search-trigger span::before,
-.cd-search-trigger span::after {
-    /* close icon */
-    content: '';
-    position: absolute;
-    display: inline-block;
-    height: 3px;
-    width: 22px;
-    top: 50%;
-    margin-top: -2px;
-    left: 50%;
-    margin-left: -11px;
-    background: $primary-color4;
-    opacity: 0;
-    /* Force Hardware Acceleration in WebKit */
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-    -moz-transition: opacity 0.3s, -moz-transform 0.3s;
-    transition: opacity 0.3s, transform 0.3s;
-}
-
-.cd-search-trigger span::before {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.cd-search-trigger span::after {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-
-.cd-search-trigger.search-is-visible::before,
-.cd-search-trigger.search-is-visible::after {
-    /* hide search icon */
-    opacity: 0;
-}
-
-.cd-search-trigger.search-is-visible span::before,
-.cd-search-trigger.search-is-visible span::after {
-    /* show close icon */
-    opacity: 1;
-}
-
-.cd-search-trigger.search-is-visible span::before {
-    -webkit-transform: rotate(135deg);
-    -moz-transform: rotate(135deg);
-    -ms-transform: rotate(135deg);
-    -o-transform: rotate(135deg);
-    transform: rotate(135deg);
-}
-
-.cd-search-trigger.search-is-visible span::after {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
 }
 
 .cd-nav-trigger span,
@@ -1015,84 +880,6 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 }
 
-.cd-search {
-    position: absolute;
-    height: 50px;
-    width: 100%;
-    top: 48px;
-    left: 0;
-    z-index: 3;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
-    -moz-transition: opacity .3s 0s, visibility 0s .3s;
-    transition: opacity .3s 0s, visibility 0s .3s;
-}
-
-.cd-search form {
-    height: 100%;
-    width: 100%;
-}
-
-.cd-search input {
-    border-radius: 0;
-    border: none;
-    background: #ffffff;
-    height: 100%;
-    width: 100%;
-    padding: 0 5%;
-    box-shadow: inset 0 1px 0 #e2e3df, 0 3px 6px rgba(0, 0, 0, 0.05);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-}
-
-.cd-search input::-webkit-input-placeholder {
-    color: #c9cbc4;
-}
-
-.cd-search input::-moz-placeholder {
-    color: #c9cbc4;
-}
-
-.cd-search input:-moz-placeholder {
-    color: #c9cbc4;
-}
-
-.cd-search input:-ms-input-placeholder {
-    color: #c9cbc4;
-}
-
-.cd-search input:focus {
-    outline: none;
-}
-
-.cd-search.is-visible {
-    opacity: 1;
-    visibility: visible;
-    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
-    -moz-transition: opacity .3s 0s, visibility 0s 0s;
-    transition: opacity .3s 0s, visibility 0s 0s;
-}
-
-.nav-is-fixed .cd-search {
-    position: fixed;
-}
-
-@media only screen and (min-width: 1170px) {
-    .cd-search {
-        height: 120px;
-        top: 10vh;
-    }
-    .cd-search input {
-        padding: 0 2em;
-        font-size: 3.2rem;
-        font-weight: 300;
-    }
-}
-
 .cd-overlay {
     /* shadow layer visible when navigation is active */
     position: fixed;
@@ -1145,6 +932,7 @@ input[type="search"]::-webkit-search-results-decoration {
     }
     #cd-primary-nav {
         display: initial;
+        overflow-x: hidden;
     }
     .cd-nav-icons {
         padding-left: 0;
@@ -1170,13 +958,6 @@ input[type="search"]::-webkit-search-results-decoration {
     overflow: visible;
     visibility: visible;
     z-index: 2;
-}
-
-.no-js .cd-search {
-    position: relative;
-    top: 0;
-    opacity: 1;
-    visibility: visible;
 }
 
 @media only screen and (min-width: 1170px) {

@@ -14,36 +14,210 @@ $invalid: #E91E63;
 .cd-main-content {
     margin-top: 3em;
     display: grid;
-    grid-template-areas: "profileForm profilePicture";
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    align-items: flex-start;
     .profileForm-container {
+        grid-area: profileForm;
         justify-self: flex-end;
         display: grid;
-        grid-template-areas: "idEmpleado" "idEmpleadoInput" "dni" "dniInput" "name" "nameInput" "phone" "phoneInput" "email" "emailInput";
-        width: 80%;
-        height: 80vh;
-        background-color: $primary-color2;
+        grid-template-areas: "dni" "dniInput" "name" "nameInput" "phone" "phoneInput" "email" "emailInput" "password" "passwordInput" "submit";
+        border: $primary-color3 3px solid;
+        div:nth-child(even) {
+            margin-bottom: 20px;
+        }
     }
     .profilePicture {
+        grid-area: profilePicture;
+        display: grid;
+        grid-template-areas: "profilePic" "employeePosition" "grossAnualSalaryTitle" "grossAnualSalaryValue";
+        grid-template-rows: 2fr 0fr 0fr 0fr;
+        justify-content: center;
         justify-self: flex-start;
         background-color: $primary-color5;
-        width: 30%;
-        height: 30vh;
+        width: 35%;
+        min-height: 30vh;
+        img {
+            height: 100%;
+            width: 100%;
+            background-color: $primary-color3;
+        }
+        .employeePosition {
+            grid-area: employeePosition;
+        }
+        .grossAnualSalaryTitle {
+            grid-area: grossAnualSalaryTitle;
+        }
+        .grossAnualSalaryValue {
+            grid-area: grossAnualSalaryValue;
+        }
+    }
+}
+
+/*MATERIAL FORM STYLING*/
+
+// VARIABLES // ============================== //
+$bg-color: #424242;
+$hl-color: #2196F3;
+$muted-color: mix(white,
+$bg-color,
+70%);
+$trans-time: 300ms;
+// FORM // ============================== //
+form {
+    h1 {
+        font-size: 3em;
+        font-weight: 300;
+        text-align: center;
+        color: $hl-color;
+    }
+    h5 {
+        text-align: center;
+        text-transform: uppercase;
+        color: $muted-color;
+    }
+    hr.sep {
+        background: $hl-color;
+        box-shadow: none;
+        border: none;
+        height: 2px;
+        width: 25%;
+        margin: 0px auto 45px auto;
+    }
+}
+
+.group {
+    position: relative;
+    margin-top: 20px;
+}
+
+// INPUTS // ============================== //
+textarea {
+    resize: none;
+}
+
+input,
+textarea {
+    background: none;
+    color: $muted-color;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $muted-color;
+    &:focus {
+        outline: none;
+    }
+    &:focus~label,
+    &:valid~label {
+        top: -14px;
+        font-size: 12px;
+        color: $hl-color;
+    }
+}
+
+input[type="password"] {
+    letter-spacing: 0.3em;
+}
+
+label {
+    color: $muted-color;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: $trans-time ease all;
+}
+
+.bar {
+    position: relative;
+    display: block;
+    &:before {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 0px;
+        position: absolute;
+        background: $hl-color;
+        transition: $trans-time ease all;
+        left: 0%;
+    }
+}
+
+// BUTTONS // ============================== //
+.btn {
+    background: #fff;
+    color: mix(black, $muted-color, 25%);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    &:hover {
+        color: mix(black, $muted-color, 30%);
+        box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+    }
+    &.btn-link {
+        background: $hl-color;
+        color: mix(white, $hl-color, 80%);
+        &:hover {
+            background: darken($hl-color, 5%);
+            color: mix(white, $hl-color, 85%);
+        }
+    }
+    &.btn-submit {
+        background: $hl-color;
+        color: mix(white, $hl-color, 70%);
+        &:hover {
+            background: darken($hl-color, 5%);
+            color: mix(white, $hl-color, 85%);
+        }
+    }
+    &.btn-cancel {
+        background: #eee;
+        &:hover {
+            background: darken(#eee, 5%);
+            color: mix(black, $muted-color, 30%);
+        }
+    }
+}
+
+.btn-box {
+    justify-self: center;
+    &#submit {
+        grid-area: submit;
+        margin-bottom: 20px;
     }
 }
 
 @media only screen and (max-width: 1169px) {
     .cd-main-content {
+        grid-template-areas: "profilePicture" "profileForm";
         .profileForm-container {
-            width: 95%;
+            width: 98%;
+            justify-self: center;
+            justify-items: center;
+        }
+        .profilePicture {
+            justify-self: center;
+            justify-items: center;
         }
     }
 }
 
 @media only screen and (min-width: 1170px) {
     .cd-main-content {
-        .profileForm-container {}
+        grid-template-areas: "profileForm profilePicture";
+        grid-template-columns: 2fr 1fr;
+        justify-items: center;
+        align-items: flex-start;
+        .profileForm-container {
+            width: 60%;
+            padding-left: 1em;
+        }
     }
 }
