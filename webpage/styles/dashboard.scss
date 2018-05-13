@@ -79,6 +79,13 @@ input {
   fill: #fff
 }
 
+.cd-main-content {
+  margin: 0;
+  .table-container {
+    margin: 5em 5em;
+  }
+}
+
 .cd-main-content .content-wrapper {
   background-color: #f5f9f8;
   padding: 45px 5% 3em
