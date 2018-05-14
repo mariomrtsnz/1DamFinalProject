@@ -1,49 +1,54 @@
 package com.salesianostriana.mario.model;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Client {
-	private String dni;
-	private String email;
-	private boolean hasAppointment;
-	private boolean hasDuePayment;
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	private String dni;
+	private String email;
+	private boolean hasDuePayment;
 	private boolean isHistorical;
 	private String name;
 	private String password;
 	private String phone;
-	// private image profilePic;
+	private String profilePic;
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	Set<Appointment> appointments = new HashSet<Appointment>();
+	private LocalDateTime registerDate;
 
-	public Client(Set<Appointment> appointments, String dni, String email, boolean hasAppointment,
-			boolean hasDuePayment, boolean isHistorical, String name, String password, String phone) {
+	public Client(String dni, String email, boolean hasDuePayment, boolean isHistorical, String name, String password,
+			String phone, String profilePic, Set<Appointment> appointments, LocalDateTime registerDate) {
 		super();
-		this.appointments = appointments;
 		this.dni = dni;
 		this.email = email;
-		this.hasAppointment = hasAppointment;
 		this.hasDuePayment = hasDuePayment;
 		this.isHistorical = isHistorical;
 		this.name = name;
 		this.password = password;
 		this.phone = phone;
-	}
-
-	public Set<Appointment> getAppointments() {
-		return appointments;
-	}
-
-	public void setAppointments(Set<Appointment> appointments) {
+		this.profilePic = profilePic;
 		this.appointments = appointments;
+		this.registerDate = registerDate;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getDni() {
@@ -62,28 +67,12 @@ public class Client {
 		this.email = email;
 	}
 
-	public boolean isHasAppointment() {
-		return hasAppointment;
-	}
-
-	public void setHasAppointment(boolean hasAppointment) {
-		this.hasAppointment = hasAppointment;
-	}
-
 	public boolean isHasDuePayment() {
 		return hasDuePayment;
 	}
 
 	public void setHasDuePayment(boolean hasDuePayment) {
 		this.hasDuePayment = hasDuePayment;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public boolean isHistorical() {
@@ -118,11 +107,36 @@ public class Client {
 		this.phone = phone;
 	}
 
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+
+	public Set<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(Set<Appointment> appointments) {
+		this.appointments = appointments;
+	}
+
+	public LocalDateTime getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(LocalDateTime registerDate) {
+		this.registerDate = registerDate;
+	}
+
 	@Override
 	public String toString() {
-		return "Client [dni=" + dni + ", email=" + email + ", hasAppointment=" + hasAppointment + ", hasDuePayment="
-				+ hasDuePayment + ", id=" + id + ", isHistorical=" + isHistorical + ", name=" + name + ", password="
-				+ password + ", phone=" + phone + ", appointments=" + appointments + "]";
+		return "Client [id=" + id + ", dni=" + dni + ", email=" + email + ", hasDuePayment=" + hasDuePayment
+				+ ", isHistorical=" + isHistorical + ", name=" + name + ", password=" + password + ", phone=" + phone
+				+ ", profilePic=" + profilePic + ", appointments=" + appointments + ", registerDate=" + registerDate
+				+ "]";
 	}
 
 }

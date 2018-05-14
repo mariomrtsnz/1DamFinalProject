@@ -1,14 +1,17 @@
 package com.salesianostriana.mario.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Service {
-	private String description;
-	private int discount;
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	private String description;
+	private int discount;
 	private boolean isPaidInInstallments;
 	private String name;
 	private int numSessions;

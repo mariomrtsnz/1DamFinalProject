@@ -1,38 +1,58 @@
 package com.salesianostriana.mario.model;
 
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Employee {
-	@OneToMany(mappedBy = ("employee"), fetch = FetchType.LAZY)
-	private Set<Appointment> appointments;
-	private String dni;
-	private String email;
-	private double grossAnualSalary;
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String Name;
+
+	@OneToMany(mappedBy = ("employee"), fetch = FetchType.LAZY)
+	private Set<Appointment> appointments = new HashSet<Appointment>();
+	private String dni;
+	private String email;
+	private double grossAnualSalary;
+	private String name;
 	private String password;
 	private String phone;
+	private String profilePic;
 	private String position;
-	// private image profilePic;
+	private LocalDateTime hireDate;
+
+	public Employee() {
+
+	}
 
 	public Employee(Set<Appointment> appointments, String dni, String email, double grossAnualSalary, String name,
-			String password, String phone, String position) {
+			String password, String phone, String profilePic, String position, LocalDateTime hireDate) {
 		super();
 		this.appointments = appointments;
 		this.dni = dni;
 		this.email = email;
 		this.grossAnualSalary = grossAnualSalary;
-		Name = name;
+		this.name = name;
 		this.password = password;
 		this.phone = phone;
+		this.profilePic = profilePic;
 		this.position = position;
+		this.hireDate = hireDate;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Set<Appointment> getAppointments() {
@@ -67,20 +87,12 @@ public class Employee {
 		this.grossAnualSalary = grossAnualSalary;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getPassword() {
@@ -99,6 +111,14 @@ public class Employee {
 		this.phone = phone;
 	}
 
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+
 	public String getPosition() {
 		return position;
 	}
@@ -107,11 +127,19 @@ public class Employee {
 		this.position = position;
 	}
 
+	public LocalDateTime getHireDate() {
+		return hireDate;
+	}
+
+	public void setHireDate(LocalDateTime hireDate) {
+		this.hireDate = hireDate;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [appointments=" + appointments + ", dni=" + dni + ", email=" + email + ", grossAnualSalary="
-				+ grossAnualSalary + ", id=" + id + ", Name=" + Name + ", password=" + password + ", phone=" + phone
-				+ ", position=" + position + "]";
+		return "Employee [id=" + id + ", appointments=" + appointments + ", dni=" + dni + ", email=" + email
+				+ ", grossAnualSalary=" + grossAnualSalary + ", name=" + name + ", password=" + password + ", phone="
+				+ phone + ", profilePic=" + profilePic + ", position=" + position + ", registerDate=" + hireDate + "]";
 	}
 
 }

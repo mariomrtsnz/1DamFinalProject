@@ -1,20 +1,26 @@
 package com.salesianostriana.mario.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Admin {
+	@Id
 	private String dni;
 	private String email;
 	private String name;
 	private String password;
 	private String phone;
-	// private image profilePic;
+	private String profilePic;
 
-	public Admin(String dni, String email, String name, String password, String phone) {
+	public Admin(String dni, String email, String name, String password, String phone, String profilePic) {
 		super();
 		this.dni = dni;
 		this.email = email;
 		this.name = name;
 		this.password = password;
 		this.phone = phone;
+		this.profilePic = profilePic;
 	}
 
 	public String getDni() {
@@ -57,10 +63,18 @@ public class Admin {
 		this.phone = phone;
 	}
 
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+
 	@Override
 	public String toString() {
 		return "Admin [dni=" + dni + ", email=" + email + ", name=" + name + ", password=" + password + ", phone="
-				+ phone + "]";
+				+ phone + ", profilePic=" + profilePic + "]";
 	}
 
 }
