@@ -15,17 +15,17 @@ public class ServiceController {
 
 	ServiceService serviceService = new ServiceService();
 
-	@GetMapping("/service/{id}")
-	public String serviceDetail(@PathVariable("id") long id, Model model) {
-		Service s = serviceService.findOneById(id);
-		if (s != null) {
-			model.addAttribute("service", s);
-			return "ServiceDetail";
-		} else {
-			// Tratamiento del error
-			return "Error";
-		}
-	}
+//	@GetMapping("/service/{id}")
+//	public String serviceDetail(@PathVariable("id") long id, Model model) {
+//		Service s = serviceService.findOneById(id);
+//		if (s != null) {
+//			model.addAttribute("service", s);
+//			return "ServiceDetail";
+//		} else {
+//			// Tratamiento del error
+//			return "Error";
+//		}
+//	}
 
 	@PostMapping("/addService")
 	public String submit(@ModelAttribute("FormService") Model model) {

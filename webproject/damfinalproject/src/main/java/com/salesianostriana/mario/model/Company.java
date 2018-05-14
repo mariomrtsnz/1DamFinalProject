@@ -3,9 +3,12 @@ package com.salesianostriana.mario.model;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Company {
+	@Id
+	private String nif;
 	private String address;
 	private LocalDateTime closeTime;
 	private LocalDateTime openTime;
