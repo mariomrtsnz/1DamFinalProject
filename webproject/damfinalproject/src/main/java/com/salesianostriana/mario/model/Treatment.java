@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Service {
+public class Treatment {
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -17,7 +17,7 @@ public class Service {
 	private int numSessions;
 	private double totalPrice;
 
-	public Service(String description, int discount, boolean isPaidInInstallments, String name, int numSessions,
+	public Treatment(String description, int discount, boolean isPaidInInstallments, String name, int numSessions,
 			double totalPrice) {
 		super();
 		this.description = description;

@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.mario.model.Service;
-import com.salesianostriana.mario.service.ServiceService;
+import com.salesianostriana.mario.model.Treatment;
+import com.salesianostriana.mario.service.TreatmentService;
 
 @Controller
 public class ServiceController {
 
-	ServiceService serviceService = new ServiceService();
+	TreatmentService serviceService = new TreatmentService();
 
 //	@GetMapping("/service/{id}")
 //	public String serviceDetail(@PathVariable("id") long id, Model model) {

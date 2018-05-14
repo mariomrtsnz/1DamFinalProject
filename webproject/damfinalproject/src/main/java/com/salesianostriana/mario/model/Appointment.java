@@ -22,14 +22,14 @@ public class Appointment {
 	@ManyToOne
 	private Employee employee;
 	@ManyToOne
-	private Service service;
+	private Treatment service;
 
 	public Appointment() {
 
 	}
 
 	public Appointment(LocalDateTime startTime, Client client, Employee employee, LocalDateTime endTime, boolean isPaid,
-			LocalDateTime orderDate, Service service) {
+			LocalDateTime orderDate, Treatment service) {
 		super();
 		this.startTime = startTime;
 		this.client = client;
@@ -96,11 +96,11 @@ public class Appointment {
 		this.orderDate = orderDate;
 	}
 
-	public Service getService() {
+	public Treatment getService() {
 		return service;
 	}
 
-	public void setService(Service service) {
+	public void setService(Treatment service) {
 		this.service = service;
 	}
 

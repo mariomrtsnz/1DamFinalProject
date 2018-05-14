@@ -3,24 +3,24 @@ package com.salesianostriana.mario.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.salesianostriana.mario.model.Treatment;
-import com.salesianostriana.mario.repository.TreatmentRepository;
+import com.salesianostriana.mario.model.Employee;
+import com.salesianostriana.mario.repository.EmployeeRepository;
 
 @Service
-public class TreatmentService {
+public class EmployeeService {
 
 	@Autowired
-	TreatmentRepository repository;
+	EmployeeRepository repository;
 
-	public Treatment findOne(Long id) {
+	public Employee findOne(Long id) {
 		return repository.findById(id).orElse(null);
 	}
 
-	public Iterable<Treatment> findAll() {
+	public Iterable<Employee> findAll() {
 		return repository.findAll();
 	}
 
-	public Treatment save(Treatment entidad) {
+	public Employee save(Employee entidad) {
 		return repository.save(entidad);
 	}
 
