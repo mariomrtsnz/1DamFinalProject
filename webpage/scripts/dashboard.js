@@ -68,19 +68,6 @@ jQuery(document).ready(function () {
             accountInfo.removeClass('selected');
         }
     });
-    sidebar.children('ul').menuAim({
-        activate: function (row) {
-            $(row).addClass('hover');
-        },
-        deactivate: function (row) {
-            $(row).removeClass('hover');
-        },
-        exitMenu: function () {
-            sidebar.find('.hover').removeClass('hover');
-            return true;
-        },
-        submenuSelector: ".has-children",
-    });
 
     function checkMQ() {
         return window.getComputedStyle(document.querySelector('.cd-main-content'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");

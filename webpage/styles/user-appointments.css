@@ -164,6 +164,30 @@ th {
   color: #f5f9f8;
   text-transform: uppercase; }
 
+tbody tr:hover {
+  background-color: #989690; }
+tbody tr .advancedOptions .dropdown {
+  position: relative;
+  display: inline-block; }
+  tbody tr .advancedOptions .dropdown img {
+    cursor: pointer;
+    display: none; }
+  tbody tr .advancedOptions .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f5f9f8;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1; }
+    tbody tr .advancedOptions .dropdown .dropdown-content a {
+      color: #2cbfd3;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block; }
+      tbody tr .advancedOptions .dropdown .dropdown-content a:hover {
+        background-color: #f1f1f1; }
+
 td {
   text-align: center;
   min-height: 100px;

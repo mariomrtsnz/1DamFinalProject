@@ -141,6 +141,7 @@
                                 <th>Email</th>
                                 <th>Fecha de Registro</th>
                                 <th>Cita Pendiente</th>
+                                <th></th>
                             </tr>
                         </thead>
                     </table>
@@ -160,6 +161,37 @@
                                         <input name=payStatus class="form-checkbox-field" type="checkbox" />
                                         <i class="form-checkbox-button"></i>
                                     </label>
+                                </td>
+                                <td class="advancedOptions">
+                                    <div class="dropdown" style="float:right;">
+                                        <img src="../../images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
+                                        <div class="dropdown-content">
+                                            <a href="#">Editar</a>
+                                            <a href="#">Borrar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="serviceName">{cliente.id}</td>
+                                <td id="orderDate">{cliente.name}</td>
+                                <td id="appointmentDate">{cliente.phone}</td>
+                                <td id="dentistName">{cliente.email}</td>
+                                <td>{cliente.registerDate}</td>
+                                <td id="payStatus">
+                                    <label class="form-checkbox-label">
+                                        <input name=payStatus class="form-checkbox-field" type="checkbox" />
+                                        <i class="form-checkbox-button"></i>
+                                    </label>
+                                </td>
+                                <td class="advancedOptions">
+                                    <div class="dropdown" style="float:right;">
+                                        <img src="../../images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
+                                        <div class="dropdown-content">
+                                            <a href="#">Editar</a>
+                                            <a href="#">Borrar</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
