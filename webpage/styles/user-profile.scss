@@ -55,7 +55,6 @@ $invalid: #E91E63;
 
 // VARIABLES // ============================== //
 $bg-color: #424242;
-$hl-color: #2196F3;
 $muted-color: mix(white,
 $bg-color,
 70%);
@@ -66,7 +65,7 @@ form {
         font-size: 3em;
         font-weight: 300;
         text-align: center;
-        color: $hl-color;
+        color: $primary-color3;
     }
     h5 {
         text-align: center;
@@ -74,7 +73,7 @@ form {
         color: $muted-color;
     }
     hr.sep {
-        background: $hl-color;
+        background: $primary-color3;
         box-shadow: none;
         border: none;
         height: 2px;
@@ -110,7 +109,7 @@ textarea {
     &:valid~label {
         top: -14px;
         font-size: 12px;
-        color: $hl-color;
+        color: $primary-color3;
     }
 }
 
@@ -138,7 +137,7 @@ label {
         width: 0;
         bottom: 0px;
         position: absolute;
-        background: $hl-color;
+        background: $primary-color3;
         transition: $trans-time ease all;
         left: 0%;
     }
@@ -162,19 +161,19 @@ label {
         box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
     }
     &.btn-link {
-        background: $hl-color;
-        color: mix(white, $hl-color, 80%);
+        background: $primary-color3;
+        color: mix(white, $primary-color3, 80%);
         &:hover {
-            background: darken($hl-color, 5%);
-            color: mix(white, $hl-color, 85%);
+            background: darken($primary-color3, 5%);
+            color: mix(white, $primary-color3, 85%);
         }
     }
     &.btn-submit {
-        background: $hl-color;
-        color: mix(white, $hl-color, 70%);
+        background: $primary-color3;
+        color: mix(white, $primary-color3, 70%);
         &:hover {
-            background: darken($hl-color, 5%);
-            color: mix(white, $hl-color, 85%);
+            background: darken($primary-color3, 5%);
+            color: mix(white, $primary-color3, 85%);
         }
     }
     &.btn-cancel {

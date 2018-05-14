@@ -717,6 +717,45 @@ body {
   margin-left: 0;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); }
 
+.btn {
+  background: #fff;
+  color: #959595;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .btn:hover {
+    color: #8b8b8b;
+    box-shadow: inset 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12); }
+  .btn.btn-link {
+    background: #2cbfd3;
+    color: #d5f2f6; }
+    .btn.btn-link:hover {
+      background: #28acbe;
+      color: #dff5f8; }
+  .btn.btn-submit {
+    background: #2cbfd3;
+    color: #c0ecf2; }
+    .btn.btn-submit:hover {
+      background: #28acbe;
+      color: #dff5f8; }
+  .btn.btn-cancel {
+    background: #eee; }
+    .btn.btn-cancel:hover {
+      background: #e1e1e1;
+      color: #8b8b8b; }
+
+.btn-box {
+  justify-self: center; }
+  .btn-box#submit {
+    grid-area: submit;
+    margin-bottom: 20px; }
+
 @media (max-width: 767px) {
   .dashboard-main {
     margin-top: 5vh;

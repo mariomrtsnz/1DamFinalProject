@@ -27,12 +27,14 @@ $transition: all .5s ease;
         grid-template-areas: "tableHeader" "tableBody";
         grid-gap: 2em;
         .table-header {
-            background-color: $primary-color3;
+            background-color: $primary-color1;
             grid-area: tableHeader;
             display: grid;
-            grid-template-areas: "title totalItems search";
-            grid-template-columns: 0.5fr 0.5fr 2fr;
+            grid-template-areas: "title totalItems buttons search";
+            grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
             align-items: center;
+            color: $primary-color4;
+            height: 60px;
             .table-title {
                 grid-area: title;
             }
@@ -43,6 +45,27 @@ $transition: all .5s ease;
                 grid-area: search;
                 float: right;
                 justify-self: flex-end;
+            }
+            .table-buttons {
+                grid-area: buttons;
+                display: grid;
+                grid-template-areas: "button1 button2";
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                .btn-box {
+                    margin: 5px 0 !important;
+                    .btn {
+                        background-color: $primary-color2 !important;
+                        color: $primary-color4;
+                        height: 50px;
+                    }
+                }
+                .add-element {
+                    grid-area: button1 !important;
+                }
+                .table-filter {
+                    grid-area: button2 !important;
+                }
             }
         }
         .table {

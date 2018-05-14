@@ -40,13 +40,13 @@ form h1 {
   font-size: 3em;
   font-weight: 300;
   text-align: center;
-  color: #2196F3; }
+  color: #2cbfd3; }
 form h5 {
   text-align: center;
   text-transform: uppercase;
   color: #c6c6c6; }
 form hr.sep {
-  background: #2196F3;
+  background: #2cbfd3;
   box-shadow: none;
   border: none;
   height: 2px;
@@ -78,7 +78,7 @@ textarea {
   textarea:valid ~ label {
     top: -14px;
     font-size: 12px;
-    color: #2196F3; }
+    color: #2cbfd3; }
 
 input[type="password"] {
   letter-spacing: 0.3em; }
@@ -102,7 +102,7 @@ label {
     width: 0;
     bottom: 0px;
     position: absolute;
-    background: #2196F3;
+    background: #2cbfd3;
     transition: 300ms ease all;
     left: 0%; }
 
@@ -122,17 +122,17 @@ label {
     color: #8b8b8b;
     box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12); }
   .btn.btn-link {
-    background: #2196F3;
-    color: #d3eafd; }
+    background: #2cbfd3;
+    color: #d5f2f6; }
     .btn.btn-link:hover {
-      background: #0d8aee;
-      color: #deeffd; }
+      background: #28acbe;
+      color: #dff5f8; }
   .btn.btn-submit {
-    background: #2196F3;
-    color: #bce0fb; }
+    background: #2cbfd3;
+    color: #c0ecf2; }
     .btn.btn-submit:hover {
-      background: #0d8aee;
-      color: #deeffd; }
+      background: #28acbe;
+      color: #dff5f8; }
   .btn.btn-cancel {
     background: #eee; }
     .btn.btn-cancel:hover {

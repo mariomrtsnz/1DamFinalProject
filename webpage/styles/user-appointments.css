@@ -16,12 +16,14 @@
     grid-template-areas: "tableHeader" "tableBody";
     grid-gap: 2em; }
     .cd-main-content .table-container .table-header {
-      background-color: #2cbfd3;
+      background-color: #3c393d;
       grid-area: tableHeader;
       display: grid;
-      grid-template-areas: "title totalItems search";
-      grid-template-columns: 0.5fr 0.5fr 2fr;
-      align-items: center; }
+      grid-template-areas: "title totalItems buttons search";
+      grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+      align-items: center;
+      color: #f5f9f8;
+      height: 60px; }
       .cd-main-content .table-container .table-header .table-title {
         grid-area: title; }
       .cd-main-content .table-container .table-header .table-totalItems {
@@ -30,6 +32,22 @@
         grid-area: search;
         float: right;
         justify-self: flex-end; }
+      .cd-main-content .table-container .table-header .table-buttons {
+        grid-area: buttons;
+        display: grid;
+        grid-template-areas: "button1 button2";
+        grid-template-columns: 1fr 1fr;
+        align-items: center; }
+        .cd-main-content .table-container .table-header .table-buttons .btn-box {
+          margin: 5px 0 !important; }
+          .cd-main-content .table-container .table-header .table-buttons .btn-box .btn {
+            background-color: #989690 !important;
+            color: #f5f9f8;
+            height: 50px; }
+        .cd-main-content .table-container .table-header .table-buttons .add-element {
+          grid-area: button1 !important; }
+        .cd-main-content .table-container .table-header .table-buttons .table-filter {
+          grid-area: button2 !important; }
     .cd-main-content .table-container .table {
       grid-area: tableBody; }
 
