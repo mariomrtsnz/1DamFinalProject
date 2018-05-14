@@ -12,7 +12,7 @@ public class TreatmentService {
 	@Autowired
 	TreatmentRepository repository;
 
-	public Treatment findOne(Long id) {
+	public Treatment findOneById(Long id) {
 		return repository.findById(id).orElse(null);
 	}
 

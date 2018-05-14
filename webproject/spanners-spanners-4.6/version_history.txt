@@ -1,0 +1,96 @@
+1.0
+- Initial version
+
+1.1 - 1.5
+- Maven release plugin tests
+
+1.6
+- Added spanners-tapestry
+- Added spanners-struts
+- Upgraded to spring 2.5.6
+- Added XSS vulnerability demos in tapestry and struts
+
+1.7
+- Added tomcat deployer plugin to all apps
+- Added getAll and delete methods to SpannersDAO
+- Added DisplaySpanners and DeleteSpanner pages to spanners-struts
+- Fixed links and CSS in spanners-struts
+
+2.0
+- Baseline with latest dependency versions:
+- Spring 3.1.1.RELEASE
+- Hibernate 4.1.3.Final
+- Tapestry 5.3.3
+- Spring-ws 2.0.5.RELEASE
+
+2.1
+- Added Spring security to spanners-struts and spanners-dao
+
+2.2
+- Added Selenium integration test to spanners-struts
+
+2.3
+- Migrated from SVN to Git
+
+2.4
+- Added Spring MVC
+
+2.5
+- Added SAML federated sign on with http://www.ssocircle.com/en/
+
+2.6
+- Added examples of deployment to Tomcat with Maven
+
+3.0
+- Baseline with latest dependency versions:
+- Java 8
+- Spring 4.1.6.RELEASE
+- Spring Security 4.0.1.RELEASE
+- Removed Tapestry 5, Spring-WS and SAML SSO components
+
+3.1
+- Added Switch User page, accessible to ADMIN users only
+
+3.2
+- Change to top level project name - changed from spanners-pom to spanners
+- Updated settings to allow deploy releases to disasterarea.co.uk
+- No functional changes to application
+
+3.3
+- Updated readme.txt build and run instructions to recommend running in Docker containers
+- New release to demo dynamic autobuild tags in Docker Hub
+
+3.4
+- Database backed user store with hashed passwords
+
+3.5
+- Added node.js / Websocket based push notifications
+
+4.0
+- Migrate to Spring boot 1.3.5.RELEASE
+- Moved to microservice architecture
+- Replaced spanners-dao jar with spanners-api RESTful service
+- Removed spanners-events and spanners-notifier
+
+4.1
+- Build docker images on application build. Tag and push on deploy / release
+
+4.2
+- Spring Boot 1.4.0.RC1
+
+4.3
+- Spring Boot 1.4.0.RELEASE
+- Add spanners-users service
+- Disable mysql performance schema to reduce memory requirement
+
+4.4
+- Add Eureka discovery server
+
+4.5
+- Disable Docker build unless Docker is detected
+- CORS to support spanners-angular app
+
+4.6
+- Spring Boot 1.5.3.RELEASE
+- Convert spanners-mvc from JSP to Thymeleaf
+- Edit / delete spanner restricted to owner
