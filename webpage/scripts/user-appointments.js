@@ -4,7 +4,7 @@ $(document).ready(function () {
     });
     $('tbody > tr').hover(function () {
         var $advancedOptions = $(this).children('.advancedOptions').children('.dropdown').children('img');
-        $advancedOptions.toggle();
+        $($advancedOptions).toggle();
         $($advancedOptions).click(function () {
             $(this).siblings('.dropdown-content').show();
         });

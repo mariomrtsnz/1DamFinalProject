@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
     <script src="../../scripts/dashboard.js"></script>
     <script src="../../scripts/user-appointments.js"></script>
-    <title>RWD - Admin - Servicios</title>
+    <title>RWD - Staff - Clientes</title>
 </head>
 
 <body>
@@ -110,14 +110,17 @@
         <div class="table-container">
             <div class="table-header">
                 <div class="table-title">
-                    Servicios
+                    Clientes
                 </div>
                 <div class="table-totalItems">
                     Total: {numElementosEnLista}
                 </div>
                 <div class="table-buttons">
                     <div class="btn-box add-element" id="submit">
-                        <button class="btn btn-submit" type="submit">Añadir Servicio</button>
+                        <button class="btn btn-submit" type="submit">Añadir Cliente</button>
+                    </div>
+                    <div class="btn-box table-filter" id="submit">
+                        <button class="btn btn-submit" type="submit">Clientes con Pago Pendiente</button>
                     </div>
                 </div>
                 <div class="search">
@@ -132,12 +135,12 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>IdCliente</th>
                                 <th>Nombre</th>
-                                <th>Descripcion</th> <!--Mostrar solo X caracteres seguidos de '...'-->
-                                <th>Precio</th>
-                                <th>Descuento</th>
-                                <th>Pagado a Plazos</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Fecha de Registro</th>
+                                <th>Cita Pendiente</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -148,12 +151,39 @@
                         <tbody>
                             <!--Aquí irá el th:each para cada cliente del set de Clientes de la clase Empresa.-->
                             <tr>
-                                <td id="serviceName">{service.id}</td>
-                                <td id="orderDate">{service.name}</td>
-                                <td id="appointmentDate">{service.description}</td>
-                                <td id="dentistName">{service.price}</td>
-                                <td>{service.discount}</td>
-                                <td>{service.isPaidInInstallments}</td>
+                                <td id="serviceName">{cliente.id}</td>
+                                <td id="orderDate">{cliente.name}</td>
+                                <td id="appointmentDate">{cliente.phone}</td>
+                                <td id="dentistName">{cliente.email}</td>
+                                <td>{cliente.registerDate}</td>
+                                <td id="payStatus">
+                                    <label class="form-checkbox-label">
+                                        <input name=payStatus class="form-checkbox-field" type="checkbox" />
+                                        <i class="form-checkbox-button"></i>
+                                    </label>
+                                </td>
+                                <td class="advancedOptions">
+                                    <div class="dropdown" style="float:right;">
+                                        <img src="../../images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
+                                        <div class="dropdown-content">
+                                            <a href="#">Editar</a>
+                                            <a href="#">Borrar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="serviceName">{cliente.id}</td>
+                                <td id="orderDate">{cliente.name}</td>
+                                <td id="appointmentDate">{cliente.phone}</td>
+                                <td id="dentistName">{cliente.email}</td>
+                                <td>{cliente.registerDate}</td>
+                                <td id="payStatus">
+                                    <label class="form-checkbox-label">
+                                        <input name=payStatus class="form-checkbox-field" type="checkbox" />
+                                        <i class="form-checkbox-button"></i>
+                                    </label>
+                                </td>
                                 <td class="advancedOptions">
                                     <div class="dropdown" style="float:right;">
                                         <img src="../../images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
@@ -169,7 +199,6 @@
                 </div>
             </div>
         </div>
-    </main>
 </body>
 
 </html>
