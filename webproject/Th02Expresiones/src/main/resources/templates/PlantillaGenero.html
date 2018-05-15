@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Thymeleaf tutorial</title>
+        <link rel="stylesheet" href="/css/main-static.css" th:href="@{/css/main.css}" />
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>Thymeleaf tutorial - Solution for exercise 9: Más condicionales</h1>
+        <h2>Customer list</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Género</th>
+                </tr>
+            </thead>
+            
+            <!-- La etiqueta th:remove se usa para borrar determinadas filas al procesar una tabla 
+            Por ejemplo, cuando tenemos cierta información que no queremos mostrar. En general, estamos diciendo 
+            que el bucle solo itera para la primera fila.
+            Para saber más sobre la línea remove: 8.4 Removing template fragments del manual
+            usingthymelaf -->
+            <tbody th:remove="all-but-first">
+                <tr th:each="customer : ${customerList}">
+                    <td th:text="${customer.nombre}"></td>
+                    <td th:text="${customer.apellido1}"></td>
+                    <td th:text="${customer.apellido2}"></td>
+                    <!-- Se evalúa en el switch el atributo género y si es male o female se
+                    muestra una imagen u otra en la tabla según el case. Como se puede ver, no es necesario 
+                    poner break en los case, una vez que encuentra uno cuya respuesta es true
+                    el resto serán false y solo se hace uno de los case en cada iteración 
+                    Como el atributo género está declarado como String, en el case debemos usar 
+                    la palabra male o female entre comillas dobles-->
+                    <td th:switch="${customer.genero}">
+                    
+                    <!-- La etiqueta th:src busca dentro de la carpeta webbapp, luego la ruta que debemos dar
+                    para encotrar las imágenes es la relativa a esa carpeta  -->
+                        <img th:case="'male'" src="/images/male.png" th:src="@{/images/male.png}" alt="Male" />
+                        <img th:case="'female'" src="/images/female.png" th:src="@{/images/female.png}" alt="Female" />
+                        <span th:case="*">Unknown</span>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

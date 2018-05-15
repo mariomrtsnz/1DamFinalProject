@@ -1,8 +1,15 @@
 package com.salesianostriana.mario.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Treatment {
@@ -16,9 +23,13 @@ public class Treatment {
 	private String name;
 	private int numSessions;
 	private double totalPrice;
+	@OneToMany(mappedBy = ("treatment"), cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	Set<Appointment> appointments = new HashSet<Appointment>();
+	@ManyToOne
+	private Company company;
 
 	public Treatment(String description, int discount, boolean isPaidInInstallments, String name, int numSessions,
-			double totalPrice) {
+			double totalPrice, Company company) {
 		super();
 		this.description = description;
 		this.discount = discount;
@@ -26,6 +37,7 @@ public class Treatment {
 		this.name = name;
 		this.numSessions = numSessions;
 		this.totalPrice = totalPrice;
+		this.company = company;
 	}
 
 	public String getDescription() {
@@ -84,11 +96,44 @@ public class Treatment {
 		this.totalPrice = totalPrice;
 	}
 
+	public Set<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(Set<Appointment> appointments) {
+		this.appointments = appointments;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 	@Override
 	public String toString() {
 		return "Service [description=" + description + ", discount=" + discount + ", id=" + id
 				+ ", isPaidInInstallments=" + isPaidInInstallments + ", name=" + name + ", numSessions=" + numSessions
 				+ ", totalPrice=" + totalPrice + "]";
+	}
+
+	/*
+	 * MÉTODOS HELPER
+	 */
+	public void addAppointment(Appointment a) {
+		if (a != null) {
+			a.setTreatment(this);
+			this.getAppointments().add(a);
+		}
+	}
+
+	public void removeAppointment(Appointment a) {
+		if (a != null) {
+			a.setEmployee(null);
+			this.getAppointments().remove(a);
+		}
 	}
 
 }

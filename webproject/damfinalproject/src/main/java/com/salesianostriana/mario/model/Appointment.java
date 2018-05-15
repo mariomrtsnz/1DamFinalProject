@@ -22,14 +22,14 @@ public class Appointment {
 	@ManyToOne
 	private Employee employee;
 	@ManyToOne
-	private Treatment service;
+	private Treatment treatment;
 
 	public Appointment() {
 
 	}
 
 	public Appointment(LocalDateTime startTime, Client client, Employee employee, LocalDateTime endTime, boolean isPaid,
-			LocalDateTime orderDate, Treatment service) {
+			LocalDateTime orderDate, Treatment treatment) {
 		super();
 		this.startTime = startTime;
 		this.client = client;
@@ -37,7 +37,7 @@ public class Appointment {
 		this.endTime = endTime;
 		this.isPaid = isPaid;
 		this.orderDate = orderDate;
-		this.service = service;
+		this.treatment = treatment;
 	}
 
 	public Long getId() {
@@ -96,18 +96,18 @@ public class Appointment {
 		this.orderDate = orderDate;
 	}
 
-	public Treatment getService() {
-		return service;
+	public Treatment getTreatment() {
+		return treatment;
 	}
 
-	public void setService(Treatment service) {
-		this.service = service;
+	public void setTreatment(Treatment treatment) {
+		this.treatment = treatment;
 	}
 
 	@Override
 	public String toString() {
 		return "Appointment [id=" + id + ", startTime=" + startTime + ", client=" + client + ", employee=" + employee
-				+ ", endTime=" + endTime + ", isPaid=" + isPaid + ", orderDate=" + orderDate + ", service=" + service
+				+ ", endTime=" + endTime + ", isPaid=" + isPaid + ", orderDate=" + orderDate + ", service=" + treatment
 				+ "]";
 	}
 

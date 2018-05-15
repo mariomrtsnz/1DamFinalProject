@@ -21,8 +21,9 @@ public class AdminController {
 	// return "view";
 	// }
 	
-	@GetMapping("/")
+	@GetMapping("/admin")
 	public String a(Model model) {
-		return "a";
+//		model.addAttribute("productList", lista);
+		return "admin-dashboard-index";
 	}
 }

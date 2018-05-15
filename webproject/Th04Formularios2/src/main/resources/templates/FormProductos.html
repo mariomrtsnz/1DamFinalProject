@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="icon" href="../../favicon.ico" />
+
+<!-- En el formulario, no agregamos una imagen por sencillez del ejemplo, dejo para vosotros
+poder agregar en el formulario una imagen, por ejemplo, con un Filechooser que guarde la ruta local
+donde tengamos guardada la imagen.
+Tampoco se explica el calendario y se usa uno sencillo porque forma parte de las "investigaciones" puntuadas dentro del proyecto. -->
+
+<title>Nuevo Producto</title>
+</head>
+<body>
+	<form class="form-horizontal">
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>Product Form</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="Name">Nombre</label>
+				<div class="col-md-4">
+					<input id="Name" name="Name" placeholder="Nombre del producto"
+						class="form-control input-md" type="text"/> <span
+						class="help-block">help</span>
+				</div>
+			</div>
+
+			<!-- Textarea -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="textarea">Descripción</label>
+				<div class="col-md-4">
+					<textarea class="form-control" id="textarea" name="textarea">default text</textarea>
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="textinput">Precio</label>
+				<div class="col-md-4">
+					<input id="textinput" name="textinput"
+						placeholder="Con dos decimales" class="form-control input-md"
+						type="text"/> <span class="help-block">help</span>
+				</div>
+			</div>
+
+			<!-- Multiple Radios -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="radios">¿De
+					importación?</label>
+				<div class="col-md-4">
+					<div class="radio">
+						<label for="radios-0"> <input name="radios" id="radios-0"
+							value="1" checked="checked" type="radio"/> Sí
+						</label>
+					</div>
+					<div class="radio">
+						<label for="radios-1"> <input name="radios" id="radios-1"
+							value="2" type="radio"/> No
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+						<table class="table-condensed table-bordered table-striped">
+							<thead>
+								<tr>
+									<th colspan="7"><span class="btn-group"> <a
+											class="btn"><i class="icon-chevron-left"></i></a> <a
+											class="btn active">May 2017</a> <a class="btn"><i
+												class="icon-chevron-right"></i></a>
+									</span></th>
+								</tr>
+								<tr>
+									<th>Su</th>
+									<th>Mo</th>
+									<th>Tu</th>
+									<th>We</th>
+									<th>Th</th>
+									<th>Fr</th>
+									<th>Sa</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="muted">29</td>
+									<td class="muted">30</td>
+									<td class="muted">31</td>
+									<td>1</td>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+									<td>8</td>
+									<td>9</td>
+									<td>10</td>
+									<td>11</td>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td>13</td>
+									<td>14</td>
+									<td>15</td>
+									<td>16</td>
+									<td>17</td>
+									<td>18</td>
+								</tr>
+								<tr>
+									<td>19</td>
+									<td class="btn-primary"><strong>20</strong></td>
+									<td>21</td>
+									<td>22</td>
+									<td>23</td>
+									<td>24</td>
+									<td>25</td>
+								</tr>
+								<tr>
+									<td>26</td>
+									<td>27</td>
+									<td>28</td>
+									<td>29</td>
+									<td class="muted">1</td>
+									<td class="muted">2</td>
+									<td class="muted">3</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</body>
+</html>

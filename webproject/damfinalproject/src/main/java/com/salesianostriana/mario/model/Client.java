@@ -4,10 +4,12 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -24,15 +26,17 @@ public class Client {
 	private String password;
 	private String phone;
 	private String profilePic;
-	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	Set<Appointment> appointments = new HashSet<Appointment>();
+	@ManyToOne
+	private Company company;
 	private LocalDateTime registerDate;
 
 	public Client() {
 	};
 
 	public Client(String dni, String email, boolean hasDuePayment, boolean isHistorical, String name, String password,
-			String phone, String profilePic, LocalDateTime registerDate) {
+			String phone, String profilePic, Company company, LocalDateTime registerDate) {
 		super();
 		this.dni = dni;
 		this.email = email;
@@ -42,6 +46,7 @@ public class Client {
 		this.password = password;
 		this.phone = phone;
 		this.profilePic = profilePic;
+		this.company = company;
 		this.registerDate = registerDate;
 	}
 
@@ -51,6 +56,14 @@ public class Client {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
 	public String getDni() {
@@ -137,8 +150,8 @@ public class Client {
 	public String toString() {
 		return "Client [id=" + id + ", dni=" + dni + ", email=" + email + ", hasDuePayment=" + hasDuePayment
 				+ ", isHistorical=" + isHistorical + ", name=" + name + ", password=" + password + ", phone=" + phone
-				+ ", profilePic=" + profilePic + ", appointments=" + appointments + ", registerDate=" + registerDate
-				+ "]";
+				+ ", profilePic=" + profilePic + ", appointments=" + appointments + ", company=" + company
+				+ ", registerDate=" + registerDate + "]";
 	}
 
 	/*

@@ -4,10 +4,12 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,8 +18,10 @@ public class Employee {
 	@GeneratedValue
 	private Long id;
 
-	@OneToMany(mappedBy = ("employee"), fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = ("employee"), cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private Set<Appointment> appointments = new HashSet<Appointment>();
+	@ManyToOne
+	private Company company;
 	private String dni;
 	private String email;
 	private double grossAnualSalary;
@@ -32,10 +36,10 @@ public class Employee {
 
 	}
 
-	public Employee(Set<Appointment> appointments, String dni, String email, double grossAnualSalary, String name,
-			String password, String phone, String profilePic, String position, LocalDateTime hireDate) {
+	public Employee(Company company, String dni, String email, double grossAnualSalary, String name, String password,
+			String phone, String profilePic, String position, LocalDateTime hireDate) {
 		super();
-		this.appointments = appointments;
+		this.company = company;
 		this.dni = dni;
 		this.email = email;
 		this.grossAnualSalary = grossAnualSalary;
@@ -135,11 +139,37 @@ public class Employee {
 		this.hireDate = hireDate;
 	}
 
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", appointments=" + appointments + ", dni=" + dni + ", email=" + email
-				+ ", grossAnualSalary=" + grossAnualSalary + ", name=" + name + ", password=" + password + ", phone="
-				+ phone + ", profilePic=" + profilePic + ", position=" + position + ", registerDate=" + hireDate + "]";
+		return "Employee [id=" + id + ", appointments=" + appointments + ", company=" + company + ", dni=" + dni
+				+ ", email=" + email + ", grossAnualSalary=" + grossAnualSalary + ", name=" + name + ", password="
+				+ password + ", phone=" + phone + ", profilePic=" + profilePic + ", position=" + position
+				+ ", hireDate=" + hireDate + "]";
+	}
+
+	/*
+	 * MÉTODOS HELPER
+	 */
+	public void addAppointment(Appointment a) {
+		if (a != null) {
+			a.setEmployee(this);
+			this.getAppointments().add(a);
+		}
+	}
+
+	public void removeAppointment(Appointment a) {
+		if (a != null) {
+			a.setEmployee(null);
+			this.getAppointments().remove(a);
+		}
 	}
 
 }

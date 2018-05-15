@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- Para poder usar Thymeleaf dentro de la plantilla HTML, es decir, que se reconozcan las etiquetas
+propias de TH añadimos la siguiente línea -->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Thymeleaf tutorial: Condicionales</title>
+        <!-- Para no tener que crear los css, usamos uno dado por el tutorial interactivo de Th en el siguiente link-->
+        
+        <link rel="stylesheet" href="/css/main-static.css" th:href="@{/css/main.css}" />
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>Thymeleaf tutorial - Answer for exercise 8: conditions</h1>
+        <h2>Product list</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Available from</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <!-- Para mostrar varios productos o partes de varios productos, como puede ser un listado,
+            se usará un bucle, que en Thymeleaf (en adelante, Th) se escribe con la etiqueta th:each.
+            Tiene la misma estructura que un for each de Java, es decir, "objeto contenido en la lista: 
+            (al que en nuestro caso llamamos product y dentro del bucle debemos usar esta palabra para 
+            acceder a cada elemento que se saca de la lista) {nombre de la lista (debe ser el mismo nombre 
+            que hemos dado a la lista en el modelo, dentro del método que atiende la petición en la 
+            clase controller}-->
+                <tr th:each="product : ${productList}">
+                    <td th:text="${product.description}">Red chair</td>
+                    <!-- Para mostrar número con decimales podemos usar esta forma. 
+                    Escribirmos #numbers.formatDecimal (número a mostrar, en nuestro caso, precio de un producto,
+                    número de enteros, número de cifras decimales) En caso de no haber valor, 
+                    se mostrará la parte estática, que es $350 -->
+                    <td th:text="${'$' + #numbers.formatDecimal(product.price, 1, 2)}">$350</td>
+                    <!-- Para la impresión de fechas, tenemos varios formatos. Para ello, 
+                    usamos #dates.format (fecha a mostrar, en nuestro caso, fecha del atributo producto,
+                    formato para la fecha, en este caso, dd-MMM-yyyy) Se pueden ver más formatos de fechas
+                    y soportados por format en los tutoriales de Thymeleaf -->
+                    
+                    <td th:text="${#dates.format(product.date, 'dd-MMM-yyyy')}">28-Jun-2013</td>
+                    <td>
+                        <span class="offer">Special offer!</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -14,7 +14,7 @@ function loadSignUp() {
                 this.responseText;
         }
     };
-    xhttp.open("GET", "../../templates/signup.html", true);
+    xhttp.open("GET", "/public/signup.html", true);
     xhttp.send();
 }
 
@@ -26,7 +26,7 @@ function loadLogIn() {
                 this.responseText;
         }
     };
-    xhttp.open("GET", "../../templates/public/login.html", true);
+    xhttp.open("GET", "/public/login.html", true);
     xhttp.send();
 }
 
