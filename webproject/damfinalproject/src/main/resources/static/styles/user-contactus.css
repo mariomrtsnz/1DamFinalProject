@@ -1,0 +1,53 @@
+@font-face {
+  font-family: Bodoni;
+  src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal; }
+.cd-main-content {
+  display: grid;
+  margin-bottom: 4em;
+  min-height: 77vh;
+  grid-gap: 5em;
+  margin: 3em 0; }
+  .cd-main-content .sectionName {
+    border-bottom: 4px solid #2cbfd3;
+    width: 60%; }
+  .cd-main-content #contacto div {
+    display: flex;
+    margin-bottom: 1em; }
+    .cd-main-content #contacto div::after {
+      content: "";
+      display: inline-block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 19px;
+      height: 19px;
+      margin: 0 0 0 10px; }
+  .cd-main-content #contacto #horario::after {
+    background-image: url("../images/icons/clock.svg"); }
+  .cd-main-content #contacto #telefono::after {
+    background-image: url("../images/icons/phone.svg"); }
+  .cd-main-content #contacto #email::after {
+    background-image: url("../images/icons/email.svg"); }
+
+#map {
+  width: 100%; }
+
+@media only screen and (max-width: 1169px) {
+  .cd-main-content {
+    grid-template-areas: "sn" "map";
+    grid-template-rows: 1fr 2fr;
+    justify-items: center;
+    margin-left: 2em;
+    margin-right: 2em; }
+    .cd-main-content .sectionName {
+      width: 100%;
+      text-align: center; } }
+@media only screen and (min-width: 1170px) {
+  .cd-main-content {
+    grid-template-areas: "sn map";
+    grid-template-columns: 1fr 1fr;
+    margin-left: 5em;
+    margin-right: 5em; } }
+
+/*# sourceMappingURL=user-contactus.css.map */

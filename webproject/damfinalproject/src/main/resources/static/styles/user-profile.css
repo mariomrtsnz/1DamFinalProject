@@ -1,0 +1,168 @@
+@font-face {
+  font-family: Bodoni;
+  src: url("../fonts/BodoniFLF-Roman.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal; }
+.cd-main-content {
+  margin-top: 3em;
+  display: grid; }
+  .cd-main-content .profileForm-container {
+    grid-area: profileForm;
+    justify-self: flex-end;
+    display: grid;
+    grid-template-areas: "dni" "dniInput" "name" "nameInput" "phone" "phoneInput" "email" "emailInput" "password" "passwordInput" "submit";
+    border: #2cbfd3 3px solid; }
+    .cd-main-content .profileForm-container div:nth-child(even) {
+      margin-bottom: 20px; }
+  .cd-main-content .profilePicture {
+    grid-area: profilePicture;
+    display: grid;
+    grid-template-areas: "profilePic" "employeePosition" "grossAnualSalaryTitle" "grossAnualSalaryValue";
+    grid-template-rows: 2fr 0fr 0fr 0fr;
+    justify-content: center;
+    justify-self: flex-start;
+    background-color: #c3975f;
+    width: 35%;
+    min-height: 30vh; }
+    .cd-main-content .profilePicture img {
+      height: 100%;
+      width: 100%;
+      background-color: #2cbfd3; }
+    .cd-main-content .profilePicture .employeePosition {
+      grid-area: employeePosition; }
+    .cd-main-content .profilePicture .grossAnualSalaryTitle {
+      grid-area: grossAnualSalaryTitle; }
+    .cd-main-content .profilePicture .grossAnualSalaryValue {
+      grid-area: grossAnualSalaryValue; }
+
+/*MATERIAL FORM STYLING*/
+form h1 {
+  font-size: 3em;
+  font-weight: 300;
+  text-align: center;
+  color: #2cbfd3; }
+form h5 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #c6c6c6; }
+form hr.sep {
+  background: #2cbfd3;
+  box-shadow: none;
+  border: none;
+  height: 2px;
+  width: 25%;
+  margin: 0px auto 45px auto; }
+
+.group {
+  position: relative;
+  margin-top: 20px; }
+
+textarea {
+  resize: none; }
+
+input,
+textarea {
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c6c6c6; }
+  input:focus,
+  textarea:focus {
+    outline: none; }
+  input:focus ~ label, input:valid ~ label,
+  textarea:focus ~ label,
+  textarea:valid ~ label {
+    top: -14px;
+    font-size: 12px;
+    color: #2cbfd3; }
+
+input[type="password"] {
+  letter-spacing: 0.3em; }
+
+label {
+  color: #c6c6c6;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 300ms ease all; }
+
+.bar {
+  position: relative;
+  display: block; }
+  .bar:before {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: #2cbfd3;
+    transition: 300ms ease all;
+    left: 0%; }
+
+.btn {
+  background: #fff;
+  color: #959595;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .btn:hover {
+    color: #8b8b8b;
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12); }
+  .btn.btn-link {
+    background: #2cbfd3;
+    color: #d5f2f6; }
+    .btn.btn-link:hover {
+      background: #28acbe;
+      color: #dff5f8; }
+  .btn.btn-submit {
+    background: #2cbfd3;
+    color: #c0ecf2; }
+    .btn.btn-submit:hover {
+      background: #28acbe;
+      color: #dff5f8; }
+  .btn.btn-cancel {
+    background: #eee; }
+    .btn.btn-cancel:hover {
+      background: #e1e1e1;
+      color: #8b8b8b; }
+
+.btn-box {
+  justify-self: center; }
+  .btn-box#submit {
+    grid-area: submit;
+    margin-bottom: 20px; }
+
+@media only screen and (max-width: 1169px) {
+  .cd-main-content {
+    grid-template-areas: "profilePicture" "profileForm"; }
+    .cd-main-content .profileForm-container {
+      width: 98%;
+      justify-self: center;
+      justify-items: center; }
+    .cd-main-content .profilePicture {
+      justify-self: center;
+      justify-items: center; } }
+@media only screen and (min-width: 1170px) {
+  .cd-main-content {
+    grid-template-areas: "profileForm profilePicture";
+    grid-template-columns: 2fr 1fr;
+    justify-items: center;
+    align-items: flex-start; }
+    .cd-main-content .profileForm-container {
+      width: 60%;
+      padding-left: 1em; } }
+
+/*# sourceMappingURL=user-profile.css.map */

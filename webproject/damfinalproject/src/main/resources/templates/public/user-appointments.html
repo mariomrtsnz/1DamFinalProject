@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RWD - Citas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/logo-icon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../styles/user-nav.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../styles/user-appointments.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="../../scripts/user-nav.js"></script>
+    <script src="../../scripts/user-appointments.js"></script>
+</head>
+
+<body>
+    <header class="cd-main-header">
+        <a class="cd-logo" href="user-index.html">
+            <img src="../../images/icons/projectlogo.svg" alt="Logo" width="35px">
+        </a>
+
+        <ul class="cd-header-buttons">
+            <li>
+                <a class="cd-nav-trigger" href="#cd-primary-nav">
+                    <span></span>
+                </a>
+            </li>
+        </ul>
+        <!-- cd-header-buttons -->
+    </header>
+
+    <main class="cd-main-content">
+        <div class="table-container">
+            <div class="table-header">
+                <div class="table-title">
+                    Citas
+                </div>
+                <div class="table-totalItems">
+                    Total: {numElementosEnLista}
+                </div>
+                <div class="search">
+                    <input type="search" class="search-box" placeholder="Buscar..." />
+                    <span class="search-button">
+                        <span class="search-icon"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="table">
+                <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Fecha Pedido</th>
+                                <th>Fecha Cita</th>
+                                <th>Dentista</th>
+                                <th>Pagado</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <!--Aquí irá el th:each para cada cita del set de Citas del Usuario logueado.-->
+                            <tr>
+                                <td id="serviceName">{servicio.nombre}</td>
+                                <td id="orderDate">{DD/MM/YY HH:mm}</td>
+                                <td id="appointmentDate">{DD/MM/YY HH:mm}</td>
+                                <td id="dentistName">{dentista.nombre}</td>
+                                <td id="payStatus">
+                                    <label class="form-checkbox-label">
+                                        <input name=payStatus class="form-checkbox-field" type="checkbox" />
+                                        <i class="form-checkbox-button"></i>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="cd-overlay"></div>
+    </main>
+
+    <nav class="cd-nav">
+        <ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
+            <li>
+                <a href="./user-index.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+            <li class="has-children">
+                <a href="#">
+                    <span class="nav_bg_clr"></span>
+                    <span>Servicios</span>
+                </a>
+                <ul class="cd-nav-icons is-hidden">
+                    <li class="go-back">
+                        <a href="#0">Menu</a>
+                    </li>
+                    <li class="see-all">
+                        <a href="#">Ver Servicios</a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-1" href="http://codyhouse.co/?p=409">
+                            <h3>Blanqueamiento dental</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="cd-nav-item item-2" href="http://codyhouse.co/?p=409">
+                            <h3>Carillas</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-3" href="http://codyhouse.co/?p=409">
+                            <h3>Coronas y Puentes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-4" href="http://codyhouse.co/?p=409">
+                            <h3>Endodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-5" href="http://codyhouse.co/?p=409">
+                            <h3>Empastes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-6" href="http://codyhouse.co/?p=409">
+                            <h3>Implante</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-7" href="http://codyhouse.co/?p=409">
+                            <h3>Odontopediatría</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-8" href="http://codyhouse.co/?p=409">
+                            <h3>Ortodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-9" href="http://codyhouse.co/?p=409">
+                            <h3>Periodontitis</h3>
+
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="./user-aboutus.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Sobre Nosotros</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="./user-contactus.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Contacto</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <span class="nav_bg_clr current"></span>
+                    <span>
+                        {Usuario}
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <!-- primary-nav -->
+    </nav>
+    <!-- cd-nav -->
+</body>
+
+</html>

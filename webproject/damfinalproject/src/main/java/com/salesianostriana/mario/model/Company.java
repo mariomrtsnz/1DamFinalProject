@@ -3,7 +3,11 @@ package com.salesianostriana.mario.model;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Company {
@@ -15,16 +19,30 @@ public class Company {
 	private String email;
 	private String name;
 	private String phone;
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
+	@JoinColumn(name = "dni")
+	private Admin admin;
 
-	public Company(String address, LocalDateTime closeTime, LocalDateTime openTime, String email, String name,
-			String phone) {
+	public Company(String nif, String address, LocalDateTime closeTime, LocalDateTime openTime, String email,
+			String name, String phone, Admin admin) {
 		super();
+		this.nif = nif;
 		this.address = address;
 		this.closeTime = closeTime;
 		this.openTime = openTime;
 		this.email = email;
 		this.name = name;
 		this.phone = phone;
+		this.admin = admin;
+	}
+
+	public String getNif() {
+		return nif;
+	}
+
+	public void setNif(String nif) {
+		this.nif = nif;
 	}
 
 	public String getAddress() {
@@ -75,10 +93,18 @@ public class Company {
 		this.phone = phone;
 	}
 
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
 	@Override
 	public String toString() {
-		return "Company [address=" + address + ", closeTime=" + closeTime + ", openTime=" + openTime + ", email="
-				+ email + ", name=" + name + ", phone=" + phone + "]";
+		return "Company [nif=" + nif + ", address=" + address + ", closeTime=" + closeTime + ", openTime=" + openTime
+				+ ", email=" + email + ", name=" + name + ", phone=" + phone + ", admin=" + admin + "]";
 	}
 
 }

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/logo-icon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../styles/user-appointments.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../styles/dashboard.css" />
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+    <script src="../../scripts/dashboard.js"></script>
+    <script src="../../scripts/user-appointments.js"></script>
+    <title>RWD - Staff - Clientes</title>
+</head>
+
+<body>
+    <header class="cd-main-header">
+        <a href="./admin-dashboard-index.html" class="cd-logo">
+            <img src="../../images/justlogo.png" width="40px" alt="Logo">
+        </a>
+        <a href="#0" class="cd-nav-trigger">Menu
+            <span></span>
+        </a>
+        <nav class="cd-nav">
+            <ul class="cd-top-nav">
+                <li class="has-children account">
+                    <a href="#0">
+                        <img src="../../images/profile-admin.jpg" alt="avatar"> Admin
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#0">Perfil</a>
+                        </li>
+                        <li>
+                            <a href="#0">Ir a página web</a>
+                        </li>
+                        <li>
+                            <a href="#0">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="cd-main-content">
+        <nav class="cd-side-nav nav-side">
+            <ul>
+                <li class="cd-label">Principales</li>
+                <li class="has-children overview">
+                    <a href="#0">Servicios</a>
+                    <ul>
+                        <li>
+                            <a href="#0">Ver Servicios</a>
+                        </li>
+                        <li>
+                            <a href="#0">Añadir Servicio</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-children comments">
+                    <a href="#0">Clientes</a>
+                    <ul>
+                        <li>
+                            <a href="#0">Ver Clientes</a>
+                        </li>
+                        <li>
+                            <a href="#0">Añadir Cliente</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-children comments">
+                    <a href="#0">Empleados</a>
+                    <ul>
+                        <li>
+                            <a href="#0">Ver Empleados</a>
+                        </li>
+                        <li>
+                            <a href="#0">Añadir Empleado</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-children comments">
+                    <a href="#0">Calendario</a>
+                    <ul>
+                        <li>
+                            <a href="#0">Ver Calendario</a>
+                        </li>
+                        <li>
+                            <a href="#0">Añadir Cita</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>
+                <li class="cd-label">Secundarios</li>
+                <li class="has-children bookmarks">
+                    <a href="#0">Perfil</a>
+                </li>
+                <li class="has-children images">
+                    <a href="../public/user-index.html">Ir a página web</a>
+                </li>
+                <li class="has-children users">
+                    <a href="../../index.html">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+        <a href="#" class="nav-toggle"></a>
+        <div class="table-container">
+            <div class="table-header">
+                <div class="table-title">
+                    Clientes
+                </div>
+                <div class="table-totalItems">
+                    Total: {numElementosEnLista}
+                </div>
+                <div class="table-buttons">
+                    <div class="btn-box add-element" id="submit">
+                        <button class="btn btn-submit" type="submit">Añadir Cliente</button>
+                    </div>
+                    <div class="btn-box table-filter" id="submit">
+                        <button class="btn btn-submit" type="submit">Clientes con Pago Pendiente</button>
+                    </div>
+                </div>
+                <div class="search">
+                    <input type="search" class="search-box" placeholder="Buscar..." />
+                    <span class="search-button">
+                        <span class="search-icon"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="table">
+                <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                            <tr>
+                                <th>IdCliente</th>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Email</th>
+                                <th>Fecha de Registro</th>
+                                <th>Cita Pendiente</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <!--Aquí irá el th:each para cada cliente del set de Clientes de la clase Empresa.-->
+                            <tr>
+                                <td id="serviceName">{cliente.id}</td>
+                                <td id="orderDate">{cliente.name}</td>
+                                <td id="appointmentDate">{cliente.phone}</td>
+                                <td id="dentistName">{cliente.email}</td>
+                                <td>{cliente.registerDate}</td>
+                                <td id="payStatus">
+                                    <label class="form-checkbox-label">
+                                        <input name=payStatus class="form-checkbox-field" type="checkbox" />
+                                        <i class="form-checkbox-button"></i>
+                                    </label>
+                                </td>
+                                <td class="advancedOptions">
+                                    <div class="dropdown" style="float:right;">
+                                        <img src="../../images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
+                                        <div class="dropdown-content">
+                                            <a href="#">Editar</a>
+                                            <a href="#">Borrar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="serviceName">{cliente.id}</td>
+                                <td id="orderDate">{cliente.name}</td>
+                                <td id="appointmentDate">{cliente.phone}</td>
+                                <td id="dentistName">{cliente.email}</td>
+                                <td>{cliente.registerDate}</td>
+                                <td id="payStatus">
+                                    <label class="form-checkbox-label">
+                                        <input name=payStatus class="form-checkbox-field" type="checkbox" />
+                                        <i class="form-checkbox-button"></i>
+                                    </label>
+                                </td>
+                                <td class="advancedOptions">
+                                    <div class="dropdown" style="float:right;">
+                                        <img src="../../images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
+                                        <div class="dropdown-content">
+                                            <a href="#">Editar</a>
+                                            <a href="#">Borrar</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

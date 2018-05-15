@@ -24,12 +24,15 @@ public class Client {
 	private String password;
 	private String phone;
 	private String profilePic;
-	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
 	Set<Appointment> appointments = new HashSet<Appointment>();
 	private LocalDateTime registerDate;
 
+	public Client() {
+	};
+
 	public Client(String dni, String email, boolean hasDuePayment, boolean isHistorical, String name, String password,
-			String phone, String profilePic, Set<Appointment> appointments, LocalDateTime registerDate) {
+			String phone, String profilePic, LocalDateTime registerDate) {
 		super();
 		this.dni = dni;
 		this.email = email;
@@ -39,7 +42,6 @@ public class Client {
 		this.password = password;
 		this.phone = phone;
 		this.profilePic = profilePic;
-		this.appointments = appointments;
 		this.registerDate = registerDate;
 	}
 
@@ -137,6 +139,23 @@ public class Client {
 				+ ", isHistorical=" + isHistorical + ", name=" + name + ", password=" + password + ", phone=" + phone
 				+ ", profilePic=" + profilePic + ", appointments=" + appointments + ", registerDate=" + registerDate
 				+ "]";
+	}
+
+	/*
+	 * MÉTODOS HELPER
+	 */
+	public void addAppointment(Appointment a) {
+		if (a != null) {
+			a.setClient(this);
+			this.getAppointments().add(a);
+		}
+	}
+
+	public void removeAppointment(Appointment a) {
+		if (a != null) {
+			a.setClient(null);
+			this.getAppointments().remove(a);
+		}
 	}
 
 }
