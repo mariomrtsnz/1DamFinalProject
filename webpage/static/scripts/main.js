@@ -5,6 +5,7 @@ window.onload = function init() {
     var logIn = document.getElementById("logIn");
     logIn.addEventListener("click", loadLogIn);
 }
+
 function loadSignUp() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -13,7 +14,7 @@ function loadSignUp() {
                 this.responseText;
         }
     };
-    xhttp.open("GET", "../html/public/signup.html", true);
+    xhttp.open("GET", "../../templates/signup.html", true);
     xhttp.send();
 }
 
@@ -25,7 +26,7 @@ function loadLogIn() {
                 this.responseText;
         }
     };
-    xhttp.open("GET", "../html/public/login.html", true);
+    xhttp.open("GET", "../../templates/public/login.html", true);
     xhttp.send();
 }
 
