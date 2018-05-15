@@ -31,7 +31,7 @@ html, body, form, span, h1 {
     justify-items: center;
     background-color: #989690;
     font-family: Bodoni, serif;
-    background: url("../images/office.png");
+    background: url("../images/officesGallery/office.png");
     background-size: 130%;
     background-repeat: no-repeat;
     background-position: center;
@@ -53,7 +53,7 @@ html, body, form, span, h1 {
     width: 240px;
     height: 240px;
     background-color: #3c393d;
-    background: url("../images/justlogo.png");
+    background: url("../images/icons/projectlogo.svg");
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
@@ -658,7 +658,7 @@ select.form-element-field {
       color: #3c393d; }
 
 .top-nav > ul:nth-child(1) > a:nth-child(1) {
-  background: url("../images/projectlogo.png");
+  background: url("../images/icons/projectlogo.svg");
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat; }
@@ -697,28 +697,28 @@ select.form-element-field {
   align-items: center; }
 
 .icon-services {
-  background: url("../images/icon-chair.svg");
+  background: url("../images/icons/icon-chair.svg");
   background-size: 100%;
   width: 50px;
   height: 50px;
   display: block; }
 
 .icon-clients {
-  background: url("../images/icon-clients.svg");
+  background: url("../images/icons/icon-clients.svg");
   background-size: 100%;
   width: 50px;
   height: 50px;
   display: block; }
 
 .icon-staff {
-  background: url("../images/icon-staff.svg");
+  background: url("../images/icons/icon-staff.svg");
   background-size: 100%;
   width: 50px;
   height: 50px;
   display: block; }
 
 .icon-calendar {
-  background: url("../images/icon-calendar.svg");
+  background: url("../images/icons/icon-calendar.svg");
   background-size: 100%;
   width: 50px;
   height: 50px;
