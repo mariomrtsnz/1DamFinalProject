@@ -7,12 +7,16 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Company {
 	@Id
+	@GeneratedValue
+	private Long id;
+
 	private String nif;
 	private String address;
 	private LocalTime closeTime;
@@ -110,14 +114,6 @@ public class Company {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	// public Admin getAdmin() {
-	// return admin;
-	// }
-	//
-	// public void setAdmin(Admin admin) {
-	// this.admin = admin;
-	// }
 
 	public Set<Employee> getEmployees() {
 		return employees;

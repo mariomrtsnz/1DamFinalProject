@@ -2,6 +2,7 @@ package com.salesianostriana.mario.model;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -10,6 +11,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class Admin {
 	@Id
+	@GeneratedValue
+	private Long id;
+
 	private String nif;
 	private String email;
 	private String name;
@@ -18,7 +22,7 @@ public class Admin {
 	private String profilePic;
 	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
-	@JoinColumn(name = "nif")
+	@JoinColumn(name = "id")
 	private Company company;
 
 	public Admin() {
