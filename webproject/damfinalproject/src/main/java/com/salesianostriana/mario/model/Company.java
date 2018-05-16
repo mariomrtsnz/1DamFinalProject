@@ -8,10 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Company {
@@ -23,10 +20,6 @@ public class Company {
 	private String email;
 	private String name;
 	private String phone;
-//  @OneToOne(fetch = FetchType.LAZY)
-//	@MapsId
-//	@JoinColumn(name = "nif")
-//	private Admin admin;
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	Set<Employee> employees = new HashSet<Employee>();
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
@@ -59,7 +52,7 @@ public class Company {
 		this.email = email;
 		this.name = name;
 		this.phone = phone;
-//		this.admin = admin;
+		// this.admin = admin;
 	}
 
 	public String getNif() {
@@ -118,13 +111,13 @@ public class Company {
 		this.phone = phone;
 	}
 
-//	public Admin getAdmin() {
-//		return admin;
-//	}
-//
-//	public void setAdmin(Admin admin) {
-//		this.admin = admin;
-//	}
+	// public Admin getAdmin() {
+	// return admin;
+	// }
+	//
+	// public void setAdmin(Admin admin) {
+	// this.admin = admin;
+	// }
 
 	public Set<Employee> getEmployees() {
 		return employees;
@@ -153,7 +146,8 @@ public class Company {
 	@Override
 	public String toString() {
 		return "Company [nif=" + nif + ", address=" + address + ", closeTime=" + closeTime + ", openTime=" + openTime
-//				+ ", email=" + email + ", name=" + name + ", phone=" + phone + ", admin=" + admin + ", employees="
+		// + ", email=" + email + ", name=" + name + ", phone=" + phone + ", admin=" +
+		// admin + ", employees="
 				+ employees + ", clients=" + clients + ", treatments=" + treatments + "]";
 	}
 
