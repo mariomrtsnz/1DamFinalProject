@@ -4,13 +4,16 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Appointment {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appointment_seq")
+	@SequenceGenerator(name = "appointment_seq", sequenceName = "seq_appointment")
 	private Long id;
 
 	private LocalDateTime endTime;

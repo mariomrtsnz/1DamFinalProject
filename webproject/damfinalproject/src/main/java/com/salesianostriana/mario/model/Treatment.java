@@ -7,14 +7,17 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Treatment {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "treatment_seq")
+	@SequenceGenerator(name = "treatment_seq", sequenceName = "seq_treatment")
 	private Long id;
 
 	private String description;
@@ -23,7 +26,7 @@ public class Treatment {
 	private String name;
 	private int numSessions;
 	private double totalPrice;
-	@OneToMany(mappedBy = ("treatment"), cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	Set<Appointment> appointments = new HashSet<Appointment>();
 	@ManyToOne
 	private Company company;

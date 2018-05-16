@@ -1,6 +1,6 @@
 package com.salesianostriana.mario.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,27 +18,39 @@ public class Company {
 	@Id
 	private String nif;
 	private String address;
-	private LocalDateTime closeTime;
-	private LocalDateTime openTime;
+	private LocalTime closeTime;
+	private LocalTime openTime;
 	private String email;
 	private String name;
 	private String phone;
-	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
 	@MapsId
-	@JoinColumn(name = "dni")
+	@JoinColumn(name = "nif")
 	private Admin admin;
-	@OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	Set<Employee> employees = new HashSet<Employee>();
-	@OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	Set<Client> clients = new HashSet<Client>();
-	@OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	Set<Treatment> treatments = new HashSet<Treatment>();
 
 	public Company() {
 	}
 
-	public Company(String nif, String address, LocalDateTime closeTime, LocalDateTime openTime, String email,
-			String name, String phone, Admin admin) {
+	public Company(String nif, String address, LocalTime closeTime, LocalTime openTime, String email, String name,
+			String phone) {
+		super();
+		this.nif = nif;
+		this.address = address;
+		this.closeTime = closeTime;
+		this.openTime = openTime;
+		this.email = email;
+		this.name = name;
+		this.phone = phone;
+	}
+
+	public Company(String nif, String address, LocalTime closeTime, LocalTime openTime, String email, String name,
+			String phone, Admin admin) {
 		super();
 		this.nif = nif;
 		this.address = address;
@@ -66,19 +78,19 @@ public class Company {
 		this.address = address;
 	}
 
-	public LocalDateTime getCloseTime() {
+	public LocalTime getCloseTime() {
 		return closeTime;
 	}
 
-	public void setCloseTime(LocalDateTime closeTime) {
+	public void setCloseTime(LocalTime closeTime) {
 		this.closeTime = closeTime;
 	}
 
-	public LocalDateTime getOpenTime() {
+	public LocalTime getOpenTime() {
 		return openTime;
 	}
 
-	public void setOpenTime(LocalDateTime openTime) {
+	public void setOpenTime(LocalTime openTime) {
 		this.openTime = openTime;
 	}
 

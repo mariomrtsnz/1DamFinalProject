@@ -1,6 +1,7 @@
 package com.salesianostriana.mario;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
 
 import org.springframework.boot.CommandLineRunner;
@@ -33,16 +34,15 @@ public class DamFinalProjectApplication {
 			EmployeeService employeeService, TreatmentService treatmentService, CompanyService companyService, AdminService adminService) {
 		return args -> {
 
-			Company company = new Company();
+			Company company = new Company("55123456T", "c/ Alejo Fernández, 13, 41003", LocalTime.of(19, 00), LocalTime.of(10, 00), "contact@realworlddental.com", "RealWorld Dental", "954 335 932");
+////			Company company = new Company();
 //			companyService.save(company);
-
-			Admin admin = new Admin("00000000A", "admin@rwd.com", "Admin", "admin", "11",
+			Admin admin = new Admin("55123456T", "admin@rwd.com", "Admin", "admin", "11",
 					"/images/profilePics/profile-admin.jpg");
-			
 //			adminService.save(admin);
-
 //			company.setAdmin(admin);
-//
+
+			
 			Client c = new Client("77927639M", "mario.mrtsnz@gmail.com", true, false, "Mario Martínez Sanz", "1234",
 					"678377084", "fotoMarioMartinez", LocalDateTime.now());
 			c = clientService.save(c);
@@ -52,11 +52,11 @@ public class DamFinalProjectApplication {
 			c1 = clientService.save(c1);
 //			company.addClient(c1);
 //
-			Employee e = new Employee("12345678B", "test@rwd.com", 2000.00, "test", "employee", "098765432",
+			Employee e = new Employee("12345678B", "test@rwd.com", 20000.00, "test", "employee", "098765432",
 					"noPicture", "Administrative", LocalDateTime.of(2018, 5, 3, 7, 30));
 			e = employeeService.save(e);
 //			company.addEmployee(e);
-			Employee e1 = new Employee("10293847C", "harveydent@rwd.com", 4000.00, "Harvet Dent", "batman",
+			Employee e1 = new Employee("10293847C", "harveydent@rwd.com", 40000.00, "Harvey Dent", "batman",
 					"666777888", "noPicture2", "Dentist", LocalDateTime.of(2018, 3, 1, 6, 29));
 			e1 = employeeService.save(e1);
 //			company.addEmployee(e1);
@@ -73,12 +73,12 @@ public class DamFinalProjectApplication {
 			c1.addAppointment(a1);
 			e.addAppointment(a1);
 			t.addAppointment(a1);
-			Appointment a2 = new Appointment(LocalDateTime.of(2013, 12, 18, 14, 30), c1, e1,
+			Appointment a2 = new Appointment(LocalDateTime.of(2013, 12, 18, 14, 30), c, e1,
 					LocalDateTime.of(2013, 12, 18, 15, 30), true, LocalDateTime.of(2013, 12, 15, 18, 00), t1);
-//			a2 = appointmentService.save(a2);
-//			c.addAppointment(a2);
-//			e.addAppointment(a2);
-//			t.addAppointment(a2);
+			a2 = appointmentService.save(a2);
+			c.addAppointment(a2);
+			e1.addAppointment(a2);
+			t1.addAppointment(a2);
 
 //
 //			companyService.save(company);

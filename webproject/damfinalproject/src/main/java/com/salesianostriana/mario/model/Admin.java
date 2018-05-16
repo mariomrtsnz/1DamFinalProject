@@ -6,16 +6,16 @@ import javax.persistence.Id;
 @Entity
 public class Admin {
 	@Id
-	private String dni;
+	private String nif;
 	private String email;
 	private String name;
 	private String password;
 	private String phone;
 	private String profilePic;
 
-	public Admin(String dni, String email, String name, String password, String phone, String profilePic) {
+	public Admin(String nif, String email, String name, String password, String phone, String profilePic) {
 		super();
-		this.dni = dni;
+		this.nif = nif;
 		this.email = email;
 		this.name = name;
 		this.password = password;
@@ -24,11 +24,11 @@ public class Admin {
 	}
 
 	public String getDni() {
-		return dni;
+		return nif;
 	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setDni(String nif) {
+		this.nif = nif;
 	}
 
 	public String getEmail() {
@@ -73,7 +73,7 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [dni=" + dni + ", email=" + email + ", name=" + name + ", password=" + password + ", phone="
+		return "Admin [nif=" + nif + ", email=" + email + ", name=" + name + ", password=" + password + ", phone="
 				+ phone + ", profilePic=" + profilePic + "]";
 	}
 
