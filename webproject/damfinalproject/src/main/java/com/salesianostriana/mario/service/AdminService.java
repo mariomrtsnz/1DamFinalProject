@@ -1,5 +1,6 @@
 package com.salesianostriana.mario.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.mario.model.Admin;
@@ -7,6 +8,8 @@ import com.salesianostriana.mario.repository.AdminRepository;
 
 @Service
 public class AdminService {
+
+	@Autowired
 	AdminRepository repository;
 
 	public Admin save(Admin entidad) {

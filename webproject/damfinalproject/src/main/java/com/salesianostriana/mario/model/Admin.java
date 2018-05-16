@@ -13,6 +13,10 @@ public class Admin {
 	private String phone;
 	private String profilePic;
 
+	public Admin() {
+
+	}
+
 	public Admin(String nif, String email, String name, String password, String phone, String profilePic) {
 		super();
 		this.nif = nif;

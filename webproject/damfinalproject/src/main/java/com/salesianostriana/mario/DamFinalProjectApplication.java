@@ -35,11 +35,11 @@ public class DamFinalProjectApplication {
 		return args -> {
 
 			Company company = new Company("55123456T", "c/ Alejo Fernández, 13, 41003", LocalTime.of(19, 00), LocalTime.of(10, 00), "contact@realworlddental.com", "RealWorld Dental", "954 335 932");
-////			Company company = new Company();
-//			companyService.save(company);
+//			Company company = new Company();
+			companyService.save(company);
 			Admin admin = new Admin("55123456T", "admin@rwd.com", "Admin", "admin", "11",
 					"/images/profilePics/profile-admin.jpg");
-//			adminService.save(admin);
+			adminService.save(admin);
 //			company.setAdmin(admin);
 
 			
