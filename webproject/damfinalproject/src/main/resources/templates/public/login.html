@@ -1,13 +1,13 @@
-<form class="form-card" id="loginform">
+<form class="form-card" id="loginform" method="post" th:action="@{/checkLogin}" th:object="${loginUser}">
     <fieldset class="form-fieldset">
         <legend class="form-legend">Inicia sesión</legend>
         <div class="form-element form-input">
-            <input id="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz" class="form-element-field" placeholder=" " type="email" required/>
+            <input id="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz" class="form-element-field" name="email" placeholder="" th:field="*{email}" th:value="*{email}" type="email" required/>
             <div class="form-element-bar"></div>
             <label class="form-element-label" for="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz">Email</label>
         </div>
         <div class="form-element form-input">
-            <input id="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz" class="form-element-field" placeholder=" " type="password" required/>
+            <input id="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz" class="form-element-field" name="password" placeholder="" type="password" th:field="*{password}" th:value="*{password}" required/>
             <div class="form-element-bar"></div>
             <label class="form-element-label" for="field-uyzeji-352rnc-4rv3g1-bvlh88-9dewuz">Contraseña</label>
         </div>
@@ -20,6 +20,6 @@
         </div>
     </fieldset>
 </form>
-<div class="form-actions" onclick="submitLogIn()">
+<div class="form-actions">
     <button type="submit" form="loginform">Iniciar Sesión</button>
 </div>

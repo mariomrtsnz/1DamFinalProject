@@ -1,0 +1,182 @@
+	<!DOCTYPE html>
+	<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>Panel de Control - Distribuidor</title>
+		<!-- Por Defecto--> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+		<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+		<!-- CSS y JS Propio-->
+		<link rel="stylesheet" type="text/css" href="css/pc_dis.css"> 
+		<!-- Toogle Button-->
+		<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="http://fa2png.io/r/ionicons/fireball/?color=e67e22&margin=0&size=16" />
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+		<!-- Barra Navegacion-->
+		<header>
+			<nav class="navbar navbar-expand-md fixed-top">
+				<a class="navbar-brand" href="index.html" th:href="@{/index}"><span><i class="fab fa-gripfire"></i></span></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+					<span class="fas fa-bars"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Inicio</a>
+
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="cont1.html">Categorias</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="cont1.html">Distribuidores</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<form class="form-inline desaa" action="/action_page.php">
+								<input class="form-control mr-sm-2" type="text" placeholder="">
+								<button class="btn boton" type="submit"><i class="fas fa-search"></i> Buscar</button>
+							</form>  
+						</li>
+						<li class="nav-item">
+							<a class="nav-link desab" href="cont2.html">Iniciar Sesión</a>
+						</li>
+					</ul>
+				</div>
+				
+			</nav>
+		</header>
+		
+		<!-- Main - Productos -->
+		<div class="col-12">
+			<section class="container-fluid">
+				<div class="row align-items-center">
+					<div class="col-md-3">
+						<a href="">
+						<i class="fas fa-tag"></i>
+						<p>Gestion Productos</p>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="">
+						<i class="fas fa-clipboard-list"></i>
+						<p>Informacion Pedidos</p>
+					</a>
+					</div>
+					<div class="col-md-3">
+						<a href="">
+						<i class="fas fa-user"></i>
+						<p>Gestion Datos Personales</p>
+					</a>
+					</div>
+			
+				</div>
+			</section>
+		</div>
+
+		<!-- Footer -->
+		<div class="footer col-12">
+			<!--Footer-->
+			<footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
+
+				<!--Footer Links-->
+				<div class="container text-center text-md-left">
+
+					<!-- Footer links -->
+					<div class="row text-center text-md-left mt-3 pb-3">
+
+						<!--First column-->
+
+						<!--/.First column-->
+
+						<hr class="w-100 clearfix d-md-none">
+
+						<!--Second column-->
+						<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+							<h6 class="text-uppercase mb-4 font-weight-bold">Información</h6>
+							<p><a href="#!">¿Quienes Somos?</a></p>
+							<p><a href="#!">Politica de Privacidad</a></p>
+							<p><a href="#!">Politica de Empresa</a></p>
+						</div>
+						<!--/.Second column-->
+
+						<hr class="w-100 clearfix d-md-none">
+
+						<!--Third column-->
+						<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+							<h6 class="text-uppercase mb-4 font-weight-bold">Enlaces de Utilidad</h6>
+							<p><a href="#!">Tu Cuenta</a></p>
+							<p><a href="#!">Nuestros Distribuidores</a></p>
+							<p><a href="#!">FAQ</a></p>
+						</div>
+						<!--/.Third column-->
+
+						<hr class="w-100 clearfix d-md-none">
+
+						<!--Fourth column-->
+						<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+							<h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
+							<p><i class="fa fa-home mr-2"></i>41300 Sevilla</p>
+							<p><i class="fa fa-envelope mr-8"></i> javiermateos4@gmail.com</p>
+							<p><i class="fa fa-phone mr-2"></i> +34 636 32 06 69</p>
+						</div>
+
+						<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+							<h6 class="text-uppercase mb-4 font-weight-bold">Donde encontrarnos</h6>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.399563345801!2d-6.00963138462!3d37.380381979833096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126c6a6fd0990f%3A0x448eb556f306897f!2sSalesianos+Triana!5e0!3m2!1sen!2ses!4v1525850786070" width="300" height="240" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>
+
+					</div>
+					<!-- Footer links -->
+
+					<hr>
+
+					<div class="row py-3 d-flex align-items-center">
+
+						<!--Grid column-->
+						<div class="col-md-8 col-lg-8">
+
+							<!--Copyright-->
+							<p class="text-center text-md-left grey-text">© 2018 Copyright: <a href="#"><strong>Javier Mateos Cano</strong></a></p>
+							<!--/.Copyright-->
+
+						</div>
+						<!--Grid column-->
+
+						<!--Grid column-->
+						<div class="col-md-4 col-lg-4 ml-lg-0">
+
+							<!--Social buttons-->
+							<div class="text-center text-md-right">
+								<ul class="list-unstyled list-inline">
+									<li class="list-inline-item"><a href="https://www.facebook.com/" class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fab fa-facebook"></i></a></li>
+									<li class="list-inline-item"><a href="https://www.twitter.com/" class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fab fa-twitter"></i></a></li>
+									<li class="list-inline-item"><a href="https://plus.google.com/" class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fab fa-google-plus"></i></a></li>
+									<li class="list-inline-item"><a href="https://www.linkedin.com/" class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fab fa-linkedin"></i></a></li>
+								</ul>
+							</div>
+							<!--/.Social buttons-->
+
+						</div>
+						<!--Grid column-->
+
+					</div>
+
+				</div>
+
+			</footer>
+			<!--/.Footer-->
+		</div>
+	</br>
+</div>
+</body>
+</html>

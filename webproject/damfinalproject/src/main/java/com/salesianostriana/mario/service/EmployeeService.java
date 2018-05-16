@@ -24,13 +24,20 @@ public class EmployeeService {
 		return repository.save(entidad);
 	}
 
-	public void remove(Employee entidad) {
-		repository.delete(entidad);
+	public Employee remove(Employee employee) {
+		Employee deletedEmployee = repository.findById(employee.getId()).orElse(null);
+		if (deletedEmployee != null)
+			repository.delete(employee);
+		return deletedEmployee;
 	}
 
 	public void edit(Employee entidad) {
 		remove(entidad);
 		save(entidad);
+	}
+
+	public Employee login(String email, String password) {
+		return repository.findFirstByEmailAndPassword(email, password);
 	}
 
 }

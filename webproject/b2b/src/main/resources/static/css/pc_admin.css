@@ -1,0 +1,157 @@
+/*------- General -------*/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding-top: 60px;
+  color: #939393;
+}
+
+
+/*-------Header y Barra de Navegación-------*/
+.navbar {
+  background-color: #DE6262;
+  font-weight: bolder;
+  border-bottom: 2px solid #DE6262;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+
+}
+.nav-link{
+  margin-left: 15px;
+  margin-right: 15px;
+  color: white;
+}
+
+.fab {
+  font-size: 34px;
+  background-color: #DE6262;
+  color: white;
+}
+
+/* Barra de Navegacion - Busqueda*/
+
+.boton {
+  color: #DE6262;
+  border: 1px solid #DE6262;
+  background-color: white;
+}
+
+.navbar-toggler {
+  color: #DE6262;
+  background-color: white;
+}
+
+.position {
+  float: right !important;
+}
+/*-------- Contenido  ---------*/
+.row {
+  padding: 0;
+  margin: 0;
+}
+.container-fluid {
+  padding: 8%;
+
+}
+
+
+/*------- Main, Productos y Paginación-------*/
+section .col-md-2 {
+    background-color: white;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+
+section .fas{
+  font-size:12vw;
+  background-color: white;
+  color: #DE6262;
+
+}
+
+section p {
+  color: grey;
+  font-size: 20px;
+  font-weight: bolder;
+  margin-top: 15%;
+  margin-bottom: 5%;
+  text-align: center;
+}
+
+/*------ Footer -------*/
+h6 {
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+
+.footer {
+  border-top: 2px solid #DE6262;
+  font-size: 16px;
+  background-color: white;
+  font-weight: bolder;
+}
+
+a {
+  color: #DE6262;
+  text-decoration: none;
+}
+
+footer .fab {
+  font-size: 24px;
+  background-color: white;
+  color: #DE6262;
+}
+
+/*----------------Versión movil y Responsive------------------*/
+
+@media only screen and (max-width: 650px) {
+
+aside {
+  display: none;
+}
+
+.container-fluid{
+  margin: 0 auto;
+  text-align: center;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+.desaa {
+  display: none;
+}
+.container-fluid {
+  margin: 0 auto;
+  text-align: center;
+}
+section p {
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 8%;
+  margin-bottom: 5%;
+  padding: 5px;
+  text-align: center;
+}
+}
+
+@media only screen and (max-width: 1050px) {
+
+.desaa {
+  display: none;
+}
+
+}

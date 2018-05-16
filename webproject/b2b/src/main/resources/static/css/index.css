@@ -1,0 +1,201 @@
+/*------- General -------*/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding-top: 60px;
+  color: #939393;
+}
+
+
+/*-------Header y Barra de Navegación-------*/
+.navbar {
+  background-color: #DE6262;
+  font-weight: bolder;
+  border-bottom: 2px solid #DE6262;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+
+}
+.nav-link{
+  margin-left: 15px;
+  margin-right: 15px;
+  color: white;
+}
+
+.fab {
+  font-size: 34px;
+  background-color: #DE6262;
+  color: white;
+}
+
+footer .fab {
+  font-size: 24px;
+  background-color: white;
+  color: #DE6262;
+}
+
+.boton {
+  color: #DE6262;
+  border: 1px solid #DE6262;
+  background-color: white;
+}
+
+.navbar-toggler {
+  color: #DE6262;
+  background-color: white;
+}
+
+.position {
+  float: right !important;
+}
+/*-------- Contenido  ---------*/
+.row {
+  padding: 0;
+  margin: 0;
+}
+
+.container-fluid {
+  border-left: 1.5px solid #DE6262;
+}
+
+section .col-md-2 {
+    margin-right: 0px;
+    background-color: white;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+/*------- Barra lateral Izquierda - Filtros ------*/
+
+aside {
+  margin-top: 2%;
+  list-style: none;
+
+}
+
+ul, li {
+  list-style: none;
+
+}
+.col-2 {
+
+}
+
+.col-10 {
+
+}
+
+/*------- Main, Productos y Paginación-------*/
+
+/*------ Footer -------*/
+h6 {
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+
+.footer {
+  border-top: 2px solid #DE6262;
+  font-size: 16px;
+  background-color: white;
+  font-weight: bolder;
+}
+
+a {
+  color: #DE6262;
+}
+
+/*----------------Versión movil y Responsive------------------*/
+@media only screen and (max-width: 650px) {
+
+aside {
+  display: none;
+}
+
+.container-fluid{
+  margin: 0 auto;
+  text-align: center;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+
+.desaa {
+  display: none;
+}
+.container-fluid {
+  border-left: 1.5px solid #DE6262;
+}
+
+}
+
+@media only screen and (max-width: 1050px) {
+
+.desaa {
+  display: none;
+}
+
+}
+
+
+/* Imagenes */
+
+.bg1 {
+
+    background-image: url("img/bg1.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:right;
+    background-color: white;
+  }
+
+  .bg2 {
+    background-image: url("img/bg2.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:right;
+    background-color: white;
+  }
+
+  .bg3 {
+    background-image: url("img/bg3.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:right;
+    background-color: white;
+  }
+
+  .bg4 {
+    background-image: url("img/bg4.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:right;
+    background-color: white;
+  }
+
+  .bg5 {
+    background-image: url("img/bg5.png");
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:right;
+    background-color: white;
+  }
+
+  .bg6 {
+    background-image: url("img/bg6.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:right;
+    background-color: white;
+  }

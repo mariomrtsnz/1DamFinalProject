@@ -24,13 +24,20 @@ public class ClientService {
 		return repository.findAll();
 	}
 
-	public void remove(Client entidad) {
-		repository.delete(entidad);
+	public Client remove(Client client) {
+		Client deletedClient = repository.findById(client.getId()).orElse(null);
+		if (deletedClient != null)
+			repository.delete(client);
+		return deletedClient;
 	}
 
 	public void edit(Client entidad) {
 		remove(entidad);
 		save(entidad);
+	}
+	
+	public Client login(String email, String password) {
+		return repository.findFirstByEmailAndPassword(email, password);
 	}
 
 }

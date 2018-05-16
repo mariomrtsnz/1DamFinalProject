@@ -37,7 +37,7 @@ public class DamFinalProjectApplication {
 
 			Company company = new Company("55123456T", "c/ Alejo Fernández, 13, 41003", LocalTime.of(19, 00),
 					LocalTime.of(10, 00), "contact@realworlddental.com", "RealWorld Dental", "954 335 932");
-			Admin admin = new Admin("55123456T", "admin@rwd.com", "Admin", "admin", "11",
+			Admin admin = new Admin("55123456T", "admin@rwd.com", "Admin", "1", "664560382",
 					"/images/profilePics/profile-admin.jpg");
 			companyService.save(company, admin);
 

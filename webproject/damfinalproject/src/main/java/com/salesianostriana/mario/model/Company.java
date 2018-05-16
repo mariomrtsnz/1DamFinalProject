@@ -59,6 +59,14 @@ public class Company {
 		// this.admin = admin;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNif() {
 		return nif;
 	}

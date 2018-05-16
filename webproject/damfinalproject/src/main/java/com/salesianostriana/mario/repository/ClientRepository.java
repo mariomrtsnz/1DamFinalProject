@@ -10,4 +10,6 @@ import com.salesianostriana.mario.model.Client;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 	@Query("select distinct c from Client c join fetch c.appointments where c.id = ?1")
 	Client findClientWithAppointments(Long id);
+
+	Client findFirstByEmailAndPassword(String email, String password);
 }

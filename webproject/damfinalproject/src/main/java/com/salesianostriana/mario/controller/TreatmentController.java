@@ -11,7 +11,7 @@ import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.service.TreatmentService;
 
 @Controller
-public class ServiceController {
+public class TreatmentController {
 
 	TreatmentService treatmentService = new TreatmentService();
 
