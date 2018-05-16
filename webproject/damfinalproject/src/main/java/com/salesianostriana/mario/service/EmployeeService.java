@@ -24,4 +24,13 @@ public class EmployeeService {
 		return repository.save(entidad);
 	}
 
+	public void remove(Employee entidad) {
+		repository.delete(entidad);
+	}
+
+	public void edit(Employee entidad) {
+		remove(entidad);
+		save(entidad);
+	}
+
 }

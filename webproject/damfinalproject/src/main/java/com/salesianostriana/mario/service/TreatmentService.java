@@ -24,4 +24,13 @@ public class TreatmentService {
 		return repository.save(entidad);
 	}
 
+	public void remove(Treatment entidad) {
+		repository.delete(entidad);
+	}
+
+	public void edit(Treatment entidad) {
+		remove(entidad);
+		save(entidad);
+	}
+
 }

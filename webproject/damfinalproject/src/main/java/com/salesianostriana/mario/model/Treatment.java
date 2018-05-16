@@ -40,6 +40,20 @@ public class Treatment {
 		this.company = company;
 	}
 
+	public Treatment() {
+	}
+
+	public Treatment(String description, int discount, boolean isPaidInInstallments, String name, int numSessions,
+			double totalPrice) {
+		super();
+		this.description = description;
+		this.discount = discount;
+		this.isPaidInInstallments = isPaidInInstallments;
+		this.name = name;
+		this.numSessions = numSessions;
+		this.totalPrice = totalPrice;
+	}
+
 	public String getDescription() {
 		return description;
 	}

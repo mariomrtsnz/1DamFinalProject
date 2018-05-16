@@ -8,7 +8,7 @@ import com.salesianostriana.mario.repository.ClientRepository;
 
 @Service
 public class ClientService {
-	
+
 	@Autowired
 	ClientRepository repository;
 
@@ -23,5 +23,14 @@ public class ClientService {
 	public Iterable<Client> findAll() {
 		return repository.findAll();
 	}
-	
+
+	public void remove(Client entidad) {
+		repository.delete(entidad);
+	}
+
+	public void edit(Client entidad) {
+		remove(entidad);
+		save(entidad);
+	}
+
 }

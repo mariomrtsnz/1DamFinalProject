@@ -36,6 +36,20 @@ public class Employee {
 
 	}
 
+	public Employee(String dni, String email, double grossAnualSalary, String name, String password, String phone,
+			String profilePic, String position, LocalDateTime hireDate) {
+		super();
+		this.dni = dni;
+		this.email = email;
+		this.grossAnualSalary = grossAnualSalary;
+		this.name = name;
+		this.password = password;
+		this.phone = phone;
+		this.profilePic = profilePic;
+		this.position = position;
+		this.hireDate = hireDate;
+	}
+
 	public Employee(Company company, String dni, String email, double grossAnualSalary, String name, String password,
 			String phone, String profilePic, String position, LocalDateTime hireDate) {
 		super();

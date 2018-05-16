@@ -24,4 +24,13 @@ public class AppointmentService {
 		return repository.save(entidad);
 	}
 
+	public void remove(Appointment entidad) {
+		repository.delete(entidad);
+	}
+
+	public void edit(Appointment entidad) {
+		remove(entidad);
+		save(entidad);
+	}
+
 }
