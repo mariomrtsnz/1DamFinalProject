@@ -1,110 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="../../static/images/icons/logo-icon.ico">
-    <link rel="stylesheet" type="text/css" media="screen" href="../../static/styles/dashboard.css" />
-    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-        crossorigin="anonymous"></script>
-    <script src="../../static/scripts/dashboard.js"></script>
-    <title>RWD - Admin - Dashboard</title>
+    <th:block th:replace="fragments/common :: head"></th:block>
+    <th:block th:replace="fragments/adminlayout :: head (pageTitle='Index')"></th:block>
 </head>
 
 <body>
-    <header class="cd-main-header">
-        <a href="./admin-dashboard-index.html" class="cd-logo">
-            <img src="../../static/images/icons/projectlogo.svg" width="40px" alt="Logo">
-        </a>
-        <a href="#0" class="cd-nav-trigger">Menu
-            <span></span>
-        </a>
-        <nav class="cd-nav">
-            <ul class="cd-top-nav">
-                <li class="has-children account">
-                    <a href="#0">
-                        <img src="../../static/images/profilePics/profile-admin.jpg" alt="avatar"> Admin
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="../public/user-profile.html">Perfil</a>
-                        </li>
-                        <li>
-                            <a href="../public/user-index.html">Ir a página web</a>
-                        </li>
-                        <li>
-                            <a href="../index.html">Cerrar Sesión</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+    <header th:replace="fragments/adminlayout :: header">
+        
     </header>
     <main class="cd-main-content">
-        <nav class="cd-side-nav nav-side">
-            <ul>
-                <li class="cd-label">Principales</li>
-                <li class="has-children overview">
-                    <a href="#0">Servicios</a>
-                    <ul>
-                        <li>
-                            <a href="admin-services-list.html">Ver Servicios</a>
-                        </li>
-                        <li>
-                            <a href="admin-add-service.html">Añadir Servicio</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-children comments">
-                    <a href="#0">Clientes</a>
-                    <ul>
-                        <li>
-                            <a href="../staff/staff-clients-list.html">Ver Clientes</a>
-                        </li>
-                        <li>
-                            <a href="../admin/admin-add-client.html">Añadir Cliente</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-children comments">
-                    <a href="#0">Empleados</a>
-                    <ul>
-                        <li>
-                            <a href="admin-staff-list.html">Ver Empleados</a>
-                        </li>
-                        <li>
-                            <a href="admin-add-staff.html">Añadir Empleado</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-children comments">
-                    <a href="#0">Calendario</a>
-                    <ul>
-                        <li>
-                            <a href="admin-calendar.html">Ver Calendario</a>
-                        </li>
-                        <li>
-                            <a href="admin-add-appointment.html">Añadir Cita</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <ul>
-                <li class="cd-label">Secundarios</li>
-                <li class="has-children bookmarks">
-                    <a href="../public/user-profile.html">Perfil</a>
-                </li>
-                <li class="has-children images">
-                    <a href="../public/user-index.html">Ir a página web</a>
-                </li>
-                <li class="has-children users">
-                    <a href="../index.html">Cerrar Sesión</a>
-                </li>
-            </ul>
+        <nav th:replace="fragments/adminlayout :: sideBar">
+            
         </nav>
-        <a href="#" class="nav-toggle"></a>
+        <a th:replace="fragments/adminlayout :: sideBarToggle"></a>
         <div class="content-wrapper">
             <div class="dashboard-main">
                 <a href="admin-services-list.html">
