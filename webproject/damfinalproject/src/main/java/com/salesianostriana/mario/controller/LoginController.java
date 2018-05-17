@@ -1,5 +1,7 @@
 package com.salesianostriana.mario.controller;
 
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.mario.formbean.LoginUser;
+import com.salesianostriana.mario.formbean.SignUpUser;
 import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
@@ -20,7 +23,7 @@ import com.salesianostriana.mario.service.EmployeeService;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private HttpSession session;
 
@@ -33,10 +36,21 @@ public class LoginController {
 	@Autowired
 	private ClientService clientService;
 
-//	@GetMapping("/public/signup.html")
-//	public String signUpPage() {
-//		return "/public/signup";
-//	}
+	@GetMapping("/public/signup.html")
+	public String signUpPage(Model model) {
+		model.addAttribute("signUpUser", new SignUpUser());
+		return "/public/signup";
+	}
+
+	@PostMapping("/checkSignUp")
+	public String submitSignUp(@ModelAttribute("signUpUser") SignUpUser signUpUser, BindingResult bindingResult,
+			Model model) {
+		Client client = new Client(signUpUser.getDni(), signUpUser.getEmail(), signUpUser.getName(),
+				signUpUser.getPassword(), signUpUser.getPhone(), LocalDateTime.now());
+		clientService.save(client);
+
+		return "redirect:/public";
+	}
 
 	@GetMapping("/public/login.html")
 	public String loginPage(Model model) {
@@ -60,7 +74,6 @@ public class LoginController {
 		} else if (userEmployee instanceof Employee) {
 			session.setAttribute("loggedUser", user);
 			return "redirect:/staff";
-
 		} else {
 			model.addAttribute("loginError", "El usuario o contraseña no es válido");
 			return "/index";
