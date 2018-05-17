@@ -12,7 +12,11 @@ public class AdminService {
 	@Autowired
 	AdminRepository repository;
 
+	@Autowired
+	CompanyService companyService;
+
 	public Admin save(Admin admin) {
+		admin.setCompany(companyService.findDefaultCompany());
 		return repository.save(admin);
 	}
 

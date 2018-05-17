@@ -12,7 +12,11 @@ public class ClientService {
 	@Autowired
 	ClientRepository repository;
 
+	@Autowired
+	CompanyService companyService;
+
 	public Client save(Client entidad) {
+		entidad.setCompany(companyService.findDefaultCompany());
 		return repository.save(entidad);
 	}
 
@@ -35,7 +39,7 @@ public class ClientService {
 		remove(entidad);
 		save(entidad);
 	}
-	
+
 	public Client login(String email, String password) {
 		return repository.findFirstByEmailAndPassword(email, password);
 	}

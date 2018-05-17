@@ -18,14 +18,9 @@ public class ClientController {
 	private TreatmentService treatmentService;
 
 	@GetMapping("/public")
-	public String index() {
-		return "/public/user-index";
-	}
-	
-	@GetMapping("/publiclayout")
-	public String publicLayout(Model model) {
+	public String index(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
-		return "/fragments/publiclayout";
+		return "/public/user-index";
 	}
 	
 //	@GetMapping("/public")
@@ -35,7 +30,7 @@ public class ClientController {
 //	}
 	
 	@GetMapping("/public/services")
-	public String services() {
+	public String services(Model model) {
 		return "/public/user-services";
 	}
 	
@@ -45,14 +40,13 @@ public class ClientController {
 	}
 	
 	@GetMapping("/public/contactus")
-	public String contactUs() {
+	public String contactUs(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
 		return "/public/user-contactus";
 	}
 	
 	@GetMapping("/public/profile")
 	public String profile(Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
 		return "/public/user-profile";
 	}
 

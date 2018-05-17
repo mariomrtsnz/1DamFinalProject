@@ -12,6 +12,9 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository repository;
 
+	@Autowired
+	CompanyService companyService;
+
 	public Employee findOne(Long id) {
 		return repository.findById(id).orElse(null);
 	}
@@ -21,6 +24,7 @@ public class EmployeeService {
 	}
 
 	public Employee save(Employee entidad) {
+		entidad.setCompany(companyService.findDefaultCompany());
 		return repository.save(entidad);
 	}
 

@@ -86,6 +86,8 @@ public class DamFinalProjectApplication {
 
 			// Test
 			System.out.println(clientService.findOne(c.getId()));
+			
+			System.out.println(company.getId());
 		};
 	}
 }

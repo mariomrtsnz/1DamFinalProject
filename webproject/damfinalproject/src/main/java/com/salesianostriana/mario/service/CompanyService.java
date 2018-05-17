@@ -39,6 +39,14 @@ public class CompanyService {
 		repository.delete(entidad);
 	}
 
+	public Company findOneById(Long id) {
+		return repository.findById(id).orElse(null);
+	}
+
+	public Company findDefaultCompany() {
+		return repository.findById(Long.valueOf(1)).orElse(null);
+	}
+
 	// public void edit(Company entidad) {
 	// remove(entidad);
 	// save(entidad);

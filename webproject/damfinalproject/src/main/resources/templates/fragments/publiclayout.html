@@ -32,60 +32,19 @@
                     <span class="nav_bg_clr"></span>
                     <span>Servicios</span>
                 </a>
-                <ul class="cd-nav-icons is-hidden" th:each="treatment : ${treatments}">
+                <ul class="cd-nav-icons is-hidden">
                     <li class="go-back">
                         <a href="#0">Menu</a>
                     </li>
                     <li class="see-all">
                         <a href="user-services.html">Ver Servicios</a>
                     </li>
-                    <li>
+                    <li th:each="treatment : ${treatments}">
                         <a class="cd-nav-item item-1" href="/public/user-service.html" th:href="@{/public/user-service}">
-                            <h3>Blanqueamiento dental</h3>
+                            <h3 th:text="${treatment.name}">Blanqueamiento dental</h3>
                         </a>
                     </li>
 
-                    <li>
-                        <a class="cd-nav-item item-2" href="user-service.html" th:href="@{/public/user-service}">
-                            <h3>Carillas</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-3" href="user-service.html" th:href="@{/public/user-service}">
-                            <h3>Coronas y Puentes</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-4" href="user-service.html" th:href="@{/public/user-service}">
-                            <h3>Endodoncia</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-5" href="user-service.html" th:href="@{/public/user-service}">
-                            <h3>Empastes</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-6" href="user-service.html" th:href="@{/public/user-service}">
-                            <h3>Implante</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-7" href="user-service.html" th:href="@{/public/user-service}">
-                            <h3>Odontopediatría</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-8" href="user-service.html">
-                            <h3>Ortodoncia</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-9" href="user-service.html">
-                            <!-- ${treatment.name} -->
-                            <h3>Periodontitis</h3>
-                        </a>
-                    </li>
                 </ul>
             </li>
 

@@ -24,7 +24,7 @@ public class Client {
 	private String dni;
 	private String email;
 	private boolean hasDuePayment;
-	private boolean isHistorical;
+	private boolean historical;
 	private String name;
 	private String password;
 	private String phone;
@@ -44,7 +44,7 @@ public class Client {
 		this.dni = dni;
 		this.email = email;
 		this.hasDuePayment = hasDuePayment;
-		this.isHistorical = isHistorical;
+		this.historical = isHistorical;
 		this.name = name;
 		this.password = password;
 		this.phone = phone;
@@ -58,7 +58,7 @@ public class Client {
 		this.dni = dni;
 		this.email = email;
 		this.hasDuePayment = hasDuePayment;
-		this.isHistorical = isHistorical;
+		this.historical = isHistorical;
 		this.name = name;
 		this.password = password;
 		this.phone = phone;
@@ -118,11 +118,11 @@ public class Client {
 	}
 
 	public boolean isHistorical() {
-		return isHistorical;
+		return historical;
 	}
 
 	public void setHistorical(boolean isHistorical) {
-		this.isHistorical = isHistorical;
+		this.historical = isHistorical;
 	}
 
 	public String getName() {
@@ -176,7 +176,7 @@ public class Client {
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", dni=" + dni + ", email=" + email + ", hasDuePayment=" + hasDuePayment
-				+ ", isHistorical=" + isHistorical + ", name=" + name + ", password=" + password + ", phone=" + phone
+				+ ", isHistorical=" + historical + ", name=" + name + ", password=" + password + ", phone=" + phone
 				+ ", profilePic=" + profilePic + ", appointments=" + appointments + ", company=" + company
 				+ ", registerDate=" + registerDate + "]";
 	}

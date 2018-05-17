@@ -11,6 +11,9 @@ public class TreatmentService {
 
 	@Autowired
 	TreatmentRepository repository;
+	
+	@Autowired
+	CompanyService companyService;
 
 	public Treatment findOneById(Long id) {
 		return repository.findById(id).orElse(null);
@@ -21,6 +24,7 @@ public class TreatmentService {
 	}
 
 	public Treatment save(Treatment entidad) {
+		entidad.setCompany(companyService.findDefaultCompany());
 		return repository.save(entidad);
 	}
 
