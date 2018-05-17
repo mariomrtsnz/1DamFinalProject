@@ -11,13 +11,11 @@
         
     </header>
     <main class="cd-main-content">
-        <nav th:replace="fragments/adminlayout :: sideBar">
-            
-        </nav>
-        <a th:replace="fragments/adminlayout :: sideBarToggle"></a>
+		<nav th:replace="fragments/adminlayout :: sideBar"></nav>
+		<a th:replace="fragments/adminlayout :: sideBarToggle"></a>
         <div class="content-wrapper">
             <div class="dashboard-main">
-                <a href="admin-services-list.html">
+                <a href="/admin-services-list.html" th:href="@{/admin-services-list}">
                     <div class="dashboard-card">
                         <span class="icon-services icon" role="img"></span>
                         <hr class="divider"> Servicios

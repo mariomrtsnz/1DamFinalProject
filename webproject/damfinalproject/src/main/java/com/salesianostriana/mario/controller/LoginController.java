@@ -53,7 +53,7 @@ public class LoginController {
 
 		if (user instanceof Admin) {
 			session.setAttribute("loggedUser", user);
-			return "redirect:/admin";
+			return "redirect:/admin-dashboard";
 		} else if (userClient instanceof Client) {
 			session.setAttribute("loggedUser", user);
 			return "redirect:/public";
