@@ -104,9 +104,8 @@ public class DamFinalProjectApplication {
 			t1.addAppointment(a2);
 
 			// Test
-			System.out.println(clientService.findOne(c.getId()));
-			
-			System.out.println(company.getId());
+//			System.out.println(clientService.findOne(c.getId()));			
+//			System.out.println(company.getId());
 		};
 	}
 }

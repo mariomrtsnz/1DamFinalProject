@@ -7,9 +7,7 @@
 </head>
 
 <body>
-    <header th:replace="fragments/adminlayout :: header">
-        
-    </header>
+    <header th:replace="fragments/adminlayout :: header"></header>
     <main class="cd-main-content">
 		<nav th:replace="fragments/adminlayout :: sideBar"></nav>
 		<a th:replace="fragments/adminlayout :: sideBarToggle"></a>
@@ -21,19 +19,19 @@
                         <hr class="divider"> Servicios
                     </div>
                 </a>
-                <a href="../staff/staff-clients-list.html">
+                <a href="../staff/staff-clients-list.html" th:href="@{/staff/staff-clients-list}">
                     <div class="dashboard-card">
                         <span class="icon-clients icon" role="img"></span>
                         <hr class="divider"> Clientes
                     </div>
                 </a>
-                <a href="admin-staff-list.html">
+                <a href="/admin/admin-staff-list.html" th:href="@{/admin-staff-list}">
                     <div class="dashboard-card">
                         <span class="icon-staff icon" role="img"></span>
                         <hr class="divider"> Empleados
                     </div>
                 </a>
-                <a href="admin-calendar.html">
+                <a href="admin-calendar.html" th:href="@{/admin-calendar}">
                     <div class="dashboard-card">
                         <span class="icon-calendar icon" role="img"></span>
                         <hr class="divider"> Calendario

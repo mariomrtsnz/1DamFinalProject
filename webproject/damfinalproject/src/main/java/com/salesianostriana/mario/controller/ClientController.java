@@ -14,44 +14,45 @@ public class ClientController {
 
 	@Autowired
 	private ClientService service;
-	
+
 	@Autowired
 	private TreatmentService treatmentService;
-	
+
 	@Autowired
 	private CompanyService companyService;
 
-	@GetMapping("/public")
+	@GetMapping({ "/public", "/user-index" })
 	public String index(Model model) {
 		model.addAttribute("company", companyService.findDefaultCompany());
 		return "/public/user-index";
 	}
-	
-//	@GetMapping("/public")
-//	public String index(Model model) {
-//		model.addAttribute(loggedUser);
-//		return "/public/user-index";
-//	}
-	
+
+	// @GetMapping("/public")
+	// public String index(Model model) {
+	// model.addAttribute(loggedUser);
+	// return "/public/user-index";
+	// }
+
+	// TODO: Remove "/public" from Mappings
 	@GetMapping("/public/services")
 	public String services(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
 		return "/public/user-services";
 	}
-	
+
 	@GetMapping("/public/aboutus")
 	public String aboutUs(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
 		return "/public/user-aboutus";
 	}
-	
+
 	@GetMapping("/public/contactus")
 	public String contactUs(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
 		model.addAttribute("company", companyService.findDefaultCompany());
 		return "/public/user-contactus";
 	}
-	
+
 	@GetMapping("/public/profile")
 	public String profile(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());

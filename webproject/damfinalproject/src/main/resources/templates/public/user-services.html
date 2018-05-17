@@ -20,7 +20,7 @@
             <div class="service" th:each="treatment : ${treatments}" th:style="'background-image: url(' + @{${treatment.picture}} + ');'">
                 <div class="info">
                     <div class="title">
-                        <h3 th:text="${treatment.name}">Blanqueamiento dental</h3>
+                        <h3 th:text="${treatment.name}"></h3>
                     </div>
                     <div class="description">
                         <span th:text="${treatment.description}"></span>
