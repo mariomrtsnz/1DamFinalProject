@@ -3,12 +3,10 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-	<th:block th:replace="fragments/common :: head" th:remove="tag"></th:block>
+	<th:block th:replace="fragments/common :: head"></th:block>
 	<link rel="stylesheet" type="text/css" media="screen"
 		href="../../styles/user-appointments.css" />
-	<th:block
-		th:replace="fragments/adminlayout :: head (pageTitle='Servicios')"
-		th:remove="tag"></th:block>
+	<th:block th:replace="fragments/adminlayout :: head (pageTitle='Servicios')"></th:block>
 	<script src="../../scripts/user-appointments.js"></script>
 </head>
 
@@ -62,7 +60,10 @@
 							<td id="dentistName" th:text="${treatment.totalPrice}">{service.price}</td>
 							<td th:text="${treatment.discount}">{service.discount}</td>
 							<!-- th:text="${treatment.isPaidInInstallments} ? 'true' : 'false'" -->
-							<td>{treatment.isPaidInInstallments}</td>
+							<td>
+								<span th:if="${treatment.paidInInstallments}">Si</span>
+								<span th:if="${!treatment.paidInInstallments}">No</span>
+							</td>
 							<td class="advancedOptions">
 								<div class="dropdown" style="float: right;">
 									<img th:src="@{/images/icons/icon-advancedOptions.svg}" src="/images/icons/icon-advancedOptions.svg"

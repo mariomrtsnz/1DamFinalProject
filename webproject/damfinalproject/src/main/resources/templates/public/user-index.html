@@ -1,24 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<th:block th:replace="fragments/common :: head"></th:block>
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/main.css" th:href="@{/styles/main.css}"/>
+    <script src="/scripts/user-main.js" th:href="@{/scripts/user-main.js}"></script>
     <title>RWD - Inicio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="../../static/images/icons/logo-icon.ico">
-    <link rel="stylesheet" type="text/css" media="screen" href="../../static/styles/main.css" />
-    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-        crossorigin="anonymous"></script>
-    <script src="../../static/scripts/jquery.menu-aim.js"></script>
-    <script src="../../static/scripts/user-main.js"></script>
 </head>
 
 <body>
     <header class="cd-header">
         <div id="cd-logo">
             <a href="#0">
-                <img src="../../static/images/icons/projectlogo.svg" alt="Logo" width="50px">
+                <img src="/images/icons/projectlogo.svg" alt="Logo" width="50px" th:src="@{/images/icons/projectlogo.svg}">
             </a>
         </div>
     </header>
@@ -38,36 +32,37 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="#" th:href="@{/public}">
                         <b>Inicio</b>
                         <span></span>
                         <!-- icon -->
                     </a>
                 </li>
                 <li>
-                    <a href="./user-services.html">
+                    <a href="/user-services.html" th:href="@{/public/services}">
                         <b>Servicios</b>
                         <span></span>
                         <!-- icon -->
                     </a>
                 </li>
                 <li>
-                    <a href="./user-aboutus.html">
+                    <a href="/user-aboutus.html" th:href="@{/public/aboutus}">
                         <b>Sobre Nosotros</b>
                         <span></span>
                         <!-- icon -->
                     </a>
                 </li>
                 <li>
-                    <a href="./user-contactus.html">
+                    <a href="/user-contactus.html" th:href="@{/public/contactus}">
                         <b>Contacto</b>
                         <span></span>
                         <!-- icon -->
                     </a>
                 </li>
                 <li>
-                    <a href="#cd-placeholder-5">
-                        <b>{Usuario}</b>
+                    <a href="/user-profile.html" th:href="@{/public/profile}">
+                        <!-- th:text="${loggedUser.name}" -->
+                        <b>{loggedUser.name}</b>
                         <span></span>
                         <!-- icon -->
                     </a>
@@ -80,8 +75,8 @@
         <section id="cd-placeholder-1" class="cd-section cd-container">
             <h2>Nos preocupamos por tus dientes</h2>
             <p>
-                Trabajamos con la odontolog√≠a preventiva y nuestra visi√≥n es que tendr√°s dientes sanos para toda la vida y una sonrisa hermosa.
-                Adaptamos todo el cuidado dental a tus necesidades para lograr la m√°xima funcionalidad y est√©tica.
+                Trabajamos con la odontologÌa preventiva y nuestra visiÛn es que tendr·s dientes sanos para toda la vida y una sonrisa hermosa.
+                Adaptamos todo el cuidado dental a tus necesidades para lograr la m·xima funcionalidad y estÈtica.
             </p>
             <p>
                 Nuestro objetivo que te sientas relajado y que tengas una buena experiencia con nosotros.
@@ -91,56 +86,56 @@
 
         <section id="cd-placeholder-2" class="cd-section cd-container">
             <div id="icon1">
-                <img src="../../static/images/icons/toothwhite.svg" alt="">
+                <img src="/images/icons/toothwhite.svg" th:src="@{/images/icons/toothwhite.svg}" alt="">
                 <h2>
                     Blanqueamiento
                 </h2>
                 <p>
-                    El blanqueamiento est√° entre los procedimientos dentales m√°s populares porque puede mejorar incre√≠blemente la forma en que
+                    El blanqueamiento est· entre los procedimientos dentales m·s populares porque puede mejorar increÌblemente la forma en que
                     se ven tus dientes.
                 </p>
             </div>
             <div id="icon2">
-                <img src="../../static/images/icons/teethbrush.svg" alt="">
+                <img src="/images/icons/teethbrush.svg" alt="" th:src="@{/images/icons/teethbrush.svg}">
                 <h2>
                     Limpieza
                 </h2>
                 <p>
-                    La limpieza de los dientes es una parte esencial de la higiene bucal e involucra la eliminaci√≥n de las placas dentales de
+                    La limpieza de los dientes es una parte esencial de la higiene bucal e involucra la eliminaciÛn de las placas dentales de
                     los dientes (caries).
                 </p>
             </div>
             <div id="icon3">
-                <img src="../../static/images/icons/teethtechnology.svg" alt="">
+                <img src="/images/icons/teethtechnology.svg" alt="" th:src="@{/images/icons/teethtechnology.svg}">
                 <h2>
-                    Tecnolog√≠a
+                    TecnologÌa
                 </h2>
                 <p>
-                    Nuestra cl√≠nica enorgullece de formar parte de la Advanced Medical Technology Association (AdvaMed) y, por ello, tiene el
-                    compromiso de reconocer y apoyar su C√≥digo √©tico. Este c√≥digo proporciona directrices espec√≠ficas para
-                    garantizar que las tecnolog√≠as dentales se utilizan en beneficio del paciente.
+                    Nuestra clÌnica enorgullece de formar parte de la Advanced Medical Technology Association (AdvaMed) y, por ello, tiene el
+                    compromiso de reconocer y apoyar su CÛdigo Ètico. Este cÛdigo proporciona directrices especÌficas para
+                    garantizar que las tecnologÌas dentales se utilizan en beneficio del paciente.
                 </p>
             </div>
             <div id="icon4">
-                <img src="../../static/images/icons/teethbrackets.svg" alt="">
+                <img src="/images/icons/teethbrackets.svg" alt="" th:src="@{/images/icons/teethbrackets.svg}">
                 <h2>
                     Brackets de calidad
                 </h2>
                 <p>
-                    La ortod√≥ntica es la rama dent√≠frica que corrige los dientes y mand√≠bulas incorrectamente posicionadas.
+                    La ortodÛntica es la rama dentÌfrica que corrige los dientes y mandÌbulas incorrectamente posicionadas.
                 </p>
             </div>
         </section>
         <section id="cd-placeholder-3" class="cd-section cd-container">
             <h2>
-                RealWorld Dental en n√∫meros
+                RealWorld Dental en n˙meros
             </h2>
             <h3>
-                Algunas estad√≠sticas
+                Algunas estadÌsticas
             </h3>
             <div class="container-statistics">
                 <div id="icon1">
-                    <img src="../../static/images/icons/icon-clients.svg" alt="">
+                    <img src="/images/icons/icon-clients.svg" alt="" th:src="@{/images/icons/icon-clients.svg}">
                     <h3>
                         {numClientesTotales activos y dados de baja}
                     </h3>
@@ -149,7 +144,7 @@
                     </h3>
                 </div>
                 <div id="icon2">
-                    <img src="../../static/images/icons/icon-staff.svg" alt="">
+                    <img src="/images/icons/icon-staff.svg" alt="" th:src="@{/images/icons/icon-staff.svg}">
                     <h3>
                         {numEmpleados activos}
                     </h3>
@@ -158,7 +153,7 @@
                     </h3>
                 </div>
                 <div id="icon3">
-                    <img src="../../static/images/icons/happysmile.svg" alt="">
+                    <img src="/images/icons/happysmile.svg" alt="" th:src="@{/images/icons/happysmile.svg}">
                     <h3>
                         {numCitasTotalesPagadas}
                     </h3>

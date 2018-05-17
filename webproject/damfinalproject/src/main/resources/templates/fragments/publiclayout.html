@@ -1,0 +1,111 @@
+<head th:fragment="head" th:remove="tag">
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/user-nav.css" th:href="@{/styles/user-nav.css}"/>
+    <script src="/scripts/user-nav.js" th:src="@{/scripts/user-nav.js}"></script>
+</head>
+
+<header class="cd-main-header" th:fragment="header">
+        <a class="cd-logo" href="user-index.html">
+            <img src="/images/icons/projectlogo.svg" alt="Logo" width="35px" th:src="@{/images/icons/projectlogo.svg}">
+        </a>
+
+        <ul class="cd-header-buttons">
+            <li>
+                <a class="cd-nav-trigger" href="#cd-primary-nav">
+                    <span></span>
+                </a>
+            </li>
+        </ul>
+        <!-- cd-header-buttons -->
+</header>
+
+<nav class="cd-nav" th:fragment="nav">
+        <ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
+            <li>
+                <a href="/public/user-index.html" th:href="@{/public}">
+                    <span class="nav_bg_clr"></span>
+                    <span>Inicio</span>
+                </a>
+            </li>
+
+            <li class="has-children">
+                <a href="/public/user-services.html" th:href="@{/public/user-services}">
+                    <span class="nav_bg_clr"></span>
+                    <span>Servicios</span>
+                </a>
+                <ul class="cd-nav-icons is-hidden" th:each="treatment : ${treatments}">
+                    <li class="go-back">
+                        <a href="#0">Menu</a>
+                    </li>
+                    <li class="see-all">
+                        <a href="user-services.html">Ver Servicios</a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-1" href="/public/user-service.html" th:href="@{/public/user-service}">
+                            <h3>Blanqueamiento dental</h3>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="cd-nav-item item-2" href="user-service.html" th:href="@{/public/user-service}">
+                            <h3>Carillas</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-3" href="user-service.html" th:href="@{/public/user-service}">
+                            <h3>Coronas y Puentes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-4" href="user-service.html" th:href="@{/public/user-service}">
+                            <h3>Endodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-5" href="user-service.html" th:href="@{/public/user-service}">
+                            <h3>Empastes</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-6" href="user-service.html" th:href="@{/public/user-service}">
+                            <h3>Implante</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-7" href="user-service.html" th:href="@{/public/user-service}">
+                            <h3>Odontopediatría</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-8" href="user-service.html">
+                            <h3>Ortodoncia</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="cd-nav-item item-9" href="user-service.html">
+                            <!-- ${treatment.name} -->
+                            <h3>Periodontitis</h3>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="user-aboutus.html">
+                    <span class="nav_bg_clr"></span>
+                    <span>Sobre Nosotros</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="nav_bg_clr current"></span>
+                    <span>Contacto</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">{Usuario}</a>
+            </li>
+        </ul>
+        <!-- primary-nav -->
+</nav>

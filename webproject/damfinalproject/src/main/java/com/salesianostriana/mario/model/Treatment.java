@@ -22,7 +22,7 @@ public class Treatment {
 
 	private String description;
 	private int discount;
-	private boolean isPaidInInstallments;
+	private boolean paidInInstallments;
 	private String name;
 	private int numSessions;
 	private double totalPrice;
@@ -36,7 +36,7 @@ public class Treatment {
 		super();
 		this.description = description;
 		this.discount = discount;
-		this.isPaidInInstallments = isPaidInInstallments;
+		this.paidInInstallments = isPaidInInstallments;
 		this.name = name;
 		this.numSessions = numSessions;
 		this.totalPrice = totalPrice;
@@ -51,7 +51,7 @@ public class Treatment {
 		super();
 		this.description = description;
 		this.discount = discount;
-		this.isPaidInInstallments = isPaidInInstallments;
+		this.paidInInstallments = isPaidInInstallments;
 		this.name = name;
 		this.numSessions = numSessions;
 		this.totalPrice = totalPrice;
@@ -82,11 +82,11 @@ public class Treatment {
 	}
 
 	public boolean isPaidInInstallments() {
-		return isPaidInInstallments;
+		return paidInInstallments;
 	}
 
 	public void setPaidInInstallments(boolean isPaidInInstallments) {
-		this.isPaidInInstallments = isPaidInInstallments;
+		this.paidInInstallments = isPaidInInstallments;
 	}
 
 	public String getName() {
@@ -132,7 +132,7 @@ public class Treatment {
 	@Override
 	public String toString() {
 		return "Service [description=" + description + ", discount=" + discount + ", id=" + id
-				+ ", isPaidInInstallments=" + isPaidInInstallments + ", name=" + name + ", numSessions=" + numSessions
+				+ ", isPaidInInstallments=" + paidInInstallments + ", name=" + name + ", numSessions=" + numSessions
 				+ ", totalPrice=" + totalPrice + "]";
 	}
 
