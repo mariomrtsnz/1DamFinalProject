@@ -17,15 +17,15 @@
             Servicios
         </h1>
         <div class="services-container">
-            <div class="service" id="blanqueamiento">
+            <div class="service" th:each="treatment : ${treatments}" th:style="'background-image: url(' + @{${treatment.picture}} + ');'">
                 <div class="info">
                     <div class="title">
-                        <h3>Blanqueamiento dental</h3>
+                        <h3 th:text="${treatment.name}">Blanqueamiento dental</h3>
                     </div>
                     <div class="description">
-                        Los dientes son muy importantes para su apariencia. Te ves más joven con los dientes más blancos. Aquí en RealWorldDental
-                        blanqueamos tus dientes con la última tecnología.
-                        <a href="user-service.html" class="seeMore"></a>
+                        <span th:text="${treatment.description}">Los dientes son muy importantes para su apariencia. Te ves más joven con los dientes más blancos. Aquí en RealWorldDental
+                        blanqueamos tus dientes con la última tecnología.</span>
+                        <a href="user-service.html" class="seeMore" th:href="@{/public/user-service}"></a>
                     </div>
                 </div>
             </div>

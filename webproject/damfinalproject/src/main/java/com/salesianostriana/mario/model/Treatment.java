@@ -32,6 +32,7 @@ public class Treatment {
 	Set<Appointment> appointments = new HashSet<Appointment>();
 	@ManyToOne
 	private Company company;
+	private String picture;
 
 	public Treatment(String description, int discount, boolean isPaidInInstallments, String name, int numSessions,
 			double totalPrice, Company company) {
@@ -49,7 +50,7 @@ public class Treatment {
 	}
 
 	public Treatment(String description, int discount, boolean isPaidInInstallments, String name, int numSessions,
-			double totalPrice) {
+			double totalPrice, String picture) {
 		super();
 		this.description = description;
 		this.discount = discount;
@@ -57,6 +58,7 @@ public class Treatment {
 		this.name = name;
 		this.numSessions = numSessions;
 		this.totalPrice = totalPrice;
+		this.picture = picture;
 	}
 
 	public String getDescription() {
@@ -129,6 +131,14 @@ public class Treatment {
 
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	@Override

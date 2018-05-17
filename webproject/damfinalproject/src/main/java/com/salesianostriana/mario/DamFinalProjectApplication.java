@@ -63,10 +63,10 @@ public class DamFinalProjectApplication {
 			e1 = employeeService.save(e1);
 			company.addEmployee(e1);
 
-			Treatment t = new Treatment("Para dientes blancos", 10, false, "Blanqueamiento", 1, 150);
+			Treatment t = new Treatment("Los dientes son muy importantes para su apariencia. Te ves más joven con los dientes más blancos. Aquí en RealWorldDental blanqueamos tus dientes con la última tecnología.", 10, false, "Blanqueamiento", 1, 150, "/images/services/teethwhitening.jpg");
 			t.setCompany(company);
 			t = treatmentService.save(t);
-			Treatment t1 = new Treatment("Para corregir dientes", 0, true, "Ortodoncia", 5, 500);
+			Treatment t1 = new Treatment("A veces los dientes crecen en una posición inadecuada o se han movido debido a varios motivos. Mediante la ortodoncia podemos hacer cualquier corrección.", 0, true, "Ortodoncia", 5, 500, "/images/services/ortodoncia.jpg");
 			t1.setCompany(company);
 			t1 = treatmentService.save(t1);
 			company.addTreatment(t);
