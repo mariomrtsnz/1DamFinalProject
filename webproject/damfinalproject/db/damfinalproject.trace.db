@@ -792,3 +792,6 @@ SELECT * FROM EMPLOYEE JOIN APPOINTMENT ON(ID) [90059-197]
 org.h2.jdbc.JdbcSQLException: Tabla "APPOINTMENTS" no encontrada
 Table "APPOINTMENTS" not found; SQL statement:
 SELECT * FROM EMPLOYEE JOIN APPOINTMENTS [42102-197]
+2018-05-17 19:43:40 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM TREATMENT JOIN FETCH[*] COMPANY"; expected "identifier"; SQL statement:
+SELECT * FROM TREATMENT JOIN FETCH COMPANY [42001-197]

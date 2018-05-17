@@ -14,18 +14,19 @@
     </header>
 
     <main class="cd-main-content">
-        <div id="contacto">
+        <div id="contacto" th:object="${company}">
             <h1 class="sectionName">
                 Contacto
             </h1>
             <h3>
                 ¿Tienes alguna duda? ¿Quieres informarte antes de pedir una cita?
             </h3>
-            <div id="horario">Horario: 10:00 - 19:00</div>
-            <div id="telefono">Teléfono: 954 335 932</div>
+            <div id="horario">Horario: <span th:text="*{openTime}"></span> - <span th:text="*{closeTime}"></span></div>
+            <div id="telefono">Teléfono: <span th:text="*{phone}"></span></div>
             <div id="email">
-                <a href="">contact@realworlddental.com</a>
+                <a href="" th:text="*{email}">contact@realworlddental.com</a>
             </div>
+            <div id="address" th:text="*{address}"></div>
         </div>
         <div id="map"></div>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7UR8MTCH_CLwj0ZTkhHvlou6mLJagO5I&callback=initMap"

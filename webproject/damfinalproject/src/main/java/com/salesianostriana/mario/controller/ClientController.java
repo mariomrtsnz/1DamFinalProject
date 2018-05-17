@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.salesianostriana.mario.service.ClientService;
+import com.salesianostriana.mario.service.CompanyService;
 import com.salesianostriana.mario.service.TreatmentService;
 
 @Controller
@@ -16,9 +17,13 @@ public class ClientController {
 	
 	@Autowired
 	private TreatmentService treatmentService;
+	
+	@Autowired
+	private CompanyService companyService;
 
 	@GetMapping("/public")
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("company", companyService.findDefaultCompany());
 		return "/public/user-index";
 	}
 	
@@ -43,6 +48,7 @@ public class ClientController {
 	@GetMapping("/public/contactus")
 	public String contactUs(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("company", companyService.findDefaultCompany());
 		return "/public/user-contactus";
 	}
 	
