@@ -18,8 +18,7 @@ public class ClientController {
 	private TreatmentService treatmentService;
 
 	@GetMapping("/public")
-	public String index(Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
+	public String index() {
 		return "/public/user-index";
 	}
 	
@@ -31,11 +30,13 @@ public class ClientController {
 	
 	@GetMapping("/public/services")
 	public String services(Model model) {
+		model.addAttribute("treatments", treatmentService.findAll());
 		return "/public/user-services";
 	}
 	
 	@GetMapping("/public/aboutus")
-	public String aboutUs() {
+	public String aboutUs(Model model) {
+		model.addAttribute("treatments", treatmentService.findAll());
 		return "/public/user-aboutus";
 	}
 	
@@ -47,6 +48,7 @@ public class ClientController {
 	
 	@GetMapping("/public/profile")
 	public String profile(Model model) {
+		model.addAttribute("treatments", treatmentService.findAll());
 		return "/public/user-profile";
 	}
 

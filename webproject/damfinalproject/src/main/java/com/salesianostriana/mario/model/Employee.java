@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,9 @@ public class Employee {
 	private Set<Appointment> appointments = new HashSet<Appointment>();
 	@ManyToOne
 	private Company company;
+	@Column(unique = true)
 	private String dni;
+	@Column(unique = true)
 	private String email;
 	private double grossAnualSalary;
 	private String name;

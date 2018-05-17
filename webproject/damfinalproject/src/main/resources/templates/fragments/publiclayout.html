@@ -4,7 +4,7 @@
 </head>
 
 <header class="cd-main-header" th:fragment="header">
-        <a class="cd-logo" href="user-index.html">
+        <a class="cd-logo" href="/public/user-index.html" th:href="@{/public}">
             <img src="/images/icons/projectlogo.svg" alt="Logo" width="35px" th:src="@{/images/icons/projectlogo.svg}">
         </a>
 
@@ -28,7 +28,7 @@
             </li>
 
             <li class="has-children">
-                <a href="/public/user-services.html" th:href="@{/public/user-services}">
+                <a href="/public/user-services.html" th:href="@{/public/services}">
                     <span class="nav_bg_clr"></span>
                     <span>Servicios</span>
                 </a>
@@ -37,10 +37,10 @@
                         <a href="#0">Menu</a>
                     </li>
                     <li class="see-all">
-                        <a href="user-services.html">Ver Servicios</a>
+                        <a href="user-services.html" th:href="@{/public/services}">Ver Servicios</a>
                     </li>
                     <li th:each="treatment : ${treatments}">
-                        <a class="cd-nav-item item-1" href="/public/user-service.html" th:href="@{/public/user-service}">
+                        <a class="cd-nav-item item-1" href="/public/user-service.html" th:href="@{/public/service}">
                             <h3 th:text="${treatment.name}">Blanqueamiento dental</h3>
                         </a>
                     </li>
@@ -49,21 +49,21 @@
             </li>
 
             <li>
-                <a href="user-aboutus.html">
+                <a href="/public/user-aboutus.html" th:href="@{/public/aboutus}">
                     <span class="nav_bg_clr"></span>
                     <span>Sobre Nosotros</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="/public/user-contactus.html" th:href="@{/public/contactus}">
                     <span class="nav_bg_clr current"></span>
                     <span>Contacto</span>
                 </a>
             </li>
 
             <li>
-                <a href="">{Usuario}</a>
+                <a href="/public/user-profile.html" th:href="@{/public/profile}">{loggedUser.name}</a>
             </li>
         </ul>
         <!-- primary-nav -->

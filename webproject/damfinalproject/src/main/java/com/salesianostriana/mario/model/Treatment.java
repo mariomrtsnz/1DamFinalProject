@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ public class Treatment {
 	private String description;
 	private int discount;
 	private boolean paidInInstallments;
+	@Column(unique = true)
 	private String name;
 	private int numSessions;
 	private double totalPrice;

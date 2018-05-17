@@ -2,32 +2,14 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <th:block th:replace="fragments/common :: head"></th:block>
+	<th:block th:replace="fragments/publiclayout :: head"></th:block>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../static/styles/user-profile.css" th:href="@{/styles/user-profile.css}"/>
     <title>RWD - Perfil de Usuario</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="../../static/images/icons/logo-icon.ico">
-    <link rel="stylesheet" type="text/css" media="screen" href="../../static/styles/user-nav.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../../static/styles/user-profile.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="../../static/scripts/user-nav.js"></script>
 </head>
 
 <body>
-    <header class="cd-main-header">
-        <a class="cd-logo" href="user-index.html">
-            <img src="../../static/images/icons/projectlogo.svg" alt="Logo" width="35px">
-        </a>
-
-        <ul class="cd-header-buttons">
-            <li>
-                <a class="cd-nav-trigger" href="#cd-primary-nav">
-                    <span></span>
-                </a>
-            </li>
-        </ul>
-        <!-- cd-header-buttons -->
+    <header class="cd-main-header" th:replace="fragments/publiclayout :: header">
     </header>
 
     <main class="cd-main-content">
@@ -53,7 +35,7 @@
                 <label>{user.name}</label>
             </div>
             <div class="inputTitle">
-                Teléfono
+                Tel�fono
             </div>
             <div class="group" id="phoneInput">
                 <input type="text" required="required" value="{user.phone}" />
@@ -95,102 +77,8 @@
         </div>
         <div class="cd-overlay"></div>
     </main>
-    <nav class="cd-nav">
-        <ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
-            <li>
-                <a href="./user-index.html">
-                    <span class="nav_bg_clr"></span>
-                    <span>Inicio</span>
-                </a>
-            </li>
-
-            <li class="has-children">
-                <a href="#">
-                    <span class="nav_bg_clr"></span>
-                    <span>Servicios</span>
-                </a>
-                <ul class="cd-nav-icons is-hidden">
-                    <li class="go-back">
-                        <a href="#0">Menu</a>
-                    </li>
-                    <li class="see-all">
-                        <a href="../public/user-services.html">Ver Servicios</a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-1" href="user-service.html">
-                            <h3>Blanqueamiento dental</h3>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="cd-nav-item item-2" href="user-service.html">
-                            <h3>Carillas</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-3" href="user-service.html">
-                            <h3>Coronas y Puentes</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-4" href="user-service.html">
-                            <h3>Endodoncia</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-5" href="user-service.html">
-                            <h3>Empastes</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-6" href="user-service.html">
-                            <h3>Implante</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-7" href="user-service.html">
-                            <h3>Odontopediatría</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-8" href="user-service.html">
-                            <h3>Ortodoncia</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="cd-nav-item item-9" href="user-service.html">
-                            <h3>Periodontitis</h3>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="./user-aboutus.html">
-                    <span class="nav_bg_clr"></span>
-                    <span>Sobre Nosotros</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="./user-contactus.html">
-                    <span class="nav_bg_clr"></span>
-                    <span>Contacto</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="">
-                    <span class="nav_bg_clr current"></span>
-                    <span>
-                        {Usuario}
-                    </span>
-                </a>
-            </li>
-        </ul>
-        <!-- primary-nav -->
+    <nav th:replace="fragments/publiclayout :: nav">
     </nav>
-    <!-- cd-nav -->
 </body>
 
 </html>
