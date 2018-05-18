@@ -1,0 +1,51 @@
+<form class="profileForm-container" name="profileForm" th:fragment="userForm">
+	<div class="inputTitle">
+	    DNI
+	</div>
+	<div class="group" id="dniInput">
+	    <input type="text" required="required"/>
+	    <span class="highlight"></span>
+	    <span class="bar"></span>
+	    <label th:text="${loggedUser.dni}">{user.dni}</label>
+	</div>
+	<div class="inputTitle">
+	    Nombre
+	</div>
+	<div class="group" id="nameInput">
+	    <input type="text" required="required"/>
+	    <span class="highlight"></span>
+	    <span class="bar"></span>
+	    <label th:text="${loggedUser.name}">{user.name}</label>
+	</div>
+	<div class="inputTitle">
+	    Teléfono
+	</div>
+	<div class="group" id="phoneInput">
+	    <input type="text" required="required"/>
+	    <span class="highlight"></span>
+	    <span class="bar"></span>
+	    <label th:text="${loggedUser.phone}">{user.phone}</label>
+	</div>
+	<div class="inputTitle">
+	    Email
+	</div>
+	<div class="group" id="dniInput">
+	    <input type="text" required="required"/>
+	    <!--Change Value dynamically using User value for that input-->
+	    <span class="highlight"></span>
+	    <span class="bar"></span>
+	    <label th:text="${loggedUser.email}">{user.email}</label>
+	</div>
+	<div class="inputTitle">
+	    Password
+	</div>
+	<div class="group" id="dniInput">
+	    <input type="password" required="required" value="{loggedUser.password}" th:value="${loggedUser.password}"/>
+	    <span class="highlight"></span>
+	    <span class="bar"></span>
+	    <label>Password</label>
+	</div>
+	<div class="btn-box" id="submit">
+	    <button class="btn btn-submit" type="submit">Guardar Cambios</button>
+	</div>
+</form>

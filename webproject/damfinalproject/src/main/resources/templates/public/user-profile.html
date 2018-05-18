@@ -4,7 +4,7 @@
 <head>
     <th:block th:replace="fragments/common :: head"></th:block>
 	<th:block th:replace="fragments/publiclayout :: head"></th:block>
-    <link rel="stylesheet" type="text/css" media="screen" href="../../static/styles/user-profile.css" th:href="@{/styles/user-profile.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/user-profile.css" th:href="@{/styles/user-profile.css}"/>
     <title>RWD - Perfil de Usuario</title>
 </head>
 
@@ -46,7 +46,6 @@
             </div>
             <div class="group" id="dniInput">
                 <input type="text" required="required"/>
-                <!--Change Value dynamically using User value for that input-->
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.email}">{user.email}</label>

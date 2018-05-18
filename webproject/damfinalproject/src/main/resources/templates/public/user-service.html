@@ -14,7 +14,7 @@
     <header class="cd-main-header" th:replace="fragments/publiclayout :: header"></header>
     
     <main class="cd-main-content">
-        <h1 class="sectionName">
+        <h1 class="sectionName" th:text="${selectedTreatment.name}">
             {treatment.name}
         </h1>
         <h1 class="detailTitle">
@@ -24,7 +24,7 @@
             <img src="http://via.placeholder.com/450x450" alt="">
         </div>
         <div class="details">
-            <div class="service-description">
+            <div class="service-description" th:text="${selectedTreatment.description}">
                 Consequat magna reprehenderit dolore consequat sunt in esse sint est. Nulla nulla pariatur officia magna sint commodo cillum
                 deserunt voluptate. Aliquip commodo irure velit nisi qui eiusmod elit pariatur elit fugiat. Amet laborum
                 consectetur mollit minim ea nostrud. Irure esse laboris ea ea esse. Nulla fugiat deserunt officia velit.
