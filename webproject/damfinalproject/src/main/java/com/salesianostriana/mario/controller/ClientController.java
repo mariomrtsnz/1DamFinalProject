@@ -62,5 +62,14 @@ public class ClientController {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-profile";
 	}
+	
+	// TODO: Map with dynamic url linking an specific product.
+	@GetMapping("/public/user-service/{id}")
+	public String treatment(Model model) {
+		model.addAttribute("treatments", treatmentService.findAll());
+//		model.addAttribute("selectedTreatment", treatmentService.findOneById(id));
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		return "/public/user-service";
+	}
 
 }

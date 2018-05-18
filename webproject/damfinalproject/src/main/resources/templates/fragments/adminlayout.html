@@ -15,7 +15,7 @@
 		<ul class="cd-top-nav">
 			<li class="has-children account"><a href="#0" th:text="${loggedUser.name}"> <img
 					src="/images/profilePics/profile-admin.jpg" alt="avatar"
-					th:href="@{/images/profilePics/profile-admin.jpg}"> Admin
+					th:href="'@{'${loggedUser.profilePic}'}'"> Admin
 			</a>
 				<ul>
 					<li><a href="/public/user-profile"

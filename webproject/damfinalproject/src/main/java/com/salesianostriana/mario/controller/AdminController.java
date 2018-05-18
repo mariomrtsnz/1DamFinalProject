@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.CompanyService;
@@ -31,7 +32,8 @@ public class AdminController {
 	private AppointmentService appointmentService;
 
 	@GetMapping({ "/admin", "/admin-dashboard" })
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-dashboard-index";
 	}
 
@@ -43,7 +45,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin-add-service")
-	public String goToAddService(Model modle) {
+	public String goToAddService(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-add-service";
 	}
@@ -77,14 +79,17 @@ public class AdminController {
 		return "/admin/admin-add-staff";
 	}
 
-	// @PostMapping("/admin-add-staff")
-	// public String addStaff() {
-	// return "";
-	// }
+	 @PostMapping("/admin-add-staff")
+	 public String addStaff(Model model) {
+		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		 
+		 return "";
+	 }
 
 	@GetMapping("/admin-calendar")
 	public String showCalendar(Model model) {
 		model.addAttribute("appointments", appointmentService.findAll());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-calendar";
 	}
 
