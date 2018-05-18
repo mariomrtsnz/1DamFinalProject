@@ -63,15 +63,7 @@
                                 <td id="dentistName" th:text="${employee.name}">{employee.email}</td>
                                 <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
                                 <td th:text="${employee.position}">{employee.position}</td>
-                                <td class="advancedOptions">
-                                    <div class="dropdown" style="float:right;">
-                                        <img src="../../images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
-                                        <div class="dropdown-content">
-                                            <a href="#">Editar</a>
-                                            <a href="#">Borrar</a>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
                             </tr>
                         </tbody>
                     </table>

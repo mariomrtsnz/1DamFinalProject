@@ -31,8 +31,8 @@
                 Do proident elit eiusmod Lorem id.
             </div>
             <div class="service-details">
-                <p>Nº Sesiones: {treatment.numSesiones}</p>
-                <p>Precio Total: {treatment.totalPriceWithDiscount}€</p>
+                <p>Nº Sesiones: <span th:number="${treatment.numSessions}">{treatment.numSesiones}</span></p>
+                <p>Precio Total: <span th:number="${treatment.totalPrice}">{treatment.totalPriceWithDiscount}</span>€</p>
             </div>
         </div>
         <div class="appointmentRequest">
