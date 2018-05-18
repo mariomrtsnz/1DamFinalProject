@@ -52,6 +52,7 @@ public class ClientController {
 	public String contactUs(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
 		model.addAttribute("company", companyService.findDefaultCompany());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-contactus";
 	}
 

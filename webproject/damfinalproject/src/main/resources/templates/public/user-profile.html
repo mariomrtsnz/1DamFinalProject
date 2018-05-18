@@ -18,49 +18,44 @@
                 DNI
             </div>
             <div class="group" id="dniInput">
-                <input type="text" required="required" value="{user.dni}" />
-                <!--Change Value dynamically using User value for that input-->
+                <input type="text" required="required"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label>{user.dni}</label>
+                <label th:text="${loggedUser.dni}">{user.dni}</label>
             </div>
             <div class="inputTitle">
                 Nombre
             </div>
             <div class="group" id="nameInput">
-                <input type="text" required="required" value="{user.name}" />
-                <!--Change Value dynamically using User value for that input-->
+                <input type="text" required="required"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label>{user.name}</label>
+                <label th:text="${loggedUser.name}">{user.name}</label>
             </div>
             <div class="inputTitle">
                 Teléfono
             </div>
             <div class="group" id="phoneInput">
-                <input type="text" required="required" value="{user.phone}" />
-                <!--Change Value dynamically using User value for that input-->
+                <input type="text" required="required"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label>{user.phone}</label>
-                <!--Replace with ActualValue-->
+                <label th:text="${loggedUser.phone}">{user.phone}</label>
             </div>
             <div class="inputTitle">
                 Email
             </div>
             <div class="group" id="dniInput">
-                <input type="text" required="required" value="{user.email}" />
+                <input type="text" required="required"/>
                 <!--Change Value dynamically using User value for that input-->
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label>{user.email}</label>
+                <label th:text="${loggedUser.email}">{user.email}</label>
             </div>
             <div class="inputTitle">
                 Password
             </div>
             <div class="group" id="dniInput">
-                <input type="password" required="required" value="Hola" />
-                <!--Change Value dynamically using User value for that input-->
+                <input type="password" required="required" value="{loggedUser.password}" th:value="${loggedUser.password}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Password</label>
@@ -70,7 +65,7 @@
             </div>
         </form>
         <div class="profilePicture">
-            <img src="" alt="">
+            <img src="" alt="" th:src="@{loggedUser.profilePic}">
             <div class="employeePosition">{employee.position}</div>
             <div class="grossAnualSalaryTitle">Salario Anual Bruto:</div>
             <div class="grossAnualSalaryValue">{employee.grossAnualSalary}</div>

@@ -56,13 +56,13 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                         <tbody>
                             <!--Aquí irá el th:each para cada cliente del set de Clientes de la clase Empresa.-->
-                            <tr>
-                                <td id="serviceName">{employee.id}</td>
-                                <td id="orderDate">{employee.name}</td>
-                                <td id="appointmentDate">{employee.phone}</td>
-                                <td id="dentistName">{employee.email}</td>
-                                <td>{employee.anualGrossSalary}</td>
-                                <td>{employee.position}</td>
+                            <tr th:each="employee : ${staff}">
+                                <td id="serviceName" th:text="${employee.id}">{employee.id}</td>
+                                <td id="orderDate" th:text="${employee.name}">{employee.name}</td>
+                                <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>
+                                <td id="dentistName" th:text="${employee.name}">{employee.email}</td>
+                                <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
+                                <td th:text="${employee.position}">{employee.position}</td>
                                 <td class="advancedOptions">
                                     <div class="dropdown" style="float:right;">
                                         <img src="../../images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">

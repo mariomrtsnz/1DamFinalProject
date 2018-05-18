@@ -49,6 +49,8 @@ public class LoginController {
 				signUpUser.getPassword(), signUpUser.getPhone(), LocalDateTime.now());
 		clientService.save(client);
 
+		session.setAttribute("loggedUser", client);
+
 		return "redirect:/";
 	}
 

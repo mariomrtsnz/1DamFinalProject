@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.CompanyService;
+import com.salesianostriana.mario.service.EmployeeService;
 import com.salesianostriana.mario.service.TreatmentService;
 
 @Controller
@@ -17,6 +18,9 @@ public class AdminController {
 
 	@Autowired
 	private CompanyService companyService;
+	
+	@Autowired
+	private EmployeeService employeeService;
 
 	@Autowired
 	private AppointmentService appointmentService;
@@ -54,8 +58,7 @@ public class AdminController {
 
 	@GetMapping("/admin-staff-list")
 	public String staffList(Model model) {
-		// TODO: findAllStaff() to return a Set of all staff in the default company.
-		// model.addAttribute("staff", companyService.findAllStaff());
+		model.addAttribute("staff", employeeService.findAll());
 		return "/admin/admin-staff-list";
 	}
 
