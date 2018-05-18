@@ -24,7 +24,7 @@
                     </div>
                     <div class="description">
                         <span th:text="${treatment.description}"></span>
-                        <a href="user-service.html" class="seeMore" th:href="@{/public/user-service}"></a>
+                        <a href="user-service.html" class="seeMore" th:href="@{'/public/user-service/' + ${treatment.id}}"></a>
                     </div>
                 </div>
             </div>

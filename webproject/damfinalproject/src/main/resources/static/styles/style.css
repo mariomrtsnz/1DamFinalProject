@@ -99,8 +99,7 @@ html, body, form, span, h1 {
     justify-content: center;
     align-items: center; }
   .login-form form {
-    width: 100%;
-    height: 100%; }
+    width: 100%; }
   .login-form a {
     width: 42px;
     height: 42px;
@@ -372,16 +371,31 @@ html, body, form, span, h1 {
 
 .form-actions {
   cursor: pointer;
+  font-family: 'roboto', sans-serif;
   font-size: 2em;
   font-weight: bolder;
-  color: #f5f9f8;
+  color: #3c393d;
   text-transform: uppercase;
-  position: absolute;
-  bottom: 50px;
-  right: 50px; }
+  display: flex;
+  justify-content: center;
+  align-content:center;}
   .form-actions button {
     all: inherit;
     padding: 10px; }
+    .container .form-actions button {
+        font-family: 'roboto', sans-serif;
+        transition: transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), box-shadow 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+        border: none;
+        background: #2cbfd3;
+        cursor: pointer;
+        border-radius: 3px;
+        padding: 20px;
+        color: white;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); }
+        .container .form-actions button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2);
+          background-color: #29b0c3; }
 
 .form-actions .form-btn-cancel {
   -ms-flex-order: -1;
@@ -780,20 +794,6 @@ select.form-element-field {
       padding-bottom: 10vh; }
     .container .form-actions {
       position: initial; }
-      .container .form-actions button {
-        font-family: 'roboto', sans-serif;
-        transition: transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), box-shadow 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-        border: none;
-        background: #2cbfd3;
-        cursor: pointer;
-        border-radius: 3px;
-        padding: 20px;
-        color: white;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); }
-        .container .form-actions button:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2);
-          background-color: #29b0c3; }
     .container #companyName:hover {
       transform: none; }
     .container .landing-page-logo:hover {

@@ -49,7 +49,7 @@ public class LoginController {
 				signUpUser.getPassword(), signUpUser.getPhone(), LocalDateTime.now());
 		clientService.save(client);
 
-		return "redirect:/public";
+		return "redirect:/";
 	}
 
 	@GetMapping("/public/login.html")
@@ -81,8 +81,7 @@ public class LoginController {
 	}
 
 	@GetMapping("/logout")
-	public String logout(Model model) {
-		session.setAttribute("loggedUser", null);
+	public String logOut(Model model) {
 		return "redirect:/";
 	}
 }

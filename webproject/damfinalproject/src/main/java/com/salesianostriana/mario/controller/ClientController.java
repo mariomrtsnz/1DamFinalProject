@@ -1,5 +1,7 @@
 package com.salesianostriana.mario.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,9 @@ import com.salesianostriana.mario.service.TreatmentService;
 public class ClientController {
 
 	@Autowired
+	private HttpSession session;
+	
+	@Autowired
 	private ClientService service;
 
 	@Autowired
@@ -20,29 +25,26 @@ public class ClientController {
 
 	@Autowired
 	private CompanyService companyService;
-
+	
 	@GetMapping({ "/public", "/user-index" })
 	public String index(Model model) {
 		model.addAttribute("company", companyService.findDefaultCompany());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-index";
 	}
-
-	// @GetMapping("/public")
-	// public String index(Model model) {
-	// model.addAttribute(loggedUser);
-	// return "/public/user-index";
-	// }
 
 	// TODO: Remove "/public" from Mappings
 	@GetMapping("/public/services")
 	public String services(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-services";
 	}
 
 	@GetMapping("/public/aboutus")
 	public String aboutUs(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-aboutus";
 	}
 
@@ -56,6 +58,7 @@ public class ClientController {
 	@GetMapping("/public/profile")
 	public String profile(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-profile";
 	}
 
