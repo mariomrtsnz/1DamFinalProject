@@ -1,5 +1,7 @@
 package com.salesianostriana.mario.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,9 @@ import com.salesianostriana.mario.service.TreatmentService;
 
 @Controller
 public class AdminController {
+	
+	@Autowired
+	HttpSession session;
 
 	@Autowired
 	private TreatmentService treatmentService;
@@ -33,11 +38,13 @@ public class AdminController {
 	@GetMapping("/admin-services-list")
 	public String servicesList(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-services-list";
 	}
 
 	@GetMapping("/admin-add-service")
-	public String goToAddService() {
+	public String goToAddService(Model modle) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-add-service";
 	}
 
@@ -47,7 +54,8 @@ public class AdminController {
 	// }
 
 	@GetMapping("/admin-add-client")
-	public String goToAddClient() {
+	public String goToAddClient(Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-add-client";
 	}
 
@@ -59,11 +67,13 @@ public class AdminController {
 	@GetMapping("/admin-staff-list")
 	public String staffList(Model model) {
 		model.addAttribute("staff", employeeService.findAll());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-staff-list";
 	}
 
 	@GetMapping("/admin-add-staff")
-	public String goToAddStaff() {
+	public String goToAddStaff(Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-add-staff";
 	}
 

@@ -63,7 +63,7 @@
             </li>
 
             <li>
-                <a href="/public/user-profile.html" th:href="@{/public/profile}">{loggedUser.name}</a>
+                <a href="/public/user-profile.html" th:href="@{/public/profile}" th:text="${loggedUser.name}">{loggedUser.name}</a>
             </li>
         </ul>
         <!-- primary-nav -->
