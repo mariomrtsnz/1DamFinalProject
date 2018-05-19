@@ -4,14 +4,14 @@
 <head>
     <th:block th:replace="fragments/common :: head"></th:block>
     <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Admin - Calendario')"></th:block>
-    <script src="../../static/scripts/calendar.js"></script>
+    <script src="../../static/scripts/calendar.js" th:href="@{/scripts/calendar.js}"></script>
 </head>
 
 <body>
     <header th:replace="fragments/adminlayout :: header"></header>
     <main class="cd-main-content">
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
-		<a th:replace="fragments/adminlayout :: sideBarToggle"></a>
+		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper">
         </div>
     </main>

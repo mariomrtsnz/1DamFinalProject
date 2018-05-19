@@ -82,8 +82,9 @@ public class LoginController {
 		}
 	}
 
-	@GetMapping("/logout")
+	@GetMapping("/logOut")
 	public String logOut(Model model) {
+		session.setAttribute("loggedUser", null);
 		return "redirect:/";
 	}
 }

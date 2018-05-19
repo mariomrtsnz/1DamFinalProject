@@ -3,7 +3,7 @@
 
 <head>
     <th:block th:replace="fragments/common :: head"></th:block>
-    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard')"></th:block>
+    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard - Añadir Empleado')"></th:block>
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/user-profile.css" th:href="@{/styles/user-profile.css}"/>
 </head>
 
@@ -11,7 +11,7 @@
     <header th:replace="fragments/adminlayout :: header"></header>
     <main class="cd-main-content">
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
-		<a th:replace="fragments/adminlayout :: sideBarToggle"></a>
+		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper">
         	<form class="profileForm-container" name="profileForm">
 	            <div class="inputTitle">

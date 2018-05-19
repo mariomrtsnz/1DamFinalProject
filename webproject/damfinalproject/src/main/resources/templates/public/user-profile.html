@@ -65,9 +65,9 @@
         </form>
         <div class="profilePicture">
             <img src="" alt="" th:src="@{loggedUser.profilePic}" class="profilePic">
-            <div class="employeePosition" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">{employee.position}</div>
+            <div class="employeePosition" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}"><span th:text="${loggedUser.position}">{employee.position}</span></div>
             <div class="grossAnualSalaryTitle" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">Salario Anual Bruto:</div>
-            <div class="grossAnualSalaryValue" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">{employee.grossAnualSalary}</div>
+            <div class="grossAnualSalaryValue" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}"><span th:text="${loggedUser.grossAnualSalary}">{employee.grossAnualSalary}</span></div>
         </div>
         <div class="cd-overlay"></div>
     </main>

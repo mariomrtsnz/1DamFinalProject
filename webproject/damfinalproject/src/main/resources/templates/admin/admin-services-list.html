@@ -5,28 +5,28 @@
 <head>
 	<th:block th:replace="fragments/common :: head"></th:block>
 	<link rel="stylesheet" type="text/css" media="screen"
-		href="../../styles/user-appointments.css" />
+		href="/styles/user-appointments.css" th:href="@{/styles/user-appointments.css}"/>
 	<th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Admin - Servicios')"></th:block>
-	<script src="../../scripts/user-appointments.js"></script>
+	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
 </head>
 
 <body>
 	<header th:replace="fragments/adminlayout :: header"> </header>
 	<main class="cd-main-content">
-	<nav th:replace="fragments/adminlayout :: sideBar"></nav>
-	<a th:replace="fragments/adminlayout :: sideBarToggle"></a>
-	<div class="table-container">
-		<div class="table-header">
-			<div class="table-title">Servicios</div>
-			<div class="table-totalItems">Total: <span>{numElementosEnLista}</span></div>
-			<div class="table-buttons">
-				<div class="btn-box add-element" id="submit">
-					<a href="/admin-add-service" th:href="@{/admin-add-service}">
-						<button class="btn btn-submit" type="submit">Añadir
-							Servicio</button>
-					</a>
+		<nav th:replace="fragments/adminlayout :: sideBar"></nav>
+		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
+		<div class="table-container">
+			<div class="table-header">
+				<div class="table-title">Servicios</div>
+				<div class="table-totalItems">Total: <span>{numElementosEnLista}</span></div>
+				<div class="table-buttons">
+					<div class="btn-box add-element" id="submit">
+						<a href="/admin-add-service" th:href="@{/admin-add-service}">
+							<button class="btn btn-submit" type="submit">Añadir
+								Servicio</button>
+						</a>
+					</div>
 				</div>
-			</div>
 			<div class="search">
 				<input type="search" class="search-box" placeholder="Buscar..." />
 				<span class="search-button"> <span class="search-icon"></span>

@@ -3,82 +3,16 @@
 
 <head>
     
-	<meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Proyecto Final para 1ºDAM de Mario Martínez Sanz">
-    <meta name="author" content="Mario Martínez Sanz">
-    <link rel="shortcut icon" type="image/x-icon" href="/images/icons/logo-icon.ico"/>
-
-    
-	<link rel="stylesheet" type="text/css" media="screen" href="/styles/dashboard.css" src="/styles/dashboard.css"/>
-    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-        crossorigin="anonymous"></script>
-	<script src="/scripts/dashboard.js"></script>
-	<title>A�adir Servicio</title>
+	<th:block th:replace="fragments/common :: head"></th:block>
+    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard - Añadir Servicio')"></th:block>
 
 </head>
 
 <body>
-    <header class="cd-main-header">
-	<a href="/admin-dashboard" class="cd-logo"> <img
-		src="/images/icons/projectlogo.svg" width="40px" alt="Logo"
-		href="/images/icons/projectlogo.svg">
-	</a> <a href="#0" class="cd-nav-trigger">Menu <span></span>
-	</a>
-	<nav class="cd-nav">
-		<ul class="cd-top-nav">
-			<li class="has-children account"><a href="#0"> <img
-					src="/images/profilePics/profile-admin.jpg" alt="avatar"
-					href="/images/profilePics/profile-admin.jpg"> Admin
-			</a>
-				<ul>
-					<li><a href="/public/user-profile">Perfil</a></li>
-					<li><a href="/public/user-index">Ir a p�gina web</a></li>
-					<li><a href="/index">Cerrar
-							Sesi�n</a></li>
-				</ul></li>
-		</ul>
-	</nav>
-</header>
+    <header th:replace="fragments/adminlayout :: header"></header>
     <main class="cd-main-content">
-        <nav class="cd-side-nav nav-side">
-	<ul>
-		<li class="cd-label">Principales</li>
-		<li class="has-children overview"><a href="#0">Servicios</a>
-			<ul>
-				<li><a href="admin-services-list.html">Ver Servicios</a></li>
-				<li><a href="admin-add-service.html">A�adir Servicio</a></li>
-			</ul></li>
-		<li class="has-children comments"><a href="#0">Clientes</a>
-			<ul>
-				<li><a href="../staff/staff-clients-list.html">Ver Clientes</a>
-				</li>
-				<li><a href="../admin/admin-add-client.html">A�adir Cliente</a>
-				</li>
-			</ul></li>
-		<li class="has-children comments"><a href="#0">Empleados</a>
-			<ul>
-				<li><a href="admin-staff-list.html">Ver Empleados</a></li>
-				<li><a href="admin-add-staff.html">A�adir Empleado</a></li>
-			</ul></li>
-		<li class="has-children comments"><a href="#0">Calendario</a>
-			<ul>
-				<li><a href="admin-calendar.html">Ver Calendario</a></li>
-				<li><a href="admin-add-appointment.html">A�adir Cita</a></li>
-			</ul></li>
-	</ul>
-	<ul>
-		<li class="cd-label">Secundarios</li>
-		<li class="has-children bookmarks"><a
-			href="../public/user-profile.html">Perfil</a></li>
-		<li class="has-children images"><a
-			href="../public/user-index.html">Ir a p�gina web</a></li>
-		<li class="has-children users"><a href="../index.html">Cerrar
-				Sesi�n</a></li>
-	</ul>
-</nav>
-        <a href="#" class="nav-toggle"></a>
+        <nav th:replace="fragments/adminlayout :: sideBar"></nav>
+		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper">
         </div>
     </main>
