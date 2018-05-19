@@ -28,6 +28,7 @@ public class TreatmentController {
 		Treatment s = treatmentService.findOneById(id);
 		if (s != null) {
 			model.addAttribute("selectedTreatment", s);
+			model.addAttribute("totalPriceWithDiscount", treatmentService.calculatePriceWithDiscount(s));
 			return "/public/user-service";
 		} else {
 			// Tratamiento del error

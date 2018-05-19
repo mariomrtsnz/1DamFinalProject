@@ -64,10 +64,10 @@
             </div>
         </form>
         <div class="profilePicture">
-            <img src="" alt="" th:src="@{loggedUser.profilePic}">
-            <div class="employeePosition">{employee.position}</div>
-            <div class="grossAnualSalaryTitle">Salario Anual Bruto:</div>
-            <div class="grossAnualSalaryValue">{employee.grossAnualSalary}</div>
+            <img src="" alt="" th:src="@{loggedUser.profilePic}" class="profilePic">
+            <div class="employeePosition" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">{employee.position}</div>
+            <div class="grossAnualSalaryTitle" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">Salario Anual Bruto:</div>
+            <div class="grossAnualSalaryValue" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">{employee.grossAnualSalary}</div>
         </div>
         <div class="cd-overlay"></div>
     </main>

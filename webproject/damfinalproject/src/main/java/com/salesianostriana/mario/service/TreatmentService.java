@@ -36,5 +36,13 @@ public class TreatmentService {
 		remove(entidad);
 		save(entidad);
 	}
+	
+	public double calculatePriceWithDiscount(Treatment treatment) {
+		// Divisor del porcentaje
+		double divider = 100,
+				result = 0;
+		result = treatment.getTotalPrice() - ((treatment.getDiscount()/divider)*treatment.getTotalPrice());
+		return result;
+	}
 
 }
