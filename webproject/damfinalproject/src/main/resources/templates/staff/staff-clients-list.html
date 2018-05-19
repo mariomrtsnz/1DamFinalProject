@@ -9,85 +9,9 @@
 </head>
 
 <body>
-    <header class="cd-main-header">
-        <a href="./staff-dashboard.html" class="cd-logo">
-            <img src="../../static/images/icons/projectlogo.svg" width="40px" alt="Logo">
-        </a>
-        <a href="#0" class="cd-nav-trigger">Menu
-            <span></span>
-        </a>
-        <nav class="cd-nav">
-            <ul class="cd-top-nav">
-                <li class="has-children account">
-                    <a href="#0">
-                        <img src="../../static/images/profilePics/profile-admin.jpg" alt="avatar"> Admin
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="../public/user-profile.html">Perfil</a>
-                        </li>
-                        <li>
-                            <a href="../public/user-index.html">Ir a página web</a>
-                        </li>
-                        <li>
-                            <a href="../index.html">Cerrar Sesión</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <header class="cd-main-header"></header>
     <main class="cd-main-content">
-        <nav class="cd-side-nav nav-side">
-            <ul>
-                <li class="cd-label">Principales</li>
-                <li class="has-children overview">
-                    <a href="#0">Servicios</a>
-                    <ul>
-                        <li>
-                            <a href="#0">Ver Servicios</a>
-                        </li>
-                        <li>
-                            <a href="#0">Añadir Servicio</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-children comments">
-                    <a href="#0">Clientes</a>
-                    <ul>
-                        <li>
-                            <a href="#0">Ver Clientes</a>
-                        </li>
-                        <li>
-                            <a href="#0">Añadir Cliente</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-children comments">
-                    <a href="#0">Empleados</a>
-                    <ul>
-                        <li>
-                            <a href="#0">Ver Empleados</a>
-                        </li>
-                        <li>
-                            <a href="#0">Añadir Empleado</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-children comments">
-                    <a href="#0">Calendario</a>
-                    <ul>
-                        <li>
-                            <a href="#0">Ver Calendario</a>
-                        </li>
-                        <li>
-                            <a href="#0">Añadir Cita</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <ul th:replace="fragments/dashboardlayout :: sideBarUserOptions"></ul>
-        </nav>
+        <nav th:replace="fragments/stafflayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="table-container">
             <div class="table-header">
@@ -98,7 +22,7 @@
                     Total: {numElementosEnLista}
                 </div>
                 <div class="table-buttons">
-                    <div class="btn-box add-element" id="submit">
+                    <div class="btn-box add-element" id="submit" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">
                         <a href="">
                             <button class="btn btn-submit" type="submit">Añadir Cliente</button>
                         </a>
@@ -147,7 +71,7 @@
                                     </label>
                                 </td>
                                 <td class="advancedOptions">
-                                    <div class="dropdown" style="float:right;">
+                                    <div class="dropdown" style="float:right;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
                                         <img src="../../static/images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
                                         <div class="dropdown-content">
                                             <a href="#">Editar</a>

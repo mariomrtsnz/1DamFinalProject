@@ -2,48 +2,16 @@
 	<ul>
 	    <li class="cd-label">Principales</li>
 	    <li class="has-children overview">
-	        <a href="#0">Servicios</a>
-	        <ul>
-	            <li>
-	                <a href="#0">Ver Servicios</a>
-	            </li>
-	            <li>
-	                <a href="#0">Añadir Servicio</a>
-	            </li>
-	        </ul>
+	        <a href="/staff/staff-schedule.html" th:href="@{/staff-schedule}">Horario Personal</a>
 	    </li>
 	    <li class="has-children comments">
-	        <a href="#0">Clientes</a>
-	        <ul>
-	            <li>
-	                <a href="#0">Ver Clientes</a>
-	            </li>
-	            <li>
-	                <a href="#0">Añadir Cliente</a>
-	            </li>
-	        </ul>
+	        <a href="/staff/staff-clients-list.html" th:href="@{/staff-clients-list}">Clientes</a>
 	    </li>
 	    <li class="has-children comments">
-	        <a href="#0">Empleados</a>
-	        <ul>
-	            <li>
-	                <a href="#0">Ver Empleados</a>
-	            </li>
-	            <li>
-	                <a href="#0">Añadir Empleado</a>
-	            </li>
-	        </ul>
+	        <a href="/public/user-profile.html" th:href="@{/public/profile}">Ficha Personal</a>
 	    </li>
 	    <li class="has-children comments">
-	        <a href="#0">Calendario</a>
-	        <ul>
-	            <li>
-	                <a href="#0">Ver Calendario</a>
-	            </li>
-	            <li>
-	                <a href="#0">Añadir Cita</a>
-	            </li>
-	        </ul>
+	        <a href="/admin/admin-calendar.html" th:href="@{/admin-calendar}">Calendario</a>
 	    </li>
 	</ul>
 	<ul th:replace="fragments/dashboardlayout :: sideBarUserOptions"></ul>

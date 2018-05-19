@@ -23,4 +23,16 @@ public class EmployeeController {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/staff/staff-dashboard";
 	}
+	
+	@GetMapping("/staff-schedule")
+	public String schedule(Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		return "/staff/staff-schedule";
+	}
+	
+	@GetMapping("/staff-clients-list")
+	public String clientsList(Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		return "/staff/staff-clients-list";
+	}
 }
