@@ -13,10 +13,10 @@ import com.salesianostriana.mario.service.EmployeeService;
 public class EmployeeController {
 	
 	@Autowired
-	HttpSession session;
+	private HttpSession session;
 	
 	@Autowired
-	EmployeeService employeeService;
+	private EmployeeService employeeService;
 
 	@GetMapping("/staff")
 	public String a(Model model) {

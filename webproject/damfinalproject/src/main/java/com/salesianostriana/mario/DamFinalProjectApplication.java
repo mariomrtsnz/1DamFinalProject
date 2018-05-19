@@ -51,11 +51,11 @@ public class DamFinalProjectApplication {
 			company.addClient(c1);
 
 			Employee e = new Employee("12345678B", "test@rwd.com", 20000.00, "test", "employee", "098765432",
-					"noPicture", "Administrative", LocalDateTime.of(2018, 5, 3, 7, 30));
+					"noPicture", "Administrativo", LocalDateTime.of(2018, 5, 3, 7, 30));
 			e = employeeService.save(e);
 			company.addEmployee(e);
 			Employee e1 = new Employee("10293847C", "harveydent@rwd.com", 40000.00, "Harvey Dent", "batman",
-					"666777888", "noPicture2", "Dentist", LocalDateTime.of(2018, 3, 1, 6, 29));
+					"666777888", "noPicture2", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29));
 			e1 = employeeService.save(e1);
 			company.addEmployee(e1);
 
