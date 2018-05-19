@@ -1,0 +1,50 @@
+<nav class="cd-side-nav nav-side" th:fragment="sideBar">
+	<ul>
+	    <li class="cd-label">Principales</li>
+	    <li class="has-children overview">
+	        <a href="#0">Servicios</a>
+	        <ul>
+	            <li>
+	                <a href="#0">Ver Servicios</a>
+	            </li>
+	            <li>
+	                <a href="#0">Añadir Servicio</a>
+	            </li>
+	        </ul>
+	    </li>
+	    <li class="has-children comments">
+	        <a href="#0">Clientes</a>
+	        <ul>
+	            <li>
+	                <a href="#0">Ver Clientes</a>
+	            </li>
+	            <li>
+	                <a href="#0">Añadir Cliente</a>
+	            </li>
+	        </ul>
+	    </li>
+	    <li class="has-children comments">
+	        <a href="#0">Empleados</a>
+	        <ul>
+	            <li>
+	                <a href="#0">Ver Empleados</a>
+	            </li>
+	            <li>
+	                <a href="#0">Añadir Empleado</a>
+	            </li>
+	        </ul>
+	    </li>
+	    <li class="has-children comments">
+	        <a href="#0">Calendario</a>
+	        <ul>
+	            <li>
+	                <a href="#0">Ver Calendario</a>
+	            </li>
+	            <li>
+	                <a href="#0">Añadir Cita</a>
+	            </li>
+	        </ul>
+	    </li>
+	</ul>
+	<ul th:replace="fragments/dashboardlayout :: sideBarUserOptions"></ul>
+</nav>
