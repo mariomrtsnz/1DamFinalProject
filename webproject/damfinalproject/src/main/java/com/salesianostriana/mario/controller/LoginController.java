@@ -71,10 +71,10 @@ public class LoginController {
 			session.setAttribute("loggedUser", user);
 			return "redirect:/admin-dashboard";
 		} else if (userClient instanceof Client) {
-			session.setAttribute("loggedUser", user);
+			session.setAttribute("loggedUser", userClient);
 			return "redirect:/public";
 		} else if (userEmployee instanceof Employee) {
-			session.setAttribute("loggedUser", user);
+			session.setAttribute("loggedUser", userEmployee);
 			return "redirect:/staff";
 		} else {
 			model.addAttribute("loginError", "El usuario o contraseña no es válido");

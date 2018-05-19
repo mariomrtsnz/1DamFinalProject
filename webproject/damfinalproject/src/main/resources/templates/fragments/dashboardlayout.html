@@ -1,3 +1,28 @@
+<header class="cd-main-header" th:fragment="header">
+	<a href="/admin-dashboard" class="cd-logo"
+		th:href="@{/admin-dashboard}"> <img
+		src="/images/icons/projectlogo.svg" width="40px" alt="Logo"
+		th:href="@{/images/icons/projectlogo.svg}">
+	</a> <a href="#0" class="cd-nav-trigger">Menu <span></span>
+	</a>
+	<nav class="cd-nav">
+		<ul class="cd-top-nav">
+			<li class="has-children account"><a href="#0" th:text="${loggedUser.name}"> <img
+					src="/images/profilePics/profile-admin.jpg" alt="avatar"
+					th:href="'@{'${loggedUser.profilePic}'}'"> Admin
+			</a>
+				<ul>
+					<li><a href="/public/user-profile"
+						th:href="@{/public/profile}">Perfil</a></li>
+					<li><a href="/public/user-index.html"
+						th:href="@{/user-index}">Ir a página web</a></li>
+					<li><a href="/index.html" th:href="@{/logOut}">Cerrar
+							Sesión</a></li>
+				</ul></li>
+		</ul>
+	</nav>
+</header>
+
 <a href="#" class="nav-toggle" th:fragment="sideBarToggle"></a>
 
 <ul th:fragment="sideBarUserOptions">

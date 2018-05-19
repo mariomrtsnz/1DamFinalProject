@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <header class="cd-main-header"></header>
+    <header th:replace="fragments/dashboardlayout :: header"></header>
     <main class="cd-main-content">
         <nav th:replace="fragments/stafflayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
@@ -22,7 +22,7 @@
                     Total: {numElementosEnLista}
                 </div>
                 <div class="table-buttons">
-                    <div class="btn-box add-element" id="submit" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">
+                    <div class="btn-box add-element" id="submit" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
                         <a href="">
                             <button class="btn btn-submit" type="submit">Añadir Cliente</button>
                         </a>
@@ -70,8 +70,8 @@
                                         <i class="form-checkbox-button"></i>
                                     </label>
                                 </td>
-                                <td class="advancedOptions">
-                                    <div class="dropdown" style="float:right;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
+                                <td class="advancedOptions" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
+                                    <div class="dropdown" style="float:right;">
                                         <img src="../../static/images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
                                         <div class="dropdown-content">
                                             <a href="#">Editar</a>
