@@ -2,10 +2,8 @@
 <html>
 
 <head>
-    
 	<th:block th:replace="fragments/common :: head"></th:block>
     <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard - Añadir Servicio')"></th:block>
-
 </head>
 
 <body>
@@ -14,6 +12,64 @@
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper">
+        	<h1 class="pageTitle">Añadir Nuevo Servicio</h1>
+        	<div class="add-form-container">
+        		<form method="post" th:action="@{/addNewService}" th:object="${newService}" id="addServiceForm">
+        			<div class="inputTitle">
+		                Nombre del Servicio
+		            </div>
+		            <div class="group" id="dniInput">
+		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{name}" th:value="*{name}"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		            </div>
+		            <div class="inputTitle">
+		                Descripción
+		            </div>
+		            <div class="group" id="nameInput">
+		            	<textarea rows="" cols="" required="required" name="description" placeholder="Los dientes son muy importantes para su apariencia..." th:field="*{description}" th:value="*{description}"></textarea>
+		            </div>
+		            <div class="inputTitle">
+		                Precio
+		            </div>
+		            <div class="group" id="phoneInput">
+		                <input type="number" required="required" placeholder="1" th:field="*{totalPrice}" name="totalPrice" th:value="*{totalPrice}"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		            </div>
+		            <div class="inputTitle">
+		                Descuento (%)
+		            </div>
+		            <div class="group" id="dniInput">
+		                <input type="number" placeholder="5" th:field="*{discount}" name="discount" th:value="*{discount}"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		            </div>
+		            <div class="inputTitle">
+		                Número de Sesiones
+		            </div>
+		            <div class="group" id="dniInput">
+		                <input type="number" required="required" placeholder="1" name="numSessions" th:field="*{numSessions}" th:value="*{numSessions}"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		            </div>
+		            <div class="inputTitle">
+		                Pagado a plazos
+		            </div>
+		            <div class="group" id="dniInput">
+		                <input type="checkbox" th:type="checkbox" name="paidInInstallments" th:field="*{paidInInstallments}" th:value="*{paidInInstallments}"/>
+		                <input type="hidden" value="on" name="_paidInInstallments"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		            </div>
+        			<div class="btn-box" id="submit">
+                		<button class="btn btn-submit" type="submit">Guardar Cambios</button>
+            		</div>
+            		<div class="btn-box" id="submit">
+                		<button class="btn btn-submit" type="reset">Reestablecer Valores</button>
+            		</div>
+        		</form>
+        	</div>
         </div>
     </main>
 </body>

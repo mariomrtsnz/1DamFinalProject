@@ -23,20 +23,27 @@
 		<div class="table-container">
 			<div class="table-header">
 				<div class="table-title">Servicios</div>
-				<div class="table-totalItems">Total: <span th:text="${numberOfTreatments}">{numElementosEnLista}</span></div>
-				<div class="table-buttons"></div>
+				<div class="table-totalItems">Número total de elementos: <span th:text="${numberOfTreatments}">{numElementosEnLista}</span></div>
+				<div class="table-buttons">
+					<div class="btn-box add-element" id="submit">
+                        <a href="/admin/admin-add-service.html" th:href="@{/admin-add-service}">
+                            <button class="btn btn-submit" type="submit">Añadir Servicio</button>
+                        </a>
+                    </div>
+				</div>
 		</div>
 		<div class="table">
-			<table cellpadding="0" cellspacing="0" border="0" id="showcase-example-1" class="table" data-paging="true" data-filtering="true" data-sorting="true" data-editing="true" data-state="true">
+			<table cellpadding="0" cellspacing="0" border="0" id="services-list" class="table" data-paging="true" data-filtering="true" data-sorting="true">
 				<thead>
 					<tr>
-						<th>Id</th>
+						<th data-type="number">Id</th>
 						<th>Nombre</th>
 						<th>Descripcion</th>
-						<th>Precio</th>
-						<th>Descuento</th>
+						<th data-type="number">Precio</th>
+						<th data-type="number">Descuento</th>
+						<th data-type="number">Nº Sesiones</th>
 						<th>Pagado a Plazos</th>
-						<th></th>
+						<th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,68 +53,31 @@
 						<td id="appointmentDate" th:text="${treatment.description.substring(0, treatment.description.length() / 2)} + '...'">{service.description}</td>
 						<td id="dentistName" th:text="${treatment.totalPrice}">{service.price}</td>
 						<td th:text="${treatment.discount}">{service.discount}</td>
-						<!--  -->
+						<td th:text="${treatment.numSessions}">{service.numSessions}</td>
 						<td th:text="${treatment.paidInInstallments} ? 'Si' : 'No'"></td>
+						<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
+							<div class="btn-group btn-group-xs" role="group">
+									<button type="button" class="btn btn-default footable-edit">
+										<span class="fooicon far fa-edit" aria-hidden="true"></span>
+									</button>
+								<button type="button" class="btn btn-default footable-delete" id="deleteButton">
+									<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
+								</button>
+							</div>
+						</td>
 					</tr>
 				</tbody>
 			</table>
-			</div>
-		</div>
-		<div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-			<style scoped>
-				/* provides a red astrix to denote required fields - this should be included in common stylesheet */
-				.form-group.required .control-label:after {
-					content:"*";
-					color:red;
-					margin-left: 4px;
-				}
-			</style>
-			<div class="modal-dialog" role="document">
-				<form class="modal-content form-horizontal" id="editor">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-						<h4 class="modal-title" id="editor-title">A�adir Elemento</h4>
-					</div>
-					<div class="modal-body">
-						<div class="form-group required">
-							<label for="firstName" class="col-sm-3 control-label">Nombre</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" id="firstName" name="firstName" placeholder="Nombre" required>
-							</div>
-						</div>
-						<div class="form-group required">
-							<label for="lastName" class="col-sm-3 control-label">Descripci�n</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Descripci�n" required>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="jobTitle" class="col-sm-3 control-label">Precio Total</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Precio Total">
-							</div>
-						</div>
-						<div class="form-group required">
-							<label for="startedOn" class="col-sm-3 control-label">Descuento</label>
-							<div class="col-sm-9">
-								<input type="date" class="form-control" id="startedOn" name="startedOn" placeholder="Porcentaje de Descuento" required>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="dob" class="col-sm-3 control-label">Pago a Plazos</label>
-							<div class="col-sm-9">
-								<input type="date" class="form-control" id="dob" name="dob" placeholder="Date of Birth">
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary">Guardar Cambios</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					</div>
-				</form>
-			</div>
 		</div>
 	</main>
+	<div class="modal-overlay" id="modal-overlay"></div>
+	<div class="modal" id="deleteModal">
+		<div class="modal-guts">
+			<p>¿Está seguro que desea eliminarlo? Se eliminará también de la base de datos.</p>
+			<button  id="confirmDeleteElementButton">Eliminar</button>
+			<button id="cancel">Cancelar</button>
+  		</div>
+	</div>
 </body>
 
 </html>
