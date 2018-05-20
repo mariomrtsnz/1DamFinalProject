@@ -14,7 +14,7 @@
   .cd-main-content .table-container {
     display: grid;
     grid-template-areas: "tableHeader" "tableBody";
-    grid-gap: 2em; }
+    grid-gap: 1em; }
     .cd-main-content .table-container .table-header {
       background-color: #3c393d;
       grid-area: tableHeader;
@@ -163,7 +163,12 @@ table {
 
 th {
   color: #f5f9f8;
-  text-transform: uppercase; }
+  text-transform: uppercase; 
+  background-color: #c3975f;}
+  
+tr.footable-filtering th{
+	background-color: initial;
+}
 
 tbody tr:hover {
   background-color: #989690; }
