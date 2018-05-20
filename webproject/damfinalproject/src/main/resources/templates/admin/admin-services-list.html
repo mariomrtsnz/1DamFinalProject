@@ -31,43 +31,35 @@
                         </a>
                     </div>
 				</div>
-		</div>
-		<div class="table">
-			<table cellpadding="0" cellspacing="0" border="0" id="services-list" class="table" data-paging="true" data-filtering="true" data-sorting="true">
-				<thead>
-					<tr>
-						<th data-type="number">Id</th>
-						<th>Nombre</th>
-						<th>Descripcion</th>
-						<th data-type="number">Precio</th>
-						<th data-type="number">Descuento</th>
-						<th data-type="number">Nº Sesiones</th>
-						<th>Pagado a Plazos</th>
-						<th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="treatment : ${treatments}">
-						<td id="serviceName" th:text="${treatment.id}">{service.id}</td>
-						<td id="orderDate" th:text="${treatment.name}">{service.name}</td>
-						<td id="appointmentDate" th:text="${treatment.description.substring(0, treatment.description.length() / 2)} + '...'">{service.description}</td>
-						<td id="dentistName" th:text="${treatment.totalPrice}">{service.price}</td>
-						<td th:text="${treatment.discount}">{service.discount}</td>
-						<td th:text="${treatment.numSessions}">{service.numSessions}</td>
-						<td th:text="${treatment.paidInInstallments} ? 'Si' : 'No'"></td>
-						<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
-							<div class="btn-group btn-group-xs" role="group">
-									<button type="button" class="btn btn-default footable-edit">
-										<span class="fooicon far fa-edit" aria-hidden="true"></span>
-									</button>
-								<button type="button" class="btn btn-default footable-delete" id="deleteButton">
-									<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
-								</button>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			</div>
+			<div class="table">
+				<table cellpadding="0" cellspacing="0" border="0" id="services-list" class="table" data-paging="true" data-filtering="true" data-sorting="true">
+					<thead>
+						<tr>
+							<th data-type="number">Id</th>
+							<th>Nombre</th>
+							<th>Descripcion</th>
+							<th data-type="number">Precio</th>
+							<th data-type="number">Descuento</th>
+							<th data-type="number">Nº Sesiones</th>
+							<th>Pagado a Plazos</th>
+							<th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="treatment : ${treatments}">
+							<td id="serviceName" th:text="${treatment.id}">{service.id}</td>
+							<td id="orderDate" th:text="${treatment.name}">{service.name}</td>
+							<td id="appointmentDate" th:text="${treatment.description.substring(0, treatment.description.length() / 2)} + '...'">{service.description}</td>
+							<td id="dentistName" th:text="${treatment.totalPrice}">{service.price}</td>
+							<td th:text="${treatment.discount}">{service.discount}</td>
+							<td th:text="${treatment.numSessions}">{service.numSessions}</td>
+							<td th:text="${treatment.paidInInstallments} ? 'Si' : 'No'"></td>
+							<td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</main>
 	<div class="modal-overlay" id="modal-overlay"></div>

@@ -43,5 +43,9 @@ public class EmployeeService {
 	public Employee login(String email, String password) {
 		return repository.findFirstByEmailAndPassword(email, password);
 	}
+	
+	public long calculateNumberOfItems() {
+		return findAll().spliterator().getExactSizeIfKnown();
+	}
 
 }

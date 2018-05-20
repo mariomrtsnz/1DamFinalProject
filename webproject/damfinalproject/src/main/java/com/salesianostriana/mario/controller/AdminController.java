@@ -84,6 +84,7 @@ public class AdminController {
 	public String staffList(Model model) {
 		model.addAttribute("staff", employeeService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("numberOfEmployees", employeeService.calculateNumberOfItems());
 		return "/admin/admin-staff-list";
 	}
 

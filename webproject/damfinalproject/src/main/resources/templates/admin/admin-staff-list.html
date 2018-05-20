@@ -3,10 +3,15 @@
 
 <head>
 	<th:block th:replace="fragments/common :: head"></th:block>
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/user-appointments.css" th:href="@{/styles/user-appointments.css}"/>
-    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Admin - Empleados')"></th:block>
-    <script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
-    
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="/styles/user-appointments.css" th:href="@{/styles/user-appointments.css}"/>
+	<link rel="stylesheet" type="text/css" href="/styles/footable.standalone.min.css" th:href="@{/styles/footable.standalone.min.css}"/>
+	<th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Admin - Empleados')"></th:block>
+	<script type="text/javascript" src="/scripts/footable.min.js" th:src="@{/scripts/footable.min.js}"></script>
+	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/styles/footable.fontawesome.css" th:href="@{/styles/footable.fontawesome.css}"/>
 </head>
 
 <body>
@@ -20,7 +25,7 @@
                     Empleados
                 </div>
                 <div class="table-totalItems">
-                    Total: {numElementosEnLista}
+                    Número total de elementos: <span th:text="${numberOfEmployees}"></span>
                 </div>
                 <div class="table-buttons">
                     <div class="btn-box add-element" id="submit">
@@ -37,40 +42,41 @@
                 </div>
             </div>
             <div class="table">
-                <div class="tbl-header">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Tel�fono</th>
-                                <th>Email</th>
-                                <th>Sueldo</th>
-                                <th>Puesto</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="tbl-content">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <tbody>
-                            <!--Aqu� ir� el th:each para cada cliente del set de Clientes de la clase Empresa.-->
-                            <tr th:each="employee : ${staff}">
-                                <td id="serviceName" th:text="${employee.id}">{employee.id}</td>
-                                <td id="orderDate" th:text="${employee.name}">{employee.name}</td>
-                                <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>
-                                <td id="dentistName" th:text="${employee.email}">{employee.email}</td>
-                                <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
-                                <td th:text="${employee.position}">{employee.position}</td>
-                                <td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+	            <table cellpadding="0" cellspacing="0" border="0" id="services-list" class="table" data-paging="true" data-filtering="true" data-sorting="true">
+	                <thead>
+	                    <tr>
+	                        <th data-type="number">Id</th>
+	                        <th>Nombre</th>
+	                        <th data-type="number">Teléfono</th>
+	                        <th>Email</th>
+	                        <th data-type="number">Sueldo</th>
+	                        <th>Puesto</th>
+	                        <th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr th:each="employee : ${staff}">
+	                        <td id="serviceName" th:text="${employee.id}">{employee.id}</td>
+	                        <td id="orderDate" th:text="${employee.name}">{employee.name}</td>
+	                        <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>
+	                        <td id="dentistName" th:text="${employee.email}">{employee.email}</td>
+	                        <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
+	                        <td th:text="${employee.position}">{employee.position}</td>
+	                        <td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
+	                    </tr>
+	                </tbody>
+	            </table>
             </div>
-        </div>
+    	</div>
     </main>
+    <div class="modal-overlay" id="modal-overlay"></div>
+	<div class="modal" id="deleteModal">
+		<div class="modal-guts">
+			<p>¿Está seguro que desea eliminarlo? Se eliminará también de la base de datos.</p>
+			<button  id="confirmDeleteElementButton">Eliminar</button>
+			<button id="cancel">Cancelar</button>
+  		</div>
+	</div>
 </body>
 
 </html>
