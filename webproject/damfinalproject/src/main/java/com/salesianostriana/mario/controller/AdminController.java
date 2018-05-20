@@ -40,6 +40,7 @@ public class AdminController {
 	@GetMapping("/admin-services-list")
 	public String servicesList(Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("numberOfTreatments", treatmentService.calculateNumberOfItems());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-services-list";
 	}

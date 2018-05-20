@@ -18,7 +18,7 @@
 		<div class="table-container">
 			<div class="table-header">
 				<div class="table-title">Servicios</div>
-				<div class="table-totalItems">Total: <span>{numElementosEnLista}</span></div>
+				<div class="table-totalItems">Total: <span th:text="${numberOfTreatments}">{numElementosEnLista}</span></div>
 				<div class="table-buttons">
 					<div class="btn-box add-element" id="submit">
 						<a href="/admin-add-service" th:href="@{/admin-add-service}">
@@ -56,7 +56,7 @@
 						<tr th:each="treatment : ${treatments}">
 							<td id="serviceName" th:text="${treatment.id}">{service.id}</td>
 							<td id="orderDate" th:text="${treatment.name}">{service.name}</td>
-							<td id="appointmentDate" th:text="${treatment.description}">{service.description}</td>
+							<td id="appointmentDate" th:text="${treatment.description.substring(0, treatment.description.length() / 2)} + '...'">{service.description}</td>
 							<td id="dentistName" th:text="${treatment.totalPrice}">{service.price}</td>
 							<td th:text="${treatment.discount}">{service.discount}</td>
 							<!-- th:text="${treatment.isPaidInInstallments} ? 'true' : 'false'" -->

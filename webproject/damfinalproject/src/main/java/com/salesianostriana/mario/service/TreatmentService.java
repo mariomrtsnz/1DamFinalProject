@@ -44,5 +44,9 @@ public class TreatmentService {
 		result = treatment.getTotalPrice() - ((treatment.getDiscount()/divider)*treatment.getTotalPrice());
 		return result;
 	}
+	
+	public long calculateNumberOfItems() {
+		return findAll().spliterator().getExactSizeIfKnown();
+	}
 
 }
