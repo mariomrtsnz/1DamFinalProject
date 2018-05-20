@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.mario.formbean.SignUpUser;
 import com.salesianostriana.mario.model.Client;
+import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.CompanyService;
@@ -74,7 +75,7 @@ public class AdminController {
 		return "/admin/admin-add-client";
 	}
 
-	// @PostMapping("/admin-add-client")
+	// @PostMapping("/addNewClient")
 	// public String addClient() {
 	// return "";
 	// }
@@ -89,15 +90,16 @@ public class AdminController {
 	@GetMapping("/admin-add-staff")
 	public String goToAddStaff(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("newEmployee", new Employee());
 		return "/admin/admin-add-staff";
 	}
 
-	 @PostMapping("/admin-add-staff")
-	 public String addStaff(Model model) {
-		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		 
-		 return "";
-	 }
+//	 @PostMapping("/addNewEmployee")
+//	 public String addStaff(Model model) {
+//		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+//	 
+//		 return "";
+//	 }
 
 	@GetMapping("/admin-calendar")
 	public String showCalendar(Model model) {

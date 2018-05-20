@@ -103,9 +103,9 @@ public class DamFinalProjectApplication {
 			e1.addAppointment(a2);
 			t1.addAppointment(a2);
 			
-			System.out.println(treatmentService.calculatePriceWithDiscount(t3));
 
 			// Test
+//			System.out.println(treatmentService.calculatePriceWithDiscount(t3));
 //			System.out.println(clientService.findOne(c.getId()));			
 //			System.out.println(company.getId());
 		};
