@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.mario.model.Client;
@@ -117,6 +118,17 @@ public class AdminController {
 		model.addAttribute("appointments", appointmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-calendar";
+	}
+	
+	@GetMapping("/delete-treatment/{id}")
+	public String deleteTreatmentt(@PathVariable("id") Long id, Model model) {
+		Treatment treatment = treatmentService.findOneById(id);
+//		companyService.findDefaultCompany().removeTreatment(treatment);
+//		treatment.setCompany(null);
+//		treatment.setAppointments(null);
+		treatmentService.remove(treatment);
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		return "redirect:/admin-services-list";
 	}
 
 	// @PostMapping("/admin-add-appointment")

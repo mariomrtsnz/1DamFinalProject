@@ -17,6 +17,7 @@ public class Empresa {
 	private String nombre;
 	private String cif;
 	private String direccion;
+	private String telefono;
 	private String username;
 	private String pass;
 	private String email;
@@ -29,32 +30,51 @@ public class Empresa {
 		
 	}
 	
-	public Empresa(String nombre, String cif, String direccion, String usuario, String pass, String email) {
-		super();
-		this.nombre = nombre;
-		this.cif = cif;
-		this.direccion = direccion;
-		this.username = usuario;
-		this.pass = pass;
-		this.email = email;
-	}
-	
-	public Empresa(long idEmpresa, String nombre, String cif, String direccion, String usuario, String pass,
-			String email) {
+	public Empresa(long idEmpresa, String nombre, String cif, String direccion, String telefono, String username,
+			String pass, String email, Set<Pedido> listaPedido) {
 		super();
 		this.idEmpresa = idEmpresa;
 		this.nombre = nombre;
 		this.cif = cif;
 		this.direccion = direccion;
-		this.username = usuario;
+		this.telefono = telefono;
+		this.username = username;
 		this.pass = pass;
 		this.email = email;
+		this.listaPedido = listaPedido;
 	}
-	
+
+
+
+	public Empresa(String nombre, String cif, String direccion, String telefono, String username, String pass,
+			String email, Set<Pedido> listaPedido) {
+		super();
+		this.nombre = nombre;
+		this.cif = cif;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.username = username;
+		this.pass = pass;
+		this.email = email;
+		this.listaPedido = listaPedido;
+	}
+
+
+
 	//Getters And Setters
 	public long getIdEmpresa() {
 		return idEmpresa;
 	}
+	
+	
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	public void setIdEmpresa(long idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
@@ -94,16 +114,17 @@ public class Empresa {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	//toString
 	@Override
 	public String toString() {
 		return "Empresa [idEmpresa=" + idEmpresa + ", nombre=" + nombre + ", cif=" + cif + ", direccion=" + direccion
-				+ ", username=" + username + ", pass=" + pass + ", email=" + email + "]";
+				+ ", telefono=" + telefono + ", username=" + username + ", pass=" + pass + ", email=" + email
+				+ ", listaPedido=" + listaPedido + "]";
 	}
-	
-	//HashCode e Equals
 
+	// HashCode e Equals
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -115,9 +136,11 @@ public class Empresa {
 		result = prime * result + ((listaPedido == null) ? 0 : listaPedido.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
+		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -160,6 +183,11 @@ public class Empresa {
 				return false;
 		} else if (!pass.equals(other.pass))
 			return false;
+		if (telefono == null) {
+			if (other.telefono != null)
+				return false;
+		} else if (!telefono.equals(other.telefono))
+			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -167,6 +195,8 @@ public class Empresa {
 			return false;
 		return true;
 	}
+	
+	
 	
 	// Metodos Helper
 	

@@ -36,11 +36,20 @@ public class B2bApplication {
 			
 			user2.setUsername("luismi2");
 			user2.setPass("luismi2");
+			user3.setPass("luismi3");
+			user2.setNombre("luismiA");
+			user2.setEmail("luismi@luismi");
+			user2.setDireccion("calle luismi");
+			user2.setCif("12345");
 			serviceb.save(user2);
 			
 			
 			user3.setUsername("luismi3");
 			user3.setPass("luismi3");
+			user3.setNombre("luismiB");
+			user3.setEmail("luismi@luismi");
+			user3.setDireccion("calle luismi");
+			user3.setCif("12345");
 			servicec.save(user3);
 
 		};

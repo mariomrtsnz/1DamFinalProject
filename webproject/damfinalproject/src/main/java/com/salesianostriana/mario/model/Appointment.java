@@ -2,6 +2,7 @@ package com.salesianostriana.mario.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +21,11 @@ public class Appointment {
 	private LocalDateTime startTime;
 	private boolean isPaid;
 	private LocalDateTime orderDate;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Client client;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Employee employee;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Treatment treatment;
 
 	public Appointment() {

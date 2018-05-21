@@ -35,19 +35,4 @@ public class TreatmentController {
 			return "Error";
 		}
 	}
-
-//	@PostMapping("/addTreatment")
-//	public String submit(@ModelAttribute("FormService") Model model) {
-//		return "";
-//	}
-//
-//	public void process(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext,
-//			TemplateEngine templateEngine) {
-//		Iterable<Treatment> allTreatments = treatmentService.findAll();
-//		
-//		WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-//		ctx.setVariable("treatments", allTreatments);
-//		
-//		templateEngine.process("/admin/admin-services-list", ctx, response.getWriter());
-//	}
 }

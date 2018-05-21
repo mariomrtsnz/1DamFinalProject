@@ -24,7 +24,7 @@ public class Employee {
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private Set<Appointment> appointments = new HashSet<Appointment>();
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Company company;
 	@Column(unique = true)
 	private String dni;

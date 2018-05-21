@@ -1,8 +1,0 @@
-language: java
-jdk:
-  - oraclejdk8
-
-# sudo required for docker builds  
-sudo: required
-services:
-  - docker

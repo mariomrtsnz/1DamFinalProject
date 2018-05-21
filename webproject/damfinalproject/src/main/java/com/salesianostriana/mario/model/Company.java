@@ -194,7 +194,7 @@ public class Company {
 		}
 	}
 
-	public void removeClient(Treatment t) {
+	public void removeTreatment(Treatment t) {
 		if (t != null) {
 			t.setCompany(null);
 			this.getTreatments().remove(t);

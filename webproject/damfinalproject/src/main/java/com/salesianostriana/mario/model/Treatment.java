@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -30,7 +31,7 @@ public class Treatment {
 	private double totalPrice;
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	Set<Appointment> appointments = new HashSet<Appointment>();
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Company company;
 	private String picture;
 

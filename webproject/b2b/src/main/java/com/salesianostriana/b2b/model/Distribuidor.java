@@ -19,6 +19,7 @@ public class Distribuidor {
 	private String nombre;
 	private String cif;
 	private String direccion;
+	private String telefono;
 	private String username;
 	private String pass;
 	private String email;
@@ -32,12 +33,19 @@ public class Distribuidor {
 		
 	}
 
-	public Distribuidor(String nombre, String cif, String direccion, String username, String pass, String email,
-			Set<Producto> listaProducto) {
+	
+
+
+
+
+
+	public Distribuidor(String nombre, String cif, String direccion, String telefono, String username, String pass,
+			String email, Set<Producto> listaProducto) {
 		super();
 		this.nombre = nombre;
 		this.cif = cif;
 		this.direccion = direccion;
+		this.telefono = telefono;
 		this.username = username;
 		this.pass = pass;
 		this.email = email;
@@ -46,20 +54,23 @@ public class Distribuidor {
 
 
 
-	public Distribuidor(long idDistribuidor, String nombre, String cif, String direccion, String username, String pass,
-			String email, Set<Producto> listaProducto) {
+
+
+
+
+	public Distribuidor(long idDistribuidor, String nombre, String cif, String direccion, String telefono,
+			String username, String pass, String email, Set<Producto> listaProducto) {
 		super();
 		this.idDistribuidor = idDistribuidor;
 		this.nombre = nombre;
 		this.cif = cif;
 		this.direccion = direccion;
+		this.telefono = telefono;
 		this.username = username;
 		this.pass = pass;
 		this.email = email;
 		this.listaProducto = listaProducto;
 	}
-
-
 
 	//Getters and Setters
 	public long getIdDistribuidor() {
@@ -81,6 +92,23 @@ public class Distribuidor {
 	public String getCif() {
 		return cif;
 	}
+	
+	
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+
+
+
+
+
 
 	public void setCif(String cif) {
 		this.cif = cif;
@@ -119,13 +147,17 @@ public class Distribuidor {
 	}
 
 	//toString
+
 	@Override
 	public String toString() {
 		return "Distribuidor [idDistribuidor=" + idDistribuidor + ", nombre=" + nombre + ", cif=" + cif + ", direccion="
-				+ direccion + ", username=" + username + ", pass=" + pass + ", email=" + email + "]";
+				+ direccion + ", telefono=" + telefono + ", username=" + username + ", pass=" + pass + ", email="
+				+ email + ", listaProducto=" + listaProducto + "]";
 	}
-	
-	//HashCode and Equals
+
+
+	//HashCode E Equals
+
 
 	@Override
 	public int hashCode() {
@@ -138,6 +170,7 @@ public class Distribuidor {
 		result = prime * result + ((listaProducto == null) ? 0 : listaProducto.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
+		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -183,6 +216,11 @@ public class Distribuidor {
 				return false;
 		} else if (!pass.equals(other.pass))
 			return false;
+		if (telefono == null) {
+			if (other.telefono != null)
+				return false;
+		} else if (!telefono.equals(other.telefono))
+			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -190,6 +228,8 @@ public class Distribuidor {
 			return false;
 		return true;
 	}
+	
+	
 	
 	//Metodos Helper
 	

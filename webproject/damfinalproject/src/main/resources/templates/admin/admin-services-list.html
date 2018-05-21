@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
 	<link rel="stylesheet" href="/styles/footable.fontawesome.css" th:href="@{/styles/footable.fontawesome.css}"/>
 	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body>
@@ -55,23 +57,25 @@
 							<td th:text="${treatment.discount}">{service.discount}</td>
 							<td th:text="${treatment.numSessions}">{service.numSessions}</td>
 							<td th:text="${treatment.paidInInstallments} ? 'Si' : 'No'"></td>
-							<td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
+							<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
+								<div class="btn-group btn-group-xs" role="group">
+									<button class="btn btn-default footable-edit editButton">
+										<span class="fooicon far fa-edit" aria-hidden="true"></span>
+									</button>
+									
+									<a th:href="@{'/delete-treatment/' + ${treatment.id}}">
+										<button class="btn btn-default footable-delete deleteButton">
+											<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
+										</button>
+									</a>
+								</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</main>
-	<div id="modal-container">		
-		<div class="modal-overlay" id="modal-overlay"></div>
-		<div class="modal" id="deleteModal">
-			<div class="modal-guts">
-				<p>¿Está seguro que desea eliminarlo? Se eliminará también de la base de datos.</p>
-				<a><button  id="confirmDeleteElementButton">Eliminar</button></a>
-				<button id="cancel">Cancelar</button>
-	  		</div>
-		</div>
-	</div>
 </body>
 
 </html>

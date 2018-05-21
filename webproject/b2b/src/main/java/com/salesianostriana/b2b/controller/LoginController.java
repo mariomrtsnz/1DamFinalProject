@@ -50,16 +50,15 @@ public class LoginController {
 		
 		if (user instanceof Administrador) {
 			session.setAttribute("usuarioActual", user);
-			return "redirect:/pc_admin";
+			return "redirect:/admin/";
 		} else if (user2 instanceof Empresa){
-			session.setAttribute("usuarioActual", user);
-			return "redirect:/pc_emp";
+			session.setAttribute("usuarioActual", user2);
+			return "redirect:/empresa/";
 		} else if (user3 instanceof Distribuidor) {
-			session.setAttribute("usuarioActual", user);
-			return "redirect:/pc_dis";
-			
+			session.setAttribute("usuarioActual", user3);
+			return "redirect:/distribuidor/";
 		} else {
-			model.addAttribute("loginError", "El usuario o contraseña no es válido");
+			model.addAttribute("loginError", "El usuario o password no es valido");
 			return "login";
 		}
 
