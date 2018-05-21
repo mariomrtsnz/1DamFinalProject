@@ -168,7 +168,7 @@ public class AdminController {
         return "redirect:g_prod";
     }
 
-    @GetMapping("/delete-client/{id}")
+    @GetMapping("/g_prod/{id}")
     public String deleteProducto(@PathVariable("id") Long id, Model model) {
         Producto p = productoService.findOne(id);
         productoService.delete(p);

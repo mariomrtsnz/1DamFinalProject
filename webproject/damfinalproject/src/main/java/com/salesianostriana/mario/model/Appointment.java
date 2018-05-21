@@ -21,11 +21,11 @@ public class Appointment {
 	private LocalDateTime startTime;
 	private boolean isPaid;
 	private LocalDateTime orderDate;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Client client;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Employee employee;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Treatment treatment;
 
 	public Appointment() {
