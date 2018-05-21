@@ -35,11 +35,11 @@
 
 <td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
 	<div class="btn-group btn-group-xs" role="group">
-			<button type="button" class="btn btn-default footable-edit">
+			<button class="btn btn-default footable-edit editButton">
 				<span class="fooicon far fa-edit" aria-hidden="true"></span>
+			</button>				
+			<button class="btn btn-default footable-delete deleteButton">
+				<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
 			</button>
-		<button type="button" class="btn btn-default footable-delete" id="deleteButton">
-			<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
-		</button>
 	</div>
 </td>

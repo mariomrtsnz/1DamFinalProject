@@ -271,8 +271,6 @@ td {
     margin-right: 5em; } }
 
 .modal {
-  /* This way it could be display flex or grid or whatever also. */
-  display: none;
   
   /* Probably need media queries here */
   width: 600px;
@@ -301,15 +299,18 @@ td {
   display: none;
 }
 
+#modal-container {
+	position: fixed;
+	display: none;
+}
+
 .modal-overlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 50;
-  
   background: rgba(0, 0, 0, 0.6);
 }
 .modal-guts {
@@ -321,5 +322,4 @@ td {
   overflow: auto;
   padding: 20px 50px 20px 20px;
 }
-
 /*# sourceMappingURL=user-appointments.css.map */

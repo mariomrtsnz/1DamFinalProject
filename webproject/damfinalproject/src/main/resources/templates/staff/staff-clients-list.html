@@ -62,7 +62,7 @@
 	                                <i class="form-checkbox-button"></i>
 	                            </label>
 	                        </td>
-	                        <tdth:text="${client.historical}"></td>
+	                        <td th:text="${client.historical}"></td>
 	                        <td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
 	                    </tr>
 	                </tbody>
@@ -70,6 +70,14 @@
 	        </div>
 	    </div>
     </main>
+    <div class="modal-overlay" id="modal-overlay"></div>
+	<div class="modal" id="deleteModal">
+		<div class="modal-guts">
+			<p>¿Está seguro que desea eliminarlo? Se eliminará también de la base de datos.</p>
+			<button  id="confirmDeleteElementButton">Eliminar</button>
+			<button id="cancel">Cancelar</button>
+  		</div>
+	</div>
 </body>
 
 </html>

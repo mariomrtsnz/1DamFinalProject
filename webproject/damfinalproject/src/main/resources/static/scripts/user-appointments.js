@@ -1,12 +1,10 @@
-$(document).ready(function () {
-	$("#deleteButton").click(function() {
-		$("#deleteModal").show();
-		$("#modal-overlay").show();
+$(document).ready(function() {
+	$(document).on('click', '.deleteButton', function() {
+		$("#modal-container").show();
 	});
 	
 	$("#cancel").click(function() {
-		$("#deleteModal").hide();
-		$("#modal-overlay").hide();
+		$("#modal-container").hide();
 	});
 	
     /*FooTable*/
