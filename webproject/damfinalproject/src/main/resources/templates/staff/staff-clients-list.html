@@ -3,9 +3,15 @@
 
 <head>
     <th:block th:replace="fragments/common :: head"></th:block>
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/user-appointments.css" th:href="@{/styles/user-appointments.css}"/>
-    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Admin - Clientes')"></th:block>
-    <script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="/styles/user-appointments.css" th:href="@{/styles/user-appointments.css}"/>
+	<link rel="stylesheet" type="text/css" href="/styles/footable.standalone.min.css" th:href="@{/styles/footable.standalone.min.css}"/>
+	<th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Admin - Clientes')"></th:block>
+	<script type="text/javascript" src="/scripts/footable.min.js" th:src="@{/scripts/footable.min.js}"></script>
+	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/styles/footable.fontawesome.css" th:href="@{/styles/footable.fontawesome.css}"/>
 </head>
 
 <body>
@@ -19,72 +25,50 @@
                     Clientes
                 </div>
                 <div class="table-totalItems">
-                    Total: {numElementosEnLista}
+                    N√∫mero total de elementos: <span th:text="${numberOfClients}">{numElementosEnLista}</span>
                 </div>
                 <div class="table-buttons">
                     <div class="btn-box add-element" id="submit" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
-                        <a href="">
-                            <button class="btn btn-submit" type="submit">AÒadir Cliente</button>
+                        <a href="/admin/admin-add-client.html" th:href="@{/admin-add-client}">
+                            <button class="btn btn-submit" type="submit">A√±adir Cliente</button>
                         </a>
                     </div>
-                    <div class="btn-box table-filter" id="submit">
-                        <button class="btn btn-submit" type="submit">Filtrar por Pago Pendiente</button>
-                    </div>
-                </div>
-                <div class="search">
-                    <input type="search" class="search-box" placeholder="Buscar..." />
-                    <span class="search-button">
-                        <span class="search-icon"></span>
-                    </span>
                 </div>
             </div>
             <div class="table">
-                <div class="tbl-header">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <thead>
-                            <tr>
-                                <th>IdCliente</th>
-                                <th>Nombre</th>
-                                <th>TelÈfono</th>
-                                <th>Email</th>
-                                <th>Fecha de Registro</th>
-                                <th>Cita Pendiente</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="tbl-content">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                        <tbody>
-                            <!--AquÌ ir· el th:each para cada cliente del set de Clientes de la clase Empresa.-->
-                            <tr>
-                                <td id="serviceName">{cliente.id}</td>
-                                <td id="orderDate">{cliente.name}</td>
-                                <td id="appointmentDate">{cliente.phone}</td>
-                                <td id="dentistName">{cliente.email}</td>
-                                <td>{cliente.registerDate}</td>
-                                <td id="payStatus">
-                                    <label class="form-checkbox-label">
-                                        <input name=payStatus class="form-checkbox-field" type="checkbox" />
-                                        <i class="form-checkbox-button"></i>
-                                    </label>
-                                </td>
-                                <td class="advancedOptions" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
-                                    <div class="dropdown" style="float:right;">
-                                        <img src="../../static/images/icons/icon-advancedOptions.svg" class="dropbtn" alt="" width="24px">
-                                        <div class="dropdown-content">
-                                            <a href="#">Editar</a>
-                                            <a href="#">Borrar</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+	            <table cellpadding="0" cellspacing="0" border="0" id="services-list" data-paging="true" data-filtering="true" data-sorting="true">
+	                <thead>
+	                    <tr>
+	                        <th data-type="number">Id</th>
+	                        <th>Nombre</th>
+	                        <th data-type="number">Tel√©fono</th>
+	                        <th>Email</th>
+	                        <th data-type="date" data-format-string="Do MMMM YYYY">Fecha de Registro</th>
+	                        <th>Cita Pendiente</th>
+	                        <th>Hist√≥rico</th>
+	                 		<th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr th:each="client : ${clients}">
+	                        <td id="serviceName" th:text="${client.id}">{cliente.id}</td>
+	                        <td id="orderDate" th:text="${client.name}">{cliente.name}</td>
+	                        <td id="appointmentDate" th:text="${client.phone}">{cliente.phone}</td>
+	                        <td id="dentistName" th:text="${client.email}">{cliente.email}</td>
+	                        <td th:text="${client.registerDate}">{cliente.registerDate}</td>
+	                        <td id="payStatus">
+	                            <label class="form-checkbox-label">
+	                                <input name=payStatus class="form-checkbox-field" type="checkbox" />
+	                                <i class="form-checkbox-button"></i>
+	                            </label>
+	                        </td>
+	                        <tdth:text="${client.historical}"></td>
+	                        <td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	        </div>
+	    </div>
     </main>
 </body>
 

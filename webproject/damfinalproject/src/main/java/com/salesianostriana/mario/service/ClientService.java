@@ -44,4 +44,8 @@ public class ClientService {
 		return repository.findFirstByEmailAndPassword(email, password);
 	}
 
+	public long calculateNumberOfItems() {
+		return findAll().spliterator().getExactSizeIfKnown();
+	}
+
 }

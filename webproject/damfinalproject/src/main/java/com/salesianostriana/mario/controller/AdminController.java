@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.mario.formbean.SignUpUser;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.service.AppointmentService;
+import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
 import com.salesianostriana.mario.service.EmployeeService;
 import com.salesianostriana.mario.service.TreatmentService;
@@ -38,6 +38,9 @@ public class AdminController {
 
 	@Autowired
 	private AppointmentService appointmentService;
+	
+	@Autowired
+	private ClientService clientService;
 
 	@GetMapping({ "/admin", "/admin-dashboard" })
 	public String index(Model model) {
@@ -72,13 +75,17 @@ public class AdminController {
 	@GetMapping("/admin-add-client")
 	public String goToAddClient(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("newClient", new Client());
 		return "/admin/admin-add-client";
 	}
-
-	// @PostMapping("/addNewClient")
-	// public String addClient() {
-	// return "";
-	// }
+	
+	public String addStaff(@ModelAttribute("newClient") Client newClient, BindingResult bindingResult,
+			Model model) {
+		 Client client = new Client(newClient.getDni(), newClient.getEmail(), newClient.getName(), newClient.getPassword(), newClient.getPhone(), newClient.getProfilePic(), LocalDateTime.now());
+			clientService.save(client);
+		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		 return "redirect:/admin-staff-list";
+	}
 
 	@GetMapping("/admin-staff-list")
 	public String staffList(Model model) {
