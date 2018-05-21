@@ -31,8 +31,8 @@
                 Do proident elit eiusmod Lorem id.
             </div>
             <div class="service-details">
-                <p>Nº Sesiones: <span th:text="${selectedTreatment.numSessions}">{treatment.numSesiones}</span></p>
-                <p>Precio Total: <span th:text="${selectedTreatment.totalPrice}">{treatment.totalPriceWithoutDiscount}</span>€</p>
+                <p>NÂº Sesiones: <span th:text="${selectedTreatment.numSessions}">{treatment.numSesiones}</span></p>
+                <p>Precio Total: <span th:text="${selectedTreatment.totalPrice}">{treatment.totalPriceWithoutDiscount}</span>â‚¬</p>
             </div>
         </div>
         <div class="appointmentRequest">
@@ -71,14 +71,15 @@
                 <div id="price">
                     <h2>Precio final<span th:if="${selectedTreatment.discount != 0}"> con descuento del <span th:text="${selectedTreatment.discount}"></span>%</span>:</h2>
                     <div id="finalPrice">
-                        <span th:text="${totalPriceWithDiscount}">{totalPriceWithDiscount}</span>€
+                        <span th:text="${totalPriceWithDiscount}">{totalPriceWithDiscount}</span>â‚¬
                     </div>
                 </div>
                 <button id="payNow" type="submit">Pagar Ahora</button>
-                <button id="payPhysically" type="submit">Pagar en la Clínica</button>
+                <button id="payPhysically" type="submit">Pagar en la ClÃ­nica</button>
             </div>
         </form>
     </div>
+    <div class="modal-overlay"></div>
 </body>
 
 </html>

@@ -17,6 +17,7 @@ window.onload = function () {
 
 function modalToggler() {
     $('#appointmentModal').toggle('slow');
+    $('.modal-overlay').toggle();
 }
 
 function submit() {
