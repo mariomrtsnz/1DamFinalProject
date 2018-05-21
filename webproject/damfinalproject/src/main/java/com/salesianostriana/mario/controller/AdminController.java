@@ -95,12 +95,14 @@ public class AdminController {
 		return "/admin/admin-add-staff";
 	}
 
-//	 @PostMapping("/addNewEmployee")
-//	 public String addStaff(Model model) {
-//		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-//	 
-//		 return "";
-//	 }
+	 @PostMapping("/addNewEmployee")
+	 public String addStaff(@ModelAttribute("newEmployee") Employee newEmployee, BindingResult bindingResult,
+				Model model) {
+		 Employee employee = new Employee(newEmployee.getDni(), newEmployee.getEmail(), newEmployee.getGrossAnualSalary(), newEmployee.getName(), newEmployee.getPassword(), newEmployee.getPhone(), newEmployee.getProfilePic(), newEmployee.getPosition(), LocalDateTime.now());
+			employeeService.save(employee);
+		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		 return "redirect:/admin-staff-list";
+	 }
 
 	@GetMapping("/admin-calendar")
 	public String showCalendar(Model model) {

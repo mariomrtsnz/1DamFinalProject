@@ -10,36 +10,36 @@
 		<li class="has-children overview"><a href="#0">Servicios</a>
 			<ul>
 				<li><a href="/admin-services-list.html" th:href="@{/admin-services-list}">Ver Servicios</a></li>
-				<li><a href="/admin-add-service.html" th:href="@{/admin-add-service}">A�adir Servicio</a></li>
+				<li><a href="/admin-add-service.html" th:href="@{/admin-add-service}">Añadir Servicio</a></li>
 			</ul></li>
 		<li class="has-children comments"><a href="#0">Clientes</a>
 			<ul>
 				<li><a href="/staff/staff-clients-list.html" th:href="@{/staff/staff-clients-list}">Ver Clientes</a>
 				</li>
-				<li><a href="/admin/admin-add-client.html" th:href="@{/admin-add-client}">A�adir Cliente</a>
+				<li><a href="/admin/admin-add-client.html" th:href="@{/admin-add-client}">Añadir Cliente</a>
 				</li>
 			</ul></li>
 		<li class="has-children comments"><a href="#0">Empleados</a>
 			<ul>
 				<li><a href="/admin/admin-staff-list.html" th:href="@{/admin-staff-list}">Ver Empleados</a></li>
-				<li><a href="/admin/admin-add-staff.html" th:href="@{/admin-add-staff}">A�adir Empleado</a></li>
+				<li><a href="/admin/admin-add-staff.html" th:href="@{/admin-add-staff}">Añadir Empleado</a></li>
 			</ul></li>
 		<li class="has-children comments"><a href="#0">Calendario</a>
 			<ul>
 				<li><a href="/admin/admin-calendar.html" th:href="@{/admin-calendar}">Ver Calendario</a></li>
-				<li><a href="/admin/admin-add-appointment.html" th:href="@{/admin-add-appointment}">A�adir Cita</a></li>
+				<li><a href="/admin/admin-add-appointment.html" th:href="@{/admin-add-appointment}">Añadir Cita</a></li>
 			</ul></li>
 	</ul>
 	<ul th:replace="fragments/dashboardlayout :: sideBarUserOptions"></ul>
 </nav>
 
 <td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
-							<div class="btn-group btn-group-xs" role="group">
-									<button type="button" class="btn btn-default footable-edit">
-										<span class="fooicon far fa-edit" aria-hidden="true"></span>
-									</button>
-								<button type="button" class="btn btn-default footable-delete" id="deleteButton">
-									<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
-								</button>
-							</div>
+	<div class="btn-group btn-group-xs" role="group">
+			<button type="button" class="btn btn-default footable-edit">
+				<span class="fooicon far fa-edit" aria-hidden="true"></span>
+			</button>
+		<button type="button" class="btn btn-default footable-delete" id="deleteButton">
+			<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
+		</button>
+	</div>
 </td>

@@ -11,7 +11,7 @@
     <main class="cd-main-content">
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
-        <div class="content-wrapper">
+        <div class="content-wrapper" id="addForm-wrapper">
         	<h1 class="pageTitle">Añadir Nuevo Servicio</h1>
         	<div class="add-form-container">
         		<form method="post" th:action="@{/addNewService}" th:object="${newService}" id="addServiceForm">
@@ -59,8 +59,6 @@
 		            <div class="group" id="dniInput">
 		                <input type="checkbox" th:type="checkbox" name="paidInInstallments" th:field="*{paidInInstallments}" th:value="*{paidInInstallments}"/>
 		                <input type="hidden" value="on" name="_paidInInstallments"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
 		            </div>
         			<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="submit">Guardar Cambios</button>
