@@ -79,12 +79,13 @@ public class AdminController {
 		return "/admin/admin-add-client";
 	}
 	
-	public String addStaff(@ModelAttribute("newClient") Client newClient, BindingResult bindingResult,
+	@PostMapping("/addNewClient")
+	public String addClient(@ModelAttribute("newClient") Client newClient, BindingResult bindingResult,
 			Model model) {
 		 Client client = new Client(newClient.getDni(), newClient.getEmail(), newClient.getName(), newClient.getPassword(), newClient.getPhone(), newClient.getProfilePic(), LocalDateTime.now());
 			clientService.save(client);
 		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		 return "redirect:/admin-staff-list";
+		 return "redirect:/admin-client-list";
 	}
 
 	@GetMapping("/admin-staff-list")

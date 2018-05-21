@@ -70,6 +70,18 @@ public class Client {
 		this.registerDate = registerDate;
 	}
 
+	public Client(String dni, String email, String name, String password, String phone,
+			String profilePic, LocalDateTime registerDate) {
+		super();
+		this.dni = dni;
+		this.email = email;
+		this.name = name;
+		this.password = password;
+		this.phone = phone;
+		this.profilePic = profilePic;
+		this.registerDate = registerDate;
+	}
+
 	public Client(String dni, String email, String name, String password, String phone, LocalDateTime registerDate) {
 		super();
 		this.dni = dni;
