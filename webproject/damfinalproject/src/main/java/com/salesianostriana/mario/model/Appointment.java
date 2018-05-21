@@ -19,7 +19,7 @@ public class Appointment {
 
 	private LocalDateTime endTime;
 	private LocalDateTime startTime;
-	private boolean isPaid;
+	private boolean paid;
 	private LocalDateTime orderDate;
 	@ManyToOne
 	private Client client;
@@ -39,7 +39,7 @@ public class Appointment {
 		this.client = client;
 		this.employee = employee;
 		this.endTime = endTime;
-		this.isPaid = isPaid;
+		this.paid = isPaid;
 		this.orderDate = orderDate;
 		this.treatment = treatment;
 	}
@@ -85,11 +85,11 @@ public class Appointment {
 	}
 
 	public boolean isPaid() {
-		return isPaid;
+		return paid;
 	}
 
 	public void setPaid(boolean isPaid) {
-		this.isPaid = isPaid;
+		this.paid = isPaid;
 	}
 
 	public LocalDateTime getOrderDate() {
@@ -111,7 +111,7 @@ public class Appointment {
 	@Override
 	public String toString() {
 		return "Appointment [id=" + id + ", startTime=" + startTime + ", client=" + client + ", employee=" + employee
-				+ ", endTime=" + endTime + ", isPaid=" + isPaid + ", orderDate=" + orderDate + ", service=" + treatment
+				+ ", endTime=" + endTime + ", isPaid=" + paid + ", orderDate=" + orderDate + ", service=" + treatment
 				+ "]";
 	}
 

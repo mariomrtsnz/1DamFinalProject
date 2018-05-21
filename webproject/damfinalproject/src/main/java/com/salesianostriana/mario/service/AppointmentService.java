@@ -32,5 +32,13 @@ public class AppointmentService {
 		remove(entidad);
 		save(entidad);
 	}
+	
+	public Iterable<Appointment> findAllPaid() {
+		return repository.findByPaidTrue();
+	}
+	
+	public long calculateNumberOfPaidAppointments() {
+		return findAllPaid().spliterator().getExactSizeIfKnown();
+	}
 
 }

@@ -7,5 +7,5 @@ import com.salesianostriana.mario.model.Appointment;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-
+	Iterable<Appointment> findByPaidTrue();
 }

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
+import com.salesianostriana.mario.service.EmployeeService;
 import com.salesianostriana.mario.service.TreatmentService;
 
 @Controller
@@ -26,9 +28,18 @@ public class ClientController {
 	@Autowired
 	private CompanyService companyService;
 	
+	@Autowired
+	private AppointmentService appointmentService;
+	
+	@Autowired
+	private EmployeeService employeeService;
+	
 	@GetMapping({ "/public", "/user-index" })
 	public String index(Model model) {
 		model.addAttribute("company", companyService.findDefaultCompany());
+		model.addAttribute("numberOfClients", service.calculateNumberOfItems());
+		model.addAttribute("numberOfPaidAppointments", appointmentService.calculateNumberOfPaidAppointments());
+		model.addAttribute("numberOfActiveEmployees", employeeService.calculateNumberOfActiveEmployees());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-index";
 	}

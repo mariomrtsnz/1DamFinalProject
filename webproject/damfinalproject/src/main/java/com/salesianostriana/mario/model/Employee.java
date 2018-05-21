@@ -37,6 +37,7 @@ public class Employee {
 	private String profilePic;
 	private String position;
 	private LocalDateTime hireDate;
+	private boolean historical;
 
 	public Employee() {
 
@@ -77,6 +78,14 @@ public class Employee {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public boolean isHistorical() {
+		return historical;
+	}
+
+	public void setHistorical(boolean historical) {
+		this.historical = historical;
 	}
 
 	public Set<Appointment> getAppointments() {
@@ -172,7 +181,7 @@ public class Employee {
 		return "Employee [id=" + id + ", appointments=" + appointments + ", company=" + company + ", dni=" + dni
 				+ ", email=" + email + ", grossAnualSalary=" + grossAnualSalary + ", name=" + name + ", password="
 				+ password + ", phone=" + phone + ", profilePic=" + profilePic + ", position=" + position
-				+ ", hireDate=" + hireDate + "]";
+				+ ", hireDate=" + hireDate + ", historical=" + historical + "]";
 	}
 
 	/*

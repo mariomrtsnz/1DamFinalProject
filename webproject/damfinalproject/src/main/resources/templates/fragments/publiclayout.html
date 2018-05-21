@@ -62,9 +62,19 @@
                 </a>
             </li>
 
-            <li>
-                <a href="/public/user-profile.html" th:href="@{/public/profile}" th:text="${loggedUser.name}">{loggedUser.name}</a>
-            </li>
+            <li class="has-children account"><a href="#0" th:text="${loggedUser.name}"> <img
+					src="/images/profilePics/profile-admin.jpg" alt="avatar"
+					th:href="'@{'${loggedUser.profilePic}'}'"> Admin
+			</a>
+				<ul class="cd-nav-icons is-hidden">
+					<li><a class="cd-nav-item" href="/public/user-profile"
+						th:href="@{/public/profile}"><h3>Perfil</h3></a></li>
+					<li><a class="cd-nav-item" href="/public/user-index.html"
+						th:href="@{/user-index}"><h3>Ir a página web</h3></a></li>
+					<li><a class="cd-nav-item" href="/index.html" th:href="@{/logOut}"><h3>Cerrar
+							Sesión</h3></a></li>
+				</ul>
+			</li>
         </ul>
         <!-- primary-nav -->
 </nav>

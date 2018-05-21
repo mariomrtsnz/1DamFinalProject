@@ -74,8 +74,8 @@
         <section id="cd-placeholder-1" class="cd-section cd-container">
             <h2>Nos preocupamos por tus dientes</h2>
             <p>
-                Trabajamos con la odontología preventiva y nuestra visión es que tendrás dientes sanos para toda la vida y una sonrisa hermosa.
-                Adaptamos todo el cuidado dental a tus necesidades para lograr la máxima funcionalidad y estética.
+                Trabajamos con la odontologÃ­a preventiva y nuestra visiÃ³n es que tendrÃ¡s dientes sanos para toda la vida y una sonrisa hermosa.
+                Adaptamos todo el cuidado dental a tus necesidades para lograr la mÃ¡xima funcionalidad y estÃ©tica.
             </p>
             <p>
                 Nuestro objetivo que te sientas relajado y que tengas una buena experiencia con nosotros.
@@ -90,7 +90,7 @@
                     Blanqueamiento
                 </h2>
                 <p>
-                    El blanqueamiento está entre los procedimientos dentales más populares porque puede mejorar increíblemente la forma en que
+                    El blanqueamiento estÃ¡ entre los procedimientos dentales mÃ¡s populares porque puede mejorar increï¿½blemente la forma en que
                     se ven tus dientes.
                 </p>
             </div>
@@ -100,19 +100,19 @@
                     Limpieza
                 </h2>
                 <p>
-                    La limpieza de los dientes es una parte esencial de la higiene bucal e involucra la eliminación de las placas dentales de
+                    La limpieza de los dientes es una parte esencial de la higiene bucal e involucra la eliminaciï¿½n de las placas dentales de
                     los dientes (caries).
                 </p>
             </div>
             <div id="icon3">
                 <img src="/images/icons/teethtechnology.svg" alt="" th:src="@{/images/icons/teethtechnology.svg}">
                 <h2>
-                    Tecnología
+                    TecnologÃ­a
                 </h2>
                 <p>
-                    Nuestra clínica enorgullece de formar parte de la Advanced Medical Technology Association (AdvaMed) y, por ello, tiene el
-                    compromiso de reconocer y apoyar su Código ético. Este código proporciona directrices específicas para
-                    garantizar que las tecnologías dentales se utilizan en beneficio del paciente.
+                    Nuestra clÃ­nica enorgullece de formar parte de la Advanced Medical Technology Association (AdvaMed) y, por ello, tiene el
+                    compromiso de reconocer y apoyar su CÃ³digo Ã©tico. Este cÃ³digo proporciona directrices especÃ­ficas para
+                    garantizar que las tecnologï¿½as dentales se utilizan en beneficio del paciente.
                 </p>
             </div>
             <div id="icon4">
@@ -121,21 +121,21 @@
                     Brackets de calidad
                 </h2>
                 <p>
-                    La ortodóntica es la rama dentífrica que corrige los dientes y mandíbulas incorrectamente posicionadas.
+                    La ortodÃ³ntica es la rama dentÃ­frica que corrige los dientes y mandÃ­bulas incorrectamente posicionadas.
                 </p>
             </div>
         </section>
         <section id="cd-placeholder-3" class="cd-section cd-container">
             <h2>
-                RealWorld Dental en números
+                RealWorld Dental en nÃºmeros
             </h2>
             <h3>
-                Algunas estadísticas
+                Algunas estadÃ­sticas
             </h3>
             <div class="container-statistics">
                 <div id="icon1">
                     <img src="/images/icons/icon-clients.svg" alt="" th:src="@{/images/icons/icon-clients.svg}">
-                    <h3>
+                    <h3 th:text="${numberOfClients}">
                         {numClientesTotales activos y dados de baja}
                     </h3>
                     <h3>
@@ -144,7 +144,7 @@
                 </div>
                 <div id="icon2">
                     <img src="/images/icons/icon-staff.svg" alt="" th:src="@{/images/icons/icon-staff.svg}">
-                    <h3>
+                    <h3 th:text="${numberOfActiveEmployees}">
                         {numEmpleados activos}
                     </h3>
                     <h3>
@@ -153,7 +153,7 @@
                 </div>
                 <div id="icon3">
                     <img src="/images/icons/happysmile.svg" alt="" th:src="@{/images/icons/happysmile.svg}">
-                    <h3>
+                    <h3 th:text="${numberOfPaidAppointments}">
                         {numCitasTotalesPagadas}
                     </h3>
                     <h3>

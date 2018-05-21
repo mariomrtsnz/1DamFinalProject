@@ -3,6 +3,7 @@ package com.salesianostriana.mario.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.repository.EmployeeRepository;
 
@@ -46,6 +47,14 @@ public class EmployeeService {
 	
 	public long calculateNumberOfItems() {
 		return findAll().spliterator().getExactSizeIfKnown();
+	}
+	
+	public Iterable<Employee> findAllActive() {
+		return repository.findByHistoricalFalse();
+	}
+	
+	public long calculateNumberOfActiveEmployees() {
+		return findAllActive().spliterator().getExactSizeIfKnown();
 	}
 
 }

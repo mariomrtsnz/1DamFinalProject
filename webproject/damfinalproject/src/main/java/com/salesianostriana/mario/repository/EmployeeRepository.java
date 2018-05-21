@@ -8,4 +8,5 @@ import com.salesianostriana.mario.model.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	Employee findFirstByEmailAndPassword(String email, String password);
+	Iterable<Employee> findByHistoricalFalse();
 }
