@@ -46,7 +46,7 @@
     </nav>
     <!-- cd-nav -->
     <div id="appointmentModal">
-        <form th:action="@{/addNewAppointment}" th:object="${newService}" id="initialAppointmentWindow" method="post">
+        <form th:action="@{'/addNewAppointment/' + ${selectedTreatment.id}}" th:object="${newAppointment}" id="initialAppointmentWindow" method="post">
             <div class="appointment-header">
                 <div id="title">
                     <h1>Pedir cita</h1>
@@ -60,13 +60,13 @@
                     <h2>Selecciona fecha:</h2>
                 </div>
                 <div id="calendar">
-                    <input type="date" id="datePicker" required>
+                    <input type="date" name="startDate" th:field="*{startDate}" th:value="*{startDate}" id="datePicker"  required>
                 </div>
                 <div id="time">
                     <h2>Selecciona hora (HH:MM AM/PM):</h2>
                 </div>
                 <div id="timePicker">
-                    <input type="time" name="" id="timeInput" required>
+                    <input type="time" name="startTime" id="timeInput" th:field="*{startTime}" th:value="*{startTime}" required>
                 </div>
                 <div id="price">
                     <h2>Precio final<span th:if="${selectedTreatment.discount != 0}"> con descuento del <span th:text="${selectedTreatment.discount}"></span>%</span>:</h2>

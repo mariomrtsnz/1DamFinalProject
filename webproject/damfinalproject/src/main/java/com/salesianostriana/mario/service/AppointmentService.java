@@ -44,10 +44,6 @@ public class AppointmentService {
 		return findAllPaid().spliterator().getExactSizeIfKnown();
 	}
 	
-//	public Iterable<Appointment> findAllByStartTime(Predicate<Appointment> predicate){
-//		return repository.findAllByStartTime(predicate);
-//	}
-	
 	public Appointment findOneByStartTime(LocalDateTime appointmentTime) {
 		return repository.findByStartTime(appointmentTime);
 	}

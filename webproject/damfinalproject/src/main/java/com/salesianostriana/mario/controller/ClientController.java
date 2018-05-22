@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
@@ -89,7 +90,7 @@ public class ClientController {
 	public String serviceDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		model.addAttribute("appointment", new Appointment());
+		model.addAttribute("newAppointment", new AppointmentFormBean());
 		Treatment s = treatmentService.findOneById(id);
 		if (s != null) {
 			model.addAttribute("selectedTreatment", s);
@@ -102,9 +103,10 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value="/addNewAppointment/{id}", method=RequestMethod.POST, params="action=payNow")
-	public String addAppointmentAndPayNow(@PathVariable("id") Long id, @ModelAttribute("newAppointment") Appointment newAppointment, BindingResult bindingResult,
+	public String addAppointmentAndPayNow(@PathVariable("id") Long id, @ModelAttribute("newAppointment") AppointmentFormBean newAppointment, BindingResult bindingResult,
 			Model model) {
-		Appointment appointment = new Appointment(newAppointment.getStartTime(), (Client) session.getAttribute("loggedUser"), employeeService.findFirstAvailableByDateTime(newAppointment.getStartTime()), newAppointment.getStartTime().plusHours(1), true, LocalDateTime.now(), treatmentService.findOneById(id));
+		LocalDateTime startTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
+		Appointment appointment = new Appointment(startTime, (Client) session.getAttribute("loggedUser"), employeeService.findFirstAvailableByDateTime(startTime), startTime.plusHours(1), true, LocalDateTime.now(), treatmentService.findOneById(id));
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		appointmentService.save(appointment);
 		return "redirect:/public/user-service/{id}";
@@ -112,9 +114,10 @@ public class ClientController {
 
 
 	@RequestMapping(value="/addNewAppointment/{id}", method=RequestMethod.POST, params="action=payPhysically")
-	public String addAppointmentAndPayPhysically(@PathVariable("id") Long id, @ModelAttribute("newAppointment") Appointment newAppointment, BindingResult bindingResult,
+	public String addAppointmentAndPayPhysically(@PathVariable("id") Long id, @ModelAttribute("newAppointment") AppointmentFormBean newAppointment, BindingResult bindingResult,
 			Model model) {
-		Appointment appointment = new Appointment(newAppointment.getStartTime(), (Client) session.getAttribute("loggedUser"), employeeService.findFirstAvailableByDateTime(newAppointment.getStartTime()), newAppointment.getStartTime().plusHours(1), false, LocalDateTime.now(), treatmentService.findOneById(id));
+		LocalDateTime startTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
+		Appointment appointment = new Appointment(startTime, (Client) session.getAttribute("loggedUser"), employeeService.findFirstAvailableByDateTime(startTime), startTime.plusHours(1), false, LocalDateTime.now(), treatmentService.findOneById(id));
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		appointmentService.save(appointment);
 		return "redirect:/public/user-service/{id}";
