@@ -59,7 +59,7 @@
 							<td th:text="${treatment.paidInInstallments} ? 'Si' : 'No'"></td>
 							<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
 								<div class="btn-group btn-group-xs" role="group">
-									<a>										
+									<a th:href="@{'/edit-treatment/' + ${treatment.id}}">										
 										<button class="btn btn-default footable-edit editButton">
 											<span class="fooicon far fa-edit" aria-hidden="true"></span>
 										</button>

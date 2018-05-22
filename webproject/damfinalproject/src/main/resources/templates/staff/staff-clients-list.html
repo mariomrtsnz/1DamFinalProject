@@ -8,10 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="/styles/footable.standalone.min.css" th:href="@{/styles/footable.standalone.min.css}"/>
 	<th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Admin - Clientes')"></th:block>
 	<script type="text/javascript" src="/scripts/footable.min.js" th:src="@{/scripts/footable.min.js}"></script>
-	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
 	<link rel="stylesheet" href="/styles/footable.fontawesome.css" th:href="@{/styles/footable.fontawesome.css}"/>
+	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="table">
-	            <table cellpadding="0" cellspacing="0" border="0" id="services-list" data-paging="true" data-filtering="true" data-sorting="true">
+	            <table cellpadding="0" cellspacing="0" border="0" id="services-list" class="table" data-paging="true" data-filtering="true" data-sorting="true">
 	                <thead>
 	                    <tr>
 	                        <th data-type="number">Id</th>
@@ -63,7 +63,8 @@
 	                            </label>
 	                        </td>
 	                        <td th:text="${client.historical}"></td>
-	                        <div class="btn-group btn-group-xs" role="group">
+	                        <td>
+	                        	<div class="btn-group btn-group-xs" role="group">
 								<a th:href="@{'/edit-client/' + ${client.id}}">										
 									<button class="btn btn-default footable-edit editButton">
 										<span class="fooicon far fa-edit" aria-hidden="true"></span>
@@ -75,6 +76,7 @@
 									</button>
 								</a>
 							</div>
+	                        </td>
 	                    </tr>
 	                </tbody>
 	            </table>

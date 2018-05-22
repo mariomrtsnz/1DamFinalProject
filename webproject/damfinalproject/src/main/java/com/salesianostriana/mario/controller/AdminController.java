@@ -154,14 +154,28 @@ public class AdminController {
 	public String goToEditClient(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		model.addAttribute("editableClient", clientService.findOne(id));
-		return "/admin/admin-edit-staff";
+		return "/admin/admin-edit-client";
 	}
 	
 	@PostMapping("/editClient")
 	public String editClient(@ModelAttribute("editableClient") Client editableClient, Model model, BindingResult bindingResult) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		clientService.edit(editableClient);
-		return "redirect:/admin-staff-list";
+		return "redirect:/admin-client-list";
+	}
+	
+	@GetMapping("/edit-treatment/{id}")
+	public String goToEditTreatment(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("editableTreatment", treatmentService.findOneById(id));
+		return "/admin/admin-edit-treatment";
+	}
+	
+	@PostMapping("/editTreatment")
+	public String editTreatment(@ModelAttribute("editableTreatment") Treatment editableTreatment, Model model, BindingResult bindingResult) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		treatmentService.edit(editableTreatment);
+		return "redirect:/admin-services-list";
 	}
 
 }

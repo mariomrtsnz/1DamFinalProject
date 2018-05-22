@@ -12,7 +12,7 @@
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper" id="addForm-wrapper">
-        	<h1 class="pageTitle">Editar Empleado</h1>
+        	<h1 class="pageTitle">Editar Cliente</h1>
         	<div class="add-form-container">
         		<form method="post" th:action="@{/editClient}" th:object="${editableClient}" id="addServiceForm">
         			<div class="inputTitle">
@@ -22,7 +22,7 @@
 		                <input type="text" placeholder="Luke Skywalker" name="name" th:field="*{name}" th:value="*{name}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
-		                <label th:text="*{name}">{employee.name}</label>
+		                <label th:text="*{name}">{client.name}</label>
 		            </div>
 		            <div class="inputTitle">
 		                Email
@@ -31,7 +31,7 @@
 		            	<input type="text" placeholder="skywalkerluke@rwd.com" name="email" th:field="*{email}" th:value="*{email}"/>
 		            	<span class="highlight"></span>
 		                <span class="bar"></span>
-		                <label th:text="*{email}">{employee.email}</label>
+		                <label th:text="*{email}">{client.email}</label>
 		            </div>
 		            <div class="inputTitle">
 		                DNI
@@ -40,7 +40,7 @@
 		                <input type="text" placeholder="1" th:field="*{dni}" name="dni" th:value="*{dni}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
-		                <label th:text="*{dni}">{employee.dni}</label>
+		                <label th:text="*{dni}">{client.dni}</label>
 		            </div>
 		            <div class="inputTitle">
 		                Contraseña
@@ -49,7 +49,7 @@
 		                <input type="password" placeholder="1" th:field="*{password}" name="totalPrice" th:value="*{password}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
-		                <label th:text="*{password}">{employee.password}</label>
+		                <label th:text="*{password}">{client.password}</label>
 		            </div>
 		            <div class="inputTitle">
 		                Teléfono
@@ -58,7 +58,7 @@
 		                <input type="text" placeholder="5" th:field="*{phone}" name="phone" th:value="*{phone}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
-		                <label th:text="*{phone}">{employee.phone}</label>
+		                <label th:text="*{phone}">{client.phone}</label>
 		            </div>
         			<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="submit">Guardar Cambios</button>
