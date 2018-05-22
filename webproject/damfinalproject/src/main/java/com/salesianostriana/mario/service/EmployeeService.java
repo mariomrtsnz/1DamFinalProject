@@ -1,5 +1,13 @@
 package com.salesianostriana.mario.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,11 +58,24 @@ public class EmployeeService {
 	}
 	
 	public Iterable<Employee> findAllActive() {
+		
 		return repository.findByHistoricalFalse();
 	}
 	
 	public long calculateNumberOfActiveEmployees() {
 		return findAllActive().spliterator().getExactSizeIfKnown();
+	}
+	
+	public Employee findFirstAvailableByDateTime(LocalDateTime ldt) {
+		List<Employee> employees = StreamSupport.stream(findAllActive().spliterator(), false).collect(Collectors.toList());
+		
+		Predicate<Appointment> appointmentPredicate = (a) -> a.getStartTime() == ldt;
+		
+		Predicate<Employee> employeePredicate = (e) -> e.getAppointments().stream().filter(appointmentPredicate);
+
+		Employee firstEmployee = employees.stream().filter(employeePredicate).findFirst().orElse(null);
+		
+		return firstEmployee;
 	}
 
 }
