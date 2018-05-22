@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.salesianostriana.mario.model.Appointment;
+import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.service.AppointmentService;
@@ -101,20 +102,21 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value="/addNewAppointment/{id}", method=RequestMethod.POST, params="action=payNow")
-	public String addAppointmentAndPayNow(@PathVariable("id") Long id, @ModelAttribute("newEmployee") Appointment newAppointment, BindingResult bindingResult,
+	public String addAppointmentAndPayNow(@PathVariable("id") Long id, @ModelAttribute("newAppointment") Appointment newAppointment, BindingResult bindingResult,
 			Model model) {
-		Appointment appointment = new Appointment(startTime, session.getAttribute("loggedUser"), employee, endTime, true, LocalDateTime.now(), treatmentService.findOneById(id));
+		Appointment appointment = new Appointment(newAppointment.getStartTime(), (Client) session.getAttribute("loggedUser"), employeeService.findFirstAvailableByDateTime(newAppointment.getStartTime()), newAppointment.getStartTime().plusHours(1), true, LocalDateTime.now(), treatmentService.findOneById(id));
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		appointmentService.save(appointment);
 		return "redirect:/public/user-service/{id}";
 	}
 
 
 	@RequestMapping(value="/addNewAppointment/{id}", method=RequestMethod.POST, params="action=payPhysically")
-	public String addAppointmentAndPayPhysically(@PathVariable("id") Long id, @ModelAttribute("newEmployee") Employee newEmployee, BindingResult bindingResult,
+	public String addAppointmentAndPayPhysically(@PathVariable("id") Long id, @ModelAttribute("newAppointment") Appointment newAppointment, BindingResult bindingResult,
 			Model model) {
-		Appointment appointment = new Appointment(startTime, session.getAttribute("loggedUser"), employee, endTime, false, LocalDateTime.now(), treatmentService.findOneById(id));
-		appointmentService.save(appointment);
+		Appointment appointment = new Appointment(newAppointment.getStartTime(), (Client) session.getAttribute("loggedUser"), employeeService.findFirstAvailableByDateTime(newAppointment.getStartTime()), newAppointment.getStartTime().plusHours(1), false, LocalDateTime.now(), treatmentService.findOneById(id));
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		appointmentService.save(appointment);
 		return "redirect:/public/user-service/{id}";
 	}
 

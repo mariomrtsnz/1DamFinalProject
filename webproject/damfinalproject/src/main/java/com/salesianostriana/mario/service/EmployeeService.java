@@ -2,10 +2,7 @@ package com.salesianostriana.mario.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +20,9 @@ public class EmployeeService {
 
 	@Autowired
 	CompanyService companyService;
+	
+	@Autowired
+	AppointmentService appointmentService;
 
 	public Employee findOne(Long id) {
 		return repository.findById(id).orElse(null);
@@ -66,16 +66,14 @@ public class EmployeeService {
 		return findAllActive().spliterator().getExactSizeIfKnown();
 	}
 	
-	public Employee findFirstAvailableByDateTime(LocalDateTime ldt) {
-		List<Employee> employees = StreamSupport.stream(findAllActive().spliterator(), false).collect(Collectors.toList());
-		
-		Predicate<Appointment> appointmentPredicate = (a) -> a.getStartTime() == ldt;
-		
-		Predicate<Employee> employeePredicate = (e) -> e.getAppointments().stream().filter(appointmentPredicate);
+	public Employee findFirstAvailableByDateTime(LocalDateTime appointmentDateTime) {
+		List<Employee> employees = StreamSupport.stream(findAllActive().spliterator(), false).collect(Collectors.toList());		
+		Employee firstAvailableEmployee;
+		Appointment appointmentOnSelectedTime = appointmentService.findOneByStartTime(appointmentDateTime);
 
-		Employee firstEmployee = employees.stream().filter(employeePredicate).findFirst().orElse(null);
+	    firstAvailableEmployee = employees.stream().filter((employee) -> (!employee.equals(appointmentOnSelectedTime.getEmployee()))).findFirst().orElse(null);
 		
-		return firstEmployee;
+		return firstAvailableEmployee;
 	}
 
 }

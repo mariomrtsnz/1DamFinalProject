@@ -1,3 +1,0 @@
-Spanners MVC
-Version: 4.6
-Built at: 2018-05-15T09:42:26Z

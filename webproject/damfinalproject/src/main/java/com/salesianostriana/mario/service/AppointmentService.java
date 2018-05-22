@@ -1,5 +1,8 @@
 package com.salesianostriana.mario.service;
 
+import java.time.LocalDateTime;
+import java.util.function.Predicate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +42,14 @@ public class AppointmentService {
 	
 	public long calculateNumberOfPaidAppointments() {
 		return findAllPaid().spliterator().getExactSizeIfKnown();
+	}
+	
+//	public Iterable<Appointment> findAllByStartTime(Predicate<Appointment> predicate){
+//		return repository.findAllByStartTime(predicate);
+//	}
+	
+	public Appointment findOneByStartTime(LocalDateTime appointmentTime) {
+		return repository.findByStartTime(appointmentTime);
 	}
 
 }
