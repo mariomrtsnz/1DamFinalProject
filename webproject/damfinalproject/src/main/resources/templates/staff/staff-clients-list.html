@@ -63,7 +63,18 @@
 	                            </label>
 	                        </td>
 	                        <td th:text="${client.historical}"></td>
-	                        <td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
+	                        <div class="btn-group btn-group-xs" role="group">
+								<a th:href="@{'/edit-client/' + ${client.id}}">										
+									<button class="btn btn-default footable-edit editButton">
+										<span class="fooicon far fa-edit" aria-hidden="true"></span>
+									</button>
+								</a>
+								<a th:href="@{'/delete-client/' + ${client.id}}">
+									<button class="btn btn-default footable-delete deleteButton">
+										<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
+									</button>
+								</a>
+							</div>
 	                    </tr>
 	                </tbody>
 	            </table>

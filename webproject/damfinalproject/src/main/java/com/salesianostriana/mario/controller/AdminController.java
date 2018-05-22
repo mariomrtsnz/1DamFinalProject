@@ -149,5 +149,19 @@ public class AdminController {
 		employeeService.edit(editableEmployee);
 		return "redirect:/admin-staff-list";
 	}
+	
+	@GetMapping("/edit-client/{id}")
+	public String goToEditClient(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("editableClient", clientService.findOne(id));
+		return "/admin/admin-edit-staff";
+	}
+	
+	@PostMapping("/editClient")
+	public String editClient(@ModelAttribute("editableClient") Client editableClient, Model model, BindingResult bindingResult) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		clientService.edit(editableClient);
+		return "redirect:/admin-staff-list";
+	}
 
 }
