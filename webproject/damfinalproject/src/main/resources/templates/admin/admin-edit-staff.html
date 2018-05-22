@@ -3,7 +3,7 @@
 
 <head>
     <th:block th:replace="fragments/common :: head"></th:block>
-    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard - Añadir Empleado')"></th:block>
+    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard - Editar Empleado')"></th:block>
 </head>
 
 <body>
@@ -12,40 +12,44 @@
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper" id="addForm-wrapper">
-        	<h1 class="pageTitle">Añadir Nuevo Empleado</h1>
+        	<h1 class="pageTitle">Editar Empleado</h1>
         	<div class="add-form-container">
-        		<form method="post" th:action="@{/addNewEmployee}" th:object="${newEmployee}" id="addServiceForm">
+        		<form method="post" th:action="@{/editEmployee}" th:object="${editableEmployee}" id="addServiceForm">
         			<div class="inputTitle">
 		                Nombre Completo
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="text" required="required" placeholder="Luke Skywalker" name="name" th:field="*{name}" th:value="*{name}"/>
+		                <input type="text" placeholder="Luke Skywalker" name="name" th:field="*{name}" th:value="*{name}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
+		                <label th:text="*{name}">{employee.name}</label>
 		            </div>
 		            <div class="inputTitle">
 		                Email
 		            </div>
 		            <div class="group" id="nameInput">
-		            	<input required="required" type="text" placeholder="skywalkerluke@rwd.com" name="email" th:field="*{email}" th:value="*{email}"/>
+		            	<input type="text" placeholder="skywalkerluke@rwd.com" name="email" th:field="*{email}" th:value="*{email}"/>
 		            	<span class="highlight"></span>
 		                <span class="bar"></span>
+		                <label th:text="*{email}">{employee.email}</label>
 		            </div>
 		            <div class="inputTitle">
 		                DNI
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="text" required="required" placeholder="1" th:field="*{dni}" name="dni" th:value="*{dni}"/>
+		                <input type="text" placeholder="1" th:field="*{dni}" name="dni" th:value="*{dni}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
+		                <label th:text="*{dni}">{employee.dni}</label>
 		            </div>
 		            <div class="inputTitle">
 		                Contraseña
 		            </div>
 		            <div class="group" id="phoneInput">
-		                <input type="password" required="required" placeholder="1" th:field="*{password}" name="totalPrice" th:value="*{password}"/>
+		                <input type="password" placeholder="1" th:field="*{password}" name="totalPrice" th:value="*{password}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
+		                <label th:text="*{password}">{employee.password}</label>
 		            </div>
 		            <div class="inputTitle">
 		                Teléfono
@@ -54,21 +58,23 @@
 		                <input type="text" placeholder="5" th:field="*{phone}" name="phone" th:value="*{phone}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
+		                <label th:text="*{phone}">{employee.phone}</label>
 		            </div>
 		            <div class="inputTitle">
 		                Salario Bruto Anual
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="number" required="required" placeholder="1" name="grossAnualSalary" th:field="*{grossAnualSalary}" th:value="*{grossAnualSalary}" step=".01"/>
+		                <input type="number" step=".01" placeholder="1" name="grossAnualSalary" th:field="*{grossAnualSalary}" th:value="*{grossAnualSalary}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
+		                <label th:text="*{grossAnualSalary}">{employee.grossAnualSalary}</label>
 		            </div>
 		            <div class="inputTitle">
 		                Puesto
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="radio" th:name="position" value="Dentista" th:value="Dentista" th:field="*{position}" required="required"/> Dentista
-		                <input type="radio" th:name="position" value="Administrativo" th:value="Administrativo" th:field="*{position}"/> Administrativo
+		                <input type="radio" th:name="position" value="Dentista" th:value="Dentista" th:field="*{position}" required="required" th:checked="*{position.equalsIgnoreCase('Dentista')}"/> Dentista
+		                <input type="radio" th:name="position" value="Administrativo" th:value="Administrativo" th:field="*{position}" th:checked="*{position.equalsIgnoreCase('Administrativo')}"/> Administrativo
 		            </div>
         			<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="submit">Guardar Cambios</button>

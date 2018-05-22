@@ -71,6 +71,8 @@
 						th:href="@{/public/profile}"><h3>Perfil</h3></a></li>
 					<li><a class="cd-nav-item" href="/public/user-index.html"
 						th:href="@{/user-index}"><h3>Ir a página web</h3></a></li>
+					<li th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"><a class="cd-nav-item" href="/admin"
+						th:href="@{/admin}"><h3>Panel de Administración</h3></a></li>
 					<li><a class="cd-nav-item" href="/index.html" th:href="@{/logOut}"><h3>Cerrar
 							Sesión</h3></a></li>
 				</ul>

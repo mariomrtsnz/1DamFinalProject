@@ -8,10 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="/styles/footable.standalone.min.css" th:href="@{/styles/footable.standalone.min.css}"/>
 	<th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Admin - Empleados')"></th:block>
 	<script type="text/javascript" src="/scripts/footable.min.js" th:src="@{/scripts/footable.min.js}"></script>
-	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
 	<link rel="stylesheet" href="/styles/footable.fontawesome.css" th:href="@{/styles/footable.fontawesome.css}"/>
+	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
 </head>
 
 <body>
@@ -58,10 +58,11 @@
 	                        <td th:text="${employee.position}">{employee.position}</td>
 	                        <td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
 								<div class="btn-group btn-group-xs" role="group">
-									<button class="btn btn-default footable-edit editButton">
-										<span class="fooicon far fa-edit" aria-hidden="true"></span>
-									</button>
-									
+									<a th:href="@{'/edit-staff/' + ${employee.id}}">										
+										<button class="btn btn-default footable-edit editButton">
+											<span class="fooicon far fa-edit" aria-hidden="true"></span>
+										</button>
+									</a>
 									<a th:href="@{'/delete-staff/' + ${employee.id}}">
 										<button class="btn btn-default footable-delete deleteButton">
 											<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>

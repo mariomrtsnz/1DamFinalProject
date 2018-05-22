@@ -13,12 +13,12 @@
     </header>
 
     <main class="cd-main-content">
-        <form class="profileForm-container" name="profileForm">
+        <form class="profileForm-container" name="profileForm" method="post">
             <div class="inputTitle">
                 DNI
             </div>
             <div class="group" id="dniInput">
-                <input type="text" required="required"/>
+                <input type="text" disabled/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.dni}">{user.dni}</label>
@@ -27,7 +27,7 @@
                 Nombre
             </div>
             <div class="group" id="nameInput">
-                <input type="text" required="required"/>
+                <input type="text" disabled/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.name}">{user.name}</label>
@@ -36,7 +36,7 @@
                 Teléfono
             </div>
             <div class="group" id="phoneInput">
-                <input type="text" required="required"/>
+                <input type="text" th:value="${loggedUser.phone}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.phone}">{user.phone}</label>
@@ -45,7 +45,7 @@
                 Email
             </div>
             <div class="group" id="dniInput">
-                <input type="text" required="required"/>
+                <input type="text" th:value="${loggedUser.email}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.email}">{user.email}</label>
@@ -54,7 +54,7 @@
                 Password
             </div>
             <div class="group" id="dniInput">
-                <input type="password" required="required" value="{loggedUser.password}" th:value="${loggedUser.password}"/>
+                <input type="password" th:value="${loggedUser.password}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Password</label>

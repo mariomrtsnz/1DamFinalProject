@@ -121,7 +121,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/delete-treatment/{id}")
-	public String deleteTreatmentt(@PathVariable("id") Long id, Model model) {
+	public String deleteTreatment(@PathVariable("id") Long id, Model model) {
 		Treatment treatment = treatmentService.findOneById(id);
 //		companyService.findDefaultCompany().removeTreatment(treatment);
 //		treatment.setCompany(null);
@@ -135,5 +135,19 @@ public class AdminController {
 	// public String addAppointment() {
 	// return "";
 	// }
+	
+	@GetMapping("/edit-staff/{id}")
+	public String goToEditStaff(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("editableEmployee", employeeService.findOne(id));
+		return "/admin/admin-edit-staff";
+	}
+	
+	@PostMapping("/editEmployee")
+	public String editEmployee(@ModelAttribute("editableEmployee") Employee editableEmployee, Model model, BindingResult bindingResult) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		employeeService.edit(editableEmployee);
+		return "redirect:/admin-staff-list";
+	}
 
 }

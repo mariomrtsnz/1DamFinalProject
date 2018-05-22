@@ -2,6 +2,7 @@ package com.salesianostriana.mario.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -38,14 +39,25 @@ public class EmployeeService {
 	}
 
 	public Employee remove(Employee employee) {
-		Employee deletedEmployee = repository.findById(employee.getId()).orElse(null);
+		Employee deletedEmployee = findOne(employee.getId());
 		if (deletedEmployee != null)
 			repository.delete(employee);
 		return deletedEmployee;
 	}
 
 	public void edit(Employee entidad) {
+		Set<Appointment> oldAppointments = entidad.getAppointments();
+		LocalDateTime oldHireDate = entidad.getHireDate();
 		remove(entidad);
+//		entidad.setName(entidad.getName());
+//		entidad.setEmail(entidad.getEmail());
+//		entidad.setDni(entidad.getDni());
+//		entidad.setPassword(entidad.getPassword());
+//		entidad.setPhone(entidad.getPhone());
+//		entidad.setGrossAnualSalary(entidad.getGrossAnualSalary());
+//		entidad.setPosition(entidad.getPosition());
+//		entidad.setAppointments(oldAppointments);
+//		entidad.setHireDate(oldHireDate);
 		save(entidad);
 	}
 
