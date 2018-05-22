@@ -20,19 +20,19 @@ public class TreatmentController {
 	@Autowired
 	TreatmentService treatmentService = new TreatmentService();
 
-	@GetMapping("/public/user-service/{id}")
-	public String serviceDetail(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
-		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		
-		Treatment s = treatmentService.findOneById(id);
-		if (s != null) {
-			model.addAttribute("selectedTreatment", s);
-			model.addAttribute("totalPriceWithDiscount", treatmentService.calculatePriceWithDiscount(s));
-			return "/public/user-service";
-		} else {
-			// Tratamiento del error
-			return "Error";
-		}
-	}
+//	@GetMapping("/public/user-service/{id}")
+//	public String serviceDetail(@PathVariable("id") Long id, Model model) {
+//		model.addAttribute("treatments", treatmentService.findAll());
+//		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+//		
+//		Treatment s = treatmentService.findOneById(id);
+//		if (s != null) {
+//			model.addAttribute("selectedTreatment", s);
+//			model.addAttribute("totalPriceWithDiscount", treatmentService.calculatePriceWithDiscount(s));
+//			return "/public/user-service";
+//		} else {
+//			// Tratamiento del error
+//			return "Error";
+//		}
+//	}
 }

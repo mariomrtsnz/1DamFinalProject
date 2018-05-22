@@ -12,7 +12,7 @@
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper" id="addForm-wrapper">
-        	<h1 class="pageTitle">Añadir Nuevo Empleado</h1>
+        	<h1 class="pageTitle">Añadir Nuevo Cliente</h1>
         	<div class="add-form-container">
         		<form method="post" th:action="@{/addNewClient}" th:object="${newClient}" id="addServiceForm">
         			<div class="inputTitle">

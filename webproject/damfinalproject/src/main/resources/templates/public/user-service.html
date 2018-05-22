@@ -46,7 +46,7 @@
     </nav>
     <!-- cd-nav -->
     <div id="appointmentModal">
-        <form action="" id="initialAppointmentWindow" method="post">
+        <form th:action="@{/addNewAppointment}" th:object="${newService}" id="initialAppointmentWindow" method="post">
             <div class="appointment-header">
                 <div id="title">
                     <h1>Pedir cita</h1>
@@ -74,8 +74,8 @@
                         <span th:text="${totalPriceWithDiscount}">{totalPriceWithDiscount}</span>€
                     </div>
                 </div>
-                <button id="payNow" type="submit">Pagar Ahora</button>
-                <button id="payPhysically" type="submit">Pagar en la Clínica</button>
+                <button id="payNow" type="submit" name="action" th:value="payNow">Pagar Ahora</button>
+                <button id="payPhysically" type="submit" name="action" th:value="payPhysically">Pagar en la Clínica</button>
             </div>
         </form>
     </div>

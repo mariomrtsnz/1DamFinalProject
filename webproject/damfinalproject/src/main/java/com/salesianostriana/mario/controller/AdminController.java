@@ -108,7 +108,7 @@ public class AdminController {
 	 public String addStaff(@ModelAttribute("newEmployee") Employee newEmployee, BindingResult bindingResult,
 				Model model) {
 		 Employee employee = new Employee(newEmployee.getDni(), newEmployee.getEmail(), newEmployee.getGrossAnualSalary(), newEmployee.getName(), newEmployee.getPassword(), newEmployee.getPhone(), newEmployee.getProfilePic(), newEmployee.getPosition(), LocalDateTime.now());
-			employeeService.save(employee);
+		 employeeService.save(employee);
 		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		 return "redirect:/admin-staff-list";
 	 }
@@ -126,7 +126,7 @@ public class AdminController {
 //		companyService.findDefaultCompany().removeTreatment(treatment);
 //		treatment.setCompany(null);
 //		treatment.setAppointments(null);
-		treatmentService.remove(treatment);
+//		treatmentService.remove(treatment);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-services-list";
 	}

@@ -56,21 +56,25 @@
 	                        <td id="dentistName" th:text="${employee.email}">{employee.email}</td>
 	                        <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
 	                        <td th:text="${employee.position}">{employee.position}</td>
-	                        <td th:replace="fragments/adminlayout :: table-advancedOptions"></td>
+	                        <td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
+								<div class="btn-group btn-group-xs" role="group">
+									<button class="btn btn-default footable-edit editButton">
+										<span class="fooicon far fa-edit" aria-hidden="true"></span>
+									</button>
+									
+									<a th:href="@{'/delete-staff/' + ${employee.id}}">
+										<button class="btn btn-default footable-delete deleteButton">
+											<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
+										</button>
+									</a>
+								</div>
+							</td>
 	                    </tr>
 	                </tbody>
 	            </table>
             </div>
     	</div>
     </main>
-    <div class="modal-overlay" id="modal-overlay"></div>
-	<div class="modal" id="deleteModal">
-		<div class="modal-guts">
-			<p>¿Está seguro que desea eliminarlo? Se eliminará también de la base de datos.</p>
-			<button  id="confirmDeleteElementButton">Eliminar</button>
-			<button id="cancel">Cancelar</button>
-  		</div>
-	</div>
 </body>
 
 </html>
