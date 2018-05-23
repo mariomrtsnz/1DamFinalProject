@@ -60,11 +60,11 @@
 	                        <td th:text="${client.registerDate}">{cliente.registerDate}</td>
 	                        <td id="payStatus">
 	                            <label class="form-checkbox-label">
-	                                <input name=payStatus class="form-checkbox-field" type="checkbox" />
+	                                <input name=duePayment class="form-checkbox-field" type="checkbox" readonly="readonly" th:checked="${client.hasDuePayment()}"/>
 	                                <i class="form-checkbox-button"></i>
 	                            </label>
 	                        </td>
-	                        <td th:text="${client.historical}"></td>
+							<td th:text="${client.historical} ? 'Si' : 'No'"></td>
 	                        <td>
 	                        	<div class="btn-group btn-group-xs" role="group">
 								<a th:href="@{'/edit-client/' + ${client.id}}">										

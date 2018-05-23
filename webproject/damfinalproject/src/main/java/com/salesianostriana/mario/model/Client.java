@@ -27,7 +27,7 @@ public class Client {
 	private String dni;
 	@Column(unique = true)
 	private String email;
-	private boolean hasDuePayment;
+	private boolean duePayment;
 	private boolean historical;
 	private String name;
 	private String password;
@@ -48,7 +48,7 @@ public class Client {
 		super();
 		this.dni = dni;
 		this.email = email;
-		this.hasDuePayment = hasDuePayment;
+		this.duePayment = hasDuePayment;
 		this.historical = isHistorical;
 		this.name = name;
 		this.password = password;
@@ -62,7 +62,7 @@ public class Client {
 		super();
 		this.dni = dni;
 		this.email = email;
-		this.hasDuePayment = hasDuePayment;
+		this.duePayment = hasDuePayment;
 		this.historical = isHistorical;
 		this.name = name;
 		this.password = password;
@@ -126,12 +126,12 @@ public class Client {
 		this.email = email;
 	}
 
-	public boolean isHasDuePayment() {
-		return hasDuePayment;
+	public boolean hasDuePayment() {
+		return duePayment;
 	}
 
-	public void setHasDuePayment(boolean hasDuePayment) {
-		this.hasDuePayment = hasDuePayment;
+	public void setDuePayment(boolean hasDuePayment) {
+		this.duePayment = hasDuePayment;
 	}
 
 	public boolean isHistorical() {
@@ -192,7 +192,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", dni=" + dni + ", email=" + email + ", hasDuePayment=" + hasDuePayment
+		return "Client [id=" + id + ", dni=" + dni + ", email=" + email + ", hasDuePayment=" + duePayment
 				+ ", isHistorical=" + historical + ", name=" + name + ", password=" + password + ", phone=" + phone
 				+ ", profilePic=" + profilePic + ", appointments=" + appointments + ", company=" + company
 				+ ", registerDate=" + registerDate + "]";
