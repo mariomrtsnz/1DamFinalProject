@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
@@ -61,11 +62,13 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin-staff-list")
-	public String staffList(Model model) {
+	public String staffList(Model model, RedirectAttributes re) {
 		model.addAttribute("staff", employeeService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		model.addAttribute("numberOfEmployees", employeeService.calculateNumberOfItems());
-//		model.addAttribute("deleteSuccess", session.getAttribute("deleteSuccess"));
+		//TODO: Implement this so that toastr shows a deletion successful message after redirect (From EmployeeController)
+//		boolean deleteSuccess = re.getFlashAttributes("deleteSuccess");
+//		model.addAttribute("deleteSuccess", deleteSuccess);
 		return "/admin/admin-staff-list";
 	}
 

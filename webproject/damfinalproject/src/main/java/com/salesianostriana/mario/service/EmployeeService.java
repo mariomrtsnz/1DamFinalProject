@@ -56,16 +56,8 @@ public class EmployeeService {
 	public void edit(Employee entidad) {
 		Set<Appointment> oldAppointments = entidad.getAppointments();
 		LocalDateTime oldHireDate = entidad.getHireDate();
-//		remove(entidad);
-//		entidad.setName(entidad.getName());
-//		entidad.setEmail(entidad.getEmail());
-//		entidad.setDni(entidad.getDni());
-//		entidad.setPassword(entidad.getPassword());
-//		entidad.setPhone(entidad.getPhone());
-//		entidad.setGrossAnualSalary(entidad.getGrossAnualSalary());
-//		entidad.setPosition(entidad.getPosition());
+		//TODO: Implement these because on edit they disappear on edit.
 //		entidad.setAppointments(oldAppointments);
-//		entidad.setHireDate(oldHireDate);
 		save(entidad);
 	}
 

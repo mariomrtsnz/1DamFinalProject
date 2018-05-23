@@ -21,6 +21,12 @@
 		                <span class="bar"></span>
 		                <label th:text="*{id}">{employee.id}</label>
 		            </div>
+		            <div class="group" id="dniInput" style="display: none;">
+		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{hireDate}" th:value="*{hireDate}" readonly="readonly"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		                <label th:text="*{hireDate}">{employee.hireDate}</label>
+		            </div>
         			<div class="inputTitle">
 		                Nombre Completo
 		            </div>

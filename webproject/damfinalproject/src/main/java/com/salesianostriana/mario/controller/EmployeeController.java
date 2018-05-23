@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.mario.model.Employee;
-import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
 import com.salesianostriana.mario.service.EmployeeService;
 
 @Controller
 public class EmployeeController {
-	
+
 	@Autowired
 	private HttpSession session;
-	
+
 	@Autowired
 	private EmployeeService employeeService;
-	
+
 	@Autowired
 	private ClientService clientService;
-	
+
 	@Autowired
 	private CompanyService companyService;
 
@@ -39,13 +39,13 @@ public class EmployeeController {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/staff/staff-dashboard";
 	}
-	
+
 	@GetMapping("/staff-schedule")
 	public String schedule(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/staff/staff-schedule";
 	}
-	
+
 	@GetMapping("/staff-clients-list")
 	public String clientsList(Model model) {
 		model.addAttribute("clients", clientService.findAll());
@@ -53,7 +53,7 @@ public class EmployeeController {
 		model.addAttribute("numberOfClients", clientService.calculateNumberOfItems());
 		return "/staff/staff-clients-list";
 	}
-	
+
 	@GetMapping("/admin-add-staff")
 	public String goToAddStaff(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
@@ -71,7 +71,7 @@ public class EmployeeController {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-staff-list";
 	}
-	
+
 	@GetMapping("/edit-staff/{id}")
 	public String goToEditStaff(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
@@ -86,9 +86,9 @@ public class EmployeeController {
 		employeeService.edit(editableEmployee);
 		return "redirect:/admin-staff-list";
 	}
-	
+
 	@GetMapping("/delete-employee/{id}")
-	public String deleteEmployee(@PathVariable("id") Long id, Model model) {
+	public String deleteEmployee(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Employee employee = employeeService.findOne(id);
 		companyService.findDefaultCompany().removeEmployee(employee);
 		boolean deleteSuccess = false;
@@ -96,7 +96,8 @@ public class EmployeeController {
 			employeeService.setHistoricalTrue(employee);
 			deleteSuccess = true;
 		}
-		model.addAttribute("deleteSuccess", deleteSuccess);
+		//TODO: Implement this so that toastr shows a deletion successful message after redirect (On AdminController)
+		ra.addAttribute("deleteSuccess", deleteSuccess);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-staff-list";
 	}

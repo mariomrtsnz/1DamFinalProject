@@ -46,6 +46,7 @@
 	                        <th data-type="number">Teléfono</th>
 	                        <th>Email</th>
 	                        <th data-type="number">Sueldo</th>
+	                        <th data-type="date">Fecha de Contrato</th>
 	                        <th>Puesto</th>
 	                        <th>Histórico</th>
 	                        <th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
@@ -58,6 +59,7 @@
 	                        <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>
 	                        <td id="dentistName" th:text="${employee.email}">{employee.email}</td>
 	                        <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
+	                        <td th:text="${employee.hireDate}">{employee.hireDate}</td>
 	                        <td th:text="${employee.position}">{employee.position}</td>
 	                        <td th:text="${employee.historical} ? 'Si' : 'No'"></td>
 	                        <td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
