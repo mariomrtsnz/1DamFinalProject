@@ -15,6 +15,12 @@
         	<h1 class="pageTitle">Editar Cliente</h1>
         	<div class="add-form-container">
         		<form method="post" th:action="@{/editClient}" th:object="${editableClient}" id="addServiceForm">
+        			<div class="group" id="dniInput" style="display: none;">
+		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		                <label th:text="*{id}">{treatment.name}</label>
+		            </div>
         			<div class="inputTitle">
 		                Nombre Completo
 		            </div>

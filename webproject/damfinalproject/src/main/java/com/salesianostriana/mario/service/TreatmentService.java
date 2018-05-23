@@ -33,7 +33,6 @@ public class TreatmentService {
 	}
 
 	public void edit(Treatment entidad) {
-		remove(entidad);
 		save(entidad);
 	}
 	

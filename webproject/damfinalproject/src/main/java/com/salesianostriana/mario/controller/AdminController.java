@@ -126,7 +126,7 @@ public class AdminController {
 //		companyService.findDefaultCompany().removeTreatment(treatment);
 //		treatment.setCompany(null);
 //		treatment.setAppointments(null);
-//		treatmentService.remove(treatment);
+		treatmentService.remove(treatment);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-services-list";
 	}
