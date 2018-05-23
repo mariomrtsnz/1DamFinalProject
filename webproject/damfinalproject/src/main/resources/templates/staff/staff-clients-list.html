@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
 	<link rel="stylesheet" href="/styles/footable.fontawesome.css" th:href="@{/styles/footable.fontawesome.css}"/>
 	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body>
@@ -36,7 +38,7 @@
                 </div>
             </div>
             <div class="table">
-	            <table cellpadding="0" cellspacing="0" border="0" id="services-list" class="table" data-paging="true" data-filtering="true" data-sorting="true">
+	            <table cellpadding="0" cellspacing="0" border="0" class="table services-list" data-paging="true" data-filtering="true" data-sorting="true">
 	                <thead>
 	                    <tr>
 	                        <th data-type="number">Id</th>

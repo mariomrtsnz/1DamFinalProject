@@ -46,6 +46,9 @@ public class AdminController {
 	@GetMapping({ "/admin", "/admin-dashboard" })
 	public String index(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+//		boolean deleteSuccess = (boolean) model.getAttribute("deleteSuccess");
+//		deleteSuccess = false;
+//		model.addAttribute("deleteSuccess", deleteSuccess);
 		return "/admin/admin-dashboard-index";
 	}
 
@@ -62,6 +65,7 @@ public class AdminController {
 		model.addAttribute("staff", employeeService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		model.addAttribute("numberOfEmployees", employeeService.calculateNumberOfItems());
+//		model.addAttribute("deleteSuccess", session.getAttribute("deleteSuccess"));
 		return "/admin/admin-staff-list";
 	}
 

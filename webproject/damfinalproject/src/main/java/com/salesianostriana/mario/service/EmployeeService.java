@@ -48,6 +48,8 @@ public class EmployeeService {
 	
 	public void setHistoricalTrue(Employee employee) {
 		employee.setHistorical(true);
+//		employee.setAppointments(null);
+		employee.getAppointments().forEach((a) -> a.setEmployee(null));
 		edit(employee);
 	}
 

@@ -181,7 +181,7 @@ public class Company {
 		}
 	}
 
-	public void removeEmployees(Employee e) {
+	public void removeEmployee(Employee e) {
 		if (e != null) {
 			e.setCompany(null);
 			this.getEmployees().remove(e);

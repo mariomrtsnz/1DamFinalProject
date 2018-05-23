@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.service.ClientService;
+import com.salesianostriana.mario.service.CompanyService;
 import com.salesianostriana.mario.service.EmployeeService;
 
 @Controller
@@ -29,6 +30,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private ClientService clientService;
+	
+	@Autowired
+	private CompanyService companyService;
 
 	@GetMapping("/staff")
 	public String a(Model model) {
@@ -86,10 +90,13 @@ public class EmployeeController {
 	@GetMapping("/delete-employee/{id}")
 	public String deleteEmployee(@PathVariable("id") Long id, Model model) {
 		Employee employee = employeeService.findOne(id);
-		// companyService.findDefaultCompany().removeTreatment(treatment);
-		// treatment.setCompany(null);
-		// treatment.setAppointments(null);
-		employeeService.setHistoricalTrue(employee);
+		companyService.findDefaultCompany().removeEmployee(employee);
+		boolean deleteSuccess = false;
+		if (!employee.isHistorical()) {
+			employeeService.setHistoricalTrue(employee);
+			deleteSuccess = true;
+		}
+		model.addAttribute("deleteSuccess", deleteSuccess);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-staff-list";
 	}
