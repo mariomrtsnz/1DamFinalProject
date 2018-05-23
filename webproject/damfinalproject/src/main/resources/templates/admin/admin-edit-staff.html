@@ -15,6 +15,12 @@
         	<h1 class="pageTitle">Editar Empleado</h1>
         	<div class="add-form-container">
         		<form method="post" th:action="@{/editEmployee}" th:object="${editableEmployee}" id="addServiceForm">
+        			<div class="group" id="dniInput" style="display: none;">
+		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		                <label th:text="*{id}">{employee.id}</label>
+		            </div>
         			<div class="inputTitle">
 		                Nombre Completo
 		            </div>

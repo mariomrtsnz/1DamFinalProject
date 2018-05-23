@@ -11,13 +11,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
-import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
@@ -30,7 +30,7 @@ public class ClientController {
 
 	@Autowired
 	private HttpSession session;
-	
+
 	@Autowired
 	private ClientService service;
 
@@ -39,13 +39,13 @@ public class ClientController {
 
 	@Autowired
 	private CompanyService companyService;
-	
+
 	@Autowired
 	private AppointmentService appointmentService;
-	
+
 	@Autowired
 	private EmployeeService employeeService;
-	
+
 	@GetMapping({ "/public", "/user-index" })
 	public String index(Model model) {
 		model.addAttribute("company", companyService.findDefaultCompany());
@@ -85,7 +85,7 @@ public class ClientController {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-profile";
 	}
-	
+
 	@GetMapping("/public/user-service/{id}")
 	public String serviceDetail(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("treatments", treatmentService.findAll());
@@ -101,26 +101,73 @@ public class ClientController {
 			return "Error";
 		}
 	}
-	
-	@RequestMapping(value="/addNewAppointment/{id}", method=RequestMethod.POST, params="action=payNow")
-	public String addAppointmentAndPayNow(@PathVariable("id") Long id, @ModelAttribute("newAppointment") AppointmentFormBean newAppointment, BindingResult bindingResult,
+
+	@RequestMapping(value = "/addNewAppointment/{id}", method = RequestMethod.POST, params = "action=payNow")
+	public String addAppointmentAndPayNow(@PathVariable("id") Long id,
+			@ModelAttribute("newAppointment") AppointmentFormBean newAppointment, BindingResult bindingResult,
 			Model model) {
 		LocalDateTime startTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
-		Appointment appointment = new Appointment(startTime, (Client) session.getAttribute("loggedUser"), employeeService.findFirstAvailableByDateTime(startTime), startTime.plusHours(1), true, LocalDateTime.now(), treatmentService.findOneById(id));
+		Appointment appointment = new Appointment(startTime, (Client) session.getAttribute("loggedUser"),
+				employeeService.findFirstAvailableByDateTime(startTime), startTime.plusHours(1), true,
+				LocalDateTime.now(), treatmentService.findOneById(id));
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		appointmentService.save(appointment);
 		return "redirect:/public/user-service/{id}";
 	}
 
-
-	@RequestMapping(value="/addNewAppointment/{id}", method=RequestMethod.POST, params="action=payPhysically")
-	public String addAppointmentAndPayPhysically(@PathVariable("id") Long id, @ModelAttribute("newAppointment") AppointmentFormBean newAppointment, BindingResult bindingResult,
+	@RequestMapping(value = "/addNewAppointment/{id}", method = RequestMethod.POST, params = "action=payPhysically")
+	public String addAppointmentAndPayPhysically(@PathVariable("id") Long id,
+			@ModelAttribute("newAppointment") AppointmentFormBean newAppointment, BindingResult bindingResult,
 			Model model) {
 		LocalDateTime startTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
-		Appointment appointment = new Appointment(startTime, (Client) session.getAttribute("loggedUser"), employeeService.findFirstAvailableByDateTime(startTime), startTime.plusHours(1), false, LocalDateTime.now(), treatmentService.findOneById(id));
+		Appointment appointment = new Appointment(startTime, (Client) session.getAttribute("loggedUser"),
+				employeeService.findFirstAvailableByDateTime(startTime), startTime.plusHours(1), false,
+				LocalDateTime.now(), treatmentService.findOneById(id));
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		appointmentService.save(appointment);
 		return "redirect:/public/user-service/{id}";
+	}
+
+	@GetMapping("/edit-client/{id}")
+	public String goToEditClient(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("editableClient", service.findOne(id));
+		return "/admin/admin-edit-client";
+	}
+
+	@PostMapping("/editClient")
+	public String editClient(@ModelAttribute("editableClient") Client editableClient, Model model,
+			BindingResult bindingResult) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		service.edit(editableClient);
+		return "redirect:/staff-clients-list";
+	}
+
+	@GetMapping("/admin-add-client")
+	public String goToAddClient(Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("newClient", new Client());
+		return "/admin/admin-add-client";
+	}
+
+	@PostMapping("/addNewClient")
+	public String addClient(@ModelAttribute("newClient") Client newClient, BindingResult bindingResult, Model model) {
+		Client client = new Client(newClient.getDni(), newClient.getEmail(), newClient.getName(),
+				newClient.getPassword(), newClient.getPhone(), newClient.getProfilePic(), LocalDateTime.now());
+		service.save(client);
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		return "redirect:/staff-clients-list";
+	}
+
+	@GetMapping("/delete-client/{id}")
+	public String deleteClient(@PathVariable("id") Long id, Model model) {
+		Client client = service.findOne(id);
+		// companyService.findDefaultCompany().removeTreatment(treatment);
+		// treatment.setCompany(null);
+		// treatment.setAppointments(null);
+		service.setHistoricalTrue(client);
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		return "redirect:/staff-clients-list";
 	}
 
 }

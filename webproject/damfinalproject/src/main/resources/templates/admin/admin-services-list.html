@@ -45,6 +45,7 @@
 							<th data-type="number">Descuento</th>
 							<th data-type="number">Nº Sesiones</th>
 							<th>Pagado a Plazos</th>
+							<th>Histórico</th>
 							<th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
 						</tr>
 					</thead>
@@ -57,6 +58,7 @@
 							<td th:text="${treatment.discount}">{service.discount}</td>
 							<td th:text="${treatment.numSessions}">{service.numSessions}</td>
 							<td th:text="${treatment.paidInInstallments} ? 'Si' : 'No'"></td>
+							<td th:text="${treatment.historical} ? 'Si' : 'No'"></td>
 							<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
 								<div class="btn-group btn-group-xs" role="group">
 									<a th:href="@{'/edit-treatment/' + ${treatment.id}}">										

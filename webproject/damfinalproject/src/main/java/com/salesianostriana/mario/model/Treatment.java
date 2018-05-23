@@ -35,6 +35,7 @@ public class Treatment {
 	@ManyToOne
 	private Company company;
 	private String picture;
+	private boolean historical;
 
 	public Treatment(String description, int discount, boolean isPaidInInstallments, String name, int numSessions,
 			double totalPrice, Company company) {
@@ -72,6 +73,14 @@ public class Treatment {
 		this.name = name;
 		this.numSessions = numSessions;
 		this.totalPrice = totalPrice;
+	}
+
+	public boolean isHistorical() {
+		return historical;
+	}
+
+	public void setHistorical(boolean historical) {
+		this.historical = historical;
 	}
 
 	public String getDescription() {

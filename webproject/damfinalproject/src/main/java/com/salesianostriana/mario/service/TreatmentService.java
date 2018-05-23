@@ -3,6 +3,7 @@ package com.salesianostriana.mario.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.repository.TreatmentRepository;
 
@@ -28,8 +29,16 @@ public class TreatmentService {
 		return repository.save(entidad);
 	}
 
-	public void remove(Treatment entidad) {
-		repository.delete(entidad);
+	public Treatment remove(Treatment entidad) {
+		Treatment deletedTreatment = repository.findById(entidad.getId()).orElse(null);
+		if (deletedTreatment != null)
+			repository.delete(entidad);
+		return deletedTreatment;
+	}
+	
+	public void setHistoricalTrue(Treatment entidad) {
+		entidad.setHistorical(true);
+		edit(entidad);
 	}
 
 	public void edit(Treatment entidad) {

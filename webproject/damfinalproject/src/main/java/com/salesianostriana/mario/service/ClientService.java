@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.mario.model.Client;
+import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.repository.ClientRepository;
 
 @Service
@@ -34,9 +35,13 @@ public class ClientService {
 			repository.delete(client);
 		return deletedClient;
 	}
+	
+	public void setHistoricalTrue(Client client) {
+		client.setHistorical(true);
+		edit(client);
+	}
 
 	public void edit(Client entidad) {
-		remove(entidad);
 		save(entidad);
 	}
 

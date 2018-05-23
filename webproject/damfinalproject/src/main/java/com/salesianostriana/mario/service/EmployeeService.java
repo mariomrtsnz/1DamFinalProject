@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.mario.model.Appointment;
+import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.repository.EmployeeRepository;
 
@@ -44,11 +45,16 @@ public class EmployeeService {
 			repository.delete(employee);
 		return deletedEmployee;
 	}
+	
+	public void setHistoricalTrue(Employee employee) {
+		employee.setHistorical(true);
+		edit(employee);
+	}
 
 	public void edit(Employee entidad) {
 		Set<Appointment> oldAppointments = entidad.getAppointments();
 		LocalDateTime oldHireDate = entidad.getHireDate();
-		remove(entidad);
+//		remove(entidad);
 //		entidad.setName(entidad.getName());
 //		entidad.setEmail(entidad.getEmail());
 //		entidad.setDni(entidad.getDni());
