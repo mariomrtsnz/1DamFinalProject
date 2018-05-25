@@ -52,5 +52,10 @@ public class AppointmentService {
 	public Iterable<Appointment> findByEmployee(Employee employee) {
 		return repository.findByEmployee(employee);
 	}
+	
+//	public Iterable<Appointment> findAppointmentsLaterThanEmployeeHistoricalDate(Employee employee) {
+//		Iterable<Appointment> appointmentsLaterThanEmployeeHistoricalDate = findAll().;
+//		return appointmentsLaterThanEmployeeHistoricalDate;
+//	}
 
 }

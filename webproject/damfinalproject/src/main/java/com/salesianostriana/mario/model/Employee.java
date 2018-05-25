@@ -22,7 +22,7 @@ public class Employee {
 	@SequenceGenerator(name = "employee_seq", sequenceName = "seq_employee")
 	private Long id;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Set<Appointment> appointments = new HashSet<Appointment>();
 	@ManyToOne
 	private Company company;
@@ -38,13 +38,14 @@ public class Employee {
 	private String position;
 	private LocalDateTime hireDate;
 	private boolean historical;
+	private LocalDateTime historicalDate;
 
 	public Employee() {
 
 	}
 
 	public Employee(String dni, String email, double grossAnualSalary, String name, String password, String phone,
-			String profilePic, String position, LocalDateTime hireDate) {
+			String profilePic, String position, LocalDateTime hireDate, LocalDateTime historicalDate) {
 		super();
 		this.dni = dni;
 		this.email = email;
@@ -55,6 +56,7 @@ public class Employee {
 		this.profilePic = profilePic;
 		this.position = position;
 		this.hireDate = hireDate;
+		this.historicalDate = historicalDate;
 	}
 
 	public Employee(Company company, String dni, String email, double grossAnualSalary, String name, String password,
@@ -176,6 +178,14 @@ public class Employee {
 		this.company = company;
 	}
 
+	public LocalDateTime getHistoricalDate() {
+		return historicalDate;
+	}
+
+	public void setHistoricalDate(LocalDateTime historicalDate) {
+		this.historicalDate = historicalDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", appointments=" + appointments + ", company=" + company + ", dni=" + dni
@@ -185,7 +195,7 @@ public class Employee {
 	}
 
 	/*
-	 * MÉTODOS HELPER
+	 * HELPER METHODS
 	 */
 	public void addAppointment(Appointment a) {
 		if (a != null) {

@@ -66,7 +66,7 @@ public class EmployeeController {
 			Model model) {
 		Employee employee = new Employee(newEmployee.getDni(), newEmployee.getEmail(),
 				newEmployee.getGrossAnualSalary(), newEmployee.getName(), newEmployee.getPassword(),
-				newEmployee.getPhone(), newEmployee.getProfilePic(), newEmployee.getPosition(), LocalDateTime.now());
+				newEmployee.getPhone(), newEmployee.getProfilePic(), newEmployee.getPosition(), LocalDateTime.now(), null);
 		employeeService.save(employee);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-staff-list";
@@ -90,8 +90,8 @@ public class EmployeeController {
 	@GetMapping("/delete-employee/{id}")
 	public String deleteEmployee(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Employee employee = employeeService.findOne(id);
-		companyService.findDefaultCompany().removeEmployee(employee);
 		boolean deleteSuccess = false;
+//		employeeService.remove(employee);
 		if (!employee.isHistorical()) {
 			employeeService.setHistoricalTrue(employee);
 			deleteSuccess = true;

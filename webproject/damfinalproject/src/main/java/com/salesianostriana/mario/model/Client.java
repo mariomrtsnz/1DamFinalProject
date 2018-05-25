@@ -33,8 +33,7 @@ public class Client {
 	private String password;
 	private String phone;
 	private String profilePic;
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	@ElementCollection
+	@OneToMany(mappedBy="client", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	Set<Appointment> appointments = new HashSet<Appointment>();
 	@ManyToOne
 	private Company company;

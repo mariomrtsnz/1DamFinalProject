@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,11 +24,11 @@ public class Company {
 	private String email;
 	private String name;
 	private String phone;
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="company", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	Set<Employee> employees = new HashSet<Employee>();
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="company", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	Set<Client> clients = new HashSet<Client>();
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="company", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	Set<Treatment> treatments = new HashSet<Treatment>();
 
 	public Company() {
@@ -157,7 +156,7 @@ public class Company {
 	}
 
 	/*
-	 * Métodos helper
+	 * HELPER METHODS
 	 */
 
 	public void addClient(Client c) {

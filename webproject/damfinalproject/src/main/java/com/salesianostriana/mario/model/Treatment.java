@@ -30,7 +30,7 @@ public class Treatment {
 	private String name;
 	private int numSessions;
 	private double totalPrice;
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="treatment", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	Set<Appointment> appointments = new HashSet<Appointment>();
 	@ManyToOne
 	private Company company;

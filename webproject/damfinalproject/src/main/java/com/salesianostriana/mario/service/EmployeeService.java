@@ -22,7 +22,7 @@ public class EmployeeService {
 
 	@Autowired
 	CompanyService companyService;
-	
+
 	@Autowired
 	AppointmentService appointmentService;
 
@@ -42,49 +42,60 @@ public class EmployeeService {
 	public Employee remove(Employee employee) {
 		Employee deletedEmployee = findOne(employee.getId());
 		if (deletedEmployee != null)
-			repository.delete(employee);
+			companyService.findDefaultCompany().removeEmployee(employee);
+		repository.delete(employee);
 		return deletedEmployee;
 	}
-	
+
 	public void setHistoricalTrue(Employee employee) {
 		employee.setHistorical(true);
-//		employee.setAppointments(null);
-		employee.getAppointments().forEach((a) -> a.setEmployee(null));
+		employee.setHistoricalDate(LocalDateTime.now());
+		// employee.setAppointments(null);
+//		employee.getAppointments().forEach((a) -> a.setEmployee(null));
+		employee.getAppointments().forEach(
+				(a) -> {
+					if (a.getStartTime().isAfter(a.getEmployee().getHistoricalDate())) {
+						a.setEmployee(null);
+					}
+				});
 		edit(employee);
 	}
 
 	public void edit(Employee entidad) {
-		Set<Appointment> oldAppointments = entidad.getAppointments();
-		LocalDateTime oldHireDate = entidad.getHireDate();
-		//TODO: Implement these because on edit they disappear on edit.
-//		entidad.setAppointments(oldAppointments);
+		// Set<Appointment> oldAppointments = entidad.getAppointments();
+		// LocalDateTime oldHireDate = entidad.getHireDate();
+		// TODO: Implement this because on edit they disappear on edit.
+		// entidad.setAppointments(oldAppointments);
 		save(entidad);
 	}
 
 	public Employee login(String email, String password) {
 		return repository.findFirstByEmailAndPassword(email, password);
 	}
-	
+
 	public long calculateNumberOfItems() {
 		return findAll().spliterator().getExactSizeIfKnown();
 	}
-	
+
 	public Iterable<Employee> findAllActive() {
-		
+
 		return repository.findByHistoricalFalse();
 	}
-	
+
 	public long calculateNumberOfActiveEmployees() {
 		return findAllActive().spliterator().getExactSizeIfKnown();
 	}
-	
+
 	public Employee findFirstAvailableByDateTime(LocalDateTime appointmentDateTime) {
-		List<Employee> employees = StreamSupport.stream(findAllActive().spliterator(), false).collect(Collectors.toList());		
+		List<Employee> employees = StreamSupport.stream(findAllActive().spliterator(), false)
+				.collect(Collectors.toList());
 		Employee firstAvailableEmployee;
 		Appointment appointmentOnSelectedTime = appointmentService.findOneByStartTime(appointmentDateTime);
 
-	    firstAvailableEmployee = employees.stream().filter((employee) -> (!employee.equals(appointmentOnSelectedTime.getEmployee()))).findFirst().orElse(null);
-		
+		firstAvailableEmployee = employees.stream()
+				.filter((employee) -> (!employee.equals(appointmentOnSelectedTime.getEmployee()))).findFirst()
+				.orElse(null);
+
 		return firstAvailableEmployee;
 	}
 

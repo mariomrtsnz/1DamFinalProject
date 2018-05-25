@@ -38,6 +38,7 @@ public class ClientService {
 	
 	public void setHistoricalTrue(Client client) {
 		client.setHistorical(true);
+		client.getAppointments().forEach((a) -> a.setClient(null));
 		edit(client);
 	}
 

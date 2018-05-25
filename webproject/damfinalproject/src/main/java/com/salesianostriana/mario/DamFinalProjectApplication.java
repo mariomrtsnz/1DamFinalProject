@@ -51,42 +51,62 @@ public class DamFinalProjectApplication {
 			company.addClient(c1);
 
 			Employee e = new Employee("12345678B", "test@rwd.com", 20000.00, "test", "employee", "098765432",
-					"noPicture", "Administrativo", LocalDateTime.of(2018, 5, 3, 7, 30));
+					"noPicture", "Administrativo", LocalDateTime.of(2018, 5, 3, 7, 30), null);
 			e = employeeService.save(e);
 			company.addEmployee(e);
 			Employee e1 = new Employee("10293847C", "harveydent@rwd.com", 40000.00, "Harvey Dent", "batman",
-					"666777888", "noPicture2", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29));
+					"666777888", "noPicture2", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
 			e1 = employeeService.save(e1);
 			company.addEmployee(e1);
 
-			Treatment t = new Treatment("Los dientes son muy importantes para su apariencia. Te ves más joven con los dientes más blancos. Aquí en RealWorldDental blanqueamos tus dientes con la última tecnología.", 10, false, "Blanqueamiento", 1, 150, "/images/services/teethwhitening.jpg");
+			Treatment t = new Treatment(
+					"Los dientes son muy importantes para su apariencia. Te ves más joven con los dientes más blancos. Aquí en RealWorldDental blanqueamos tus dientes con la última tecnología.",
+					10, false, "Blanqueamiento", 1, 150, "/images/services/teethwhitening.jpg");
 			t = treatmentService.save(t);
 			company.addTreatment(t);
-			Treatment t2 = new Treatment("Se utilizan para ocultar dientes agrietados, menos estéticos , o dientes descoloridos. Se utiliza preferentemente en los dientes frontales.", 0, true, "Carillas", 2, 100, "/images/services/carillas.png");
+			Treatment t2 = new Treatment(
+					"Se utilizan para ocultar dientes agrietados, menos estéticos , o dientes descoloridos. Se utiliza preferentemente en los dientes frontales.",
+					0, true, "Carillas", 2, 100, "/images/services/carillas.png");
 			t2 = treatmentService.save(t2);
 			company.addTreatment(t2);
-			Treatment t3 = new Treatment("Una corona es la mejor opción cuando se trata de una gran parte del diente la que necesita ser reemplazada o si vemos que el diente por estética necesite cambiar el color o la forma.", 5, false, "Coronas y Puentes", 2, 200, "/images/services/corona.jpg");
+			Treatment t3 = new Treatment(
+					"Una corona es la mejor opción cuando se trata de una gran parte del diente la que necesita ser reemplazada o si vemos que el diente por estética necesite cambiar el color o la forma.",
+					5, false, "Coronas y Puentes", 2, 200, "/images/services/corona.jpg");
 			t3 = treatmentService.save(t3);
 			company.addTreatment(t3);
-			Treatment t4 = new Treatment("Para arreglar hasta las pequeñas lesiones de caries. Consiste en anestesia, limpieza de la caries, relleno de la cavidad y pulido del empaste.", 0, false, "Empaste", 1, 50, "/images/services/empaste.png");
+			Treatment t4 = new Treatment(
+					"Para arreglar hasta las pequeñas lesiones de caries. Consiste en anestesia, limpieza de la caries, relleno de la cavidad y pulido del empaste.",
+					0, false, "Empaste", 1, 50, "/images/services/empaste.png");
 			t4 = treatmentService.save(t4);
 			company.addTreatment(t4);
-			Treatment t5 = new Treatment("Necesaria cuando existe una hipersensibilidad en el diente, dolor al masticar o dolor ante el consumo de bebidas muy frías o muy calientes ocasionados por la presencia de caries en el diente.", 5, false, "Endodoncia", 1, 80, "/images/services/endodoncia.jpg");
+			Treatment t5 = new Treatment(
+					"Necesaria cuando existe una hipersensibilidad en el diente, dolor al masticar o dolor ante el consumo de bebidas muy frías o muy calientes ocasionados por la presencia de caries en el diente.",
+					5, false, "Endodoncia", 1, 80, "/images/services/endodoncia.jpg");
 			t5 = treatmentService.save(t5);
 			company.addTreatment(t5);
-			Treatment t6 = new Treatment("Los implantes dentales se utilizan cuando haya perdido uno o más dientes. Es una elección segura y duradera para toda la vida.", 0, true, "Implante", 2, 140, "/images/services/implante.png");
+			Treatment t6 = new Treatment(
+					"Los implantes dentales se utilizan cuando haya perdido uno o más dientes. Es una elección segura y duradera para toda la vida.",
+					0, true, "Implante", 2, 140, "/images/services/implante.png");
 			t6 = treatmentService.save(t6);
 			company.addTreatment(t6);
-			Treatment t7 = new Treatment("Encargada de explorar y tratar a niños y recién nacidos. También se encarga de detectar posibles anomalías en la posición de los maxilares o dientes para remitir al ortodoncista.", 0, false, "Odontopediatría", 1, 60, "/images/services/odontopediatria.png");
+			Treatment t7 = new Treatment(
+					"Encargada de explorar y tratar a niños y recién nacidos. También se encarga de detectar posibles anomalías en la posición de los maxilares o dientes para remitir al ortodoncista.",
+					0, false, "Odontopediatría", 1, 60, "/images/services/odontopediatria.png");
 			t7 = treatmentService.save(t7);
 			company.addTreatment(t7);
-			Treatment t1 = new Treatment("A veces los dientes crecen en una posición inadecuada o se han movido debido a varios motivos. Mediante la ortodoncia podemos hacer cualquier corrección.", 0, true, "Ortodoncia", 5, 500, "/images/services/ortodoncia.jpg");
+			Treatment t1 = new Treatment(
+					"A veces los dientes crecen en una posición inadecuada o se han movido debido a varios motivos. Mediante la ortodoncia podemos hacer cualquier corrección.",
+					0, true, "Ortodoncia", 5, 500, "/images/services/ortodoncia.jpg");
 			t1 = treatmentService.save(t1);
 			company.addTreatment(t1);
-			Treatment t8 = new Treatment("Proviene de una enfermedad inflamatoria que afecta principalmente a los tejidos que sostienen los dientes. Es de avance lento. Si no recibes tratamiento, pueden pasar muchos años antes de perder los dientes.", 5, false, "Periodontitis", 1, 60, "/images/services/periodontitis.jpg");
+			Treatment t8 = new Treatment(
+					"Proviene de una enfermedad inflamatoria que afecta principalmente a los tejidos que sostienen los dientes. Es de avance lento. Si no recibes tratamiento, pueden pasar muchos años antes de perder los dientes.",
+					5, false, "Periodontitis", 1, 60, "/images/services/periodontitis.jpg");
 			t8 = treatmentService.save(t8);
 			company.addTreatment(t8);
-			Treatment t9 = new Treatment("Revisar tu boca al menos una vez al año es una medida preventiva que te llevará unos minutos de tu tiempo, sin embargo, el beneficio que vas a obtener es mucho mayor.", 0, false, "Revisión", 1, 30, "/images/services/revision.jpg");
+			Treatment t9 = new Treatment(
+					"Revisar tu boca al menos una vez al año es una medida preventiva que te llevará unos minutos de tu tiempo, sin embargo, el beneficio que vas a obtener es mucho mayor.",
+					0, false, "Revisión", 1, 30, "/images/services/revision.jpg");
 			t9 = treatmentService.save(t9);
 			company.addTreatment(t9);
 
@@ -102,12 +122,11 @@ public class DamFinalProjectApplication {
 			c.addAppointment(a2);
 			e1.addAppointment(a2);
 			t1.addAppointment(a2);
-			
 
 			// Test
-//			System.out.println(treatmentService.calculatePriceWithDiscount(t3));
-//			System.out.println(clientService.findOne(c.getId()));			
-//			System.out.println(company.getId());
+			// System.out.println(treatmentService.calculatePriceWithDiscount(t3));
+			// System.out.println(clientService.findOne(c.getId()));
+			// System.out.println(company.getId());
 		};
 	}
 }
