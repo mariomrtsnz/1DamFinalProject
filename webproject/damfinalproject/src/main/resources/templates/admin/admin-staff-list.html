@@ -53,7 +53,7 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                    <tr th:each="employee : ${staff}">
+	                    <tr th:each="employee : ${staff}" th:if="${!employee.historical}">
 	                        <td id="serviceName" th:text="${employee.id}">{employee.id}</td>
 	                        <td id="orderDate" th:text="${employee.name}">{employee.name}</td>
 	                        <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>

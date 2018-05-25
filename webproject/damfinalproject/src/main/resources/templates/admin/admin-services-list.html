@@ -50,7 +50,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="treatment : ${treatments}">
+						<tr th:each="treatment : ${treatments}" th:if="${!treatment.historical}">
 							<td id="serviceName" th:text="${treatment.id}">{service.id}</td>
 							<td id="orderDate" th:text="${treatment.name}">{service.name}</td>
 							<td id="appointmentDate" th:text="${treatment.description.substring(0, treatment.description.length() / 2)} + '...'">{service.description}</td>
