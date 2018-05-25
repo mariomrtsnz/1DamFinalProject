@@ -16,16 +16,8 @@
         	<div class="add-form-container">
         		<form method="post" th:action="@{/editClient}" th:object="${editableClient}" id="addServiceForm">
         			<div class="group" id="dniInput" style="display: none;">
-		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{id}">{client.id}</label>
-		            </div>
-		            <div class="group" id="dniInput" style="display: none;">
-		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{registerDate}" th:value="*{registerDate}" readonly="readonly"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{registerDate}">{client.registerDate}</label>
+		                <input type="hidden" required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
+		                <input type="hidden" required="required" name="name" th:field="*{registerDate}" th:value="*{registerDate}" readonly="readonly"/>
 		            </div>
         			<div class="inputTitle">
 		                Nombre Completo

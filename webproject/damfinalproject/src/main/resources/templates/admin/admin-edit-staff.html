@@ -16,16 +16,8 @@
         	<div class="add-form-container">
         		<form method="post" th:action="@{/editEmployee}" th:object="${editableEmployee}" id="addServiceForm">
         			<div class="group" id="dniInput" style="display: none;">
-		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{id}">{employee.id}</label>
-		            </div>
-		            <div class="group" id="dniInput" style="display: none;">
-		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{hireDate}" th:value="*{hireDate}" readonly="readonly"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{hireDate}">{employee.hireDate}</label>
+		                <input type="hidden" required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
+		                <input type="hidden" required="required" name="hireDate" th:field="*{hireDate}" th:value="*{hireDate}" readonly="readonly"/>
 		            </div>
         			<div class="inputTitle">
 		                Nombre Completo
