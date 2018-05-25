@@ -66,7 +66,8 @@ public class EmployeeController {
 			Model model) {
 		Employee employee = new Employee(newEmployee.getDni(), newEmployee.getEmail(),
 				newEmployee.getGrossAnualSalary(), newEmployee.getName(), newEmployee.getPassword(),
-				newEmployee.getPhone(), newEmployee.getProfilePic(), newEmployee.getPosition(), LocalDateTime.now(), null);
+				newEmployee.getPhone(), newEmployee.getProfilePic(), newEmployee.getPosition(), LocalDateTime.now(),
+				null);
 		employeeService.save(employee);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-staff-list";
@@ -91,12 +92,13 @@ public class EmployeeController {
 	public String deleteEmployee(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Employee employee = employeeService.findOne(id);
 		boolean deleteSuccess = false;
-//		employeeService.remove(employee);
+		// employeeService.remove(employee);
 		if (!employee.isHistorical()) {
 			employeeService.setHistoricalTrue(employee);
 			deleteSuccess = true;
 		}
-		//TODO: Implement this so that toastr shows a deletion successful message after redirect (On AdminController)
+		// TODO: Implement this so that toastr shows a deletion successful message after
+		// redirect (On AdminController)
 		ra.addAttribute("deleteSuccess", deleteSuccess);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-staff-list";

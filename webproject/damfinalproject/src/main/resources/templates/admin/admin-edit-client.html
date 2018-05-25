@@ -21,6 +21,12 @@
 		                <span class="bar"></span>
 		                <label th:text="*{id}">{client.id}</label>
 		            </div>
+		            <div class="group" id="dniInput" style="display: none;">
+		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{registerDate}" th:value="*{registerDate}" readonly="readonly"/>
+		                <span class="highlight"></span>
+		                <span class="bar"></span>
+		                <label th:text="*{registerDate}">{client.registerDate}</label>
+		            </div>
         			<div class="inputTitle">
 		                Nombre Completo
 		            </div>
@@ -65,6 +71,9 @@
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
 		                <label th:text="*{phone}">{client.phone}</label>
+		            </div>
+		            <div class="group" id="dniInput">
+		                <!-- <input type="checkbox" th:name="duePayment" th:field="*{duePayment}" required="required" th:checked="*{duePayment}"/> Cita Pendiente -->
 		            </div>
         			<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="submit">Guardar Cambios</button>
