@@ -46,14 +46,8 @@ public class AdminController {
 	private ClientService clientService;
 
 	boolean showTreatmentsHistorical = false;
-
-	public boolean isShowTreatmentsHistorical() {
-		return showTreatmentsHistorical;
-	}
-
-	public void setShowTreatmentsHistorical(boolean showTreatmentsHistorical) {
-		this.showTreatmentsHistorical = showTreatmentsHistorical;
-	}
+	boolean showStaffHistorical = false;
+	boolean showClientsHistorical = false;
 
 	@GetMapping({ "/admin", "/admin-dashboard" })
 	public String index(Model model) {
@@ -91,7 +85,12 @@ public class AdminController {
 
 	@GetMapping("/admin-staff-list")
 	public String staffList(Model model, RedirectAttributes re) {
-		model.addAttribute("staff", employeeService.findAll());
+		if (!showStaffHistorical) {
+			model.addAttribute("staff", employeeService.findAll());
+		} else {
+			model.addAttribute("staff", employeeService.findAllHistorical());
+		}
+		model.addAttribute("showStaffHistorical", showStaffHistorical);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		model.addAttribute("numberOfEmployees", employeeService.calculateNumberOfItems());
 		// TODO: Implement this so that toastr shows a deletion successful message after
@@ -99,6 +98,18 @@ public class AdminController {
 		// boolean deleteSuccess = re.getFlashAttributes("deleteSuccess");
 		// model.addAttribute("deleteSuccess", deleteSuccess);
 		return "/admin/admin-staff-list";
+	}
+	
+	@GetMapping("/showStaffHistorical")
+	public String showStaffHistorical(Model model) {
+		showStaffHistorical = true;
+		return "redirect:/admin-staff-list";
+	}
+	
+	@GetMapping("/removeStaffHistorical")
+	public String removeStaffHistorical(Model model) {
+		showStaffHistorical = false;
+		return "redirect:/admin-staff-list";
 	}
 
 	@GetMapping("/admin-calendar")

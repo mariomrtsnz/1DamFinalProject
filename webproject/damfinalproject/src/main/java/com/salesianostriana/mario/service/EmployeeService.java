@@ -74,8 +74,11 @@ public class EmployeeService {
 	}
 
 	public Iterable<Employee> findAllActive() {
-
 		return repository.findByHistoricalFalse();
+	}
+	
+	public Iterable<Employee> findAllHistorical() {
+		return repository.findByHistoricalTrue();
 	}
 
 	public long calculateNumberOfActiveEmployees() {

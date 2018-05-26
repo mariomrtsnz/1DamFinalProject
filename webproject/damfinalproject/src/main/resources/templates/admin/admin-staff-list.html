@@ -35,9 +35,12 @@
                             <button class="btn btn-submit" type="submit">Añadir Empleado</button>
                         </a>
                     </div>
-                    <div class="btn-box add-element">
-                        <a href="" th:href="@{/showHistorical}">
+                    <div class="btn-box" id="button2">
+                        <a href="/admin/showStaffHistorical" th:href="@{/showStaffHistorical}" th:if="${!showStaffHistorical}">
                             <button class="btn btn-submit" type="submit">Mostrar Históricos</button>
+                        </a>
+                        <a href="/admin/removeStaffHistorical" th:href="@{/removeStaffHistorical}" th:if="${showStaffHistorical}">
+                            <button class="btn btn-submit" type="submit">Mostrar Activos</button>
                         </a>
                     </div>
                 </div>
@@ -57,8 +60,34 @@
 	                        <th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
 	                    </tr>
 	                </thead>
-	                <tbody>
+	                <tbody th:if="${!showStaffHistorical}">
 	                    <tr th:each="employee : ${staff}" th:if="${!employee.historical}">
+	                        <td id="serviceName" th:text="${employee.id}">{employee.id}</td>
+	                        <td id="orderDate" th:text="${employee.name}">{employee.name}</td>
+	                        <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>
+	                        <td id="dentistName" th:text="${employee.email}">{employee.email}</td>
+	                        <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
+	                        <td th:text="${employee.hireDate}">{employee.hireDate}</td>
+	                        <td th:text="${employee.position}">{employee.position}</td>
+	                        <td th:text="${employee.historical} ? 'Si' : 'No'"></td>
+	                        <td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
+								<div class="btn-group btn-group-xs" role="group">
+									<a th:href="@{'/edit-staff/' + ${employee.id}}">										
+										<button class="btn btn-default footable-edit editButton">
+											<span class="fooicon far fa-edit" aria-hidden="true"></span>
+										</button>
+									</a>
+									<a th:href="@{'/delete-employee/' + ${employee.id}}">
+										<button class="btn btn-default footable-delete deleteButton">
+											<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
+										</button>
+									</a>
+								</div>
+							</td>
+	                    </tr>
+	                </tbody>
+	                <tbody th:if="${showStaffHistorical}">
+	                    <tr th:each="employee : ${staff}" th:if="${employee.historical}">
 	                        <td id="serviceName" th:text="${employee.id}">{employee.id}</td>
 	                        <td id="orderDate" th:text="${employee.name}">{employee.name}</td>
 	                        <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>
