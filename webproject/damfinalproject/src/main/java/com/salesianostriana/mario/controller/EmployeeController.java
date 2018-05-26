@@ -54,9 +54,11 @@ public class EmployeeController {
 	public String clientsList(Model model) {
 		if (!showClientsHistorical) {
 			model.addAttribute("clients", clientService.findAll());
-		} else if (filterByDuePayment) {
+		} 
+		else if (filterByDuePayment) {
 			model.addAttribute("clients", clientService.findByDuePayment());
-		} else{
+		}
+		else{
 			model.addAttribute("clients", clientService.findAllHistorical());
 		}
 		model.addAttribute("showClientsHistorical", showClientsHistorical);
@@ -84,7 +86,7 @@ public class EmployeeController {
 		return "redirect:/staff-clients-list";
 	}
 	
-	@GetMapping("/removeClientsHistorical")
+	@GetMapping("/removeFilterByDuePayment")
 	public String removeFilterByDuePayment() {
 		filterByDuePayment = false;
 		return "redirect:/staff-clients-list";

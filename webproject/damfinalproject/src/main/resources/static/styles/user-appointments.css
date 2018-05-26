@@ -19,7 +19,7 @@
       background-color: #3c393d;
       grid-area: tableHeader;
       display: grid;
-      grid-template-areas: "title totalItems buttons search";
+      grid-template-areas: "title totalItems buttons buttons";
       grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
       align-items: center;
       color: #f5f9f8;
@@ -35,7 +35,7 @@
       .cd-main-content .table-container .table-header .table-buttons {
         grid-area: buttons;
         display: grid;
-        grid-template-areas: "button1 button2";
+		grid-template-areas: "button1 button2 button3";
         grid-template-columns: 1fr 1fr;
         align-items: center; }
         .cd-main-content .table-container .table-header .table-buttons .btn-box {
@@ -45,6 +45,9 @@
             color: #f5f9f8;
             height: 50px;
             cursor: pointer; }
+            #button3 {
+            margin-right: 1em !important;
+            }
         .cd-main-content .table-container .table-header .table-buttons .add-element {
           grid-area: button1 !important; }
         .cd-main-content .table-container .table-header .table-buttons .table-filter {
