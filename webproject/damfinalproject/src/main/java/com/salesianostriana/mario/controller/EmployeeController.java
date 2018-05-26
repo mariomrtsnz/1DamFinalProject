@@ -35,6 +35,8 @@ public class EmployeeController {
 	private CompanyService companyService;
 	
 	boolean showClientsHistorical = false;
+	
+	boolean filterByDuePayment = false;
 
 	@GetMapping("/staff")
 	public String a(Model model) {
@@ -52,10 +54,13 @@ public class EmployeeController {
 	public String clientsList(Model model) {
 		if (!showClientsHistorical) {
 			model.addAttribute("clients", clientService.findAll());
-		} else {
+		} else if (filterByDuePayment) {
+			model.addAttribute("clients", clientService.findByDuePayment());
+		} else{
 			model.addAttribute("clients", clientService.findAllHistorical());
 		}
 		model.addAttribute("showClientsHistorical", showClientsHistorical);
+		model.addAttribute("filterByDuePayment", filterByDuePayment);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		model.addAttribute("numberOfClients", clientService.calculateNumberOfItems());
 		return "/staff/staff-clients-list";
@@ -73,6 +78,18 @@ public class EmployeeController {
 		return "redirect:/staff-clients-list";
 	}
 
+	@GetMapping("/filterByDuePayment")
+	public String filterByDuePayment() {
+		filterByDuePayment = true;
+		return "redirect:/staff-clients-list";
+	}
+	
+	@GetMapping("/removeClientsHistorical")
+	public String removeFilterByDuePayment() {
+		filterByDuePayment = false;
+		return "redirect:/staff-clients-list";
+	}
+	
 	@GetMapping("/admin-add-staff")
 	public String goToAddStaff(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
