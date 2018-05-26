@@ -56,5 +56,9 @@ public class TreatmentService {
 	public long calculateNumberOfItems() {
 		return findAll().spliterator().getExactSizeIfKnown();
 	}
+	
+	public Iterable<Treatment> findAllHistorical() {
+		return repository.findByHistoricalTrue();
+	}
 
 }

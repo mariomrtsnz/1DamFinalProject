@@ -27,14 +27,17 @@
 				<div class="table-title">Servicios</div>
 				<div class="table-totalItems">Número total de elementos: <span th:text="${numberOfTreatments}">{numElementosEnLista}</span></div>
 				<div class="table-buttons">
-					<div class="btn-box add-element" id="submit">
+					<div class="btn-box add-element" id="button1">
                         <a href="/admin/admin-add-service.html" th:href="@{/admin-add-service}">
                             <button class="btn btn-submit" type="submit">Añadir Servicio</button>
                         </a>
                     </div>
-                    <div class="btn-box add-element">
-                        <a href="" th:href="@{/showHistorical}">
+                    <div class="btn-box" id="button2">
+                        <a href="/admin/showHistorical" th:href="@{/showTreatmentsHistorical}" th:if="${!showTreatmentsHistorical}">
                             <button class="btn btn-submit" type="submit">Mostrar Históricos</button>
+                        </a>
+                        <a href="/admin/removeHistorical" th:href="@{/removeTreatmentsHistorical}" th:if="${showTreatmentsHistorical}">
+                            <button class="btn btn-submit" type="submit">Mostrar Activos</button>
                         </a>
                     </div>
 				</div>
@@ -54,7 +57,7 @@
 							<th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody th:if="${!showTreatmentsHistorical}">
 						<tr th:each="treatment : ${treatments}" th:if="${!treatment.historical}">
 							<td id="serviceName" th:text="${treatment.id}">{service.id}</td>
 							<td id="orderDate" th:text="${treatment.name}">{service.name}</td>
@@ -63,7 +66,33 @@
 							<td th:text="${treatment.discount}">{service.discount}</td>
 							<td th:text="${treatment.numSessions}">{service.numSessions}</td>
 							<td th:text="${treatment.paidInInstallments} ? 'Si' : 'No'"></td>
-							<td th:text="${treatment.historical} ? 'Si' : 'No'"></td>
+							<td th:switch="${showTreatmentsHistorical}" th:text="${treatment.historical} ? 'Si' : 'No'"></td>
+							<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
+								<div class="btn-group btn-group-xs" role="group">
+									<a th:href="@{'/edit-treatment/' + ${treatment.id}}">										
+										<button class="btn btn-default footable-edit editButton">
+											<span class="fooicon far fa-edit" aria-hidden="true"></span>
+										</button>
+									</a>
+									<a th:href="@{'/delete-treatment/' + ${treatment.id}}">
+										<button class="btn btn-default footable-delete deleteButton">
+											<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
+										</button>
+									</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					<tbody th:if="${showTreatmentsHistorical}">
+						<tr th:each="treatment : ${treatments}" th:if="${treatment.historical}">
+							<td id="serviceName" th:text="${treatment.id}">{service.id}</td>
+							<td id="orderDate" th:text="${treatment.name}">{service.name}</td>
+							<td id="appointmentDate" th:text="${treatment.description.substring(0, treatment.description.length() / 2)} + '...'">{service.description}</td>
+							<td id="dentistName" th:text="${treatment.totalPrice}">{service.price}</td>
+							<td th:text="${treatment.discount}">{service.discount}</td>
+							<td th:text="${treatment.numSessions}">{service.numSessions}</td>
+							<td th:text="${treatment.paidInInstallments} ? 'Si' : 'No'"></td>
+							<td th:switch="${showTreatmentsHistorical}" th:text="${treatment.historical} ? 'Si' : 'No'"></td>
 							<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
 								<div class="btn-group btn-group-xs" role="group">
 									<a th:href="@{'/edit-treatment/' + ${treatment.id}}">										

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.salesianostriana.mario.formbean.SignUpUser;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
@@ -44,21 +45,48 @@ public class AdminController {
 	@Autowired
 	private ClientService clientService;
 
+	boolean showTreatmentsHistorical = false;
+
+	public boolean isShowTreatmentsHistorical() {
+		return showTreatmentsHistorical;
+	}
+
+	public void setShowTreatmentsHistorical(boolean showTreatmentsHistorical) {
+		this.showTreatmentsHistorical = showTreatmentsHistorical;
+	}
+
 	@GetMapping({ "/admin", "/admin-dashboard" })
 	public String index(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-//		boolean deleteSuccess = (boolean) model.getAttribute("deleteSuccess");
-//		deleteSuccess = false;
-//		model.addAttribute("deleteSuccess", deleteSuccess);
+		// boolean deleteSuccess = (boolean) model.getAttribute("deleteSuccess");
+		// deleteSuccess = false;
+		// model.addAttribute("deleteSuccess", deleteSuccess);
 		return "/admin/admin-dashboard-index";
 	}
 
 	@GetMapping("/admin-services-list")
 	public String servicesList(Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
+		if (!showTreatmentsHistorical) {
+			model.addAttribute("treatments", treatmentService.findAll());
+		} else {
+			model.addAttribute("treatments", treatmentService.findAllHistorical());
+		}
+		model.addAttribute("showTreatmentsHistorical", showTreatmentsHistorical);
 		model.addAttribute("numberOfTreatments", treatmentService.calculateNumberOfItems());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-services-list";
+	}
+
+	@GetMapping("/showTreatmentsHistorical")
+	public String showTreatmentsHistorical(Model model) {
+		showTreatmentsHistorical = true;
+		return "redirect:/admin-services-list";
+	}
+	
+	@GetMapping("/removeTreatmentsHistorical")
+	public String removeTreatmentsHistorical(Model model) {
+		showTreatmentsHistorical = false;
+		return "redirect:/admin-services-list";
 	}
 
 	@GetMapping("/admin-staff-list")
@@ -66,9 +94,10 @@ public class AdminController {
 		model.addAttribute("staff", employeeService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		model.addAttribute("numberOfEmployees", employeeService.calculateNumberOfItems());
-		//TODO: Implement this so that toastr shows a deletion successful message after redirect (From EmployeeController)
-//		boolean deleteSuccess = re.getFlashAttributes("deleteSuccess");
-//		model.addAttribute("deleteSuccess", deleteSuccess);
+		// TODO: Implement this so that toastr shows a deletion successful message after
+		// redirect (From EmployeeController)
+		// boolean deleteSuccess = re.getFlashAttributes("deleteSuccess");
+		// model.addAttribute("deleteSuccess", deleteSuccess);
 		return "/admin/admin-staff-list";
 	}
 

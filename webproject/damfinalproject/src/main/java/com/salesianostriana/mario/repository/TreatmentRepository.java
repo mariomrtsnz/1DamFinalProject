@@ -7,5 +7,5 @@ import com.salesianostriana.mario.model.Treatment;
 
 @Repository
 public interface TreatmentRepository extends JpaRepository<Treatment, Long> {
-
+	Iterable<Treatment> findByHistoricalTrue();
 }
