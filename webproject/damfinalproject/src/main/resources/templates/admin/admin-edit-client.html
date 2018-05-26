@@ -64,8 +64,19 @@
 		                <span class="bar"></span>
 		                <label th:text="*{phone}">{client.phone}</label>
 		            </div>
+		            <div class="inputTitle">
+		                Cita Pendiente
+		            </div>
 		            <div class="group" id="dniInput">
-		                <!-- <input type="checkbox" th:name="duePayment" th:field="*{duePayment}" required="required" th:checked="*{duePayment}"/> Cita Pendiente -->
+		                <!-- <input type="checkbox" th:type="checkbox" name="duePayment" th:field="*{duePayment}" th:value="*{duePayment}" th:checked="*{duePayment}"/> -->
+		                <input type="hidden" value="on" name="_duePayment"/>
+		            </div>
+		            <div class="inputTitle">
+		                Histórico
+		            </div>
+		            <div class="group" id="dniInput">
+		                <input type="checkbox" th:type="checkbox" name="historical" th:field="*{historical}" th:value="*{historical}" th:checked="*{historical}"/>
+		                <input type="hidden" value="on" name="_historical"/>
 		            </div>
         			<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="submit">Guardar Cambios</button>

@@ -70,6 +70,13 @@
 		                <input type="checkbox" th:type="checkbox" name="paidInInstallments" th:field="*{paidInInstallments}" th:value="*{paidInInstallments}" th:checked="*{paidInInstallments}"/>
 		                <input type="hidden" value="on" name="_paidInInstallments"/>
 		            </div>
+		            <div class="inputTitle">
+		                Histórico
+		            </div>
+		            <div class="group" id="dniInput">
+		                <input type="checkbox" th:type="checkbox" name="historical" th:field="*{historical}" th:value="*{historical}" th:checked="*{historical}"/>
+		                <input type="hidden" value="on" name="_historical"/>
+		            </div>
         			<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="submit">Guardar Cambios</button>
             		</div>

@@ -849,6 +849,7 @@ label {
       background: #28acbe;
       color: #dff5f8; }
   .btn.btn-submit {
+  	cursor: pointer;
     background: #2cbfd3;
     color: #c0ecf2; }
     .btn.btn-submit:hover {
