@@ -33,6 +33,8 @@ public class EmployeeController {
 
 	@Autowired
 	private CompanyService companyService;
+	
+	boolean showClientsHistorical = false;
 
 	@GetMapping("/staff")
 	public String a(Model model) {
@@ -48,10 +50,27 @@ public class EmployeeController {
 
 	@GetMapping("/staff-clients-list")
 	public String clientsList(Model model) {
-		model.addAttribute("clients", clientService.findAll());
+		if (!showClientsHistorical) {
+			model.addAttribute("clients", clientService.findAll());
+		} else {
+			model.addAttribute("clients", clientService.findAllHistorical());
+		}
+		model.addAttribute("showClientsHistorical", showClientsHistorical);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		model.addAttribute("numberOfClients", clientService.calculateNumberOfItems());
 		return "/staff/staff-clients-list";
+	}
+	
+	@GetMapping("/showClientsHistorical")
+	public String showClientsHistorical() {
+		showClientsHistorical = true;
+		return "redirect:/staff-clients-list";
+	}
+	
+	@GetMapping("/removeClientsHistorical")
+	public String removeClientsHistorical() {
+		showClientsHistorical = false;
+		return "redirect:/staff-clients-list";
 	}
 
 	@GetMapping("/admin-add-staff")

@@ -35,9 +35,12 @@
                             <button class="btn btn-submit" type="submit">Añadir Cliente</button>
                         </a>
                     </div>
-                    <div class="btn-box add-element">
-                        <a href="" th:href="@{/showHistorical}">
+                    <div class="btn-box" id="button2">
+                        <a href="/admin/showClientsHistorical" th:href="@{/showClientsHistorical}" th:if="${!showClientsHistorical}">
                             <button class="btn btn-submit" type="submit">Mostrar Históricos</button>
+                        </a>
+                        <a href="/admin/removeClientsHistorical" th:href="@{/removeClientsHistorical}" th:if="${showClientsHistorical}">
+                            <button class="btn btn-submit" type="submit">Mostrar Activos</button>
                         </a>
                     </div>
                 </div>
@@ -56,8 +59,38 @@
 	                 		<th data-sortable="false" data-filterable="false" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"></th>
 	                    </tr>
 	                </thead>
-	                <tbody>
+	                <tbody th:if="${!showClientsHistorical}">
 	                    <tr th:each="client : ${clients}" th:if="${!client.historical}">
+	                        <td id="serviceName" th:text="${client.id}">{cliente.id}</td>
+	                        <td id="orderDate" th:text="${client.name}">{cliente.name}</td>
+	                        <td id="appointmentDate" th:text="${client.phone}">{cliente.phone}</td>
+	                        <td id="dentistName" th:text="${client.email}">{cliente.email}</td>
+	                        <td th:text="${client.registerDate}">{cliente.registerDate}</td>
+	                        <td id="payStatus">
+	                            <label class="form-checkbox-label">
+	                                <input name=duePayment class="form-checkbox-field" type="checkbox" readonly="readonly" th:checked="${client.hasDuePayment()}"/>
+	                                <i class="form-checkbox-button"></i>
+	                            </label>
+	                        </td>
+							<td th:text="${client.historical} ? 'Si' : 'No'"></td>
+	                        <td>
+	                        	<div class="btn-group btn-group-xs" role="group">
+								<a th:href="@{'/edit-client/' + ${client.id}}">										
+									<button class="btn btn-default footable-edit editButton">
+										<span class="fooicon far fa-edit" aria-hidden="true"></span>
+									</button>
+								</a>
+								<a th:href="@{'/delete-client/' + ${client.id}}">
+									<button class="btn btn-default footable-delete deleteButton">
+										<span class="fooicon far fa-trash-alt" aria-hidden="true"></span>
+									</button>
+								</a>
+							</div>
+	                        </td>
+	                    </tr>
+	                </tbody>
+	                <tbody th:if="${showClientsHistorical}">
+	                    <tr th:each="client : ${clients}" th:if="${client.historical}">
 	                        <td id="serviceName" th:text="${client.id}">{cliente.id}</td>
 	                        <td id="orderDate" th:text="${client.name}">{cliente.name}</td>
 	                        <td id="appointmentDate" th:text="${client.phone}">{cliente.phone}</td>

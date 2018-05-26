@@ -47,7 +47,6 @@ public class AdminController {
 
 	boolean showTreatmentsHistorical = false;
 	boolean showStaffHistorical = false;
-	boolean showClientsHistorical = false;
 
 	@GetMapping({ "/admin", "/admin-dashboard" })
 	public String index(Model model) {
@@ -84,7 +83,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin-staff-list")
-	public String staffList(Model model, RedirectAttributes re) {
+	public String staffList(Model model) {
 		if (!showStaffHistorical) {
 			model.addAttribute("staff", employeeService.findAll());
 		} else {

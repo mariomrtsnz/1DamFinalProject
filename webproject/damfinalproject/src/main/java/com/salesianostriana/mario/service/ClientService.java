@@ -28,6 +28,10 @@ public class ClientService {
 	public Iterable<Client> findAll() {
 		return repository.findAll();
 	}
+	
+	public Iterable<Client> findAllHistorical() {
+		return repository.findByHistoricalTrue();
+	}
 
 	public Client remove(Client client) {
 		Client deletedClient = repository.findById(client.getId()).orElse(null);
