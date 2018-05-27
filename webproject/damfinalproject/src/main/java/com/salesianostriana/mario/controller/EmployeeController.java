@@ -70,25 +70,21 @@ public class EmployeeController {
 	
 	@GetMapping("/showClientsHistorical")
 	public String showClientsHistorical() {
-		showClientsHistorical = true;
-		return "redirect:/staff-clients-list";
-	}
-	
-	@GetMapping("/removeClientsHistorical")
-	public String removeClientsHistorical() {
-		showClientsHistorical = false;
+		if (showClientsHistorical) {
+			showClientsHistorical = false;
+		} else {
+			showClientsHistorical = true;
+		}
 		return "redirect:/staff-clients-list";
 	}
 
 	@GetMapping("/filterByDuePayment")
 	public String filterByDuePayment() {
-		filterByDuePayment = true;
-		return "redirect:/staff-clients-list";
-	}
-	
-	@GetMapping("/removeFilterByDuePayment")
-	public String removeFilterByDuePayment() {
-		filterByDuePayment = false;
+		if (filterByDuePayment) {
+			filterByDuePayment = false;
+		} else {
+			filterByDuePayment = true;
+		}
 		return "redirect:/staff-clients-list";
 	}
 	

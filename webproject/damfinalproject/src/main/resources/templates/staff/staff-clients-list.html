@@ -39,7 +39,7 @@
                         <a href="/admin/showClientsHistorical" th:href="@{/showClientsHistorical}" th:if="${!showClientsHistorical}">
                             <button class="btn btn-submit" type="submit">Mostrar Históricos</button>
                         </a>
-                        <a href="/admin/removeClientsHistorical" th:href="@{/removeClientsHistorical}" th:if="${showClientsHistorical}">
+                        <a href="/admin/showClientsHistorical" th:href="@{/showClientsHistorical}" th:if="${showClientsHistorical}">
                             <button class="btn btn-submit" type="submit">Mostrar Activos</button>
                         </a>
                     </div>
@@ -47,7 +47,7 @@
                         <a href="/admin/filterByDuePayment" th:href="@{/filterByDuePayment}" th:if="${!filterByDuePayment}">
                             <button class="btn btn-submit" type="submit">Filtrar por Pago Pendiente</button>
                         </a>
-                        <a href="/admin/removeFilterByDuePayment" th:href="@{/removeFilterByDuePayment}" th:if="${filterByDuePayment}">
+                        <a href="/admin/filterByDuePayment" th:href="@{/filterByDuePayment}" th:if="${filterByDuePayment}">
                             <button class="btn btn-submit" type="submit">Quitar Filtrado por Pago Pendiente</button>
                         </a>
                     </div>

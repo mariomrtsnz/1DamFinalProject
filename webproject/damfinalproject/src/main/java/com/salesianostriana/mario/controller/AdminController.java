@@ -71,13 +71,12 @@ public class AdminController {
 
 	@GetMapping("/showTreatmentsHistorical")
 	public String showTreatmentsHistorical(Model model) {
-		showTreatmentsHistorical = true;
-		return "redirect:/admin-services-list";
-	}
-	
-	@GetMapping("/removeTreatmentsHistorical")
-	public String removeTreatmentsHistorical(Model model) {
-		showTreatmentsHistorical = false;
+		if (showTreatmentsHistorical) {
+			showTreatmentsHistorical  = false;
+		} else {
+			showTreatmentsHistorical  = true;
+		}
+		
 		return "redirect:/admin-services-list";
 	}
 
@@ -100,13 +99,11 @@ public class AdminController {
 	
 	@GetMapping("/showStaffHistorical")
 	public String showStaffHistorical() {
-		showStaffHistorical = true;
-		return "redirect:/admin-staff-list";
-	}
-	
-	@GetMapping("/removeStaffHistorical")
-	public String removeStaffHistorical() {
-		showStaffHistorical = false;
+		if (showStaffHistorical) {
+			showStaffHistorical = false;
+		} else {
+			showStaffHistorical = true;
+		}
 		return "redirect:/admin-staff-list";
 	}
 
@@ -118,25 +115,24 @@ public class AdminController {
 			model.addAttribute("appointments", appointmentService.findAllPaid());
 		}
 		model.addAttribute("filterByPaidAppointment", filterByPaidAppointment);
+		model.addAttribute("numberOfAppointments", appointmentService.calculateNumberOfItems());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-calendar";
 	}
 	
 	@GetMapping("/filterByPaidAppointment")
 	public String filterByPaidAppointment(Model model) {
-		filterByPaidAppointment = true;
-		return "redirect:/admin-calendar";
-	}
-	
-	@GetMapping("/removeFilterByPaidAppointment")
-	public String removeFilterByPaidAppointment(Model model) {
-		filterByPaidAppointment = false;
+		if (filterByPaidAppointment) {
+			filterByPaidAppointment = false;
+		} else {
+			filterByPaidAppointment = true;
+		}
 		return "redirect:/admin-calendar";
 	}
 
-	// @PostMapping("/admin-add-appointment")
-	// public String addAppointment() {
-	// return "";
-	// }
+	 @PostMapping("/admin-add-appointment")
+	 public String addAppointment() {
+		 return "/admin/admin-add-appointment";
+	 }
 
 }

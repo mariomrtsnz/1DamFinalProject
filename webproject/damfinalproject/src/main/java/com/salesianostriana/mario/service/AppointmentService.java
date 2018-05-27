@@ -44,6 +44,10 @@ public class AppointmentService {
 		return findAllPaid().spliterator().getExactSizeIfKnown();
 	}
 	
+	public long calculateNumberOfItems() {
+		return findAll().spliterator().getExactSizeIfKnown();
+	}
+	
 	public Appointment findOneByStartTime(LocalDateTime appointmentTime) {
 		return repository.findByStartTime(appointmentTime);
 	}
