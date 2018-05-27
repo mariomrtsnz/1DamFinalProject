@@ -33,6 +33,10 @@ public class ClientService {
 		return repository.findByHistoricalTrue();
 	}
 	
+	public Iterable<Client> findAllActive() {
+		return repository.findByHistoricalFalse();
+	}
+	
 	public Iterable<Client> findByDuePayment() {
 		return repository.findByDuePaymentTrue();
 	}

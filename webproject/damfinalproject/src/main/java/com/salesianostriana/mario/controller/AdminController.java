@@ -1,6 +1,8 @@
 package com.salesianostriana.mario.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.mario.formbean.SignUpUser;
+import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
@@ -130,9 +133,26 @@ public class AdminController {
 		return "redirect:/admin-calendar";
 	}
 
-	 @PostMapping("/admin-add-appointment")
-	 public String addAppointment() {
+	 @GetMapping("/admin-add-appointment")
+	 public String addAppointment(Model model) {
+		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		 model.addAttribute("newAppointment", new Appointment());
+		 model.addAttribute("startTime", LocalTime.now());
+		 model.addAttribute("startDate", LocalDate.now());
+		 model.addAttribute("clients", clientService.findAllActive());
+		 model.addAttribute("employees", employeeService.findAllActive());
+		 model.addAttribute("treatments", treatmentService.findAllActive());
 		 return "/admin/admin-add-appointment";
+	 }
+	 
+	 @PostMapping("/addNewAppointment")
+	 public String submitNewAppointment(@ModelAttribute("newAppointment") Appointment newAppointment, @ModelAttribute("startDate") LocalDate startDate, @ModelAttribute("startTime") LocalTime startTime, BindingResult bindingResult, Model model) {
+		 LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
+//		 Employee employee = employeeService.findOne(newAppointment.getEmployee());
+		 Appointment appointment = new Appointment(startDateTime, newAppointment.getClient(), newAppointment.getEmployee(), startDateTime.plusHours(1), false, LocalDateTime.now(), newAppointment.getTreatment());
+		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		 appointmentService.save(appointment);
+		 return "redirect:/admin-calendar";
 	 }
 
 }

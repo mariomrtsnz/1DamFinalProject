@@ -60,5 +60,9 @@ public class TreatmentService {
 	public Iterable<Treatment> findAllHistorical() {
 		return repository.findByHistoricalTrue();
 	}
+	
+	public Iterable<Treatment> findAllActive() {
+		return repository.findByHistoricalFalse();
+	}
 
 }

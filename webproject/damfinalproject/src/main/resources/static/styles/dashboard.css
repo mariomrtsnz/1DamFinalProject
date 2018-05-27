@@ -913,5 +913,8 @@ label {
 	margin-bottom: 2em;
 	font-weight: bolder !important;
 }
+#addAppointmentTitle {
+	margin-bottom: 0;
+}
 
 /*# sourceMappingURL=dashboard.css.map */
