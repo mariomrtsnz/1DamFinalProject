@@ -91,9 +91,13 @@ public class EmployeeService {
 		Employee firstAvailableEmployee;
 		Appointment appointmentOnSelectedTime = appointmentService.findOneByStartTime(appointmentDateTime);
 
-		firstAvailableEmployee = employees.stream()
-				.filter((employee) -> (!employee.equals(appointmentOnSelectedTime.getEmployee()))).findFirst()
-				.orElse(null);
+		if (appointmentOnSelectedTime == null) {
+			firstAvailableEmployee = employees.stream().findFirst().orElse(null);
+		} else {
+			firstAvailableEmployee = employees.stream()
+					.filter((employee) -> (!employee.equals(appointmentOnSelectedTime.getEmployee()))).findFirst()
+					.orElse(null);
+		}
 
 		return firstAvailableEmployee;
 	}

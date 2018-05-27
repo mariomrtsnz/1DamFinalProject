@@ -122,14 +122,14 @@ public class DamFinalProjectApplication {
 			c.addAppointment(a2);
 			e1.addAppointment(a2);
 			t1.addAppointment(a2);
-			
+
 			Appointment a3 = new Appointment(LocalDateTime.of(2018, 10, 24, 15, 00), c1, e1,
 					LocalDateTime.of(2018, 10, 24, 16, 00), false, LocalDateTime.of(2018, 9, 30, 11, 00), t2);
 			a3 = appointmentService.save(a3);
 			c1.addAppointment(a3);
 			e1.addAppointment(a3);
 			t2.addAppointment(a3);
-			
+
 			Appointment a4 = new Appointment(LocalDateTime.of(2018, 8, 3, 16, 00), c, e,
 					LocalDateTime.of(2018, 8, 3, 17, 00), false, LocalDateTime.of(2018, 8, 1, 19, 00), t3);
 			a4 = appointmentService.save(a4);
@@ -141,6 +141,7 @@ public class DamFinalProjectApplication {
 			// System.out.println(treatmentService.calculatePriceWithDiscount(t3));
 			// System.out.println(clientService.findOne(c.getId()));
 			// System.out.println(company.getId());
+			// employeeService.findFirstAvailableByDateTime(LocalDateTime.now());
 		};
 	}
 }
