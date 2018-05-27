@@ -45,8 +45,7 @@ public class AdminController {
 	@Autowired
 	private ClientService clientService;
 
-	boolean showTreatmentsHistorical = false;
-	boolean showStaffHistorical = false;
+	boolean showTreatmentsHistorical = false, showStaffHistorical = false, filterByPaidAppointment = false;
 
 	@GetMapping({ "/admin", "/admin-dashboard" })
 	public String index(Model model) {
@@ -100,22 +99,39 @@ public class AdminController {
 	}
 	
 	@GetMapping("/showStaffHistorical")
-	public String showStaffHistorical(Model model) {
+	public String showStaffHistorical() {
 		showStaffHistorical = true;
 		return "redirect:/admin-staff-list";
 	}
 	
 	@GetMapping("/removeStaffHistorical")
-	public String removeStaffHistorical(Model model) {
+	public String removeStaffHistorical() {
 		showStaffHistorical = false;
 		return "redirect:/admin-staff-list";
 	}
 
 	@GetMapping("/admin-calendar")
 	public String showCalendar(Model model) {
-		model.addAttribute("appointments", appointmentService.findAll());
+		if (!filterByPaidAppointment) {
+			model.addAttribute("appointments", appointmentService.findAll());
+		} else {
+			model.addAttribute("appointments", appointmentService.findAllPaid());
+		}
+		model.addAttribute("filterByPaidAppointment", filterByPaidAppointment);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-calendar";
+	}
+	
+	@GetMapping("/filterByPaidAppointment")
+	public String filterByPaidAppointment(Model model) {
+		filterByPaidAppointment = true;
+		return "redirect:/admin-calendar";
+	}
+	
+	@GetMapping("/removeFilterByPaidAppointment")
+	public String removeFilterByPaidAppointment(Model model) {
+		filterByPaidAppointment = false;
+		return "redirect:/admin-calendar";
 	}
 
 	// @PostMapping("/admin-add-appointment")
