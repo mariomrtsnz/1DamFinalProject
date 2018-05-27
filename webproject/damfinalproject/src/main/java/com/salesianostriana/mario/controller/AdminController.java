@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.formbean.SignUpUser;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
@@ -137,8 +138,7 @@ public class AdminController {
 	 public String addAppointment(Model model) {
 		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		 model.addAttribute("newAppointment", new Appointment());
-		 model.addAttribute("startTime", LocalTime.now());
-		 model.addAttribute("startDate", LocalDate.now());
+		 model.addAttribute("appointmentFormBean", new AppointmentFormBean());
 		 model.addAttribute("clients", clientService.findAllActive());
 		 model.addAttribute("employees", employeeService.findAllActive());
 		 model.addAttribute("treatments", treatmentService.findAllActive());
@@ -146,13 +146,39 @@ public class AdminController {
 	 }
 	 
 	 @PostMapping("/addNewAppointment")
-	 public String submitNewAppointment(@ModelAttribute("newAppointment") Appointment newAppointment, @ModelAttribute("startDate") LocalDate startDate, @ModelAttribute("startTime") LocalTime startTime, BindingResult bindingResult, Model model) {
-		 LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
+	 public String submitNewAppointment(@ModelAttribute("newAppointment") Appointment newAppointment, @ModelAttribute("appointmentFormBean") AppointmentFormBean appointmentFormBean, BindingResult bindingResult, Model model) {
+		 LocalDateTime startDateTime = LocalDateTime.of(appointmentFormBean.getStartDate(), appointmentFormBean.getStartTime());
 //		 Employee employee = employeeService.findOne(newAppointment.getEmployee());
 		 Appointment appointment = new Appointment(startDateTime, newAppointment.getClient(), newAppointment.getEmployee(), startDateTime.plusHours(1), false, LocalDateTime.now(), newAppointment.getTreatment());
 		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		 appointmentService.save(appointment);
 		 return "redirect:/admin-calendar";
 	 }
+	 
+	 @GetMapping("/edit-appointment/{id}")
+	 public String goToEditAppointment(@PathVariable("id") Long id, Model model) {
+		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+			model.addAttribute("editableAppointment", appointmentService.findOne(id));
+		 return "/admin/edit-appointment";
+	 }
+	 
+	 @PostMapping("/editAppointment")
+		public String editAppointment(@ModelAttribute("editableAppointment") Appointment editableAppointment, Model model,
+				BindingResult bindingResult) {
+			model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+			appointmentService.edit(editableAppointment);
+			return "redirect:/admin-calendar";
+		}
+	 
+	 @GetMapping("/delete-appointment/{id}")
+		public String deleteAppointment(@PathVariable("id") Long id, Model model) {
+			Appointment appointment = appointmentService.findOne(id);
+			// companyService.findDefaultCompany().removeTreatment(treatment);
+			// treatment.setCompany(null);
+			// treatment.setAppointments(null);
+			appointmentService.remove(appointment);
+			model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+			return "redirect:/admin-calendar";
+		}
 
 }
