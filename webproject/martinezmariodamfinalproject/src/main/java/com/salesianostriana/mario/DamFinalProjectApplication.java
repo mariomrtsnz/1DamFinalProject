@@ -50,14 +50,30 @@ public class DamFinalProjectApplication {
 			c1 = clientService.save(c1);
 			company.addClient(c1);
 
-			Employee e = new Employee("12345678B", "test@rwd.com", 20000.00, "test", "employee", "098765432",
-					"noPicture", "Administrativo", LocalDateTime.of(2018, 5, 3, 7, 30), null);
+			Employee e = new Employee("12345678B", "batman@rwd.com", 20000.00, "Bruce Wayne", "batman", "098765432",
+					"/images/staff/male1.jpg", "Administrativo", LocalDateTime.of(2018, 5, 3, 7, 30), null);
 			e = employeeService.save(e);
 			company.addEmployee(e);
-			Employee e1 = new Employee("10293847C", "harveydent@rwd.com", 40000.00, "Harvey Dent", "batman",
-					"666777888", "noPicture2", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			Employee e1 = new Employee("10293847C", "harveydent@rwd.com", 40000.00, "Harvey Dent", "harveydent",
+					"666777888", "/images/staff/male2.jpg", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
 			e1 = employeeService.save(e1);
 			company.addEmployee(e1);
+			Employee e2 = new Employee("10293847C", "poisonivy@rwd.com", 40000.00, "Poison Ivy", "poisonivy",
+					"666777888", "/images/staff/female1.jpg", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			e2 = employeeService.save(e2);
+			company.addEmployee(e2);
+			Employee e3 = new Employee("10293847C", "catwoman@rwd.com", 40000.00, "Selina Kyle", "catwoman",
+					"666777888", "/images/staff/female2.jpg", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			e3 = employeeService.save(e3);
+			company.addEmployee(e3);
+			Employee e4 = new Employee("10293847C", "barbaragordon@rwd.com", 40000.00, "Bárbara Gordon", "barbaragordon",
+					"666777888", "/images/staff/female3.jpg", "Administrativo", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			e4 = employeeService.save(e4);
+			company.addEmployee(e4);
+			Employee e5 = new Employee("10293847C", "enygma@rwd.com", 40000.00, "Edward Nygma", "enygma",
+					"666777888", "/images/staff/male3.jpg", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			e5 = employeeService.save(e5);
+			company.addEmployee(e5);
 
 			Treatment t = new Treatment(
 					"Los dientes son muy importantes para su apariencia. Te ves más joven con los dientes más blancos. Aquí en RealWorldDental blanqueamos tus dientes con la última tecnología.",
