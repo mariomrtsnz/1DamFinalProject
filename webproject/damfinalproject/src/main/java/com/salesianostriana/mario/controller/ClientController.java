@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.salesianostriana.mario.formbean.AppointmentFormBean;
+import com.salesianostriana.mario.formbean.SearchBean;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
@@ -63,21 +64,23 @@ public class ClientController {
 	// TODO: Remove "/public" from Mappings
 	@GetMapping("/public/services")
 	public String services(Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("allTreatments", treatmentService.findAll());
+		model.addAttribute("filteredTreatments", treatmentService.findAll());
+		model.addAttribute("search", new SearchBean());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-services";
 	}
 
 	@GetMapping("/public/aboutus")
 	public String aboutUs(Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("allTreatments", treatmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-aboutus";
 	}
 
 	@GetMapping("/public/contactus")
 	public String contactUs(Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("allTreatments", treatmentService.findAll());
 		model.addAttribute("company", companyService.findDefaultCompany());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-contactus";
@@ -85,14 +88,14 @@ public class ClientController {
 
 	@GetMapping("/public/profile")
 	public String profile(Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("allTreatments", treatmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-profile";
 	}
 
 	@GetMapping("/public/user-service/{id}")
 	public String serviceDetail(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("treatments", treatmentService.findAll());
+		model.addAttribute("allTreatments", treatmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		model.addAttribute("newAppointment", new AppointmentFormBean());
 		Treatment s = treatmentService.findOneById(id);
@@ -183,5 +186,14 @@ public class ClientController {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/staff-clients-list";
 	}
+	
+	@PostMapping("/search")
+	  public String searchTreatment(@ModelAttribute("search") SearchBean searchBean,
+			 Model model){
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("filteredTreatments", treatmentService.findByName(searchBean.getSearch()));
+		model.addAttribute("allTreatments", treatmentService.findAll());
+		return "/public/user-services";
+	  }
 
 }

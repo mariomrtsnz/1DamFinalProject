@@ -9,4 +9,5 @@ import com.salesianostriana.mario.model.Treatment;
 public interface TreatmentRepository extends JpaRepository<Treatment, Long> {
 	Iterable<Treatment> findByHistoricalTrue();
 	Iterable<Treatment> findByHistoricalFalse();
+	public Iterable<Treatment> findByNameContainingIgnoreCase(String nombre);
 }

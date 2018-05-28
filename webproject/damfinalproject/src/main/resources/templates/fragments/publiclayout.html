@@ -39,7 +39,7 @@
                     <li class="see-all">
                         <a href="user-services.html" th:href="@{/public/services}">Ver Servicios</a>
                     </li>
-                    <li th:each="treatment : ${treatments}">
+                    <li th:each="treatment : ${allTreatments}">
                         <a class="cd-nav-item item-1" href="/public/user-service.html" th:href="@{'/public/user-service/' + ${treatment.id}}">
                             <h3 th:text="${treatment.name}">Tratamiento</h3>
                         </a>

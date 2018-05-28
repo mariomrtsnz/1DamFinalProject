@@ -37,15 +37,15 @@ public class DamFinalProjectApplication {
 
 			Company company = new Company("55123456T", "c/ Alejo Fernández, 13, 41003", LocalTime.of(19, 00),
 					LocalTime.of(10, 00), "contact@realworlddental.com", "RealWorld Dental", "954 335 932");
-			Admin admin = new Admin("55123456T", "admin@rwd.com", "Admin", "1", "664560382",
+			Admin admin = new Admin("55123456T", "admin@admin.com", "Admin", "admin", "664560382",
 					"/images/profilePics/profile-admin.jpg");
 			companyService.save(company, admin);
 
-			Client c = new Client("77927639M", "mario.mrtsnz@gmail.com", true, false, "Mario Martínez Sanz", "1234",
+			Client c = new Client("77927639M", "usuario@usuario.com", true, false, "Mario Martínez Sanz", "1234",
 					"678377084", "fotoMarioMartinez", LocalDateTime.now());
 			c = clientService.save(c);
 			company.addClient(c);
-			Client c1 = new Client("00988766D", "test.client@rwd.com", false, true, "Frank Castle", "frankcastle",
+			Client c1 = new Client("00988766D", "frank.castle@rwd.com", false, true, "Frank Castle", "frankcastle",
 					"882764410", "fotoFrankCastle", LocalDateTime.of(2014, Month.JANUARY, 1, 10, 10, 30));
 			c1 = clientService.save(c1);
 			company.addClient(c1);

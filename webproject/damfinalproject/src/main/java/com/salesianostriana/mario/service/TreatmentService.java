@@ -3,7 +3,6 @@ package com.salesianostriana.mario.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.repository.TreatmentRepository;
 
@@ -34,6 +33,10 @@ public class TreatmentService {
 		if (deletedTreatment != null)
 			repository.delete(entidad);
 		return deletedTreatment;
+	}
+	
+	public Iterable<Treatment> findByName(String name){
+		return repository.findByNameContainingIgnoreCase(name);
 	}
 	
 	public void setHistoricalTrue(Treatment entidad) {

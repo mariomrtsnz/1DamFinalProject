@@ -11,13 +11,20 @@
 <body>
     <header class="cd-main-header" th:replace="fragments/publiclayout :: header">
     </header>
-
     <main class="cd-main-content">
+    	<nav>
+    		<form action="#" th:action="@{/search}" th:object="${search}" method="POST">
+				<input type="text" name="name" placeholder="Buscar..." th:field="*{search}"/>
+				<button type="submit">
+					<span>A</span>
+				</button>
+			</form>
+		</nav>
         <h1 class="sectionName">
             Servicios
         </h1>
         <div class="services-container">
-            <div class="service" th:each="treatment : ${treatments}" th:style="'background-image: url(' + @{${treatment.picture}} + ');'">
+            <div class="service" th:each="treatment : ${filteredTreatments}" th:style="'background-image: url(' + @{${treatment.picture}} + ');'">
                 <div class="info">
                     <div class="title">
                         <h3 th:text="${treatment.name}"></h3>
