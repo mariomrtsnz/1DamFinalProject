@@ -73,7 +73,7 @@
 	                        <td id="orderDate" th:text="${client.name}">{cliente.name}</td>
 	                        <td id="appointmentDate" th:text="${client.phone}">{cliente.phone}</td>
 	                        <td id="dentistName" th:text="${client.email}">{cliente.email}</td>
-	                        <td th:text="${client.registerDate}">{cliente.registerDate}</td>
+	                        <td th:text="${#temporals.format(client.registerDate, 'dd-MM-yyyy HH:mm')}">{cliente.registerDate}</td>
 	                        <td id="payStatus">
 	                            <label class="form-checkbox-label">
 	                                <input name=duePayment class="form-checkbox-field" type="checkbox" readonly="readonly" th:checked="${client.hasDuePayment()}"/>
@@ -103,7 +103,7 @@
 	                        <td id="orderDate" th:text="${client.name}">{cliente.name}</td>
 	                        <td id="appointmentDate" th:text="${client.phone}">{cliente.phone}</td>
 	                        <td id="dentistName" th:text="${client.email}">{cliente.email}</td>
-	                        <td th:text="${client.registerDate}">{cliente.registerDate}</td>
+	                        <td th:text="${#temporals.format(client.registerDate, 'dd-MM-yyyy HH:mm')}">{cliente.registerDate}</td>
 	                        <td id="payStatus">
 	                            <label class="form-checkbox-label">
 	                                <input name=duePayment class="form-checkbox-field" type="checkbox" readonly="readonly" th:checked="${client.hasDuePayment()}"/>

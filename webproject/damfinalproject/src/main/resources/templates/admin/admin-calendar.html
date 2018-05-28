@@ -59,11 +59,11 @@
 					<tbody th:if="${!filterByPaidAppointment}">
 						<tr th:each="appointment : ${appointments}">
 							<td id="serviceName" th:text="${appointment.id}">{appointment.id}</td>
-							<td th:text="${appointment.startTime}">{appointment.startTime}</td>
+							<td th:text="${#temporals.format(appointment.startTime, 'yyyy-MM-dd HH:mm')}">{appointment.startTime}</td>
 							<td id="orderDate" th:text="${appointment.treatment.name}">{appointment.treatment.name}</td>
 							<td id="appointmentDate" th:text="${appointment.client.name}">{appointment.client.name}</td>
 							<td id="dentistName" th:text="${appointment.employee.name}">{appointment.employee.name}</td>
-							<td th:text="${appointment.orderDate}">{appointment.orderdDate}</td>
+							<td th:text="${#temporals.format(appointment.orderDate, 'yyyy-MM-dd HH:mm')}">{appointment.orderdDate}</td>
 							<td th:text="${appointment.paid} ? 'Si' : 'No'"></td>
 							<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
 								<div class="btn-group btn-group-xs" role="group">
@@ -84,11 +84,11 @@
 					<tbody th:if="${filterByPaidAppointment}">
 						<tr th:each="appointment : ${appointments}" th:if="${appointment.paid}">
 							<td id="serviceName" th:text="${appointment.id}">{appointment.id}</td>
-							<td th:text="${appointment.startTime}">{appointment.startTime}</td>
+							<td th:text="${#temporals.format(appointment.orderDate, 'yyyy-MM-dd HH:mm')}">{appointment.startTime}</td>
 							<td id="orderDate" th:text="${appointment.treatment.name}">{appointment.treatment.name}</td>
 							<td id="appointmentDate" th:text="${appointment.client.name}">{appointment.client.name}</td>
 							<td id="dentistName" th:text="${appointment.employee.name}">{appointment.employee.name}</td>
-							<td th:text="${appointment.orderDate}">{appointment.orderdDate}</td>
+							<td th:text="${#temporals.format(appointment.orderDate, 'yyyy-MM-dd HH:mm')}">{appointment.orderdDate}</td>
 							<td th:text="${appointment.paid} ? 'Si' : 'No'"></td>
 							<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
 								<div class="btn-group btn-group-xs" role="group">

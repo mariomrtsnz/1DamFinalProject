@@ -1,10 +1,13 @@
 package com.salesianostriana.mario.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
+import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
@@ -103,16 +107,26 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/addNewAppointment/{id}", method = RequestMethod.POST, params = "action=payNow")
-	public String addAppointmentAndPayNow(@PathVariable("id") Long id,
-			@ModelAttribute("newAppointment") AppointmentFormBean newAppointment, BindingResult bindingResult,
-			Model model) {
-		LocalDateTime startTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
-		Appointment appointment = new Appointment(startTime, (Client) session.getAttribute("loggedUser"),
-				employeeService.findFirstAvailableByDateTime(startTime), startTime.plusHours(1), true,
-				LocalDateTime.now(), treatmentService.findOneById(id));
-		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		appointmentService.save(appointment);
-		return "redirect:/public/user-service/{id}";
+	public String addAppointmentAndPayNow(@PathVariable("id") Long id, @ModelAttribute("newAppointment") AppointmentFormBean newAppointment,
+			BindingResult bindingResult, Model model) {
+		LocalDateTime startDateTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
+		Employee firstEmployeeAvailable = employeeService.findFirstAvailableByDateTime(startDateTime);
+		boolean noEmployeesAvailable = false;
+		Appointment appointment = null;
+		if (firstEmployeeAvailable == null) {
+			noEmployeesAvailable = true;
+		} else {			
+			appointment = new Appointment(startDateTime, (Client) session.getAttribute("loggedUser"),
+					employeeService.findFirstAvailableByDateTime(startDateTime), startDateTime.plusHours(1), true,
+					LocalDateTime.now(), treatmentService.findOneById(id));
+		}
+		if (noEmployeesAvailable) {			
+			return "redirect:/public/user-service/{id}";
+		} else {
+			model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+			appointmentService.save(appointment);
+			return "redirect:/public/user-service/{id}";
+		}
 	}
 
 	@RequestMapping(value = "/addNewAppointment/{id}", method = RequestMethod.POST, params = "action=payPhysically")

@@ -67,7 +67,7 @@
 	                        <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>
 	                        <td id="dentistName" th:text="${employee.email}">{employee.email}</td>
 	                        <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
-	                        <td th:text="${employee.hireDate}">{employee.hireDate}</td>
+	                        <td th:text="${#temporals.format(employee.hireDate, 'dd-MM-yyyy')}">{employee.hireDate}</td>
 	                        <td th:text="${employee.position}">{employee.position}</td>
 	                        <td th:text="${employee.historical} ? 'Si' : 'No'"></td>
 	                        <td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
@@ -93,7 +93,7 @@
 	                        <td id="appointmentDate" th:text="${employee.phone}">{employee.phone}</td>
 	                        <td id="dentistName" th:text="${employee.email}">{employee.email}</td>
 	                        <td th:text="${employee.grossAnualSalary}">{employee.grossAnualSalary}</td>
-	                        <td th:text="${employee.hireDate}">{employee.hireDate}</td>
+	                        <td th:text="${#temporals.format(employee.hireDate, 'dd-MM-yyyy')}">{employee.hireDate}</td>
 	                        <td th:text="${employee.position}">{employee.position}</td>
 	                        <td th:text="${employee.historical} ? 'Si' : 'No'"></td>
 	                        <td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
