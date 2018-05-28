@@ -150,18 +150,7 @@ img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; }
-  .carousel .card:nth-child(2) {
-    background-image: url("../images/staff/female1.png"); }
-  .carousel .card:nth-child(3) {
-    background-image: url("../images/staff/male1.png"); }
-  .carousel .card:nth-child(4) {
-    background-image: url("../images/staff/female2.png"); }
-  .carousel .card:nth-child(5) {
-    background-image: url("../images/staff/male2.png"); }
-  .carousel .card:nth-child(6) {
-    background-image: url("../images/staff/female3.png"); }
-  .carousel .card:nth-child(7) {
-    background-image: url("../images/staff/male3.png"); }
+
 
 .carousel .card {
   position: absolute;

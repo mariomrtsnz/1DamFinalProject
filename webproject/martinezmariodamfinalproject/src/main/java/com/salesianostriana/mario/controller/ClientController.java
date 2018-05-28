@@ -48,6 +48,8 @@ public class ClientController {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	boolean selected = false;
 
 	@GetMapping({ "/public", "/user-index" })
 	public String index(Model model) {
@@ -73,6 +75,8 @@ public class ClientController {
 	public String aboutUs(Model model) {
 		model.addAttribute("allTreatments", treatmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("staff", employeeService.findAllActive());
+		model.addAttribute("company", companyService.findDefaultCompany());
 		return "/public/user-aboutus";
 	}
 

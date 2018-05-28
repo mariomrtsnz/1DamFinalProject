@@ -42,36 +42,36 @@ public class DamFinalProjectApplication {
 			companyService.save(company, admin);
 
 			Client c = new Client("77927639M", "usuario@usuario.com", true, false, "Mario Martínez Sanz", "1234",
-					"678377084", "fotoMarioMartinez", LocalDateTime.now());
+					"678377084", "/images/profilePics/profile-usuario.jpg", LocalDateTime.now());
 			c = clientService.save(c);
 			company.addClient(c);
-			Client c1 = new Client("00988766D", "frank.castle@rwd.com", false, true, "Frank Castle", "frankcastle",
-					"882764410", "fotoFrankCastle", LocalDateTime.of(2014, Month.JANUARY, 1, 10, 10, 30));
+			Client c1 = new Client("00988766D", "frankcastle@rwd.com", false, true, "Frank Castle", "frankcastle",
+					"882764410", "/images/profilePics/profile-client2.jpg", LocalDateTime.of(2014, Month.JANUARY, 1, 10, 10, 30));
 			c1 = clientService.save(c1);
 			company.addClient(c1);
 
-			Employee e = new Employee("12345678B", "batman@rwd.com", 20000.00, "Bruce Wayne", "batman", "098765432",
-					"/images/staff/male1.jpg", "Administrativo", LocalDateTime.of(2018, 5, 3, 7, 30), null);
+			Employee e = new Employee("54259538P", "empleado@empleado.com", 20000.00, "Bruce Wayne", "empleado", "632612336",
+					"/images/staff/1.png", "Administrativo", LocalDateTime.of(2018, 5, 3, 7, 30), null);
 			e = employeeService.save(e);
 			company.addEmployee(e);
-			Employee e1 = new Employee("10293847C", "harveydent@rwd.com", 40000.00, "Harvey Dent", "harveydent",
-					"666777888", "/images/staff/male2.jpg", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			Employee e1 = new Employee("92961930R", "harveydent@rwd.com", 67690.00, "Harvey Dent", "harveydent",
+					"615483364", "/images/staff/2.png", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
 			e1 = employeeService.save(e1);
 			company.addEmployee(e1);
-			Employee e2 = new Employee("10293847C", "poisonivy@rwd.com", 40000.00, "Poison Ivy", "poisonivy",
-					"666777888", "/images/staff/female1.jpg", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			Employee e2 = new Employee("49084817B", "poisonivy@rwd.com", 50049.03, "Pamela Lillian Isley", "poisonivy",
+					"666543237", "/images/staff/3.png", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
 			e2 = employeeService.save(e2);
 			company.addEmployee(e2);
-			Employee e3 = new Employee("10293847C", "catwoman@rwd.com", 40000.00, "Selina Kyle", "catwoman",
-					"666777888", "/images/staff/female2.jpg", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			Employee e3 = new Employee("11180791P", "catwoman@rwd.com", 51210.74, "Selina Kyle", "catwoman",
+					"639699259", "/images/staff/4.png", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
 			e3 = employeeService.save(e3);
 			company.addEmployee(e3);
-			Employee e4 = new Employee("10293847C", "barbaragordon@rwd.com", 40000.00, "Bárbara Gordon", "barbaragordon",
-					"666777888", "/images/staff/female3.jpg", "Administrativo", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			Employee e4 = new Employee("44189356P", "barbaragordon@rwd.com", 30000.00, "Bárbara Gordon", "barbaragordon",
+					"677 171 894", "/images/staff/5.png", "Administrativo", LocalDateTime.of(2018, 3, 1, 6, 29), null);
 			e4 = employeeService.save(e4);
 			company.addEmployee(e4);
-			Employee e5 = new Employee("10293847C", "enygma@rwd.com", 40000.00, "Edward Nygma", "enygma",
-					"666777888", "/images/staff/male3.jpg", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
+			Employee e5 = new Employee("98498552V", "enygma@rwd.com", 45000.00, "Edward Nygma", "enygma",
+					"666953939", "/images/staff/6.png", "Dentista", LocalDateTime.of(2018, 3, 1, 6, 29), null);
 			e5 = employeeService.save(e5);
 			company.addEmployee(e5);
 
