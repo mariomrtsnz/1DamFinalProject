@@ -21,7 +21,7 @@
             Detalles
         </h1>
         <div class="picture">
-            <img src="http://via.placeholder.com/450x450" alt="">
+            <img src="http://via.placeholder.com/450x450" alt="" th:src="${selectedTreatment.picture}">
         </div>
         <div class="details">
             <div class="service-description" th:text="${selectedTreatment.description}">
