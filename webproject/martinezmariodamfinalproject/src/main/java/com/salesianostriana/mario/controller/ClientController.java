@@ -1,13 +1,10 @@
 package com.salesianostriana.mario.controller;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.formbean.SearchBean;
+import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
@@ -90,7 +88,21 @@ public class ClientController {
 	public String profile(Model model) {
 		model.addAttribute("allTreatments", treatmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		if (session.getAttribute("loggedUser") instanceof Client) {
+			model.addAttribute("editableUser", new Client());	
+		} else if (session.getAttribute("loggedUser") instanceof Employee) {
+			model.addAttribute("editableUser", new Employee());
+		} else {
+			model.addAttribute("editableUser", new Admin());
+		}
 		return "/public/user-profile";
+	}
+	
+	@PostMapping("/editUser")
+	public String submitEditUser(@ModelAttribute("editableUser") Client editableClient, BindingResult bindingResult, Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+//		service.edit(editableUser);
+		return "redirect:/public/profile";
 	}
 
 	@GetMapping("/public/user-service/{id}")

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.mario.model.Client;
-import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.repository.ClientRepository;
 
 @Service
@@ -52,7 +51,7 @@ public class ClientService {
 	public Client findFirstByDni(String dni) {
 		return repository.findFirstByDni(dni);
 	}
-
+	
 	public Client remove(Client client) {
 		Client deletedClient = repository.findById(client.getId()).orElse(null);
 		if (deletedClient != null)

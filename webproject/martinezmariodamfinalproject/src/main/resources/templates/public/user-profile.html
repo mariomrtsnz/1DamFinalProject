@@ -13,12 +13,12 @@
     </header>
 
     <main class="cd-main-content">
-        <form class="profileForm-container" name="profileForm" method="post">
+        <form class="profileForm-container" name="profileForm" method="post" th:action="@{/editUser}" th:object="${editableUser}">
             <div class="inputTitle">
                 DNI
             </div>
             <div class="group" id="dniInput">
-                <input type="text" disabled/>
+                <input type="text" disabled th:value="${loggedUser.dni}" th:field="${editableUser.dni}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.dni}">{user.dni}</label>
@@ -27,7 +27,7 @@
                 Nombre
             </div>
             <div class="group" id="nameInput">
-                <input type="text" disabled/>
+                <input type="text" disabled th:value="${loggedUser.name}" th:field="${editableUser.name}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.name}">{user.name}</label>
