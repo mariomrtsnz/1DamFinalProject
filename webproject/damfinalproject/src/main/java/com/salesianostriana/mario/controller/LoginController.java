@@ -47,10 +47,19 @@ public class LoginController {
 			Model model) {
 		Client client = new Client(signUpUser.getDni(), signUpUser.getEmail(), signUpUser.getName(),
 				signUpUser.getPassword(), signUpUser.getPhone(), LocalDateTime.now());
-		clientService.save(client);
+		String existingUserEmailError = "Ya existe un usuario con ese email.";
+		boolean existingUserEmail = clientService.findFirstByEmail(signUpUser.getEmail()) != null;
+		boolean existingUserDni = clientService.findFirstByDni(signUpUser.getDni()) != null;
+		String existingUserDniError = "Ya existe un usuario con ese DNI.";
+		if (existingUserEmail) {
+			model.addAttribute("existingUser", existingUserEmailError);
+		} else if (existingUserDni) {
+			model.addAttribute("existingUser", existingUserDniError);
+		} else {
+			clientService.save(client);
 
-		session.setAttribute("loggedUser", client);
-
+			session.setAttribute("loggedUser", client);
+		}
 		return "redirect:/";
 	}
 

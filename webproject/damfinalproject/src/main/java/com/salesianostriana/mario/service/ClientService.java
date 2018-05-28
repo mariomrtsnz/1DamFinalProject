@@ -40,6 +40,18 @@ public class ClientService {
 	public Iterable<Client> findByDuePayment() {
 		return repository.findByDuePaymentTrue();
 	}
+	
+	public Client findFirstByEmailAndPassword(String email, String password) {
+		return repository.findFirstByEmailAndPassword(email, password);
+	}
+	
+	public Client findFirstByEmail(String email) {
+		return repository.findFirstByEmail(email);
+	}
+	
+	public Client findFirstByDni(String dni) {
+		return repository.findFirstByDni(dni);
+	}
 
 	public Client remove(Client client) {
 		Client deletedClient = repository.findById(client.getId()).orElse(null);

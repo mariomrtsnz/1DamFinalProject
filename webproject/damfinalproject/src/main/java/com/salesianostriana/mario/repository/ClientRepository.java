@@ -12,6 +12,10 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 	Client findClientWithAppointments(Long id);
 
 	Client findFirstByEmailAndPassword(String email, String password);
+	
+	Client findFirstByEmail(String email);
+	
+	Client findFirstByDni(String dni);
 
 	Iterable<Client> findByHistoricalTrue();
 
