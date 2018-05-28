@@ -20,18 +20,16 @@ function modalToggler() {
     $('.modal-overlay').toggle();
 }
 
-function submit() {
+function submit(e) {
     var datePickerValue = document.getElementById('datePicker').value;
     var timePickerValue = document.getElementById('timeInput').value;
-    if (
-        moment(datePickerValue).isBefore(today) || moment(datePickerValue).isAfter(aYearFromToday) || datePickerValue === ""
-    ) {
+    if (moment(datePickerValue).isBefore(today) || moment(datePickerValue).isAfter(aYearFromToday) || datePickerValue === "") {
         alert('La fecha tiene que estar entre ' + today + ' y ' + aYearFromToday);
-    } else if (
-        timePickerValue < openTime || timePickerValue > closeTime || timePickerValue === ""
-    ) {
+        return false;
+    } else if (timePickerValue < openTime || timePickerValue > closeTime || timePickerValue === "") {
         alert('La hora tiene que ser entre las ' + openTime + ' y las ' + closeTime);
+        return false;
     } else {
-
+    	return true;
     }
 }

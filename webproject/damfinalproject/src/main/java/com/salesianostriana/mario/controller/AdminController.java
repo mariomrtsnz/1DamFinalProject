@@ -157,9 +157,16 @@ public class AdminController {
 	 
 	 @GetMapping("/edit-appointment/{id}")
 	 public String goToEditAppointment(@PathVariable("id") Long id, Model model) {
-		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-			model.addAttribute("editableAppointment", appointmentService.findOne(id));
-		 return "/admin/edit-appointment";
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		Appointment appointment = appointmentService.findOne(id);
+		model.addAttribute("editableAppointment", appointment);
+		LocalTime startTime = LocalTime.of(appointment.getStartTime().getHour(), appointment.getStartTime().getMinute());
+		LocalDate startDate = LocalDate.of(appointment.getStartTime().getYear(), appointment.getStartTime().getMonth(), appointment.getStartTime().getDayOfMonth());
+		model.addAttribute("editableAppointmentFormBean", new AppointmentFormBean(startTime, startDate));
+//		model.addAttribute("clients", clientService.findAllActive());
+//		model.addAttribute("employees", employeeService.findAllActive());
+//		model.addAttribute("treatments", treatmentService.findAllActive());
+		return "/admin/admin-edit-appointment";
 	 }
 	 
 	 @PostMapping("/editAppointment")
