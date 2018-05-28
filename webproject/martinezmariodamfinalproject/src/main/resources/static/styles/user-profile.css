@@ -106,6 +106,7 @@ label {
     left: 0%; }
 
 .btn {
+	cursor:pointer;
   background: #fff;
   color: #959595;
   border: none;

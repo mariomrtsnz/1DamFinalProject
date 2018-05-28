@@ -4,7 +4,8 @@
 <head>
     <th:block th:replace="fragments/common :: head"></th:block>
 	<th:block th:replace="fragments/publiclayout :: head"></th:block>
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/user-services.css" th:href="@{/styles/user-services.css}"/>    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />    
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/user-services.css" th:href="@{/styles/user-services.css}"/>
     <title>RWD - Servicios</title>
 </head>
 
@@ -15,9 +16,7 @@
     	<nav>
     		<form action="#" th:action="@{/search}" th:object="${search}" method="POST">
 				<input type="text" name="name" placeholder="Buscar..." th:field="*{search}"/>
-				<button type="submit">
-					<span>A</span>
-				</button>
+				<button type="submit" class="btn btn-primary"><span class="fooicon fa fa-search"></span></button>
 			</form>
 		</nav>
         <h1 class="sectionName">
