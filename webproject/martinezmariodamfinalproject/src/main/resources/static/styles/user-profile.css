@@ -21,11 +21,10 @@
     grid-template-rows: 2fr 0fr 0fr 0fr;
     justify-content: center;
     justify-self: flex-start;
-    background-color: #c3975f;
-    width: 35%;
-    min-height: 30vh; }
+    justify-items: center;
+    border: #2cbfd3 3px solid;
+    width: 32%;}
     .cd-main-content .profilePicture img {
-      height: 100%;
       width: 100%;
       background-color: #2cbfd3; }
     .cd-main-content .profilePicture .employeePosition {
