@@ -164,21 +164,29 @@ public class AdminController {
 	 public String goToEditAppointment(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		Appointment appointment = appointmentService.findOne(id);
-		model.addAttribute("editableAppointment", appointment);
 		LocalTime startTime = LocalTime.of(appointment.getStartTime().getHour(), appointment.getStartTime().getMinute());
 		LocalDate startDate = LocalDate.of(appointment.getStartTime().getYear(), appointment.getStartTime().getMonth(), appointment.getStartTime().getDayOfMonth());
-		model.addAttribute("editableAppointmentFormBean", new AppointmentFormBean(startTime, startDate));
-//		model.addAttribute("clients", clientService.findAllActive());
-//		model.addAttribute("employees", employeeService.findAllActive());
-//		model.addAttribute("treatments", treatmentService.findAllActive());
+		AdminAppointmentBean editableAppointment = new AdminAppointmentBean(startTime, startDate, appointment.getClient().getId(), appointment.getEmployee().getId(), appointment.getTreatment().getId(), appointment.isPaid());
+		model.addAttribute("editableAppointment", editableAppointment);
+		model.addAttribute("clients", clientService.findAllActive());
+		model.addAttribute("employees", employeeService.findAllActive());
+		model.addAttribute("treatments", treatmentService.findAllActive());
 		return "/admin/admin-edit-appointment";
 	 }
 	 
 	 @PostMapping("/editAppointment")
-		public String editAppointment(@ModelAttribute("editableAppointment") Appointment editableAppointment, Model model,
+		public String editAppointment(@ModelAttribute("editableAppointment") AdminAppointmentBean editableAppointment, Model model,
 				BindingResult bindingResult) {
 			model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-			appointmentService.edit(editableAppointment);
+			LocalDateTime startDateTime = LocalDateTime.of(editableAppointment.getStartDate(), editableAppointment.getStartTime());
+			 
+			Treatment treatment = treatmentService.findOneById(editableAppointment.getTreatmentId());
+			Client client = clientService.findOne(editableAppointment.getClientId());
+			Employee employee = employeeService.findOne(editableAppointment.getEmployeeId());
+			 
+			Appointment appointment = new Appointment(startDateTime, client, employee, startDateTime.plusHours(1), false, LocalDateTime.now(), treatment);
+			
+			appointmentService.edit(appointment);
 			return "redirect:/admin-calendar";
 		}
 	 

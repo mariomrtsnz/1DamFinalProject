@@ -3,7 +3,7 @@
 
 <head>
 	<th:block th:replace="fragments/common :: head"></th:block>
-    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard - Añadir Servicio')"></th:block>
+    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard - Añadir Cita')"></th:block>
 </head>
 
 <body>
@@ -12,70 +12,53 @@
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper" id="addForm-wrapper">
-        	<h1 class="pageTitle">Añadir Nuevo Servicio</h1>
+        	<h1 class="pageTitle" id="addAppointmentTitle">Añadir Nueva Cita</h1>
         	<div class="add-form-container">
-        		<form method="post" th:action="@{/editTreatment}" th:object="${editableTreatment}" id="addServiceForm">
-        			<div class="group" id="dniInput" style="display: none;">
-		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{id}">{treatment.name}</label>
-		            </div>
+        		<form method="post" th:action="@{/addNewAppointment}" th:object="${appointmentFormBean}" id="addServiceForm">
         			<div class="inputTitle">
 		                Nombre del Servicio
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{name}" th:value="*{name}"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{name}">{treatment.name}</label>
+		                <select th:field="${editableAppointment.treatmentId}">
+		                	<option required="required" th:each="treatment : ${treatments}" th:text="${treatment.name}" name="treatment" th:value="${treatment.id}" th:selected="${treatment.id == editableAppointment.treatmentId}">{treatment.name}</option>
+		                </select>
 		            </div>
 		            <div class="inputTitle">
-		                Descripción
+		                Nombre del Cliente
 		            </div>
 		            <div class="group" id="nameInput">
-		            	<textarea rows="" cols="" required="required" name="description" th:placeholder="*{description}" th:field="*{description}" th:value="*{description}"></textarea>
+		            	<select th:field="${editableAppointment.clientId}">
+		                	<option required="required" th:each="client : ${clients}" th:text="${client.name}" name="client" th:value="${client.id}" th:selected="${client.id == editableAppointment.clientId}">{client.name}</option>
+		                </select>
 		            </div>
 		            <div class="inputTitle">
-		                Precio
+		                Nombre del Empleado
 		            </div>
 		            <div class="group" id="phoneInput">
-		                <input type="number" step=".01" required="required" placeholder="1" th:field="*{totalPrice}" name="totalPrice" th:value="*{totalPrice}"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{totalPrice}">{treatment.totalPrice}</label>
+		            	<select th:field="${editableAppointment.employeeId}">
+		                	<option required="required" th:each="employee : ${employees}" th:text="${employee.name}" name="employee" th:value="${employee.id}" th:selected="${employee.id == editableAppointment.employeeId}">{employee.name}</option>
+		                </select>
 		            </div>
 		            <div class="inputTitle">
-		                Descuento (%)
+		                Pagado
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="number" placeholder="5" th:field="*{discount}" name="discount" th:value="*{discount}"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{discount}">{treatment.discount}</label>
-		            </div>
-		            <div class="inputTitle">
-		                Número de Sesiones
+		                <input type="checkbox" th:type="checkbox" name="paid" th:field="${editableAppointment.paid}" th:value="${editableAppointment.paid}" th:checked="${editableAppointment.paid}" />
+		                <input type="hidden" value="on" name="_paid"/>
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="number" required="required" placeholder="1" name="numSessions" th:field="*{numSessions}" th:value="*{numSessions}"/>
-		                <span class="highlight"></span>
-		                <span class="bar"></span>
-		                <label th:text="*{numSessions}">{treatment.numSessions}</label>
-		            </div>
-		            <div class="inputTitle">
-		                Pagado a plazos
-		            </div>
-		            <div class="group" id="dniInput">
-		                <input type="checkbox" th:type="checkbox" name="paidInInstallments" th:field="*{paidInInstallments}" th:value="*{paidInInstallments}" th:checked="*{paidInInstallments}"/>
-		                <input type="hidden" value="on" name="_paidInInstallments"/>
-		            </div>
-		            <div class="inputTitle">
-		                Histórico
-		            </div>
-		            <div class="group" id="dniInput">
-		                <input type="checkbox" th:type="checkbox" name="historical" th:field="*{historical}" th:value="*{historical}" th:checked="*{historical}"/>
-		                <input type="hidden" value="on" name="_historical"/>
+		            	<div id="date">
+	                    	<h2>Selecciona fecha (MM/DD/YYYY):</h2>
+	                	</div>
+		                <div id="calendar">
+		                    <input type="date" name="startDate" th:field="${editableAppointment.startDate}" th:value="${editableAppointment.startDate}" id="datePicker" th:placeholder="${editableAppointment.startDate}" required>
+		                </div>
+		                <div id="time">
+		                    <h2>Selecciona hora (HH:MM AM/PM):</h2>
+		                </div>
+		                <div id="timePicker">
+		                    <input type="time" name="startTime" id="timeInput" th:field="${editableAppointment.startTime}" th:value="${editableAppointment.startTime}" th:placeholder="${editableAppointment.startTime}" required>
+		                </div>                
 		            </div>
         			<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="submit">Guardar Cambios</button>
@@ -83,7 +66,7 @@
             		<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="reset">Reestablecer Valores</button>
             		</div>
-        		</form>
+           		</form>
         	</div>
         </div>
     </main>
