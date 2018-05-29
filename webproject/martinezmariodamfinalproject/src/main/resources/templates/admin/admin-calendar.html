@@ -58,7 +58,7 @@
 					</thead>
 					<tbody th:if="${!filterByPaidAppointment}">
 						<tr th:each="appointment : ${appointments}">
-							<td id="serviceName" th:text="${appointment.id}">{appointment.id}</td>
+							<td id="serviceName" th:text="${appointment.id}" th:onclick="'javascript:openAppointmentModal(\'' + ${appointment.id} +'\');'">{appointment.id}</td>
 							<td th:text="${#temporals.format(appointment.startTime, 'yyyy-MM-dd HH:mm')}">{appointment.startTime}</td>
 							<td id="orderDate" th:text="${appointment.treatment.name}">{appointment.treatment.name}</td>
 							<td id="appointmentDate" th:text="${appointment.client.name}">{appointment.client.name}</td>
@@ -108,6 +108,9 @@
 					</tbody>
 				</table>
 			</div>
+		</div>
+		<div id="appointmentModalHolder">
+			
 		</div>
 	</main>
 </body>

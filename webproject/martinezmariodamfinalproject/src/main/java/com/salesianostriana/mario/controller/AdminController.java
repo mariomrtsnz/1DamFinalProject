@@ -168,6 +168,7 @@ public class AdminController {
 		LocalDate startDate = LocalDate.of(appointment.getStartTime().getYear(), appointment.getStartTime().getMonth(), appointment.getStartTime().getDayOfMonth());
 		AdminAppointmentBean editableAppointment = new AdminAppointmentBean(startTime, startDate, appointment.getClient().getId(), appointment.getEmployee().getId(), appointment.getTreatment().getId(), appointment.isPaid());
 		model.addAttribute("editableAppointment", editableAppointment);
+		model.addAttribute("originalAppointment", appointment);
 		model.addAttribute("clients", clientService.findAllActive());
 		model.addAttribute("employees", employeeService.findAllActive());
 		model.addAttribute("treatments", treatmentService.findAllActive());
@@ -175,7 +176,7 @@ public class AdminController {
 	 }
 	 
 	 @PostMapping("/editAppointment")
-		public String editAppointment(@ModelAttribute("editableAppointment") AdminAppointmentBean editableAppointment, Model model,
+		public String editAppointment(@ModelAttribute("editableAppointment") AdminAppointmentBean editableAppointment, @ModelAttribute("originalAppointment") Appointment originalAppointment, Model model,
 				BindingResult bindingResult) {
 			model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 			LocalDateTime startDateTime = LocalDateTime.of(editableAppointment.getStartDate(), editableAppointment.getStartTime());
@@ -184,9 +185,13 @@ public class AdminController {
 			Client client = clientService.findOne(editableAppointment.getClientId());
 			Employee employee = employeeService.findOne(editableAppointment.getEmployeeId());
 			 
-			Appointment appointment = new Appointment(startDateTime, client, employee, startDateTime.plusHours(1), false, LocalDateTime.now(), treatment);
+			originalAppointment.setTreatment(treatment);
+			originalAppointment.setClient(client);
+			originalAppointment.setEmployee(employee);
+			originalAppointment.setStartTime(startDateTime);
+			originalAppointment.setEndTime(startDateTime.plusHours(1));
 			
-			appointmentService.edit(appointment);
+			appointmentService.edit(originalAppointment);
 			return "redirect:/admin-calendar";
 		}
 	 
