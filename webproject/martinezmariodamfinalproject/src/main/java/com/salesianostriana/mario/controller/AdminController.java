@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.salesianostriana.mario.formbean.AdminAppointmentBean;
 import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.formbean.SignUpUser;
 import com.salesianostriana.mario.model.Appointment;
@@ -137,8 +138,7 @@ public class AdminController {
 	 @GetMapping("/admin-add-appointment")
 	 public String addAppointment(Model model) {
 		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		 model.addAttribute("newAppointment", new Appointment());
-		 model.addAttribute("appointmentFormBean", new AppointmentFormBean());
+		 model.addAttribute("appointmentFormBean", new AdminAppointmentBean());
 		 model.addAttribute("clients", clientService.findAllActive());
 		 model.addAttribute("employees", employeeService.findAllActive());
 		 model.addAttribute("treatments", treatmentService.findAllActive());
@@ -146,10 +146,15 @@ public class AdminController {
 	 }
 	 
 	 @PostMapping("/addNewAppointment")
-	 public String submitNewAppointment(@ModelAttribute("newAppointment") Appointment newAppointment, @ModelAttribute("appointmentFormBean") AppointmentFormBean appointmentFormBean, BindingResult bindingResult, Model model) {
+	 public String submitNewAppointment(@ModelAttribute("appointmentFormBean") AdminAppointmentBean appointmentFormBean, BindingResult bindingResult, Model model) {
 		 LocalDateTime startDateTime = LocalDateTime.of(appointmentFormBean.getStartDate(), appointmentFormBean.getStartTime());
-//		 Employee employee = employeeService.findOne(newAppointment.getEmployee());
-		 Appointment appointment = new Appointment(startDateTime, newAppointment.getClient(), newAppointment.getEmployee(), startDateTime.plusHours(1), false, LocalDateTime.now(), newAppointment.getTreatment());
+		 
+		 Treatment treatment = treatmentService.findOneById(appointmentFormBean.getTreatmentId());
+		 Client client = clientService.findOne(appointmentFormBean.getClientId());
+		 Employee employee = employeeService.findOne(appointmentFormBean.getEmployeeId());
+		 
+		 Appointment appointment = new Appointment(startDateTime, client, employee, startDateTime.plusHours(1), false, LocalDateTime.now(), treatment);
+		 
 		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		 appointmentService.save(appointment);
 		 return "redirect:/admin-calendar";

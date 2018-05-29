@@ -14,36 +14,36 @@
         <div class="content-wrapper" id="addForm-wrapper">
         	<h1 class="pageTitle" id="addAppointmentTitle">Añadir Nueva Cita</h1>
         	<div class="add-form-container">
-        		<form method="post" th:action="@{/addNewAppointment}" th:object="${newAppointment}" id="addServiceForm">
+        		<form method="post" th:action="@{/addNewAppointment}" th:object="${appointmentFormBean}" id="addServiceForm">
         			<div class="inputTitle">
 		                Nombre del Servicio
 		            </div>
 		            <div class="group" id="dniInput">
-		                <select>
-		                	<option required="required" th:each="treatment : ${treatments}" th:text="${treatment.name}" name="treatment" th:value="${newAppointment.treatment}">{treatment.name}</option>
+		                <select th:field="${appointmentFormBean.treatmentId}">
+		                	<option required="required" th:each="treatment : ${treatments}" th:text="${treatment.name}" name="treatment" th:value="${treatment.id}">{treatment.name}</option>
 		                </select>
 		            </div>
 		            <div class="inputTitle">
 		                Nombre del Cliente
 		            </div>
 		            <div class="group" id="nameInput">
-		            	<select>
-		                	<option required="required" th:each="client : ${clients}" th:text="${client.name}" name="client" th:value="${newAppointment.client}">{client.name}</option>
+		            	<select th:field="${appointmentFormBean.clientId}">
+		                	<option required="required" th:each="client : ${clients}" th:text="${client.name}" name="client" th:value="${client.id}">{client.name}</option>
 		                </select>
 		            </div>
 		            <div class="inputTitle">
 		                Nombre del Empleado
 		            </div>
 		            <div class="group" id="phoneInput">
-		                <select>
-		                	<option required="required" th:each="employee : ${employees}" th:text="${employee.name}" name="employee" th:value="${newAppointment.employee}">{employee.name}</option>
+		            	<select th:field="${appointmentFormBean.employeeId}">
+		                	<option required="required" th:each="employee : ${employees}" th:text="${employee.name}" name="employee" th:value="${employee.id}">{employee.name}</option>
 		                </select>
 		            </div>
 		            <div class="inputTitle">
 		                Pagado
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="checkbox" th:type="checkbox" name="paid" th:field="${newAppointment.paid}" th:value="${newAppointment.paid}"th:checked="${newAppointment.paid}" />
+		                <input type="checkbox" th:type="checkbox" name="paid" th:field="${appointmentFormBean.paid}" th:value="${appointmentFormBean.paid}" th:checked="${appointmentFormBean.paid}" />
 		                <input type="hidden" value="on" name="_paid"/>
 		            </div>
 		            <div class="group" id="dniInput">
@@ -66,7 +66,7 @@
             		<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="reset">Reestablecer Valores</button>
             		</div>
-        		</form>
+           		</form>
         	</div>
         </div>
     </main>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.mario.model.Client;
+import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.repository.ClientRepository;
 
 @Service
@@ -50,6 +51,10 @@ public class ClientService {
 	
 	public Client findFirstByDni(String dni) {
 		return repository.findFirstByDni(dni);
+	}
+	
+	public Client findFirstByName(String name) {
+		return repository.findFirstByName(name);
 	}
 	
 	public Client remove(Client client) {

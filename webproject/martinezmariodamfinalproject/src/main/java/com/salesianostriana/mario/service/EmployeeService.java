@@ -27,6 +27,10 @@ public class EmployeeService {
 	public Employee findOne(Long id) {
 		return repository.findById(id).orElse(null);
 	}
+	
+	public Employee findFirstByName(String name) {
+		return repository.findFirstByName(name);
+	}
 
 	public Iterable<Employee> findAll() {
 		return repository.findAll();

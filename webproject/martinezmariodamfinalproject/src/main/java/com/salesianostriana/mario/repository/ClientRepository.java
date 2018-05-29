@@ -22,4 +22,6 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 	Iterable<Client> findByHistoricalFalse();
 
 	Iterable<Client> findByDuePaymentTrue();
+	
+	Client findFirstByName(String name);
 }

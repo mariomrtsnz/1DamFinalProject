@@ -3,6 +3,7 @@ package com.salesianostriana.mario.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.repository.TreatmentRepository;
 
@@ -21,6 +22,10 @@ public class TreatmentService {
 
 	public Iterable<Treatment> findAll() {
 		return repository.findAll();
+	}
+	
+	public Treatment findFirstByName(String name) {
+		return repository.findFirstByName(name);
 	}
 
 	public Treatment save(Treatment entidad) {

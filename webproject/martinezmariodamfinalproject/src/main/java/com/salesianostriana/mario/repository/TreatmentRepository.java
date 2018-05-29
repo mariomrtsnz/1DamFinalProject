@@ -10,4 +10,5 @@ public interface TreatmentRepository extends JpaRepository<Treatment, Long> {
 	Iterable<Treatment> findByHistoricalTrue();
 	Iterable<Treatment> findByHistoricalFalse();
 	public Iterable<Treatment> findByNameContainingIgnoreCase(String nombre);
+	Treatment findFirstByName(String name);
 }
