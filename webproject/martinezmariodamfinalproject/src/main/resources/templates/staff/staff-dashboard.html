@@ -8,38 +8,7 @@
 
 <body>
     <header th:replace="fragments/dashboardlayout :: header"></header>
-    <main class="cd-main-content">
-        <nav th:replace="fragments/stafflayout :: sideBar"></nav>
-		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
-        <div class="content-wrapper">
-            <div class="dashboard-main">
-                <a href="/staff/staff-schedule.html" th:href="@{/staff-schedule}">
-                    <div class="dashboard-card">
-                        <span class="icon-schedule icon" role="img"></span>
-                        <hr class="divider"> Horario Personal
-                    </div>
-                </a>
-                <a href="/staff/staff-clients-list.html" th:href="@{/staff-clients-list}">
-                    <div class="dashboard-card">
-                        <span class="icon-clients icon" role="img"></span>
-                        <hr class="divider"> Clientes
-                    </div>
-                </a>
-                <a href="/public/user-profile.html" th:href="@{/public/profile}">
-                    <div class="dashboard-card">
-                        <span class="icon-profile icon" role="img"></span>
-                        <hr class="divider"> Ficha Personal
-                    </div>
-                </a>
-                <a href="/admin/admin-calendar.html" th:href="@{/admin-calendar}">
-                    <div class="dashboard-card">
-                        <span class="icon-calendar icon" role="img"></span>
-                        <hr class="divider"> Calendario
-                    </div>
-                </a>
-            </div>
-        </div>
-    </main>
+    <main th:replace="fragments/dashboardlayout :: main"></main>
 </body>
 
 </html>
