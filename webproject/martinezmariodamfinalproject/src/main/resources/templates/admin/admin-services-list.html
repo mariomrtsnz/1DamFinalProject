@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="table">
-				<table cellpadding="0" cellspacing="0" border="0" class="table services-list" data-paging="true" data-filtering="true" data-sorting="true">
+				<table cellpadding="0" cellspacing="0" border="0" class="table services-list" data-filtering="true" data-sorting="true">
 					<thead>
 						<tr>
 							<th data-type="number">Id</th>
@@ -110,6 +110,51 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-1">
+				<select class="form-control pagination" id="pageSizeSelect">
+					<option th:each="pageSize : ${pageSizes}" th:text="${pageSize}"
+						th:value="${pageSize}"
+						th:selected="${pageSize} == ${selectedPageSize}"></option>
+				</select>
+			</div>
+			<div th:if="${treatments.totalPages != 1}"
+				class="form-group col-md-11 pagination-centered">
+				<ul class="pagination">
+					<!-- Si el número de página es cero, deshabilitamos el enlace -->
+					<li th:class="${treatments.number == 0} ? disabled">
+						<!-- Este enlace nos debe llevar a la primera página, con el tamaño de página actual -->
+						<a class="pageLink"
+						th:href="@{/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
+					</li>
+					<!-- Si el número de página es cero, deshabilitamos el enlace -->
+					<li th:class="${treatments.number == 0} ? disabled">
+						<!-- Este enlace nos debe llevar a la página anterior, con el tamaño de página actual -->						
+						<a class="pageLink" th:href="@{/(pageSize=${selectedPageSize}, page=${treatments.number})}">&larr;</a>
+					</li>
+					<!-- Este bucle genera los enlaces para las demás páginas -->
+					<li
+						th:class="${treatments.number == (page - 1)} ? 'active pointer-disabled'"
+						th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+						<a class="pageLink"
+						th:href="@{/(pageSize=${selectedPageSize}, page=${page})}"
+						th:text="${page}"></a>
+					</li>
+					<!-- Enlace a la siguiente página; si estamos en la última queda desabilitado  -->
+					<li
+						th:class="${treatments.number + 1 == treatments.totalPages} ? disabled">
+						<a class="pageLink"
+						th:href="@{/(pageSize=${selectedPageSize}, page=${treatments.number + 2})}">&rarr;</a>
+					</li>
+					<!-- Enlace a la última página; si estamos en la última queda desabilitado  -->				
+					<li
+						th:class="${treatments.number + 1 == treatments.totalPages} ? disabled">
+						<a class="pageLink"
+						th:href="@{/(pageSize=${selectedPageSize}, page=${treatments.totalPages})}">&raquo;</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</main>

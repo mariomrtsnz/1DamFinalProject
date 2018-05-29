@@ -50,7 +50,7 @@ public class AdminController {
 	@Autowired
 	private ClientService clientService;
 
-	boolean showTreatmentsHistorical = false, showStaffHistorical = false, filterByPaidAppointment = false;
+	boolean showStaffHistorical = false, filterByPaidAppointment = false;
 
 	@GetMapping({ "/admin", "/admin-dashboard" })
 	public String index(Model model) {
@@ -59,30 +59,6 @@ public class AdminController {
 		// deleteSuccess = false;
 		// model.addAttribute("deleteSuccess", deleteSuccess);
 		return "/admin/admin-dashboard-index";
-	}
-
-	@GetMapping("/admin-services-list")
-	public String servicesList(Model model) {
-		if (!showTreatmentsHistorical) {
-			model.addAttribute("treatments", treatmentService.findAll());
-		} else {
-			model.addAttribute("treatments", treatmentService.findAllHistorical());
-		}
-		model.addAttribute("showTreatmentsHistorical", showTreatmentsHistorical);
-		model.addAttribute("numberOfTreatments", treatmentService.calculateNumberOfItems());
-		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		return "/admin/admin-services-list";
-	}
-
-	@GetMapping("/showTreatmentsHistorical")
-	public String showTreatmentsHistorical(Model model) {
-		if (showTreatmentsHistorical) {
-			showTreatmentsHistorical  = false;
-		} else {
-			showTreatmentsHistorical  = true;
-		}
-		
-		return "redirect:/admin-services-list";
 	}
 
 	@GetMapping("/admin-staff-list")

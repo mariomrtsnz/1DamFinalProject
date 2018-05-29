@@ -1,14 +1,16 @@
 package com.salesianostriana.mario.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
 import com.salesianostriana.mario.repository.TreatmentRepository;
+import com.salesianostriana.mario.repository.TreatmentServiceI;
 
 @Service
-public class TreatmentService {
+public class TreatmentService implements TreatmentServiceI{
 
 	@Autowired
 	TreatmentRepository repository;
@@ -26,6 +28,11 @@ public class TreatmentService {
 	
 	public Treatment findFirstByName(String name) {
 		return repository.findFirstByName(name);
+	}
+	
+	@Override
+	public Page<Treatment> findAllPageable(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 
 	public Treatment save(Treatment entidad) {
