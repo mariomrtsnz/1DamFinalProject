@@ -12,7 +12,7 @@
         <nav th:replace="fragments/adminlayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
         <div class="content-wrapper" id="addForm-wrapper">
-        	<h1 class="pageTitle" id="addAppointmentTitle">Añadir Nueva Cita</h1>
+        	<h1 class="pageTitle" id="addAppointmentTitle">Editar Cita</h1>
         	<div class="add-form-container">
         		<form method="post" th:action="@{/addNewAppointment}" th:object="${appointmentFormBean}" id="addServiceForm">
         			<div class="inputTitle">

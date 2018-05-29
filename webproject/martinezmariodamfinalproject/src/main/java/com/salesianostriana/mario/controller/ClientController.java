@@ -48,8 +48,6 @@ public class ClientController {
 
 	@Autowired
 	private EmployeeService employeeService;
-	
-	boolean selected = false;
 
 	@GetMapping({ "/public", "/user-index" })
 	public String index(Model model) {
@@ -196,8 +194,8 @@ public class ClientController {
 	public String deleteClient(@PathVariable("id") Long id, Model model) {
 		Client client = service.findOne(id);
 		// companyService.findDefaultCompany().removeTreatment(treatment);
-		// treatment.setCompany(null);
-		// treatment.setAppointments(null);
+//		client.setCompany(null);
+//		client.setAppointments(null);
 		service.setHistoricalTrue(client);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/staff-clients-list";

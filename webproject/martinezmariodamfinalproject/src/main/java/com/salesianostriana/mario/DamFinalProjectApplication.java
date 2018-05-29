@@ -49,6 +49,10 @@ public class DamFinalProjectApplication {
 					"882764410", "/images/profilePics/profile-client2.jpg", LocalDateTime.of(2014, Month.JANUARY, 1, 10, 10, 30));
 			c1 = clientService.save(c1);
 			company.addClient(c1);
+			Client c2 = new Client("92115067U", "daredevil@rwd.com", true, false, "Matt Murdock", "daredevil",
+					"620331525", "/images/profilePics/profile-client3.jpg", LocalDateTime.of(2015, Month.MAY, 22, 15, 00, 48));
+			c2 = clientService.save(c2);
+			company.addClient(c2);
 
 			Employee e = new Employee("54259538P", "empleado@empleado.com", 20000.00, "Bruce Wayne", "empleado", "632612336",
 					"/images/staff/1.png", "Administrativo", LocalDateTime.of(2018, 5, 3, 7, 30), null);
@@ -126,7 +130,7 @@ public class DamFinalProjectApplication {
 			t9 = treatmentService.save(t9);
 			company.addTreatment(t9);
 
-			Appointment a1 = new Appointment(LocalDateTime.of(2013, 12, 27, 10, 00), c1, e,
+			Appointment a1 = new Appointment(LocalDateTime.of(2013, 12, 27, 10, 00), c2, e,
 					LocalDateTime.of(2013, 12, 27, 11, 00), false, LocalDateTime.of(2013, 12, 20, 16, 00), t);
 			a1 = appointmentService.save(a1);
 			c1.addAppointment(a1);
@@ -139,7 +143,7 @@ public class DamFinalProjectApplication {
 			e1.addAppointment(a2);
 			t1.addAppointment(a2);
 
-			Appointment a3 = new Appointment(LocalDateTime.of(2018, 10, 24, 15, 00), c1, e1,
+			Appointment a3 = new Appointment(LocalDateTime.of(2018, 10, 24, 15, 00), c2, e1,
 					LocalDateTime.of(2018, 10, 24, 16, 00), false, LocalDateTime.of(2018, 9, 30, 11, 00), t2);
 			a3 = appointmentService.save(a3);
 			c1.addAppointment(a3);
