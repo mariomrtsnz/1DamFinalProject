@@ -28,7 +28,7 @@
 				<div class="table-title">Servicios</div>
 				<div class="table-totalItems">Número total de elementos: <span th:text="${numberOfTreatments}">{numElementosEnLista}</span></div>
 				<div class="table-buttons">
-					<div class="btn-box add-element" id="button1">
+					<div class="btn-box add-element" id="button1" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
                         <a href="/admin/admin-add-service.html" th:href="@{/admin-add-service}">
                             <button class="btn btn-submit" type="submit">Añadir Servicio</button>
                         </a>

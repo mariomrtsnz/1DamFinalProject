@@ -30,7 +30,7 @@
                     Número total de elementos: <span th:text="${numberOfEmployees}"></span>
                 </div>
                 <div class="table-buttons">
-                    <div class="btn-box add-element" id="submit">
+                    <div class="btn-box add-element" id="submit" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
                         <a href="/admin/admin-add-staff.html" th:href="@{/admin-add-staff}">
                             <button class="btn btn-submit" type="submit">Añadir Empleado</button>
                         </a>
