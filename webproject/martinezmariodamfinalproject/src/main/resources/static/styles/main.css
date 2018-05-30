@@ -567,7 +567,7 @@ img {
     display: grid;
     grid-template-areas: 'icon1 icon2 icon3 icon4';
     height: 100%;
-    justify-items: center;
+	justify-items: self-end;
     align-content: flex-start; }
     #cd-placeholder-3 .container-statistics div {
       height: 100%;

@@ -146,6 +146,42 @@
       top: 5px;
       height: 18px; }
       
+      
+.paginationContainer {
+	margin: 0 !important;
+	display: flex;
+	justify-content: center;
+}
+
+#pageSizeSelect {
+	background-color: #989690;
+	color: #f5f9f8;
+}
+
+#pageSizeSelect option:checked {
+	background-color: #3c393d;
+}
+.pagination {
+	padding: 0;
+}
+.pagination li {
+	display: inline;
+}
+
+.pagination li a {
+	background-color: #989690;
+	color: #f5f9f8;
+}
+
+.pagination .active a {
+	background-color: #3c393d;
+	color: #f5f9f8;
+}
+
+.pagination a:hover {
+	background-color: #76746e;
+}
+
 .pagination-centered {
     text-align: center;
 }
