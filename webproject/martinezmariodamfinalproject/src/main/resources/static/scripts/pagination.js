@@ -5,6 +5,6 @@ $(document).ready(function() {
 // Permite recargar la página cada vez que cambia el tamaño de página
 function changePageAndSize() {
 	$('#pageSizeSelect').change(function(evt) {
-		window.location.replace("/?pageSize=" + this.value + "&page=1");
+		window.location.replace("/admin-services-list/?pageSize=" + this.value + "&page=1");
 	});
 }

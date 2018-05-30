@@ -15,6 +15,7 @@
 	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script type="text/javascript" src="/scripts/pagination.js" th:src="@{/scripts/pagination.js}"></script>
 </head>
 
 <body>
@@ -123,36 +124,29 @@
 			<div th:if="${treatments.totalPages != 1}"
 				class="form-group col-md-11 pagination-centered">
 				<ul class="pagination">
-					<!-- Si el número de página es cero, deshabilitamos el enlace -->
 					<li th:class="${treatments.number == 0} ? disabled">
-						<!-- Este enlace nos debe llevar a la primera página, con el tamaño de página actual -->
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
+						th:href="@{/admin-services-list/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a>
 					</li>
-					<!-- Si el número de página es cero, deshabilitamos el enlace -->
 					<li th:class="${treatments.number == 0} ? disabled">
-						<!-- Este enlace nos debe llevar a la página anterior, con el tamaño de página actual -->						
-						<a class="pageLink" th:href="@{/(pageSize=${selectedPageSize}, page=${treatments.number})}">&larr;</a>
+						<a class="pageLink" th:href="@{/admin-services-list/(pageSize=${selectedPageSize}, page=${treatments.number})}">&larr;</a>
 					</li>
-					<!-- Este bucle genera los enlaces para las demás páginas -->
 					<li
 						th:class="${treatments.number == (page - 1)} ? 'active pointer-disabled'"
 						th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${page})}"
+						th:href="@{/admin-services-list/(pageSize=${selectedPageSize}, page=${page})}"
 						th:text="${page}"></a>
 					</li>
-					<!-- Enlace a la siguiente página; si estamos en la última queda desabilitado  -->
 					<li
 						th:class="${treatments.number + 1 == treatments.totalPages} ? disabled">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${treatments.number + 2})}">&rarr;</a>
+						th:href="@{/admin-services-list/(pageSize=${selectedPageSize}, page=${treatments.number + 2})}">&rarr;</a>
 					</li>
-					<!-- Enlace a la última página; si estamos en la última queda desabilitado  -->				
 					<li
 						th:class="${treatments.number + 1 == treatments.totalPages} ? disabled">
 						<a class="pageLink"
-						th:href="@{/(pageSize=${selectedPageSize}, page=${treatments.totalPages})}">&raquo;</a>
+						th:href="@{/admin-services-list/(pageSize=${selectedPageSize}, page=${treatments.totalPages})}">&raquo;</a>
 					</li>
 				</ul>
 			</div>
