@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HomeController
-//implements ErrorController
+public class HomeController //implements ErrorController
 {
 
 	@Autowired
 	HttpSession session;
 	
-	@GetMapping({ "/index", "/index.html" })
+	@GetMapping({ "/", "/index", "/index.html" })
 	public String indexPage() {
 		session.setAttribute("loggedUser", null);
 		return "index";
