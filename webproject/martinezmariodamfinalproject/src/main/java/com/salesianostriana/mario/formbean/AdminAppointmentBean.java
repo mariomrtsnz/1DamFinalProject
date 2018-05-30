@@ -10,9 +10,6 @@ public class AdminAppointmentBean {
 	private LocalTime startTime;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate startDate;
-//	private String clientName;
-//	private String employeeName;
-//	private String treatmentName;
 	private Long clientId;
 	private Long employeeId;
 	private Long treatmentId;

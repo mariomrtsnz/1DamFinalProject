@@ -73,6 +73,7 @@ public class SecurityConfig {
 		FilterRegistrationBean<SecurityAdminFilter> registro = new FilterRegistrationBean<>();
 		registro.setFilter(securityAdminFilter());
 		registro.addUrlPatterns("/");
+		registro.addUrlPatterns("/admin/*");
 		registro.setName("securityAdminFilter");
 		return registro;
 	}
@@ -96,18 +97,19 @@ public class SecurityConfig {
 			HttpServletResponse response = (HttpServletResponse) resp;
 			HttpSession session = request.getSession();
 
-			if (session.getAttribute("loggedUser") instanceof Admin) {
-				response.sendRedirect("/admin");
+			if (session.getAttribute("usuarioActual") == null) {
+				response.sendRedirect("/index");
 				return;
-			} else if (session.getAttribute("loggedUser") instanceof Employee) {
-				response.sendRedirect("/staff");
-				return;
-			} else if (session.getAttribute("loggedUser") instanceof Client) {
-				response.sendRedirect("/public");
-				return;
+			} else if (!(session.getAttribute("loggedUser") instanceof Admin)) {
+				if (session.getAttribute("loggedUser") instanceof Employee) {
+					response.sendRedirect("/staff");
+					return;
+				}  else if (session.getAttribute("loggedUser") instanceof Client) {
+					response.sendRedirect("/public");
+					return;
+				}
 			} else
 				chain.doFilter(req, resp);
-
 		}
 
 		@Override
@@ -121,8 +123,8 @@ public class SecurityConfig {
 	public FilterRegistrationBean<SecurityEmployeeFilter> employeeFilterSecurityBean() {
 		FilterRegistrationBean<SecurityEmployeeFilter> registro = new FilterRegistrationBean<>();
 		registro.setFilter(securityEmployeeFilter());
-		registro.addUrlPatterns("/staff/*");
-		registro.addUrlPatterns("/public/*");
+		registro.addUrlPatterns("/staff/");
+		registro.addUrlPatterns("/admin/admin-calendar");
 		registro.setName("securityEmployeeFilter");
 		return registro;
 	}
@@ -146,15 +148,17 @@ public class SecurityConfig {
 			HttpServletResponse response = (HttpServletResponse) resp;
 			HttpSession session = request.getSession();
 
-			if (session.getAttribute("loggedUser") instanceof Admin) {
-				response.sendRedirect("/admin");
+			if (session.getAttribute("usuarioActual") == null) {
+				response.sendRedirect("/index");
 				return;
-			} else if (session.getAttribute("loggedUser") instanceof Employee) {
-				response.sendRedirect("/staff");
-				return;
-			} else if (session.getAttribute("loggedUser") instanceof Client) {
-				response.sendRedirect("/public");
-				return;
+			} else if (!(session.getAttribute("loggedUser") instanceof Employee)) {
+				if (session.getAttribute("loggedUser") instanceof Admin) {
+					response.sendRedirect("/admin");
+					return;
+				}  else if (session.getAttribute("loggedUser") instanceof Client) {
+					response.sendRedirect("/public");
+					return;
+				}
 			} else
 				chain.doFilter(req, resp);
 
@@ -170,7 +174,7 @@ public class SecurityConfig {
 	public FilterRegistrationBean<SecurityClientFilter> clientFilterSecurityBean() {
 		FilterRegistrationBean<SecurityClientFilter> registro = new FilterRegistrationBean<>();
 		registro.setFilter(securityClientFilter());
-		registro.addUrlPatterns("/");
+		registro.addUrlPatterns("/public/login");
 		registro.setName("securityClientFilter");
 		return registro;
 	}
@@ -194,18 +198,17 @@ public class SecurityConfig {
 			HttpServletResponse response = (HttpServletResponse) resp;
 			HttpSession session = request.getSession();
 
-			if (session.getAttribute("loggedUser") == null) {
-				response.sendRedirect("/");
+			if (session.getAttribute("usuarioActual") == null) {
+				response.sendRedirect("/index");
 				return;
-			} else if (session.getAttribute("loggedUser") instanceof Admin) {
-				response.sendRedirect("/admin");
-				return;
-			} else if (session.getAttribute("loggedUser") instanceof Employee) {
-				response.sendRedirect("/staff");
-				return;
-			} else if (session.getAttribute("loggedUser") instanceof Client) {
-				response.sendRedirect("/public");
-				return;
+			} else if (!(session.getAttribute("loggedUser") instanceof Client)) {
+				if (session.getAttribute("loggedUser") instanceof Employee) {
+					response.sendRedirect("/staff");
+					return;
+				}  else if (session.getAttribute("loggedUser") instanceof Admin) {
+					response.sendRedirect("/admin");
+					return;
+				}
 			} else
 				chain.doFilter(req, resp);
 

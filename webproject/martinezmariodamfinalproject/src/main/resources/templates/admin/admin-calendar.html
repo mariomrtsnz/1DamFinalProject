@@ -28,7 +28,7 @@
 				<div class="table-totalItems">Número total de elementos: <span th:text="${numberOfAppointments}">{numElementosEnLista}</span></div>
 				<div class="table-buttons">
 					<div class="btn-box add-element" id="button1">
-                        <a href="/admin/admin-add-appointment.html" th:href="@{/admin-add-appointment}">
+                        <a href="/admin/admin-add-appointment.html" th:href="@{/admin-add-appointment}" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}">
                             <button class="btn btn-submit" type="submit">Añadir Cita</button>
                         </a>
                     </div>
