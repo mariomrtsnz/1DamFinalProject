@@ -15,7 +15,7 @@ ALTER TABLE PUBLIC.CLIENT ADD CONSTRAINT PUBLIC.CONSTRAINT_7 PRIMARY KEY(ID);
 -- 3 +/- SELECT COUNT(*) FROM PUBLIC.CLIENT;  
 INSERT INTO PUBLIC.CLIENT(ID, DNI, DUEPAYMENT, EMAIL, HISTORICAL, NAME, PASSWORD, PHONE, PROFILEPIC, REGISTERDATE, COMPANY_ID) VALUES
 (PUBLIC.SEQ_CLIENT.NEXTVAL, '77927639M', TRUE, 'usuario@usuario.com', FALSE, STRINGDECODE('Mario Mart\u00ednez Sanz'), '1234', '678377084', '/images/profilePics/profile-usuario.jpg', TIMESTAMP '2018-05-30 20:17:17.989691', 1),
-(PUBLIC.SEQ_CLIENT.NEXTVAL, '00988766D', FALSE, 'frankcastle@rwd.com', TRUE, 'Frank Castle', 'frankcastle', '882764410', '/images/profilePics/profile-client2.jpg', TIMESTAMP '2014-01-01 10:10:30', 1),
+(PUBLIC.SEQ_CLIENT.NEXTVAL, '00988766D', FALSE, 'frankcastle@rwd.com', TRUE, 'Frank Castle', 'frankcastle', '782764410', '/images/profilePics/profile-client2.jpg', TIMESTAMP '2014-01-01 10:10:30', 1),
 (PUBLIC.SEQ_CLIENT.NEXTVAL, '92115067U', TRUE, 'daredevil@rwd.com', FALSE, 'Matt Murdock', 'daredevil', '620331525', '/images/profilePics/profile-client3.jpg', TIMESTAMP '2015-05-22 15:00:48', 1);             
 
 ALTER TABLE PUBLIC.COMPANY ADD CONSTRAINT PUBLIC.CONSTRAINT_6 PRIMARY KEY(ID);

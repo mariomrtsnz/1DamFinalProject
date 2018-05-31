@@ -36,41 +36,6 @@ public class LoginController {
 	@Autowired
 	private ClientService clientService;
 
-	@GetMapping("/public/signup.html")
-	public String signUpPage(Model model) {
-		model.addAttribute("signUpUser", new SignUpUser());
-		return "/public/signup";
-	}
-
-	@PostMapping("/checkSignUp")
-	public String submitSignUp(@ModelAttribute("signUpUser") SignUpUser signUpUser, BindingResult bindingResult,
-			Model model) {
-		// Añade los valores de logueo a un objeto Cliente porque solo se registran clientes desde esa ventana.
-		Client client = new Client(signUpUser.getDni(), signUpUser.getEmail(), signUpUser.getName(),
-				signUpUser.getPassword(), signUpUser.getPhone(), LocalDateTime.now());
-		
-		// Mensajes que luego mostraré en la vista en caso de que se cumplan los errores.
-		String existingUserEmailError = "Ya existe un usuario con ese email.";
-		String existingUserDniError = "Ya existe un usuario con ese DNI.";
-
-		// Comprobación de que ya existe un usuario con ese correo que se ha ingresado en el formulario de registro
-		boolean existingUserEmail = clientService.findFirstByEmail(signUpUser.getEmail()) != null;
-		// Comprobación de que ya existe un usuario con ese DNI que se ha ingresado en el formulario de registro
-		boolean existingUserDni = clientService.findFirstByDni(signUpUser.getDni()) != null;
-
-		// Si existe el email, añado al modelo el mensaje de error de email, si existe el dni, añado al modelo el mensaje de error de DNI, y si no se cumple ninguno de los dos, guardo el Cliente en la BD.
-		if (existingUserEmail) {
-			model.addAttribute("existingUser", existingUserEmailError);
-		} else if (existingUserDni) {
-			model.addAttribute("existingUser", existingUserDniError);
-		} else {
-			clientService.save(client);
-
-			session.setAttribute("loggedUser", client);
-		}
-		return "redirect:/";
-	}
-
 	@GetMapping("/public/login.html")
 	public String loginPage(Model model) {
 		model.addAttribute("loginUser", new LoginUser());
@@ -97,11 +62,5 @@ public class LoginController {
 			model.addAttribute("loginError", "El usuario o contraseña no es válido");
 			return "/index";
 		}
-	}
-
-	@GetMapping("/logOut")
-	public String logOut(Model model) {
-		session.setAttribute("loggedUser", null);
-		return "redirect:/";
 	}
 }

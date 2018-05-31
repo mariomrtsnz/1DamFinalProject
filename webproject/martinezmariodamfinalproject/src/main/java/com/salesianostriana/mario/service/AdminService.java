@@ -15,6 +15,10 @@ public class AdminService {
 	@Autowired
 	CompanyService companyService;
 
+	public Admin findFirstByEmail(String email) {
+		return repository.findFirstByEmail(email);
+	}
+	
 	public Admin save(Admin admin) {
 		admin.setCompany(companyService.findDefaultCompany());
 		return repository.save(admin);

@@ -31,6 +31,10 @@ public class EmployeeService {
 	public Employee findFirstByName(String name) {
 		return repository.findFirstByName(name);
 	}
+	
+	public Employee findFirstByEmail(String email) {
+		return repository.findFirstByEmail(email);
+	}
 
 	public Iterable<Employee> findAll() {
 		return repository.findAll();
