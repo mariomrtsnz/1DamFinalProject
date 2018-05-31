@@ -41,12 +41,16 @@ public class AppointmentService {
 		return repository.findByPaidTrue();
 	}
 	
+	public Iterable<Appointment> findByEmployeeAndPaidTrue(Employee employee) {
+		return repository.findByAppointmentPaymentTrueAndEmployee(employee);
+	}
+	
 	public long calculateNumberOfPaidAppointments() {
 		return findAllPaid().spliterator().getExactSizeIfKnown();
 	}
 	
-	public long calculateNumberOfItems() {
-		return findAll().spliterator().getExactSizeIfKnown();
+	public long calculateNumberOfItems(Iterable<Appointment> appointments) {
+		return appointments.spliterator().getExactSizeIfKnown();
 	}
 	
 	public Appointment findOneByStartTime(LocalDateTime appointmentTime) {

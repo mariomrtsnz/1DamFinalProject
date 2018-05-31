@@ -96,7 +96,7 @@ public class AdminController {
 			model.addAttribute("appointments", appointmentService.findAllPaid());
 		}
 		model.addAttribute("filterByPaidAppointment", filterByPaidAppointment);
-		model.addAttribute("numberOfAppointments", appointmentService.calculateNumberOfItems());
+		model.addAttribute("numberOfAppointments", appointmentService.calculateNumberOfItems(appointmentService.findAll()));
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/admin/admin-calendar";
 	}

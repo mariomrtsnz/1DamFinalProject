@@ -3,7 +3,15 @@
 
 <head>
     <th:block th:replace="fragments/common :: head"></th:block>
-    <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Staff - Dashboard')"></th:block>
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="/styles/user-appointments.css" th:href="@{/styles/user-appointments.css}"/>
+	<link rel="stylesheet" type="text/css" href="/styles/footable.standalone.min.css" th:href="@{/styles/footable.standalone.min.css}"/>
+	<th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Staff - Horario Personal')"></th:block>
+	<script type="text/javascript" src="/scripts/footable.min.js" th:src="@{/scripts/footable.min.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/styles/footable.fontawesome.css" th:href="@{/styles/footable.fontawesome.css}"/>
+	<script src="/scripts/user-appointments.js" th:src="@{/scripts/user-appointments.js}"></script>
 </head>
 
 <body>
@@ -11,8 +19,55 @@
     <main class="cd-main-content">
         <nav th:replace="fragments/stafflayout :: sideBar"></nav>
 		<a th:replace="fragments/dashboardlayout :: sideBarToggle"></a>
-        <div class="content-wrapper">
-            
+		<div class="table-container">
+            <div class="table-header">
+				<div class="table-title">Citas</div>
+				<div class="table-totalItems">Número total de elementos: <span th:text="${numberOfAppointments}">{numElementosEnLista}</span></div>
+				<div class="table-buttons">
+                    <div class="btn-box" id="button2">
+                        <a th:href="@{/staffFilterByPaidAppointment}" th:if="${!filterByPaidAppointment}">
+                            <button class="btn btn-submit" type="submit">Mostrar Solo Pagados</button>
+                        </a>
+                        <a th:href="@{/staffFilterByPaidAppointment}" th:if="${filterByPaidAppointment}">
+                            <button class="btn btn-submit" type="submit">Mostrar Todos</button>
+                        </a>
+                    </div>
+				</div>
+			</div>
+			<div class="table">
+				<table cellpadding="0" cellspacing="0" border="0" class="table services-list" data-paging="true" data-filtering="true" data-sorting="true">
+					<thead>
+						<tr>
+							<th data-type="number">Id</th>
+							<th data-type="date">Fecha de Cita</th>
+							<th>Nombre de Servicio</th>
+							<th>Nombre de Cliente</th>
+							<th data-type="date">Fecha de Pedido</th>
+							<th>Pagado</th>
+						</tr>
+					</thead>
+					<tbody th:if="${!filterByPaidAppointment}">
+						<tr th:each="appointment : ${appointments}">
+							<td id="serviceName" th:text="${appointment.id}" th:onclick="'javascript:openAppointmentModal(\'' + ${appointment.id} +'\');'">{appointment.id}</td>
+							<td th:text="${#temporals.format(appointment.startTime, 'yyyy-MM-dd HH:mm')}">{appointment.startTime}</td>
+							<td id="orderDate" th:text="${appointment.treatment.name}">{appointment.treatment.name}</td>
+							<td id="appointmentDate" th:text="${appointment.client.name}">{appointment.client.name}</td>
+							<td th:text="${#temporals.format(appointment.orderDate, 'yyyy-MM-dd HH:mm')}">{appointment.orderdDate}</td>
+							<td th:text="${appointment.paid} ? 'Si' : 'No'"></td>
+						</tr>
+					</tbody>
+					<tbody th:if="${filterByPaidAppointment}">
+						<tr th:each="appointment : ${appointments}" th:if="${appointment.paid}">
+							<td id="serviceName" th:text="${appointment.id}">{appointment.id}</td>
+							<td th:text="${#temporals.format(appointment.orderDate, 'yyyy-MM-dd HH:mm')}">{appointment.startTime}</td>
+							<td id="orderDate" th:text="${appointment.treatment.name}">{appointment.treatment.name}</td>
+							<td id="appointmentDate" th:text="${appointment.client.name}">{appointment.client.name}</td>
+							<td th:text="${#temporals.format(appointment.orderDate, 'yyyy-MM-dd HH:mm')}">{appointment.orderdDate}</td>
+							<td th:text="${appointment.paid} ? 'Si' : 'No'"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
         </div>
     </main>
 </body>

@@ -1,7 +1,6 @@
 package com.salesianostriana.mario.controller;
 
 import java.time.LocalDateTime;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Employee;
+import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
 import com.salesianostriana.mario.service.EmployeeService;
@@ -30,13 +31,11 @@ public class EmployeeController {
 
 	@Autowired
 	private ClientService clientService;
-
+	
 	@Autowired
-	private CompanyService companyService;
+	private AppointmentService appointmentService;
 	
-	boolean showClientsHistorical = false;
-	
-	boolean filterByDuePayment = false;
+	boolean showClientsHistorical = false, filterByDuePayment = false, filterByPaidAppointment = false;
 
 	@GetMapping("/staff")
 	public String a(Model model) {
@@ -47,6 +46,16 @@ public class EmployeeController {
 	@GetMapping("/staff-schedule")
 	public String schedule(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		Employee loggedEmployee = (Employee) session.getAttribute("loggedUser");
+		Iterable<Appointment> appointments = appointmentService.findByEmployee(loggedEmployee);
+		Iterable <Appointment> paidAppointmentsOfEmployee = appointmentService.findByEmployeeAndPaidTrue(loggedEmployee);
+		if (!filterByPaidAppointment) {
+			model.addAttribute("appointments", appointments);
+		} else {
+			model.addAttribute("appointments", paidAppointmentsOfEmployee);
+		}
+		model.addAttribute("numberOfAppointments", appointmentService.calculateNumberOfItems(appointments));
+		model.addAttribute("filterByPaidAppointment", filterByPaidAppointment);
 		return "/staff/staff-schedule";
 	}
 
@@ -86,6 +95,16 @@ public class EmployeeController {
 			filterByDuePayment = true;
 		}
 		return "redirect:/staff-clients-list";
+	}
+	
+	@GetMapping("/staffFilterByPaidAppointment")
+	public String staffFilterByPaidAppointment() {
+		if (filterByPaidAppointment) {
+			filterByPaidAppointment = false;
+		} else {
+			filterByPaidAppointment = true;
+		}
+		return "redirect:/staff-schedule";
 	}
 	
 	@GetMapping("/admin-add-staff")
