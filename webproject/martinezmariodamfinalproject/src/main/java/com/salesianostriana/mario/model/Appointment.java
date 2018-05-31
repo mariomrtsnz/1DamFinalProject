@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appointment_seq")
-	@SequenceGenerator(name = "appointment_seq", sequenceName = "seq_appointment")
+	@SequenceGenerator(name = "appointment_seq", sequenceName = "seq_appointment",allocationSize=1)
 	private Long id;
 
 	private LocalDateTime endTime;

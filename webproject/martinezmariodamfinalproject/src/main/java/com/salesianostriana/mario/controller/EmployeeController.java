@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
 import com.salesianostriana.mario.service.EmployeeService;
+import com.salesianostriana.mario.service.TreatmentService;
 
 @Controller
 public class EmployeeController {
@@ -34,6 +36,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private AppointmentService appointmentService;
+	
+	@Autowired
+	private TreatmentService treatmentService;
 	
 	boolean showClientsHistorical = false, filterByDuePayment = false, filterByPaidAppointment = false;
 
@@ -155,5 +160,21 @@ public class EmployeeController {
 		ra.addAttribute("deleteSuccess", deleteSuccess);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-staff-list";
+	}
+	
+	@GetMapping("/staff/profile")
+	public String staffProfile(Model model) {
+		model.addAttribute("allTreatments", treatmentService.findAll());
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		Employee loggedEmployee = (Employee) session.getAttribute("loggedUser");
+		model.addAttribute("editableEmployee", employeeService.findOne(loggedEmployee.getId()));
+		return "/public/user-profile";
+	}
+	
+	@PostMapping("/editStaff")
+	public String submitEditStaff(@ModelAttribute("editableEmployee") Employee editableEmployee, BindingResult bindingResult, Model model) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		employeeService.edit(editableEmployee);
+		return "redirect:/staff/profile";
 	}
 }

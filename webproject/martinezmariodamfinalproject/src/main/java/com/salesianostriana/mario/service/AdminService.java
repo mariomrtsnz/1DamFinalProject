@@ -28,7 +28,6 @@ public class AdminService {
 	}
 
 	public void edit(Admin entidad) {
-		remove(entidad);
 		save(entidad);
 	}
 

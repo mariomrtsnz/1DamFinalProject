@@ -69,8 +69,10 @@
             		<img src="/images/profilePics/profile-admin.jpg" alt="{loggedUser.profilePic}" th:src="@{${loggedUser.profilePic}}" width="16px">
 				</a>
 				<ul class="cd-nav-icons is-hidden">
-					<li><a class="cd-nav-item" href="/public/user-profile"
+					<li th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Client)}"><a class="cd-nav-item" href="/public/user-profile"
 						th:href="@{/public/profile}"><h3>Perfil</h3></a></li>
+						<li th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}"><a class="cd-nav-item" href="/public/user-profile"
+						th:href="@{/staff/profile}"><h3>Perfil</h3></a></li>
 					<li><a class="cd-nav-item" href="/public/user-index.html"
 						th:href="@{/user-index}"><h3>Ir a página web</h3></a></li>
 					<li th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}"><a class="cd-nav-item" href="/admin"
@@ -84,3 +86,105 @@
         </ul>
         <!-- primary-nav -->
 </nav>
+
+<form class="profileForm-container" name="profileForm" method="post" th:action="@{/editUser}" th:object="${editableClient}" th:fragment="userForm" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Client)}">
+            <div class="inputTitle">
+                DNI
+            </div>
+            <div class="group" id="dniInput">
+                <input type="text" disabled th:value="${loggedUser.dni}" th:field="${editableClient.dni}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.dni}">{user.dni}</label>
+            </div>
+            <div class="inputTitle">
+                Nombre
+            </div>
+            <div class="group" id="nameInput">
+                <input type="text" disabled th:value="${loggedUser.name}" th:field="${editableClient.name}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.name}">{user.name}</label>
+            </div>
+            <div class="inputTitle">
+                Teléfono
+            </div>
+            <div class="group" id="phoneInput">
+                <input type="text" th:value="${loggedUser.phone}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.phone}">{user.phone}</label>
+            </div>
+            <div class="inputTitle">
+                Email
+            </div>
+            <div class="group" id="dniInput">
+                <input type="text" th:value="${loggedUser.email}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.email}">{user.email}</label>
+            </div>
+            <div class="inputTitle">
+                Password
+            </div>
+            <div class="group" id="dniInput">
+                <input type="password" th:value="${loggedUser.password}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Password</label>
+            </div>
+            <div class="btn-box" id="submit">
+                <button class="btn btn-submit" type="submit">Guardar Cambios</button>
+            </div>
+</form>
+
+<form class="profileForm-container" name="profileForm" method="post" th:action="@{/editStaff}" th:object="${editableEmployee}" th:fragment="userForm" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">
+            <div class="inputTitle">
+                DNI
+            </div>
+            <div class="group" id="dniInput">
+                <input type="text" disabled th:value="${loggedUser.dni}" th:field="${editableEmployee.dni}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.dni}">{user.dni}</label>
+            </div>
+            <div class="inputTitle">
+                Nombre
+            </div>
+            <div class="group" id="nameInput">
+                <input type="text" disabled th:value="${loggedUser.name}" th:field="${editableEmployee.name}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.name}">{user.name}</label>
+            </div>
+            <div class="inputTitle">
+                Teléfono
+            </div>
+            <div class="group" id="phoneInput">
+                <input type="text" th:value="${loggedUser.phone}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.phone}">{user.phone}</label>
+            </div>
+            <div class="inputTitle">
+                Email
+            </div>
+            <div class="group" id="dniInput">
+                <input type="text" th:value="${loggedUser.email}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.email}">{user.email}</label>
+            </div>
+            <div class="inputTitle">
+                Password
+            </div>
+            <div class="group" id="dniInput">
+                <input type="password" th:value="${loggedUser.password}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Password</label>
+            </div>
+            <div class="btn-box" id="submit">
+                <button class="btn btn-submit" type="submit">Guardar Cambios</button>
+            </div>
+        </form>

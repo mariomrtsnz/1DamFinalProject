@@ -9,60 +9,9 @@
 </head>
 
 <body>
-    <header class="cd-main-header" th:replace="fragments/publiclayout :: header">
-    </header>
-
+    <header class="cd-main-header" th:replace="fragments/publiclayout :: header"></header>
     <main class="cd-main-content">
-        <form class="profileForm-container" name="profileForm" method="post" th:action="@{/editUser}" th:object="${editableUser}">
-            <div class="inputTitle">
-                DNI
-            </div>
-            <div class="group" id="dniInput">
-                <input type="text" disabled th:value="${loggedUser.dni}" th:field="${editableUser.dni}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label th:text="${loggedUser.dni}">{user.dni}</label>
-            </div>
-            <div class="inputTitle">
-                Nombre
-            </div>
-            <div class="group" id="nameInput">
-                <input type="text" disabled th:value="${loggedUser.name}" th:field="${editableUser.name}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label th:text="${loggedUser.name}">{user.name}</label>
-            </div>
-            <div class="inputTitle">
-                Teléfono
-            </div>
-            <div class="group" id="phoneInput">
-                <input type="text" th:value="${loggedUser.phone}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label th:text="${loggedUser.phone}">{user.phone}</label>
-            </div>
-            <div class="inputTitle">
-                Email
-            </div>
-            <div class="group" id="dniInput">
-                <input type="text" th:value="${loggedUser.email}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label th:text="${loggedUser.email}">{user.email}</label>
-            </div>
-            <div class="inputTitle">
-                Password
-            </div>
-            <div class="group" id="dniInput">
-                <input type="password" th:value="${loggedUser.password}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Password</label>
-            </div>
-            <div class="btn-box" id="submit">
-                <button class="btn btn-submit" type="submit">Guardar Cambios</button>
-            </div>
-        </form>
+        <form th:replace="fragments/publiclayout :: userForm"></form>
         <div class="profilePicture">
             <img src="" alt="{loggedUser.profilePic}" th:src="@{${loggedUser.profilePic}}" class="profilePic">
             <div class="employeePosition" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}"><span th:text="${loggedUser.position}">{employee.position}</span></div>

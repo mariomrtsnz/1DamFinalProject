@@ -19,10 +19,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.salesianostriana.mario.formbean.AdminAppointmentBean;
 import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.formbean.SignUpUser;
+import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
+import com.salesianostriana.mario.service.AdminService;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
@@ -34,6 +36,9 @@ public class AdminController {
 
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	private AdminService adminService;
 
 	@Autowired
 	private TreatmentService treatmentService;

@@ -20,7 +20,7 @@ import javax.persistence.SequenceGenerator;
 public class Treatment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "treatment_seq")
-	@SequenceGenerator(name = "treatment_seq", sequenceName = "seq_treatment")
+	@SequenceGenerator(name = "treatment_seq", sequenceName = "seq_treatment", allocationSize=1)
 	private Long id;
 
 	private String description;

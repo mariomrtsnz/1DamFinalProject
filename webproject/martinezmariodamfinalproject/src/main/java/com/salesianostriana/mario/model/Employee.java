@@ -19,7 +19,7 @@ import javax.persistence.SequenceGenerator;
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_seq")
-	@SequenceGenerator(name = "employee_seq", sequenceName = "seq_employee")
+	@SequenceGenerator(name = "employee_seq", sequenceName = "seq_employee",allocationSize=1)
 	private Long id;
 
 	@OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)

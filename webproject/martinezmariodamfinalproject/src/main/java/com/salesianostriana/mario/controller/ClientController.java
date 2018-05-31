@@ -91,20 +91,15 @@ public class ClientController {
 	public String profile(Model model) {
 		model.addAttribute("allTreatments", treatmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		if (session.getAttribute("loggedUser") instanceof Client) {
-			model.addAttribute("editableUser", new Client());	
-		} else if (session.getAttribute("loggedUser") instanceof Employee) {
-			model.addAttribute("editableUser", new Employee());
-		} else {
-			model.addAttribute("editableUser", new Admin());
-		}
+		Client loggedClient = (Client) session.getAttribute("loggedUser");
+		model.addAttribute("editableClient", service.findOne(loggedClient.getId()));
 		return "/public/user-profile";
 	}
 	
 	@PostMapping("/editUser")
-	public String submitEditUser(@ModelAttribute("editableUser") Client editableClient, BindingResult bindingResult, Model model) {
+	public String submitEditUser(@ModelAttribute("editableClient") Client editableClient, BindingResult bindingResult, Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-//		service.edit(editableUser);
+		service.edit(editableClient);
 		return "redirect:/public/profile";
 	}
 

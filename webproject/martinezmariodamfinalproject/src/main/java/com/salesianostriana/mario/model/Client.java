@@ -20,7 +20,7 @@ import javax.persistence.SequenceGenerator;
 public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_seq")
-	@SequenceGenerator(name = "client_seq", sequenceName = "seq_client")
+	@SequenceGenerator(name = "client_seq", sequenceName = "seq_client",allocationSize=1)
 	private Long id;
 
 	@Column(unique = true)
