@@ -197,6 +197,15 @@ public class ClientController {
 		return "redirect:/staff-clients-list";
 	}
 	
+	@GetMapping("/myAppointments")
+	public String showPersonalAppointments(Model model) {
+		Client loggedClient = (Client) session.getAttribute("loggedUser");
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+		model.addAttribute("myAppointments", loggedClient.getAppointments());
+		model.addAttribute("allTreatments", treatmentService.findAll());
+		return "/public/myAppointments";
+	}
+	
 	@PostMapping("/search")
 	  public String searchTreatment(@ModelAttribute("search") SearchBean searchBean,
 			 Model model){

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <th:block th:replace="fragments/common :: head"></th:block>
+	<th:block th:replace="fragments/publiclayout :: head"></th:block>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />    
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/user-services.css" th:href="@{/styles/user-services.css}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/myAppointments.css" th:href="@{/styles/myAppointments.css}"/>
+    <title>RWD - Mis Citas</title>
+</head>
+
+<body>
+    <header class="cd-main-header" th:replace="fragments/publiclayout :: header"></header>
+    <main class="cd-main-content container">
+    	<div class="column" th:each="appointment : ${myAppointments}">
+		    <!-- Post-->
+			    <div class="post-module">
+			      <!-- Thumbnail-->
+			      <div class="thumbnail">
+			        <div class="date">
+			          <div class="day" th:text="${#temporals.format(appointment.startTime, 'dd')}">27</div>
+			          <div class="month" th:text="${#temporals.format(appointment.startTime, 'MMM')}">Mar</div>
+			        </div><img th:src="${appointment.treatment.picture}">
+			      </div>
+			      <!-- Post Content-->
+			      <div class="post-content">
+			        <div class="category" th:text="${#temporals.format(appointment.startTime, 'HH:mm')}">Hora de Inicio</div>
+			        <h1 class="title" th:text="${appointment.treatment.name}">Nombre del servicio</h1>
+			        <h2 class="sub_title" th:text="${appointment.employee.name}">Nombre del empleado</h2>
+			        <div class="post-meta"><i class="fas fa-money-check-alt"></i><span class="timestamp" th:text="${appointment.isPaid()} ? 'Pagado' : 'Sin Pagar'">Estado de Pago</span>
+			        <span class="comments" th:text="${appointment.treatment.numSessions} + ' sesiones'">Número de Sesiones</a></span></div>
+			      </div>
+		    </div>
+		</div>
+    </main>
+    <nav th:replace="fragments/publiclayout :: nav"></nav>
+</body>
+
+</html>

@@ -129,7 +129,8 @@ label {
       color: #dff5f8; }
   .btn.btn-submit {
     background: #2cbfd3;
-    color: #c0ecf2; }
+    color: #c0ecf2; 
+    margin-top: 1em;}
     .btn.btn-submit:hover {
       background: #28acbe;
       color: #dff5f8; }
@@ -165,4 +166,12 @@ label {
       width: 60%;
       padding-left: 1em; } }
 
-/*# sourceMappingURL=user-profile.css.map */
+#appointmentsButton {
+	justify-self: center;
+	max-width: 166px;
+	margin-bottom: 1em;
+	margin-top: 0;
+}
+#appointmentsButton a {
+	color: #c0ecf2;
+}
