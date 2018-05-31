@@ -52,7 +52,7 @@ public class SignUpController {
 		// Comprobación de que ya existe un usuario con ese DNI que se ha ingresado en el formulario de registro
 		boolean existingUserDni = clientService.findFirstByDni(signUpUser.getDni()) != null;
 		// Letras comienzan en mayúscula, sin números ni símbolos, acepta todos los acentos y multiples nombres (siempre que empiecen por mayúscula de nuevo) 
-		boolean invalidName = !Pattern.matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})", signUpUser.getName());
+		boolean invalidName = !signUpUser.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
 		// Prefijos: 6, 7 o 9 seguido de 8 números cualesquiera.
 		boolean invalidPhone = !signUpUser.getPhone().matches("^[679]\\d{8}");
 		boolean invalidDni = !signUpUser.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
