@@ -59,7 +59,7 @@ public class LoginController {
 			session.setAttribute("loggedUser", userEmployee);
 			return "redirect:/staff";
 		} else {
-			model.addAttribute("loginError", "El usuario o contraseña no es válido");
+			model.addAttribute("loginError", true);
 			return "/index";
 		}
 	}

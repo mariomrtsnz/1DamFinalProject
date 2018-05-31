@@ -1,8 +1,6 @@
 package com.salesianostriana.mario.controller;
 
 import java.time.LocalDateTime;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.mario.formbean.SignUpUser;
 import com.salesianostriana.mario.model.Client;
@@ -55,6 +52,7 @@ public class SignUpController {
 		boolean invalidName = !signUpUser.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
 		// Prefijos: 6, 7 o 9 seguido de 8 números cualesquiera.
 		boolean invalidPhone = !signUpUser.getPhone().matches("^[679]\\d{8}");
+		// DNI Español, no tiene por qué coincidir el cálculo para facilitar a la hora de probar el registro.
 		boolean invalidDni = !signUpUser.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
 		
 
