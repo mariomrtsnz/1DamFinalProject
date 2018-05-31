@@ -18,6 +18,7 @@
         			<div class="group" id="dniInput" style="display: none;">
 		                <input type="hidden" required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
 		                <input type="hidden" required="required" name="hireDate" th:field="*{hireDate}" th:value="*{hireDate}" readonly="readonly"/>
+		                <input type="hidden" required="required" name="profilePic" th:field="*{profilePic}" th:value="*{profilePic}" readonly="readonly"/>
 		            </div>
         			<div class="inputTitle">
 		                Nombre Completo
@@ -50,7 +51,7 @@
 		                Contraseña
 		            </div>
 		            <div class="group" id="phoneInput">
-		                <input type="password" placeholder="1" th:field="*{password}" name="totalPrice" th:value="*{password}"/>
+		                <input type="password" required="required" placeholder="1" th:field="*{password}" name="totalPrice" th:value="*{password}"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
 		                <label th:text="*{password}">{employee.password}</label>
