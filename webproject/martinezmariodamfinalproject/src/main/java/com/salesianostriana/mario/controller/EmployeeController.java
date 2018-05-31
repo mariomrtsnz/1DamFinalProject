@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Employee;
+import com.salesianostriana.mario.service.AdminService;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
@@ -36,6 +37,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private AppointmentService appointmentService;
+	
+	@Autowired
+	private AdminService adminService;
 	
 	@Autowired
 	private TreatmentService treatmentService;
@@ -121,14 +125,44 @@ public class EmployeeController {
 
 	@PostMapping("/addNewEmployee")
 	public String addStaff(@ModelAttribute("newEmployee") Employee newEmployee, BindingResult bindingResult,
-			Model model) {
+			Model model, RedirectAttributes ra) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		Employee employee = new Employee(newEmployee.getDni(), newEmployee.getEmail(),
 				newEmployee.getGrossAnualSalary(), newEmployee.getName(), newEmployee.getPassword(),
 				newEmployee.getPhone(), newEmployee.getProfilePic(), newEmployee.getPosition(), LocalDateTime.now(),
 				null);
-		employeeService.save(employee);
-		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		return "redirect:/admin-staff-list";
+		
+		boolean existingUserEmail = (clientService.findFirstByEmail(employee.getEmail()) != null) || (employeeService.findFirstByEmail(employee.getEmail()) != null) || (adminService.findFirstByEmail(employee.getEmail()) != null);
+		boolean existingUserDni = clientService.findFirstByDni(employee.getDni()) != null;
+		boolean invalidName = !employee.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidPhone = !employee.getPhone().matches("^[679]\\d{8}");
+		boolean invalidDni = !employee.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
+		boolean invalidSalary = !(employee.getGrossAnualSalary()>10302.60);
+		
+
+		if (existingUserEmail) {
+			ra.addFlashAttribute("existingUserEmail", existingUserEmail);
+			return "redirect:/admin-add-staff";
+		} else if(existingUserDni) {
+			ra.addFlashAttribute("existingUserDni", existingUserDni);
+			return "redirect:/admin-add-staff";
+		} else if(invalidName) {
+			ra.addFlashAttribute("invalidName", invalidName);
+			return "redirect:/admin-add-staff";
+		} else if(invalidPhone) {
+			ra.addFlashAttribute("invalidPhone", invalidPhone);
+			return "redirect:/admin-add-staff";
+		} else if(invalidDni) {
+			ra.addFlashAttribute("invalidDni", invalidDni);
+			return "redirect:/admin-add-staff";
+ 		} else if(invalidSalary) {
+ 			ra.addFlashAttribute("invalidSalary", invalidSalary);
+			return "redirect:/admin-add-staff";
+ 		}
+		else {
+			employeeService.save(employee);
+			return "redirect:/admin-staff-list";
+		}
 	}
 
 	@GetMapping("/edit-staff/{id}")
@@ -150,14 +184,14 @@ public class EmployeeController {
 	public String deleteEmployee(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Employee employee = employeeService.findOne(id);
 		boolean deleteSuccess = false;
+		// Inutilizado a propósito.
 		// employeeService.remove(employee);
 		if (!employee.isHistorical()) {
 			employeeService.setHistoricalTrue(employee);
 			deleteSuccess = true;
 		}
-		// TODO: Implement this so that toastr shows a deletion successful message after
-		// redirect (On AdminController)
-		ra.addAttribute("deleteSuccess", deleteSuccess);
+
+		ra.addFlashAttribute("deleteSuccess", deleteSuccess);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-staff-list";
 	}

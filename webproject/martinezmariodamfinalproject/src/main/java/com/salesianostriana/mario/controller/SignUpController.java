@@ -67,8 +67,7 @@ public class SignUpController {
 			model.addAttribute("invalidPhone", invalidPhone);
 		} else if(invalidDni) {
 			model.addAttribute("invalidDni", invalidDni);
-		}
-		else {
+		} else {
 			clientService.save(client);
 			session.setAttribute("loggedUser", client);
 		}

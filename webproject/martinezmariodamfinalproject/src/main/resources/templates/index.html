@@ -29,7 +29,8 @@
                 </button>
             </div>
         </div>
-        <script th:if="${existingUserEmail}">
+        <script th:replace="fragments/common :: messageToastrJs"></script>
+        <script th:if="${loginError}">
 		    $(document).ready(function() {    	
 			    toastr.options = {
 						"closeButton": false,
@@ -48,117 +49,7 @@
 						"showMethod": "fadeIn",
 						"hideMethod": "fadeOut"
 				};
-				toastr.success("Ya existe un usuario con ese correo.");
-		    });
-    </script>
-    <script th:if="${existingUserDni}">
-		    $(document).ready(function() {    	
-			    toastr.options = {
-						"closeButton": false,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": true,
-						"positionClass": "toast-bottom-center",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "5000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-				};
-				toastr.success("Ya existe un usuario con ese DNI.");
-		    });
-    </script>
-     <script th:if="${invalidName}">
-		    $(document).ready(function() {    	
-			    toastr.options = {
-						"closeButton": false,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": true,
-						"positionClass": "toast-bottom-center",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "5000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-				};
-				toastr.success("El nombre no puede tener números ni símbolos y debe comenzar por mayúscula.");
-		    });
-    </script>
-    <script th:if="${invalidPhone}">
-		    $(document).ready(function() {    	
-			    toastr.options = {
-						"closeButton": false,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": true,
-						"positionClass": "toast-bottom-center",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "5000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-				};
-				toastr.success("El número de teléfono no es válido.");
-		    });
-    </script>
-    <script th:if="${invalidDni}">
-		    $(document).ready(function() {    	
-			    toastr.options = {
-						"closeButton": false,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": true,
-						"positionClass": "toast-bottom-center",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "5000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-				};
-				toastr.success("El número DNI no es válido.");
-		    });
-    </script>
-    <script th:if="${loginError}">
-		    $(document).ready(function() {    	
-			    toastr.options = {
-						"closeButton": false,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": true,
-						"positionClass": "toast-bottom-center",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "5000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-				};
-				toastr.success("El usuario o contraseña no es válido");
+				toastr.error("El usuario o contraseña no es válido");
 		    });
     </script>
     </div>
