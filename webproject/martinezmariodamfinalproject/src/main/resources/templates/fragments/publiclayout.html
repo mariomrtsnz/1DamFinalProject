@@ -132,7 +132,7 @@
                 Password
             </div>
             <div class="group" id="dniInput">
-                <input type="password" th:value="${loggedUser.password}" th:field="${editableClient.password}"/>
+                <input type="password" required="required" th:value="${loggedUser.password}" th:field="${editableClient.password}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Password</label>
@@ -190,7 +190,7 @@
                 Password
             </div>
             <div class="group" id="dniInput">
-                <input type="password" th:value="${loggedUser.password}" th:field="${editableEmployee.password}"/>
+                <input type="password" required="required" th:value="${loggedUser.password}" th:field="${editableEmployee.password}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Password</label>
