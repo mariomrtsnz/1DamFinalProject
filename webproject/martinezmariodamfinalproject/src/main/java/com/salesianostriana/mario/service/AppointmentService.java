@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.mario.model.Appointment;
+import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.repository.AppointmentRepository;
 
@@ -54,6 +55,10 @@ public class AppointmentService {
 	
 	public Iterable<Appointment> findByEmployee(Employee employee) {
 		return repository.findByEmployee(employee);
+	}
+	
+	public Iterable<Appointment> findByClient(Client client) {
+		return repository.findByClient(client);
 	}
 	
 //	public Iterable<Appointment> findAppointmentsLaterThanEmployeeHistoricalDate(Employee employee) {

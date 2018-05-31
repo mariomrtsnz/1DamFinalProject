@@ -55,6 +55,7 @@ public class ClientController {
 		model.addAttribute("numberOfClients", service.calculateNumberOfItems());
 		model.addAttribute("numberOfPaidAppointments", appointmentService.calculateNumberOfPaidAppointments());
 		model.addAttribute("numberOfActiveEmployees", employeeService.calculateNumberOfActiveEmployees());
+		model.addAttribute("allTreatments", treatmentService.findAll());
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "/public/user-index";
 	}

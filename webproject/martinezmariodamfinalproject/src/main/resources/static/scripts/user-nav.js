@@ -20,7 +20,6 @@ jQuery(document).ready(function ($) {
             $('.cd-main-content').addClass('nav-is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function () {
                 $('body').addClass('overflow-hidden');
             });
-            toggleSearch('close');
             $('.cd-overlay').addClass('is-visible');
         }
     });

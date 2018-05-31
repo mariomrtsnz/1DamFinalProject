@@ -3,19 +3,13 @@
 
 <head>
 	<th:block th:replace="fragments/common :: head"></th:block>
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/main.css" th:href="@{/styles/main.css}"/>
+    <th:block th:replace="fragments/publiclayout :: head"></th:block>
+    <script src="/scripts/sticky-kit.min.js" th:href="@{/scripts/sticky-kit.min.js}"></script>
     <script src="/scripts/user-main.js" th:href="@{/scripts/user-main.js}"></script>
     <title>RWD - Inicio</title>
 </head>
 
 <body>
-    <header class="cd-header">
-        <div id="cd-logo">
-            <a href="#0">
-                <img src="/images/icons/projectlogo.svg" alt="Logo" width="50px" th:src="@{/images/icons/projectlogo.svg}">
-            </a>
-        </div>
-    </header>
     <section id="cd-intro">
         <div id="cd-intro-tagline">
             <h1>RealWorld Dental</h1>
@@ -23,53 +17,7 @@
         <!-- #cd-intro-tagline -->
     </section>
     <!-- #cd-intro -->
-
-    <div class="cd-secondary-nav">
-        <a href="#0" class="cd-secondary-nav-trigger">Menu
-            <span></span>
-        </a>
-        <!-- button visible on small devices -->
-        <nav>
-            <ul>
-                <li>
-                    <a href="#" th:href="@{/public}">
-                        <b>Inicio</b>
-                        <span></span>
-                        <!-- icon -->
-                    </a>
-                </li>
-                <li>
-                    <a href="/user-services.html" th:href="@{/public/services}">
-                        <b>Servicios</b>
-                        <span></span>
-                        <!-- icon -->
-                    </a>
-                </li>
-                <li>
-                    <a href="/user-aboutus.html" th:href="@{/public/aboutus}">
-                        <b>Sobre Nosotros</b>
-                        <span></span>
-                        <!-- icon -->
-                    </a>
-                </li>
-                <li>
-                    <a href="/user-contactus.html" th:href="@{/public/contactus}">
-                        <b>Contacto</b>
-                        <span></span>
-                        <!-- icon -->
-                    </a>
-                </li>
-                <li>
-                    <a href="/user-profile.html" th:href="@{/public/profile}">
-                        <b th:text="${loggedUser.name}">{loggedUser.name}</b>
-                        <span></span>
-                        <!-- icon -->
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <!-- .cd-secondary-nav -->
+    <header class="cd-main-header" th:replace="fragments/publiclayout :: header"></header>
     <main class="cd-main-content">
         <section id="cd-placeholder-1" class="cd-section cd-container">
             <h2>Nos preocupamos por tus dientes</h2>
@@ -163,7 +111,7 @@
             </div>
         </section>
     </main>
-    <!-- .cd-main-content -->
+    <nav th:replace="fragments/publiclayout :: nav"></nav>
 </body>
 
 </html>

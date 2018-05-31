@@ -3,7 +3,7 @@
     <script src="/scripts/user-nav.js" th:src="@{/scripts/user-nav.js}"></script>
 </head>
 
-<header class="cd-main-header" th:fragment="header">
+<header class="cd-main-header" th:fragment="header" id="indexHeader">
         <a class="cd-logo" href="/public/user-index.html" th:href="@{/public}">
             <img src="/images/icons/projectlogo.svg" alt="Logo" width="35px" th:src="@{/images/icons/projectlogo.svg}">
         </a>
@@ -18,7 +18,7 @@
         <!-- cd-header-buttons -->
 </header>
 
-<nav class="cd-nav" th:fragment="nav">
+<nav class="cd-nav" th:fragment="nav" id="indexNav">
         <ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
             <li>
                 <a href="/public/user-index.html" th:href="@{/public}">
