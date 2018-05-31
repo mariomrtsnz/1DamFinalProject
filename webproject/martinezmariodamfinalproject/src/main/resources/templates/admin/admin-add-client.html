@@ -4,6 +4,8 @@
 <head>
     <th:block th:replace="fragments/common :: head"></th:block>
     <th:block th:replace="fragments/adminlayout :: head (pageTitle='RWD - Dashboard - Añadir Cliente')"></th:block>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +29,7 @@
 		                Email
 		            </div>
 		            <div class="group" id="nameInput">
-		            	<input required="required" type="text" placeholder="skywalkerluke@rwd.com" name="email" th:field="*{email}" th:value="*{email}"/>
+		            	<input required="required" type="email" placeholder="skywalkerluke@rwd.com" name="email" th:field="*{email}" th:value="*{email}"/>
 		            	<span class="highlight"></span>
 		                <span class="bar"></span>
 		            </div>
@@ -65,6 +67,7 @@
         	</div>
         </div>
     </main>
+	<script th:replace="fragments/common :: messageToastrJs"></script>
 </body>
 
 </html>

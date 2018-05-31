@@ -184,7 +184,7 @@ public class EmployeeController {
 	public String deleteEmployee(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Employee employee = employeeService.findOne(id);
 		boolean deleteSuccess = false;
-		// Inutilizado a propósito.
+		// Inutilizado a propósito ya que solo quiero ponerlo como histórico y no eliminarlo al completo de la BD.
 		// employeeService.remove(employee);
 		if (!employee.isHistorical()) {
 			employeeService.setHistoricalTrue(employee);

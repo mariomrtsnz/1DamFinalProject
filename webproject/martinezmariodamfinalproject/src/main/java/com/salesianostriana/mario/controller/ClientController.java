@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.formbean.SearchBean;
@@ -22,6 +23,7 @@ import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
+import com.salesianostriana.mario.service.AdminService;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
@@ -48,6 +50,9 @@ public class ClientController {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private AdminService adminService;
 
 	@GetMapping({ "/public", "/user-index" })
 	public String index(Model model) {
@@ -178,20 +183,55 @@ public class ClientController {
 	}
 
 	@PostMapping("/addNewClient")
-	public String addClient(@ModelAttribute("newClient") Client newClient, BindingResult bindingResult, Model model) {
+	public String addClient(@ModelAttribute("newClient") Client newClient, BindingResult bindingResult, Model model, RedirectAttributes ra) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		Client client = new Client(newClient.getDni(), newClient.getEmail(), newClient.getName(),
 				newClient.getPassword(), newClient.getPhone(), newClient.getProfilePic(), LocalDateTime.now());
-		service.save(client);
-		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		return "redirect:/staff-clients-list";
+		
+		boolean existingUserEmail = (service.findFirstByEmail(client.getEmail()) != null) || (employeeService.findFirstByEmail(client.getEmail()) != null) || (adminService.findFirstByEmail(client.getEmail()) != null);
+		boolean existingUserDni = service.findFirstByDni(client.getDni()) != null;
+		boolean invalidName = !client.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidPhone = !client.getPhone().matches("^[679]\\d{8}");
+		boolean invalidDni = !client.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
+		
+
+		if (existingUserEmail) {
+			ra.addFlashAttribute("existingUserEmail", existingUserEmail);
+			return "redirect:/admin-add-client";
+		} else if(existingUserDni) {
+			ra.addFlashAttribute("existingUserDni", existingUserDni);
+			return "redirect:/admin-add-client";
+		} else if(invalidName) {
+			ra.addFlashAttribute("invalidName", invalidName);
+			return "redirect:/admin-add-client";
+		} else if(invalidPhone) {
+			ra.addFlashAttribute("invalidPhone", invalidPhone);
+			return "redirect:/admin-add-client";
+		} else if(invalidDni) {
+			ra.addFlashAttribute("invalidDni", invalidDni);
+			return "redirect:/admin-add-client";
+ 		} else {
+ 			service.save(client);
+ 			return "redirect:/staff-clients-list";
+		}
 	}
 
 	@GetMapping("/delete-client/{id}")
-	public String deleteClient(@PathVariable("id") Long id, Model model) {
+	public String deleteClient(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Client client = service.findOne(id);
+		boolean deleteSuccess = false;
+
+		// Inutilizado a propósito ya que solo quiero ponerlo como histórico y no eliminarlo al completo de la BD.
 		// companyService.findDefaultCompany().removeTreatment(treatment);
-//		client.setCompany(null);
-//		client.setAppointments(null);
+		// client.setCompany(null);
+		// client.setAppointments(null);
+		
+		if (!client.isHistorical()) {
+			service.setHistoricalTrue(client);
+			deleteSuccess = true;
+		}
+		
+		ra.addFlashAttribute("deleteSuccess", deleteSuccess);
 		service.setHistoricalTrue(client);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/staff-clients-list";
