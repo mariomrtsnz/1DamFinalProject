@@ -97,7 +97,7 @@ public class ClientController {
 	}
 	
 	@PostMapping("/editUser")
-	public String submitEditUser(@ModelAttribute("editableClient") Client editableClient, BindingResult bindingResult, Model model) {
+	public String submitEditUser(@ModelAttribute("editableClient") Client editableClient, Model model, BindingResult bindingResult) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		service.edit(editableClient);
 		return "redirect:/public/profile";

@@ -88,29 +88,33 @@
 </nav>
 
 <form class="profileForm-container" name="profileForm" method="post" th:action="@{/editUser}" th:object="${editableClient}" th:fragment="userForm" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Client)}">
+            <div class="group" id="dniInput" style="display: none;">
+                <input type="hidden" required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
+                <input type="hidden" required="required" name="id" th:field="*{profilePic}" th:value="*{profilePic}" readonly="readonly"/>
+                <input type="hidden" required="required" name="name" th:field="*{registerDate}" th:value="*{registerDate}" readonly="readonly"/>
+                <input type="hidden" required="required" name="name" th:field="*{historical}" th:value="*{historical}" readonly="readonly"/>
+		    </div>
             <div class="inputTitle">
                 DNI
             </div>
             <div class="group" id="dniInput">
-                <input type="text" disabled th:value="${loggedUser.dni}" th:field="${editableClient.dni}"/>
+                <input type="text" readonly="readonly" th:value="${loggedUser.dni}" th:field="${editableClient.dni}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label th:text="${loggedUser.dni}">{user.dni}</label>
             </div>
             <div class="inputTitle">
                 Nombre
             </div>
             <div class="group" id="nameInput">
-                <input type="text" disabled th:value="${loggedUser.name}" th:field="${editableClient.name}"/>
+                <input type="text" readonly="readonly" th:value="${loggedUser.name}" th:field="${editableClient.name}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label th:text="${loggedUser.name}">{user.name}</label>
             </div>
             <div class="inputTitle">
                 Teléfono
             </div>
             <div class="group" id="phoneInput">
-                <input type="text" th:value="${loggedUser.phone}"/>
+                <input type="text" th:value="${loggedUser.phone}" th:field="${editableClient.phone}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.phone}">{user.phone}</label>
@@ -119,7 +123,7 @@
                 Email
             </div>
             <div class="group" id="dniInput">
-                <input type="text" th:value="${loggedUser.email}"/>
+                <input type="text" th:value="${loggedUser.email}" th:field="${editableClient.email}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label th:text="${loggedUser.email}">{user.email}</label>
@@ -128,7 +132,64 @@
                 Password
             </div>
             <div class="group" id="dniInput">
-                <input type="password" th:value="${loggedUser.password}"/>
+                <input type="password" th:value="${loggedUser.password}" th:field="${editableClient.password}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Password</label>
+            </div>
+            <div class="btn-box" id="submit">
+                <button class="btn btn-submit" type="submit">Ver Citas</button>
+            </div>
+</form>
+
+<form class="profileForm-container" name="profileForm" method="post" th:action="@{/editStaff}" th:object="${editableEmployee}" th:fragment="userForm" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">
+			<div class="group" id="dniInput" style="display: none;">
+	            <input type="hidden" required="required" name="id" th:field="*{id}" th:value="*{id}" readonly="readonly"/>
+				<input type="hidden" required="required" name="id" th:field="*{profilePic}" th:value="*{profilePic}" readonly="readonly"/>
+	            <input type="hidden" required="required" name="hireDate" th:field="*{hireDate}" th:value="*{hireDate}" readonly="readonly"/>
+	            <input type="hidden" required="required" name="name" th:field="*{historical}" th:value="*{historical}" readonly="readonly"/>
+	            <input type="hidden" required="required" name="name" th:field="*{position}" th:value="*{position}" readonly="readonly"/>
+	            <input type="hidden" required="required" name="name" th:field="*{grossAnualSalary}" th:value="*{grossAnualSalary}" readonly="readonly"/>
+		    </div>
+            <div class="inputTitle">
+                DNI
+            </div>
+            <div class="group" id="dniInput">
+                <input type="text" readonly="readonly" th:value="${loggedUser.dni}" th:field="${editableEmployee.dni}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="inputTitle">
+                Nombre
+            </div>
+            <div class="group" id="nameInput">
+                <input type="text" readonly="readonly" th:value="${loggedUser.name}" th:field="${editableEmployee.name}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="inputTitle">
+                Teléfono
+            </div>
+            <div class="group" id="phoneInput">
+                <input type="text" th:value="${loggedUser.phone}" th:field="${editableEmployee.phone}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.phone}">{user.phone}</label>
+            </div>
+            <div class="inputTitle">
+                Email
+            </div>
+            <div class="group" id="dniInput">
+                <input type="text" th:value="${loggedUser.email}" th:field="${editableEmployee.email}"/>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label th:text="${loggedUser.email}">{user.email}</label>
+            </div>
+            <div class="inputTitle">
+                Password
+            </div>
+            <div class="group" id="dniInput">
+                <input type="password" th:value="${loggedUser.password}" th:field="${editableEmployee.password}"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Password</label>
@@ -137,54 +198,3 @@
                 <button class="btn btn-submit" type="submit">Guardar Cambios</button>
             </div>
 </form>
-
-<form class="profileForm-container" name="profileForm" method="post" th:action="@{/editStaff}" th:object="${editableEmployee}" th:fragment="userForm" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}">
-            <div class="inputTitle">
-                DNI
-            </div>
-            <div class="group" id="dniInput">
-                <input type="text" disabled th:value="${loggedUser.dni}" th:field="${editableEmployee.dni}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label th:text="${loggedUser.dni}">{user.dni}</label>
-            </div>
-            <div class="inputTitle">
-                Nombre
-            </div>
-            <div class="group" id="nameInput">
-                <input type="text" disabled th:value="${loggedUser.name}" th:field="${editableEmployee.name}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label th:text="${loggedUser.name}">{user.name}</label>
-            </div>
-            <div class="inputTitle">
-                Teléfono
-            </div>
-            <div class="group" id="phoneInput">
-                <input type="text" th:value="${loggedUser.phone}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label th:text="${loggedUser.phone}">{user.phone}</label>
-            </div>
-            <div class="inputTitle">
-                Email
-            </div>
-            <div class="group" id="dniInput">
-                <input type="text" th:value="${loggedUser.email}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label th:text="${loggedUser.email}">{user.email}</label>
-            </div>
-            <div class="inputTitle">
-                Password
-            </div>
-            <div class="group" id="dniInput">
-                <input type="password" th:value="${loggedUser.password}"/>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Password</label>
-            </div>
-            <div class="btn-box" id="submit">
-                <button class="btn btn-submit" type="submit">Guardar Cambios</button>
-            </div>
-        </form>

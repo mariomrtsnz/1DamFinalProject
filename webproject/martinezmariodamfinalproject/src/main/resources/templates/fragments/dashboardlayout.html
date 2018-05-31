@@ -18,8 +18,8 @@
 					th:href="'@{'${loggedUser.profilePic}'}'"> Admin
 			</a>
 				<ul>
-					<li><a href="/public/user-profile"
-						th:href="@{/public/profile}">Perfil</a></li>
+					<li th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}"><a href="/public/user-profile"
+						th:href="@{/staff/profile}">Perfil</a></li>
 					<li><a href="/public/user-index.html"
 						th:href="@{/user-index}">Ir a página web</a></li>
 					<li><a href="/index.html" th:href="@{/logOut}">Cerrar
@@ -34,8 +34,8 @@
 
 <ul th:fragment="sideBarUserOptions">
 	<li class="cd-label">Secundarios</li>
-	<li class="has-children bookmarks"><a
-		href="/public/user-profile.html" th:href="@{/public/profile}">Perfil</a></li>
+	<li class="has-children bookmarks" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Employee)}"><a
+		href="/public/user-profile.html" th:href="@{/staff/profile}">Perfil</a></li>
 	<li class="has-children images"><a
 		href="/public/user-index.html" th:href="@{/user-index}">Ir a página web</a></li>
 	<li class="has-children users"><a href="/index.html" th:href="@{/logOut}">Cerrar
@@ -60,7 +60,7 @@
                     <hr class="divider"> Clientes
                 </div>
             </a>
-            <a href="/public/user-profile.html" th:href="@{/public/profile}">
+            <a href="/public/user-profile.html" th:href="@{/staff/profile}">
                 <div class="dashboard-card">
                     <span class="icon-profile icon" role="img"></span>
                     <hr class="divider"> Ficha Personal
