@@ -23,7 +23,7 @@
 		                Nombre del Servicio
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{name}" th:value="*{name}"/>
+		                <input type="text" required="required" placeholder="Blanqueamiento" name="name" th:field="*{name}" th:value="*{name}" id="nameInput"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
 		                <label th:text="*{name}">{treatment.name}</label>
@@ -32,13 +32,13 @@
 		                Descripción
 		            </div>
 		            <div class="group" id="nameInput">
-		            	<textarea rows="" cols="" required="required" name="description" th:placeholder="*{description}" th:field="*{description}" th:value="*{description}"></textarea>
+		            	<textarea rows="" cols="" required="required" name="description" th:placeholder="*{description}" th:field="*{description}" th:value="*{description}" id="descriptionInput"></textarea>
 		            </div>
 		            <div class="inputTitle">
 		                Precio
 		            </div>
 		            <div class="group" id="phoneInput">
-		                <input type="number" step=".01" required="required" placeholder="1" th:field="*{totalPrice}" name="totalPrice" th:value="*{totalPrice}"/>
+		                <input type="number" step=".01" required="required" placeholder="1" th:field="*{totalPrice}" name="totalPrice" th:value="*{totalPrice}" id="totalPriceInput"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
 		                <label th:text="*{totalPrice}">{treatment.totalPrice}</label>
@@ -76,7 +76,7 @@
 		                <input type="hidden" value="on" name="_historical"/>
 		            </div>
         			<div class="btn-box" id="submit">
-                		<button class="btn btn-submit" type="submit">Guardar Cambios</button>
+                		<button class="btn btn-submit" type="submit" id="submitEditButton">Guardar Cambios</button>
             		</div>
             		<div class="btn-box" id="submit">
                 		<button class="btn btn-submit" type="reset">Reestablecer Valores</button>
