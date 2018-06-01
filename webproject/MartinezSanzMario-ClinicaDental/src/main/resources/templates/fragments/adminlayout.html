@@ -7,24 +7,24 @@
 <nav class="cd-side-nav nav-side" th:fragment="sideBar">
 	<ul>
 		<li class="cd-label">Principales</li>
-		<li class="has-children overview"><a href="#0">Servicios</a>
+		<li class="has-children overview"><a th:href="@{/admin-services-list}">Servicios</a>
 			<ul>
 				<li><a href="/admin-services-list.html" th:href="@{/admin-services-list}">Ver Servicios</a></li>
 				<li><a href="/admin-add-service.html" th:href="@{/admin-add-service}">Añadir Servicio</a></li>
 			</ul></li>
-		<li class="has-children comments"><a href="#0">Clientes</a>
+		<li class="has-children comments"><a th:href="@{/staff/staff-clients-list}">Clientes</a>
 			<ul>
-				<li><a href="/staff/staff-clients-list.html" th:href="@{/staff/staff-clients-list}">Ver Clientes</a>
+				<li><a href="/staff/staff-clients-list.html" th:href="@{/staff-clients-list}">Ver Clientes</a>
 				</li>
 				<li><a href="/admin/admin-add-client.html" th:href="@{/admin-add-client}">Añadir Cliente</a>
 				</li>
 			</ul></li>
-		<li class="has-children comments"><a href="#0">Empleados</a>
+		<li class="has-children comments"><a th:href="@{/admin-staff-list}">Empleados</a>
 			<ul>
 				<li><a href="/admin/admin-staff-list.html" th:href="@{/admin-staff-list}">Ver Empleados</a></li>
 				<li><a href="/admin/admin-add-staff.html" th:href="@{/admin-add-staff}">Añadir Empleado</a></li>
 			</ul></li>
-		<li class="has-children comments"><a href="#0">Calendario</a>
+		<li class="has-children comments"><a th:href="@{/admin-calendar}">Calendario</a>
 			<ul>
 				<li><a href="/admin/admin-calendar.html" th:href="@{/admin-calendar}">Ver Calendario</a></li>
 				<li><a href="/admin/admin-add-appointment.html" th:href="@{/admin-add-appointment}">Añadir Cita</a></li>

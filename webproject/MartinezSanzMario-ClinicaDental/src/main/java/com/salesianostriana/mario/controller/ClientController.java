@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.mario.formbean.AppointmentFormBean;
 import com.salesianostriana.mario.formbean.SearchBean;
-import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
@@ -267,7 +266,7 @@ public class ClientController {
 	public String showPersonalAppointments(Model model) {
 		Client loggedClient = (Client) session.getAttribute("loggedUser");
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		model.addAttribute("myAppointments", loggedClient.getAppointments());
+		model.addAttribute("myAppointments", service.findOne(loggedClient.getId()).getAppointments());
 		model.addAttribute("allTreatments", treatmentService.findAll());
 		return "/public/myAppointments";
 	}

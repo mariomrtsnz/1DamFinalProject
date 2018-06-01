@@ -17,28 +17,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.mario.formbean.AdminAppointmentBean;
-import com.salesianostriana.mario.formbean.AppointmentFormBean;
-import com.salesianostriana.mario.formbean.SignUpUser;
-import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.model.Treatment;
-import com.salesianostriana.mario.service.AdminService;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.CompanyService;
 import com.salesianostriana.mario.service.EmployeeService;
 import com.salesianostriana.mario.service.TreatmentService;
 
+// Esta clase maneja la vista del Administrador y la de la tabla de Citas.
 @Controller
 public class AdminController {
 
 	@Autowired
 	HttpSession session;
-	
-	@Autowired
-	private AdminService adminService;
 
 	@Autowired
 	private TreatmentService treatmentService;
@@ -123,6 +117,7 @@ public class AdminController {
 		 return "/admin/admin-add-appointment";
 	 }
 	 
+	 // Mapping que responde al submit del formulario de Añadir Cita.
 	 @PostMapping("/addNewAppointment")
 	 public String submitNewAppointment(@ModelAttribute("appointmentFormBean") AdminAppointmentBean appointmentFormBean, BindingResult bindingResult, Model model, RedirectAttributes ra) {
 		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
@@ -134,7 +129,7 @@ public class AdminController {
 		 Appointment appointment = new Appointment(startDateTime, client, employee, startDateTime.plusHours(1), false, LocalDateTime.now(), treatment);
 		 
 		 boolean invalidStartDate = !(appointmentFormBean.getStartDate().isAfter(LocalDate.now()) && appointmentFormBean.getStartDate().isBefore(LocalDate.now().plusYears(1)));
-		 boolean invalidStartTime = !(appointmentFormBean.getStartTime().isAfter(LocalTime.of(9, 00)) && appointmentFormBean.getStartTime().isBefore(LocalTime.of(19, 00)));
+		 boolean invalidStartTime = !(appointmentFormBean.getStartTime().isAfter(companyService.findDefaultCompany().getOpenTime()) && appointmentFormBean.getStartTime().isBefore(companyService.findDefaultCompany().getCloseTime()));
 		 
 		 if (employeeService.employeeAvailabilityGivenDateTime(employee, startDateTime)) {
 			 ra.addFlashAttribute("invalidEmployee", true);

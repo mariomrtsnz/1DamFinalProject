@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Appointment;
 import com.salesianostriana.mario.model.Employee;
 import com.salesianostriana.mario.service.AdminService;
 import com.salesianostriana.mario.service.AppointmentService;
 import com.salesianostriana.mario.service.ClientService;
-import com.salesianostriana.mario.service.CompanyService;
 import com.salesianostriana.mario.service.EmployeeService;
 import com.salesianostriana.mario.service.TreatmentService;
 

@@ -1,6 +1,5 @@
 package com.salesianostriana.mario.controller;
 
-import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.mario.formbean.LoginUser;
-import com.salesianostriana.mario.formbean.SignUpUser;
 import com.salesianostriana.mario.model.Admin;
 import com.salesianostriana.mario.model.Client;
 import com.salesianostriana.mario.model.Employee;
@@ -21,6 +19,11 @@ import com.salesianostriana.mario.service.AdminService;
 import com.salesianostriana.mario.service.ClientService;
 import com.salesianostriana.mario.service.EmployeeService;
 
+// Controller para el logueo de la pantalla inicial, obligatorio iniciar sesión para entrar en la página.
+// Usuarios principales (email - contraseña):
+// Tipo Empleado: empleado@empleado.com - empleado
+// Tipo Usuario: usuario@usuario.com - 1234
+// Tipo Admin: admin@admin.com - admin
 @Controller
 public class LoginController {
 

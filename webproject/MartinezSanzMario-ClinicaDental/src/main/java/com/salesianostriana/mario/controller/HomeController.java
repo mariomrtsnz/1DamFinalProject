@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+// Controller que maneja los errores de Mapeo así como la página de inicio y el cerrar sesión.
 @Controller
 public class HomeController implements ErrorController {
 
