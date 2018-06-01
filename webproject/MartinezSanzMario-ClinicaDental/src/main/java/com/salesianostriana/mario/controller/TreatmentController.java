@@ -51,7 +51,7 @@ public class TreatmentController {
 				newService.isPaidInInstallments(), newService.getName(), newService.getNumSessions(),
 				newService.getTotalPrice());
 		
-		boolean invalidName = !treatment.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidName = !treatment.getName().matches("^[\\p{L} .'-]+$");
 		boolean invalidTotalPrice = !(treatment.getTotalPrice() >= 5);
 		boolean invalidNumSessions = !(treatment.getNumSessions() >= 1);
 		
@@ -93,7 +93,7 @@ public class TreatmentController {
 	public String editTreatment(@ModelAttribute("editableTreatment") Treatment editableTreatment, Model model,
 			BindingResult bindingResult, RedirectAttributes ra) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		boolean invalidName = !editableTreatment.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidName = !editableTreatment.getName().matches("^[\\p{L} .'-]+$");
 		// La descripción no tiene validación ya que quiero permitir que la descripción sea cualquier cosa.
 		boolean invalidTotalPrice = !(editableTreatment.getTotalPrice() >= 5);
 		boolean invalidNumSessions = !(editableTreatment.getNumSessions() >= 1);

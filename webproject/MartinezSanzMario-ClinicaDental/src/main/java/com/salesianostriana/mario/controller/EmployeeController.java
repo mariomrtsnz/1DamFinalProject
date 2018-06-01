@@ -70,13 +70,13 @@ public class EmployeeController {
 
 	@GetMapping("/staff-clients-list")
 	public String clientsList(Model model) {
-		if (!showClientsHistorical) {
+		if (!showClientsHistorical && !filterByDuePayment) {
 			model.addAttribute("clients", clientService.findAll());
-		} 
-		else if (filterByDuePayment) {
+		} else if (!showClientsHistorical && filterByDuePayment) {
 			model.addAttribute("clients", clientService.findByDuePayment());
-		}
-		else{
+		} else if(showClientsHistorical && filterByDuePayment) {
+			model.addAttribute("clients", clientService.findAllHistoricalAndDuePayment());
+		} else {			
 			model.addAttribute("clients", clientService.findAllHistorical());
 		}
 		model.addAttribute("showClientsHistorical", showClientsHistorical);
@@ -134,7 +134,7 @@ public class EmployeeController {
 		
 		boolean existingUserEmail = (clientService.findFirstByEmail(employee.getEmail()) != null) || (employeeService.findFirstByEmail(employee.getEmail()) != null) || (adminService.findFirstByEmail(employee.getEmail()) != null);
 		boolean existingUserDni = clientService.findFirstByDni(employee.getDni()) != null;
-		boolean invalidName = !employee.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidName = !employee.getName().matches("^[\\p{L} .'-]+$");
 		boolean invalidPhone = !employee.getPhone().matches("^[679]\\d{8}");
 		boolean invalidDni = !employee.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
 		boolean invalidSalary = !(employee.getGrossAnualSalary()>10302.60);
@@ -177,7 +177,7 @@ public class EmployeeController {
 	public String editEmployee(@ModelAttribute("editableEmployee") Employee editableEmployee, Model model,
 			BindingResult bindingResult, RedirectAttributes ra) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		boolean invalidName = !editableEmployee.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidName = !editableEmployee.getName().matches("^[\\p{L} .'-]+$");
 		boolean invalidPhone = !editableEmployee.getPhone().matches("^[679]\\d{8}");
 		boolean invalidDni = !editableEmployee.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
 		boolean invalidSalary = !(editableEmployee.getGrossAnualSalary()>10302.60);

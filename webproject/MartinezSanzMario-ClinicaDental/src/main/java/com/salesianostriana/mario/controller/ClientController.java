@@ -183,10 +183,9 @@ public class ClientController {
 	public String editClient(@ModelAttribute("editableClient") Client editableClient, Model model,
 			BindingResult bindingResult, RedirectAttributes ra) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		boolean invalidName = !editableClient.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidName = !editableClient.getName().matches("^[\\p{L} .'-]+$");
 		boolean invalidPhone = !editableClient.getPhone().matches("^[679]\\d{8}");
 		boolean invalidDni = !editableClient.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
-		
 
 		if(invalidName) {
 			ra.addFlashAttribute("invalidName", invalidName);
@@ -216,7 +215,7 @@ public class ClientController {
 		
 		boolean existingUserEmail = (service.findFirstByEmail(client.getEmail()) != null) || (employeeService.findFirstByEmail(client.getEmail()) != null) || (adminService.findFirstByEmail(client.getEmail()) != null);
 		boolean existingUserDni = service.findFirstByDni(client.getDni()) != null;
-		boolean invalidName = !client.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidName = !client.getName().matches("^[\\p{L} .'-]+$");
 		boolean invalidPhone = !client.getPhone().matches("^[679]\\d{8}");
 		boolean invalidDni = !client.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
 		

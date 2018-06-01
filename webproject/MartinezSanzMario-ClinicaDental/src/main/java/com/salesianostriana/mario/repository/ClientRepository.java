@@ -16,6 +16,8 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 	Client findFirstByEmail(String email);
 	
 	Client findFirstByDni(String dni);
+	
+	Iterable<Client> findAllByHistoricalTrueAndDuePaymentTrue();
 
 	Iterable<Client> findByHistoricalTrue();
 

@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class HomeController //implements ErrorController
-{
+public class HomeController implements ErrorController {
 
 	@Autowired
 	HttpSession session;
@@ -28,17 +27,17 @@ public class HomeController //implements ErrorController
 		return "redirect:/";
 	}
 	
-//	@RequestMapping("/error")
-//    public String handleError() {
-//        if (session.getAttribute("loggedUser") == null) {
-//			return "redirect:/";
-//		} else {
-//			return "redirect:/public";
-//		}
-//    }
-// 
-//    @Override
-//    public String getErrorPath() {
-//        return "/error";
-//    }
+	@RequestMapping("/error")
+    public String handleError() {
+        if (session.getAttribute("loggedUser") == null) {
+			return "redirect:/";
+		} else {
+			return "redirect:/public";
+		}
+    }
+ 
+    @Override
+    public String getErrorPath() {
+        return "/error";
+    }
 }
