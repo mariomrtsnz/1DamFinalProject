@@ -94,6 +94,50 @@
 				toastr.error("Ese empleado no está disponible a esa hora.");
 		    });
     </script>
+    <script th:if="${invalidStartTime}">
+		    $(document).ready(function() {    	
+			    toastr.options = {
+						"closeButton": false,
+						"debug": false,
+						"newestOnTop": false,
+						"progressBar": true,
+						"positionClass": "toast-bottom-center",
+						"preventDuplicates": false,
+						"onclick": null,
+						"showDuration": "300",
+						"hideDuration": "1000",
+						"timeOut": "5000",
+						"extendedTimeOut": "1000",
+						"showEasing": "swing",
+						"hideEasing": "linear",
+						"showMethod": "fadeIn",
+						"hideMethod": "fadeOut"
+				};
+				toastr.error("La hora debe ser entre las 09:00AM y las 07:00PM.");
+		    });
+    </script>
+    <script th:if="${invalidStartDate}">
+		    $(document).ready(function() {    	
+			    toastr.options = {
+						"closeButton": false,
+						"debug": false,
+						"newestOnTop": false,
+						"progressBar": true,
+						"positionClass": "toast-bottom-center",
+						"preventDuplicates": false,
+						"onclick": null,
+						"showDuration": "300",
+						"hideDuration": "1000",
+						"timeOut": "5000",
+						"extendedTimeOut": "1000",
+						"showEasing": "swing",
+						"hideEasing": "linear",
+						"showMethod": "fadeIn",
+						"hideMethod": "fadeOut"
+				};
+				toastr.error("La fecha debe ser entre hoy y dentro de un año.");
+		    });
+    </script>
 </body>
 
 </html>

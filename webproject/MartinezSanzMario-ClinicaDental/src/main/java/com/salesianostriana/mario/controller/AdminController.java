@@ -134,12 +134,20 @@ public class AdminController {
 		 Treatment treatment = treatmentService.findOneById(appointmentFormBean.getTreatmentId());
 		 Client client = clientService.findOne(appointmentFormBean.getClientId());
 		 Employee employee = employeeService.findOne(appointmentFormBean.getEmployeeId());
-		 
 		 Appointment appointment = new Appointment(startDateTime, client, employee, startDateTime.plusHours(1), false, LocalDateTime.now(), treatment);
+		 
+		 boolean invalidStartDate = !(appointmentFormBean.getStartDate().isAfter(LocalDate.now()) && appointmentFormBean.getStartDate().isBefore(LocalDate.now().plusYears(1)));
+		 boolean invalidStartTime = !(appointmentFormBean.getStartTime().isAfter(LocalTime.of(9, 00)) && appointmentFormBean.getStartTime().isBefore(LocalTime.of(19, 00)));
 		 
 		 if (employeeService.employeeAvailabilityGivenDateTime(employee, startDateTime)) {
 			 ra.addFlashAttribute("invalidEmployee", true);
 			 return "redirect:/admin-add-appointment";
+		} else if(invalidStartDate) {
+			ra.addFlashAttribute("invalidStartDate", true);
+			return "redirect:/admin-add-appointment";
+		} else if(invalidStartTime) {
+			ra.addFlashAttribute("invalidStartTime", true);
+			return "redirect:/admin-add-appointment";
 		} else {
 			appointmentService.save(appointment);
 			return "redirect:/admin-calendar";

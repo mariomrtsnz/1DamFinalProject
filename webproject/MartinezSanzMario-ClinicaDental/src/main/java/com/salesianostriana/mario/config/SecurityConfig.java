@@ -72,7 +72,7 @@ public class SecurityConfig {
 	public FilterRegistrationBean<SecurityAdminFilter> adminFilterSecurityBean() {
 		FilterRegistrationBean<SecurityAdminFilter> registro = new FilterRegistrationBean<>();
 		registro.setFilter(securityAdminFilter());
-		registro.addUrlPatterns("/");
+		//registro.addUrlPatterns("/");
 		registro.addUrlPatterns("/admin/*");
 		registro.setName("securityAdminFilter");
 		return registro;
@@ -97,7 +97,7 @@ public class SecurityConfig {
 			HttpServletResponse response = (HttpServletResponse) resp;
 			HttpSession session = request.getSession();
 
-			if (session.getAttribute("usuarioActual") == null) {
+			if (session.getAttribute("loggedUser") == null) {
 				response.sendRedirect("/index");
 				return;
 			} else if (!(session.getAttribute("loggedUser") instanceof Admin)) {
@@ -148,7 +148,7 @@ public class SecurityConfig {
 			HttpServletResponse response = (HttpServletResponse) resp;
 			HttpSession session = request.getSession();
 
-			if (session.getAttribute("usuarioActual") == null) {
+			if (session.getAttribute("loggedUser") == null) {
 				response.sendRedirect("/index");
 				return;
 			} else if (!(session.getAttribute("loggedUser") instanceof Employee)) {
@@ -198,7 +198,7 @@ public class SecurityConfig {
 			HttpServletResponse response = (HttpServletResponse) resp;
 			HttpSession session = request.getSession();
 
-			if (session.getAttribute("usuarioActual") == null) {
+			if (session.getAttribute("loggedUser") == null) {
 				response.sendRedirect("/index");
 				return;
 			} else if (!(session.getAttribute("loggedUser") instanceof Client)) {
