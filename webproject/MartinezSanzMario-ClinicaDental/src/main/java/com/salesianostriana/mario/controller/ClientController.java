@@ -182,9 +182,23 @@ public class ClientController {
 
 	@PostMapping("/editClient")
 	public String editClient(@ModelAttribute("editableClient") Client editableClient, Model model,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, RedirectAttributes ra) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		service.edit(editableClient);
+		boolean invalidName = !editableClient.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidPhone = !editableClient.getPhone().matches("^[679]\\d{8}");
+		boolean invalidDni = !editableClient.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
+		
+
+		if(invalidName) {
+			ra.addFlashAttribute("invalidName", invalidName);
+		} else if(invalidPhone) {
+			ra.addFlashAttribute("invalidPhone", invalidPhone);
+		} else if(invalidDni) {
+			ra.addFlashAttribute("invalidDni", invalidDni);
+ 		} else {
+ 			ra.addFlashAttribute("editSuccess", true);
+ 			service.edit(editableClient);
+		}
 		return "redirect:/staff-clients-list";
 	}
 
@@ -225,6 +239,7 @@ public class ClientController {
 			return "redirect:/admin-add-client";
  		} else {
  			service.save(client);
+ 			ra.addFlashAttribute("addSuccess", true);
  			return "redirect:/staff-clients-list";
 		}
 	}
