@@ -18,6 +18,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 	Iterable<Appointment> findByAppointmentPaymentTrueAndEmployee(Employee employee);
 
 	Appointment findByStartTime(LocalDateTime appointmentTime);
+	
+	Iterable<Appointment> findAllByStartTime(LocalDateTime appointmentTime);
 
 	Iterable<Appointment> findByEmployee(Employee employee);
 	

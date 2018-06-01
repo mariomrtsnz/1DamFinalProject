@@ -23,6 +23,10 @@ public class AppointmentService {
 	public Iterable<Appointment> findAll() {
 		return repository.findAll();
 	}
+	
+	public Iterable<Appointment> findAllByStartTime(LocalDateTime startTime) {
+		return repository.findAllByStartTime(startTime);
+	}
 
 	public Appointment save(Appointment entidad) {
 		return repository.save(entidad);

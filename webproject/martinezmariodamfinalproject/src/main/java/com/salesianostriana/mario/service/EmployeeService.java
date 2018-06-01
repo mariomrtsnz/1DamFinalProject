@@ -109,5 +109,16 @@ public class EmployeeService {
 
 		return firstAvailableEmployee;
 	}
+	
+	public boolean employeeAvailabilityGivenDateTime(Employee selectedEmployee, LocalDateTime appointmentDateTime) {
+		Iterable<Appointment> appointmentsOnSelectedTime = appointmentService.findAllByStartTime(appointmentDateTime);
+		List<Appointment> appointments = StreamSupport.stream(appointmentsOnSelectedTime.spliterator(), false)
+				.collect(Collectors.toList());
+		boolean result = false;
+		if (appointments.stream().filter(a -> a.getEmployee().equals(selectedEmployee)).findFirst().orElse(null) != null) {
+			result = true;
+		}
+		return result;
+	}
 
 }

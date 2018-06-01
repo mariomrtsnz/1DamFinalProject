@@ -127,7 +127,8 @@ public class AdminController {
 	 }
 	 
 	 @PostMapping("/addNewAppointment")
-	 public String submitNewAppointment(@ModelAttribute("appointmentFormBean") AdminAppointmentBean appointmentFormBean, BindingResult bindingResult, Model model) {
+	 public String submitNewAppointment(@ModelAttribute("appointmentFormBean") AdminAppointmentBean appointmentFormBean, BindingResult bindingResult, Model model, RedirectAttributes ra) {
+		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		 LocalDateTime startDateTime = LocalDateTime.of(appointmentFormBean.getStartDate(), appointmentFormBean.getStartTime());
 		 
 		 Treatment treatment = treatmentService.findOneById(appointmentFormBean.getTreatmentId());
@@ -136,9 +137,14 @@ public class AdminController {
 		 
 		 Appointment appointment = new Appointment(startDateTime, client, employee, startDateTime.plusHours(1), false, LocalDateTime.now(), treatment);
 		 
-		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		 appointmentService.save(appointment);
-		 return "redirect:/admin-calendar";
+		 if (employeeService.employeeAvailabilityGivenDateTime(employee, startDateTime)) {
+			 ra.addFlashAttribute("invalidEmployee", true);
+			 return "redirect:/admin-add-appointment";
+		} else {
+			appointmentService.save(appointment);
+			return "redirect:/admin-calendar";
+		}
+		 
 	 }
 	 
 	 @GetMapping("/edit-appointment/{id}")
