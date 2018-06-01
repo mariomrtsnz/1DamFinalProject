@@ -52,15 +52,11 @@ public class TreatmentController {
 				newService.getTotalPrice());
 		
 		boolean invalidName = !treatment.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
-		boolean invalidDescription = !treatment.getDescription().matches("([A-ZÀ-Ú0-9]{1}[A-Za-zÀ-ú0-9]{1,}[0-9]{0,}(-| ){0,1})");
 		boolean invalidTotalPrice = !(treatment.getTotalPrice() >= 5);
 		boolean invalidNumSessions = !(treatment.getNumSessions() >= 1);
 		
 		if(invalidName) {
 			ra.addFlashAttribute("invalidName", invalidName);
-			return "redirect:/admin-add-service";
-		} else if(invalidDescription) {
-			ra.addFlashAttribute("invalidDescription", invalidDescription);
 			return "redirect:/admin-add-service";
 		} else if(invalidTotalPrice) {
 			ra.addFlashAttribute("invalidTotalPrice", invalidTotalPrice);
@@ -71,7 +67,7 @@ public class TreatmentController {
 		} else {			
 			treatmentService.save(treatment);
 			return "redirect:/admin-services-list";
-		}		
+		}
 	}
 
 	@GetMapping("/delete-treatment/{id}")
@@ -95,9 +91,22 @@ public class TreatmentController {
 
 	@PostMapping("/editTreatment")
 	public String editTreatment(@ModelAttribute("editableTreatment") Treatment editableTreatment, Model model,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, RedirectAttributes ra) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		treatmentService.edit(editableTreatment);
+		boolean invalidName = !editableTreatment.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		// La descripción no tiene validación ya que quiero permitir que la descripción sea cualquier cosa.
+		boolean invalidTotalPrice = !(editableTreatment.getTotalPrice() >= 5);
+		boolean invalidNumSessions = !(editableTreatment.getNumSessions() >= 1);
+		
+		if(invalidName) {
+			ra.addFlashAttribute("invalidName", invalidName);
+		} else if(invalidTotalPrice) {
+			ra.addFlashAttribute("invalidTotalPrice", invalidTotalPrice);
+		} else if(invalidNumSessions) {
+			ra.addFlashAttribute("invalidNumSessions", invalidNumSessions);
+		} else {			
+			treatmentService.edit(editableTreatment);
+		}
 		return "redirect:/admin-services-list";
 	}
 	

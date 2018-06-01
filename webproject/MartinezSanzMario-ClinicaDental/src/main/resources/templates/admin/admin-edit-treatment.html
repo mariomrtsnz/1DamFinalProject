@@ -56,7 +56,7 @@
 		                Número de Sesiones
 		            </div>
 		            <div class="group" id="dniInput">
-		                <input type="number" required="required" placeholder="1" name="numSessions" th:field="*{numSessions}" th:value="*{numSessions}"/>
+		                <input type="number" required="required" placeholder="1" name="numSessions" th:field="*{numSessions}" th:value="*{numSessions}" id="numSessions"/>
 		                <span class="highlight"></span>
 		                <span class="bar"></span>
 		                <label th:text="*{numSessions}">{treatment.numSessions}</label>
@@ -85,6 +85,51 @@
         	</div>
         </div>
     </main>
+    <script th:replace="fragments/common :: messageToastrJs"></script>
+    <script th:if="${invalidTotalPrice}">
+		    $(document).ready(function() {    	
+			    toastr.options = {
+						"closeButton": false,
+						"debug": false,
+						"newestOnTop": false,
+						"progressBar": true,
+						"positionClass": "toast-bottom-center",
+						"preventDuplicates": false,
+						"onclick": null,
+						"showDuration": "300",
+						"hideDuration": "1000",
+						"timeOut": "5000",
+						"extendedTimeOut": "1000",
+						"showEasing": "swing",
+						"hideEasing": "linear",
+						"showMethod": "fadeIn",
+						"hideMethod": "fadeOut"
+				};
+				toastr.error("El precio debe ser mayor que 5€.");
+		    });
+    </script>
+    <script th:if="${invalidNumSessions}">
+		    $(document).ready(function() {    	
+			    toastr.options = {
+						"closeButton": false,
+						"debug": false,
+						"newestOnTop": false,
+						"progressBar": true,
+						"positionClass": "toast-bottom-center",
+						"preventDuplicates": false,
+						"onclick": null,
+						"showDuration": "300",
+						"hideDuration": "1000",
+						"timeOut": "5000",
+						"extendedTimeOut": "1000",
+						"showEasing": "swing",
+						"hideEasing": "linear",
+						"showMethod": "fadeIn",
+						"hideMethod": "fadeOut"
+				};
+				toastr.error("Tiene que ser al menos 1 sesión.");
+		    });
+    </script>
 </body>
 
 </html>
