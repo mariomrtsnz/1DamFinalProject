@@ -65,7 +65,6 @@ public class ClientController {
 		return "/public/user-index";
 	}
 
-	// TODO: Remove "/public" from Mappings
 	@GetMapping("/public/services")
 	public String services(Model model) {
 		model.addAttribute("allTreatments", treatmentService.findAll());

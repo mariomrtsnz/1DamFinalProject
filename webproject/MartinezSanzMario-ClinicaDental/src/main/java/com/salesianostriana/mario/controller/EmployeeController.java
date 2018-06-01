@@ -161,6 +161,7 @@ public class EmployeeController {
  		}
 		else {
 			employeeService.save(employee);
+ 			ra.addFlashAttribute("addSuccess", true);
 			return "redirect:/admin-staff-list";
 		}
 	}
@@ -174,9 +175,27 @@ public class EmployeeController {
 
 	@PostMapping("/editEmployee")
 	public String editEmployee(@ModelAttribute("editableEmployee") Employee editableEmployee, Model model,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, RedirectAttributes ra) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		employeeService.edit(editableEmployee);
+		boolean invalidName = !editableEmployee.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidPhone = !editableEmployee.getPhone().matches("^[679]\\d{8}");
+		boolean invalidDni = !editableEmployee.getDni().matches("[0-9]{7,8}\\-?[A-z]{1}\\b");
+		boolean invalidSalary = !(editableEmployee.getGrossAnualSalary()>10302.60);
+		
+
+		if(invalidName) {
+			ra.addFlashAttribute("invalidName", invalidName);
+		} else if(invalidPhone) {
+			ra.addFlashAttribute("invalidPhone", invalidPhone);
+		} else if(invalidDni) {
+			ra.addFlashAttribute("invalidDni", invalidDni);
+ 		} else if(invalidSalary) {
+ 			ra.addFlashAttribute("invalidSalary", invalidSalary);
+ 		}
+		else {
+ 			ra.addFlashAttribute("editSuccess", true);
+ 			employeeService.edit(editableEmployee);
+		}
 		return "redirect:/admin-staff-list";
 	}
 

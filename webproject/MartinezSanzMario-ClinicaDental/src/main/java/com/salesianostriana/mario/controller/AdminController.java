@@ -114,7 +114,7 @@ public class AdminController {
 	}
 
 	 @GetMapping("/admin-add-appointment")
-	 public String addAppointment(Model model) {
+	 public String addAppointment(Model model, RedirectAttributes ra) {
 		 model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		 model.addAttribute("appointmentFormBean", new AdminAppointmentBean());
 		 model.addAttribute("clients", clientService.findAllActive());
@@ -147,6 +147,7 @@ public class AdminController {
 			return "redirect:/admin-add-appointment";
 		} else {
 			appointmentService.save(appointment);
+			ra.addFlashAttribute("addSuccess", true);
 			return "redirect:/admin-calendar";
 		}
 		 
