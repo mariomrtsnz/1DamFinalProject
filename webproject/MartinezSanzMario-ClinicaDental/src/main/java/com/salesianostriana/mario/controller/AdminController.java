@@ -155,7 +155,7 @@ public class AdminController {
 		 
 	 }
 	 
-	 @GetMapping("/edit-appointment/{id}")
+	 @GetMapping("/view-appointment/{id}")
 	 public String goToEditAppointment(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		Appointment appointment = appointmentService.findOne(id);
@@ -169,26 +169,6 @@ public class AdminController {
 		model.addAttribute("treatments", treatmentService.findAllActive());
 		return "/admin/admin-edit-appointment";
 	 }
-	 
-	 @PostMapping("/editAppointment")
-		public String editAppointment(@ModelAttribute("editableAppointment") AdminAppointmentBean editableAppointment, @ModelAttribute("originalAppointment") Appointment originalAppointment, Model model,
-				BindingResult bindingResult) {
-			model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-			LocalDateTime startDateTime = LocalDateTime.of(editableAppointment.getStartDate(), editableAppointment.getStartTime());
-			 
-			Treatment treatment = treatmentService.findOneById(editableAppointment.getTreatmentId());
-			Client client = clientService.findOne(editableAppointment.getClientId());
-			Employee employee = employeeService.findOne(editableAppointment.getEmployeeId());
-			 
-			originalAppointment.setTreatment(treatment);
-			originalAppointment.setClient(client);
-			originalAppointment.setEmployee(employee);
-			originalAppointment.setStartTime(startDateTime);
-			originalAppointment.setEndTime(startDateTime.plusHours(1));
-			
-			appointmentService.edit(originalAppointment);
-			return "redirect:/admin-calendar";
-		}
 	 
 	 @GetMapping("/delete-appointment/{id}")
 		public String deleteAppointment(@PathVariable("id") Long id, Model model) {

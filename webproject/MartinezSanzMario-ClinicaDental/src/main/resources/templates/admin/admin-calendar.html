@@ -67,9 +67,9 @@
 							<td th:text="${appointment.paid} ? 'Si' : 'No'"></td>
 							<td class="footable-editing footable-last-visible" style="display: table-cell;" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Admin)}" th:fragment="table-advancedOptions">
 								<div class="btn-group btn-group-xs" role="group">
-									<a th:href="@{'/edit-appointment/' + ${appointment.id}}">										
+									<a th:href="@{'/view-appointment/' + ${appointment.id}}">										
 										<button class="btn btn-default footable-edit editButton">
-											<span class="fooicon far fa-edit" aria-hidden="true"></span>
+											<span class="fooicon fas fa-eye" aria-hidden="true"></span>
 										</button>
 									</a>
 									<a th:href="@{'/delete-appointment/' + ${appointment.id}}">
