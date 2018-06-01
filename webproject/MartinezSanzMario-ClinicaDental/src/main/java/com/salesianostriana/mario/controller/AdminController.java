@@ -60,9 +60,6 @@ public class AdminController {
 	@GetMapping({ "/admin", "/admin-dashboard" })
 	public String index(Model model) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		// boolean deleteSuccess = (boolean) model.getAttribute("deleteSuccess");
-		// deleteSuccess = false;
-		// model.addAttribute("deleteSuccess", deleteSuccess);
 		return "/admin/admin-dashboard-index";
 	}
 
@@ -171,12 +168,13 @@ public class AdminController {
 	 }
 	 
 	 @GetMapping("/delete-appointment/{id}")
-		public String deleteAppointment(@PathVariable("id") Long id, Model model) {
+		public String deleteAppointment(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 			Appointment appointment = appointmentService.findOne(id);
 			// companyService.findDefaultCompany().removeTreatment(treatment);
 			// treatment.setCompany(null);
 			// treatment.setAppointments(null);
 			appointmentService.remove(appointment);
+			ra.addFlashAttribute("deleteSuccess", true);
 			model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 			return "redirect:/admin-calendar";
 		}

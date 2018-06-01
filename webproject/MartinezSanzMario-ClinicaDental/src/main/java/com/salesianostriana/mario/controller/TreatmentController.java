@@ -75,12 +75,13 @@ public class TreatmentController {
 	}
 
 	@GetMapping("/delete-treatment/{id}")
-	public String deleteTreatment(@PathVariable("id") Long id, Model model) {
+	public String deleteTreatment(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
 		Treatment treatment = treatmentService.findOneById(id);
 		// companyService.findDefaultCompany().removeTreatment(treatment);
 		// treatment.setCompany(null);
 		// treatment.setAppointments(null);
 		treatmentService.setHistoricalTrue(treatment);
+		ra.addFlashAttribute("deleteSuccess", true);
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		return "redirect:/admin-services-list";
 	}

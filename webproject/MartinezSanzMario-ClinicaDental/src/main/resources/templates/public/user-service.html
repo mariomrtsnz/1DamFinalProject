@@ -45,7 +45,7 @@
     <nav th:replace="fragments/publiclayout :: nav">
     </nav>
     <!-- cd-nav -->
-    <div id="appointmentModal">
+    <div id="appointmentModal" th:if="${}">
         <form th:action="@{'/addNewAppointment/' + ${selectedTreatment.id}}" th:object="${newAppointment}" id="initialAppointmentWindow" method="post">
             <div class="appointment-header">
                 <div id="title">
@@ -79,7 +79,28 @@
             </div>
         </form>
     </div>
-    <div class="modal-overlay"></div>
+    <script th:if="${appointmentSuccess}">
+    $(document).ready(function() {    	
+	    toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-bottom-center",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+		};
+		toastr.success("Cita realizada con éxito");
+    });
+    </script>
 </body>
 
 </html>
