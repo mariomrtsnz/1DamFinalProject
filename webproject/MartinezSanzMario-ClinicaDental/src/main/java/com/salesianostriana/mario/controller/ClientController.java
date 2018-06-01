@@ -126,22 +126,23 @@ public class ClientController {
 
 	@RequestMapping(value = "/addNewAppointment/{id}", method = RequestMethod.POST, params = "action=payNow")
 	public String addAppointmentAndPayNow(@PathVariable("id") Long id, @ModelAttribute("newAppointment") AppointmentFormBean newAppointment,
-			BindingResult bindingResult, Model model) {
+			BindingResult bindingResult, Model model, RedirectAttributes ra) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		LocalDateTime startDateTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
+		
 		Employee firstEmployeeAvailable = employeeService.findFirstAvailableByDateTime(startDateTime);
-		boolean noEmployeesAvailable = false;
+		
+		boolean noEmployeesAvailable = firstEmployeeAvailable == null;
 		Appointment appointment = null;
-		if (firstEmployeeAvailable == null) {
-			noEmployeesAvailable = true;
-		} else {			
+
+		if (noEmployeesAvailable) {
+			ra.addFlashAttribute("noEmployeesAvailable", noEmployeesAvailable);
+			return "redirect:/public/user-service/{id}";
+		} else {
 			appointment = new Appointment(startDateTime, (Client) session.getAttribute("loggedUser"),
 					employeeService.findFirstAvailableByDateTime(startDateTime), startDateTime.plusHours(1), true,
 					LocalDateTime.now(), treatmentService.findOneById(id));
-		}
-		if (noEmployeesAvailable) {			
-			return "redirect:/public/user-service/{id}";
-		} else {
-			model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
+			ra.addFlashAttribute("appointmentSuccess", true);
 			appointmentService.save(appointment);
 			return "redirect:/public/user-service/{id}";
 		}
@@ -150,14 +151,26 @@ public class ClientController {
 	@RequestMapping(value = "/addNewAppointment/{id}", method = RequestMethod.POST, params = "action=payPhysically")
 	public String addAppointmentAndPayPhysically(@PathVariable("id") Long id,
 			@ModelAttribute("newAppointment") AppointmentFormBean newAppointment, BindingResult bindingResult,
-			Model model) {
-		LocalDateTime startTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
-		Appointment appointment = new Appointment(startTime, (Client) session.getAttribute("loggedUser"),
-				employeeService.findFirstAvailableByDateTime(startTime), startTime.plusHours(1), false,
-				LocalDateTime.now(), treatmentService.findOneById(id));
+			Model model, RedirectAttributes ra) {
 		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		appointmentService.save(appointment);
-		return "redirect:/public/user-service/{id}";
+		LocalDateTime startDateTime = LocalDateTime.of(newAppointment.getStartDate(), newAppointment.getStartTime());
+		
+		Employee firstEmployeeAvailable = employeeService.findFirstAvailableByDateTime(startDateTime);
+
+		boolean noEmployeesAvailable = firstEmployeeAvailable == null;
+		Appointment appointment = null;
+		
+		if (noEmployeesAvailable) {
+			ra.addFlashAttribute("noEmployeesAvailable", noEmployeesAvailable);
+			return "redirect:/public/user-service/{id}";
+		} else {
+			appointment = new Appointment(startDateTime, (Client) session.getAttribute("loggedUser"),
+					employeeService.findFirstAvailableByDateTime(startDateTime), startDateTime.plusHours(1), false,
+					LocalDateTime.now(), treatmentService.findOneById(id));
+			ra.addFlashAttribute("appointmentSuccess", true);
+			appointmentService.save(appointment);
+			return "redirect:/public/user-service/{id}";
+		}
 	}
 
 	@GetMapping("/edit-client/{id}")

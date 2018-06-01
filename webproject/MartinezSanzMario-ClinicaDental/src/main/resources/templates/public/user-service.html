@@ -45,7 +45,7 @@
     <nav th:replace="fragments/publiclayout :: nav">
     </nav>
     <!-- cd-nav -->
-    <div id="appointmentModal" th:if="${}">
+    <div id="appointmentModal" th:if="${loggedUser instanceof T(com.salesianostriana.mario.model.Client)}">
         <form th:action="@{'/addNewAppointment/' + ${selectedTreatment.id}}" th:object="${newAppointment}" id="initialAppointmentWindow" method="post">
             <div class="appointment-header">
                 <div id="title">
@@ -98,7 +98,29 @@
 				"showMethod": "fadeIn",
 				"hideMethod": "fadeOut"
 		};
-		toastr.success("Cita realizada con éxito");
+		toastr.success("¡Cita realizada con éxito!");
+    });
+    </script>
+    <script th:if="${noEmployeesAvailable}">
+    $(document).ready(function() {    	
+	    toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-bottom-center",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+		};
+		toastr.error("No hay empleados disponibles en esa fecha y hora.");
     });
     </script>
 </body>
