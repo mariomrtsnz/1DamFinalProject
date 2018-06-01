@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.mario.model.Pager;
 import com.salesianostriana.mario.model.Treatment;
@@ -44,13 +45,33 @@ public class TreatmentController {
 
 	@PostMapping("/addNewService")
 	public String submitSignUp(@ModelAttribute("newService") Treatment newService, BindingResult bindingResult,
-			Model model) {
+			Model model, RedirectAttributes ra) {
+		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
 		Treatment treatment = new Treatment(newService.getDescription(), newService.getDiscount(),
 				newService.isPaidInInstallments(), newService.getName(), newService.getNumSessions(),
 				newService.getTotalPrice());
-		treatmentService.save(treatment);
-		model.addAttribute("loggedUser", session.getAttribute("loggedUser"));
-		return "redirect:/admin-services-list";
+		
+		boolean invalidName = !treatment.getName().matches("([A-ZÀ-Ú]{1}[A-Za-zÀ-ú]{1,}(-| ){0,1})");
+		boolean invalidDescription = !treatment.getDescription().matches("([A-ZÀ-Ú0-9]{1}[A-Za-zÀ-ú0-9]{1,}[0-9]{0,}(-| ){0,1})");
+		boolean invalidTotalPrice = !(treatment.getTotalPrice() >= 5);
+		boolean invalidNumSessions = !(treatment.getNumSessions() >= 1);
+		
+		if(invalidName) {
+			ra.addFlashAttribute("invalidName", invalidName);
+			return "redirect:/admin-add-service";
+		} else if(invalidDescription) {
+			ra.addFlashAttribute("invalidDescription", invalidDescription);
+			return "redirect:/admin-add-service";
+		} else if(invalidTotalPrice) {
+			ra.addFlashAttribute("invalidTotalPrice", invalidTotalPrice);
+			return "redirect:/admin-add-service";
+		} else if(invalidNumSessions) {
+			ra.addFlashAttribute("invalidNumSessions", invalidNumSessions);
+			return "redirect:/admin-add-service";
+		} else {			
+			treatmentService.save(treatment);
+			return "redirect:/admin-services-list";
+		}		
 	}
 
 	@GetMapping("/delete-treatment/{id}")
